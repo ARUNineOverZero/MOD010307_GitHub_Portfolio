@@ -1,0 +1,134 @@
+# ============================================
+# MOD010307 Mobile Game Programming
+# Unity / C# / Visual Studio / Rider / VS Code
+# ============================================
+
+
+# --------------------------------------------
+# Unity generated folders
+# --------------------------------------------
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+
+# --------------------------------------------
+# Unity build output
+# --------------------------------------------
+
+[Bb]uild/
+[Bb]uilds/
+[Bb]uildOutput/
+
+*.apk
+*.aab
+*.unitypackage
+
+
+# --------------------------------------------
+# Unity generated IDE/project files
+# --------------------------------------------
+
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+
+# --------------------------------------------
+# Visual Studio
+# --------------------------------------------
+
+.vs/
+
+
+# --------------------------------------------
+# Visual Studio Code
+# --------------------------------------------
+
+.vscode/
+
+
+# --------------------------------------------
+# JetBrains Rider / IntelliJ
+# --------------------------------------------
+
+.idea/
+*.sln.iml
+
+
+# --------------------------------------------
+# Unity Asset Store / generated tooling
+# --------------------------------------------
+
+**/Assets/AssetStoreTools*
+
+
+# --------------------------------------------
+# Crash reports and debug output
+# --------------------------------------------
+
+sysinfo.txt
+*.stackdump
+*.log
+
+
+# --------------------------------------------
+# Operating system files
+# --------------------------------------------
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+
+# --------------------------------------------
+# Temporary / backup files
+# --------------------------------------------
+
+*~
+*.tmp
+*.temp
+*.bak
+*.swp
+
+
+# --------------------------------------------
+# Secrets and local credentials
+# --------------------------------------------
+
+.env
+.env.*
+*.keystore
+*.jks
+*.p12
+*.pfx
+
+# Never commit:
+# - API keys
+# - access tokens
+# - passwords
+# - signing credentials
+# - private certificates
