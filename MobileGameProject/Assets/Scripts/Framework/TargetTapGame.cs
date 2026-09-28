@@ -36,72 +36,87 @@ namespace MobileGameProject.Framework
 
         private int _score;
         private float _reactionTimer;
-
-        //private int _tapsRemaining;
         private float _currentSize;
 
         public override void Begin(MicrogameSession session)
         {
             base.Begin(session);
             _score = 0;
-            _targetImage.color = _safeColor;
-            _feedbackText.text = "Go!";
-            //_tapsRemaining = _tapsToWin;
+            SetTargetColor(_safeColor);
+            ShowFeedback("Go!");
             UpdateProgress();
-            MoveTarget();
+            ShowNextTarget();
         }
+
 
         private void Update()
         {
             if(!IsRunning) return;
 
             _reactionTimer += Time.deltaTime;
-            _currentSize -= _shrinkPetSecond * Time.deltaTime;
-            _target.sizeDelta = new Vector2(_currentSize,_currentSize);
-            if(_currentSize <= _minimumSize)
+            SetTargetSize(_currentSize - _shrinkPetSecond * Time.deltaTime);
+            
+            if(IsTargetTooSmall())
             {
-                _feedbackText.text = "Too slow!";
-                MoveTarget();
+                ShowFeedback("Too Slow!");
+                ShowNextTarget();
             }
         }
+
 
         public void TapTarget()
         {
             if(!IsRunning) return;
 
-            //_tapsRemaining--;
-            _score++;
-            UpdateProgress();
+            AddScore();
 
-            if(_showReactionTime)
-                _feedbackText.text = _showReactionTime ? $"Hit! {_reactionTimer:0.00}s" : "Hit!.";
+            ShowFeedback(_showReactionTime 
+                            ? $"Hit! {_reactionTimer:0.00}s" 
+                            : "Hit!.");
 
             if(_score >= _scoreToWin)
                 Win();
             else
-                MoveTarget();
+                ShowNextTarget();
         }
 
-        private void UpdateProgress()
+        private void ShowNextTarget()
         {
-            _progressText.text = $"Score: {_score} / {_scoreToWin}";
+            SetTargetSize(_startSize);
+            _target.anchoredPosition = GetRandomPosition(_playArea, _startSize);
         }
 
-        private void MoveTarget()
+        private void AddScore(int amount = 1)
         {
-            _currentSize = _startSize;
+            _score += amount;
+            UpdateProgress();
+        }
+
+        private void SetTargetSize(float size)
+        {
+            _currentSize = size;
+            _target.sizeDelta = new Vector2(size, size);
+        }
+
+        private bool IsTargetTooSmall() => _currentSize <= _minimumSize;
+
+        private void SetTargetColor(Color color) => _targetImage.color = color;
+        
+        private void ShowFeedback(string message) => _feedbackText.text = message;
+        
+        private void UpdateProgress() => _progressText.text = $"Score: {_score} / {_scoreToWin}";
+
+        private Vector2 GetRandomPosition(RectTransform playArea, float startSize)
+        {
+            _currentSize = startSize;
             _target.sizeDelta = new Vector2(_currentSize, _currentSize);
             _reactionTimer = 0f;
 
-            float maxX = (_playArea.rect.width - _target.rect.width) * .5f;
-            float maxY = (_playArea.rect.height - _target.rect.height) * .5f;
+            float maxX = (playArea.rect.width - _target.rect.width) * .5f;
+            float maxY = (playArea.rect.height - _target.rect.height) * .5f;
             float x = UnityEngine.Random.Range(-maxX, maxX);
             float y = UnityEngine.Random.Range(-maxY, maxY);
-            _target.anchoredPosition = new Vector2(x,y);
-
+            return new Vector2(x,y);
         }
-
-       
     }
-
 }
