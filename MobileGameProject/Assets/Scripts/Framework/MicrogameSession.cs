@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +17,8 @@ namespace MobileGameProject.Framework
         [SerializeField] private GameObject _readyPanel;
         [SerializeField] private GameObject _playArea;
         [SerializeField] private GameObject _resultPanel;
-        [SerializeField] private Text _timerText;
-        [SerializeField] private Text _resultText;
+        [SerializeField] private TextMeshProUGUI _timerText;
+        [SerializeField] private TextMeshProUGUI _resultText;
         [SerializeField, Min(1f)] private float _durationSeconds = 10f;
         private Phase _currentPhase;
         private float _remainingSeconds;
