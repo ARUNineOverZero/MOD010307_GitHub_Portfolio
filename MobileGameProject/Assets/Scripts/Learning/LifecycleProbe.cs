@@ -21,7 +21,7 @@ namespace MobileGameProject.Learning
 
         private void OnDisabled()
         {
-            Log(nameof(SOnDisabledtart));
+            Log(nameof(OnDisabled));
         }
 
         private void Start()

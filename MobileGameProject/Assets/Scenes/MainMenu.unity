@@ -906,6 +906,7 @@ GameObject:
   - component: {fileID: 2053102806}
   - component: {fileID: 2053102805}
   - component: {fileID: 2053102804}
+  - component: {fileID: 2053102807}
   m_Layer: 5
   m_Name: PracticeButton
   m_TagString: Untagged
@@ -1027,6 +1028,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053102802}
   m_CullTransparentMesh: 1
+--- !u!114 &2053102807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053102802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae869a75208a6e45903f41bffa1ac6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Learning.LifecycleProbe
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
