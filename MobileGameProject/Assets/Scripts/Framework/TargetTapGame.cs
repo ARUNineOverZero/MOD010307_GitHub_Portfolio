@@ -9,22 +9,43 @@ namespace MobileGameProject.Framework
 {
     public class TargetTapGame : AMicrogameBehaviour
     {
+        [Header("Scene Reference")]
+
         [SerializeField] private RectTransform _playArea;
         [SerializeField] private RectTransform _target;
+        [SerializeField] private Image _targetImage;
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField, Min(1)] private int _tapsToWin = 5;
+        [SerializeField] private Text _feedbackText;
 
-        [SerializeField] private float _startSize = 240f ;
-        [SerializeField] private float _minimumSize = 100f;
-        [SerializeField] private float _shrinkPetSecond = 80f;
+        [Header("Rules")]
+        [Tooltip("Points needed to win before the timer runs out.")]
+        [SerializeField, Min(1)] private int _scoreToWin = 10;
 
-        private int _tapsRemaining;
+        [Header("Shrinking Target")]
+
+        [SerializeField, Min(10f)] private float _startSize = 240f ;
+        [SerializeField, Min(10f)] private float _minimumSize = 100f;
+        [Tooltip("How many pixels the target loses from its width and height every second.")]
+        [SerializeField, Range(0f, 300f)] private float _shrinkPetSecond = 80f;
+
+        [Header("Presentation")]
+        [SerializeField] private Color _safeColor = new Color(.2f, .8f, .4f);
+        [SerializeField] private bool _showReactionTime = true;
+
+        private int _score;
+        private float _reactionTimer;
+
+        //private int _tapsRemaining;
         private float _currentSize;
 
         public override void Begin(MicrogameSession session)
         {
             base.Begin(session);
-            _tapsRemaining = _tapsToWin;
+            _score = 0;
+            _targetImage.color = _safeColor;
+            _feedbackText.text = "Go!";
+            //_tapsRemaining = _tapsToWin;
             UpdateProgress();
             MoveTarget();
         }
