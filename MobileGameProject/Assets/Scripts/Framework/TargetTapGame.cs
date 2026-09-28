@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Mono.Cecil;
 using TMPro;
 using UnityEditor;
@@ -121,22 +122,29 @@ namespace MobileGameProject.Framework
 
         
 
-        private int CalculatePoints(float reactionTime) => _reactionTimer <= _perfectTime
+        private int CalculatePoints(float reactionTime) => reactionTime <= _perfectTime
                                                                 ? 3
-                                                                : _reactionTimer <= _greatTime
+                                                                : reactionTime <= _greatTime
                                                                     ? 2
                                                                     : 1;
                                                                     
-        private object GetRating(int points) => points <= 3
-                                                    ? "Perfect!"
-                                                    : points <= 2
-                                                        ? "Great!"
-                                                        : "Good";
+        private object GetRating(int points) 
+        {
+            switch(points)
+            {
+                case 3:
+                    return "Perfect!";
+                case 2: 
+                    return"Great!";
+                default:
+                return "Good";
+            }
+        }
 
         private void AddScore(int amount = 1)
         {
             _score += amount;
-            
+
             if(_score <= 0)
                 _score = 0;
 
