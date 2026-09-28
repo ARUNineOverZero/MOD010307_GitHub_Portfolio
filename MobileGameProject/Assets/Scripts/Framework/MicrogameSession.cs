@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -67,17 +63,14 @@ namespace MobileGameProject.Framework
             if(_currentPhase != Phase.Ready || gameObject == null)
                 return;
 
-
             _remainingSeconds = _durationSeconds;
             _readyPanel.SetActive(false);
             _playArea.SetActive(true);
             _resultPanel.SetActive(false);
             _currentPhase = Phase.Plaiying;
-
             ShowTime();    
+            _game.Begin(this);
         }
-
-      
 
         private void ShowTime()
         {

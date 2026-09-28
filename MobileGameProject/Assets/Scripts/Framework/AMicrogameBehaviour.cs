@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace MobileGameProject.Framework
 {
-    public abstract class AMicrogameBehaviour
+    public abstract class AMicrogameBehaviour : MonoBehaviour
     {
         //Microgame session
         private bool _isRunning = false;
@@ -32,4 +34,5 @@ namespace MobileGameProject.Framework
                 _session.Finish(false);
         }
     }
+
 }
