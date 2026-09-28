@@ -83,6 +83,11 @@
 
 **/TextMesh Pro/
 **/TextMesh Pro.meta
+**/TextMeshPro/
+**/*.tmp
+**/*TextMeshPro*.asset
+**/*TextMeshPro*.prefab
+
 
 
 # --------------------------------------------
