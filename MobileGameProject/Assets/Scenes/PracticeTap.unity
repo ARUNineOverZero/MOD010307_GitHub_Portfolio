@@ -754,11 +754,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Framework.TargetTapGame
   _playArea: {fileID: 632799384}
   _target: {fileID: 1421238890}
+  _targetImage: {fileID: 1421238892}
   _progressText: {fileID: 525130439}
   _tapsToWin: 5
+  _feedbackText: {fileID: 2039978463}
+  _scoreToWin: 10
   _startSize: 240
   _minimumSize: 100
   _shrinkPetSecond: 80
+  _safeColor: {r: 0.2, g: 0.8, b: 0.4, a: 1}
+  _showReactionTime: 1
 --- !u!4 &499917428
 Transform:
   m_ObjectHideFlags: 0
@@ -973,7 +978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &632799384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2542,7 +2547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -3,6 +3,7 @@ using Mono.Cecil;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace MobileGameProject.Framework
@@ -16,7 +17,7 @@ namespace MobileGameProject.Framework
         [SerializeField] private Image _targetImage;
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField, Min(1)] private int _tapsToWin = 5;
-        [SerializeField] private Text _feedbackText;
+        [SerializeField] private TextMeshProUGUI _feedbackText;
 
         [Header("Rules")]
         [Tooltip("Points needed to win before the timer runs out.")]
@@ -54,20 +55,28 @@ namespace MobileGameProject.Framework
         {
             if(!IsRunning) return;
 
+            _reactionTimer += Time.deltaTime;
             _currentSize -= _shrinkPetSecond * Time.deltaTime;
             _target.sizeDelta = new Vector2(_currentSize,_currentSize);
             if(_currentSize <= _minimumSize)
+            {
+                _feedbackText.text = "Too slow!";
                 MoveTarget();
+            }
         }
 
         public void TapTarget()
         {
             if(!IsRunning) return;
 
-            _tapsRemaining--;
+            //_tapsRemaining--;
+            _score++;
             UpdateProgress();
 
-            if(_tapsRemaining == 0)
+            if(_showReactionTime)
+                _feedbackText.text = _showReactionTime ? $"Hit! {_reactionTimer:0.00}s" : "Hit!.";
+
+            if(_score >= _scoreToWin)
                 Win();
             else
                 MoveTarget();
@@ -75,13 +84,15 @@ namespace MobileGameProject.Framework
 
         private void UpdateProgress()
         {
-            _progressText.text = $"Taps left: {_tapsRemaining}";
+            _progressText.text = $"Score: {_score} / {_scoreToWin}";
         }
 
         private void MoveTarget()
         {
             _currentSize = _startSize;
             _target.sizeDelta = new Vector2(_currentSize, _currentSize);
+            _reactionTimer = 0f;
+
             float maxX = (_playArea.rect.width - _target.rect.width) * .5f;
             float maxY = (_playArea.rect.height - _target.rect.height) * .5f;
             float x = UnityEngine.Random.Range(-maxX, maxX);
