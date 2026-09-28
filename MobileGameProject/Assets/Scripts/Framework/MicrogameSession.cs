@@ -55,6 +55,7 @@ namespace MobileGameProject.Framework
             _game.End();
             _playArea.SetActive(false);
             _resultPanel.SetActive(true);
+            _won = v;
             _resultText.text = _won ? "You Win!" 
                                     : "You LOST!";
         }
