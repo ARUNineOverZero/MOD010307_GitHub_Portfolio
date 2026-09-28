@@ -5,6 +5,10 @@ namespace MobileGameProject.Framework
 {
     public class SceneNavigator : MonoBehaviour
     {
+        public void OpenMainMenu()
+        {
+            LoadScene("MainMenu");
+        }
 
         public void LoadScene(string sceneName)
         {
