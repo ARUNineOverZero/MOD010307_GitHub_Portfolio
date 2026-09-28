@@ -34,5 +34,4 @@ namespace MobileGameProject.Framework
                 _session.Finish(false);
         }
     }
-
 }
