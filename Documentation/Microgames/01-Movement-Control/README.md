@@ -1,14 +1,18 @@
 # Microgame: Kitchen Waiter
 
 ## Concept
-
+From an arial view, steer the waiter carrying a single plate from the kitchen to the correct table.
 
 ## Player Action
-
+Hold a finger or thumb on the screen and drag to navigate the waiter from the kitchen to the coreect table
 
 ## Success / Failure
 **Success condition:**  
+ - Place the plate on the right table 
 **Failure condition:**
+ - An incorrect table accepts the food from the waiter
+ - Walks into another waiter and drops the food
+ - Time runs out
 
 ## Main Programming Focus
 This microgame primarily demonstrates:
