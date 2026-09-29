@@ -1,16 +1,19 @@
-# Microgame: [Title]
+# Microgame: Kitchen Waiter
 
 ## Concept
-Briefly describe the game in one or two sentences.
-
-The complete game idea should normally be understandable within approximately 10–30 seconds of play.
+You are handed a tray you must deliever to a table avoiding obsticles and kitchen hazards before the time runs out. Using the accelerometer the player must navigate the kitchen with most of the food still on the tray.
 
 ## Player Action
-What does the player do?
+The player must tilt their phone in the direction of they want to move, avoiding obsticles and conteracting hazards by tipping the tray.
 
 ## Success / Failure
 **Success condition:**  
-**Failure condition:**  
+ - Make it to the customer table
+ - Drop the tray contents on the table
+ - Befor the timer ends
+**Failure condition:**
+ - Timer hits 0.00
+ - Drop the full contents of the tray
 
 ## Main Programming Focus
 This microgame primarily demonstrates:

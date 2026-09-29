@@ -78,6 +78,19 @@
 
 
 # --------------------------------------------
+# TextMesh Pro generated assets
+# --------------------------------------------
+
+**/TextMesh Pro/
+**/TextMesh Pro.meta
+**/TextMeshPro/
+**/*.tmp
+**/*TextMeshPro*.asset
+**/*TextMeshPro*.prefab
+
+
+
+# --------------------------------------------
 # Crash reports and debug output
 # --------------------------------------------
 
