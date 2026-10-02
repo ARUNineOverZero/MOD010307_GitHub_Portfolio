@@ -688,7 +688,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -758,11 +758,17 @@ MonoBehaviour:
   _progressText: {fileID: 525130439}
   _tapsToWin: 5
   _feedbackText: {fileID: 2039978463}
+  _targetText: {fileID: 1675003643}
   _scoreToWin: 10
+  _decoyChance: 0.25
+  _decoyPenalty: 2
+  _perfectTime: 0.5
+  _greatTime: 1
   _startSize: 240
   _minimumSize: 100
   _shrinkPetSecond: 80
   _safeColor: {r: 0.2, g: 0.8, b: 0.4, a: 1}
+  _decoyColor: {r: 0.9, g: 0.2, b: 0.2, a: 1}
   _showReactionTime: 1
 --- !u!4 &499917428
 Transform:

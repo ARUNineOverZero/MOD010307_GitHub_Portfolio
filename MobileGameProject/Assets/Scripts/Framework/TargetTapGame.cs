@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using Mono.Cecil;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace MobileGameProject.Framework
@@ -19,6 +15,7 @@ namespace MobileGameProject.Framework
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField, Min(1)] private int _tapsToWin = 5;
         [SerializeField] private TextMeshProUGUI _feedbackText;
+        [SerializeField] private TextMeshProUGUI _targetText;
 
         [Header("Rules")]
         [Tooltip("Points needed to win before the timer runs out.")]
@@ -42,6 +39,8 @@ namespace MobileGameProject.Framework
         [SerializeField] private Color _safeColor = new Color(.2f, .8f, .4f);
         [SerializeField] private Color _decoyColor = new Color(.9f, .2f, .2f);
         [SerializeField] private bool _showReactionTime = true;
+
+        private int _tapCount = 1;
 
         private int _score;
         private float _reactionTimer;
@@ -79,23 +78,30 @@ namespace MobileGameProject.Framework
             {
                 AddScore(-_decoyPenalty);
                 ShowFeedback($"Decoy! -{_decoyPenalty}");
-                ShowNextTarget();
                 return;
             }
 
-            int points = CalculatePoints(_reactionTimer);
-            AddScore(points);
-
-            string message = $"{GetRating(points)} +{points}";
-            if(_showReactionTime)
-                message += $"   ({_reactionTimer:0.00s})";
+            _tapCount -= 1;
             
-            ShowFeedback(message);
+            if(_tapCount == 0)
+            {
+                int points = CalculatePoints(_reactionTimer);
+                AddScore(points);
 
-            if (_score >= _scoreToWin)
-                Win();
-            else
-                ShowNextTarget();
+                string message = $"{GetRating(points)} +{points}";
+
+                if(_showReactionTime)
+                    message += $"   ({_reactionTimer:0.00s})";
+            
+                ShowFeedback(message);
+
+                if (_score >= _scoreToWin)
+                    Win();
+                else
+                    ShowNextTarget();
+            }
+            else 
+                _targetText.text = _tapCount.ToString();
         }
 
         private void TargetExpired()
@@ -112,6 +118,10 @@ namespace MobileGameProject.Framework
             _isDecoy = _score == 0 || wasDecoy 
                         ? false 
                         : _isDecoy = UnityEngine.Random.value < _decoyChance;
+
+            _tapCount = UnityEngine.Random.Range(1,5);
+
+            _targetText.text = _isDecoy ? "TAP!" : _tapCount.ToString();
 
             SetTargetColor(_isDecoy ? _decoyColor : _safeColor);
 
