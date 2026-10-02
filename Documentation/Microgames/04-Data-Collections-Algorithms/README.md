@@ -48,7 +48,7 @@ Detailed evidence should be recorded in [Testing documentation](../../Documentat
 **Relevant feature branch:** `feature/...`
 
 **Relevant pull request(s):**
-- #
+- 
 
 **Important commits:**
 - 

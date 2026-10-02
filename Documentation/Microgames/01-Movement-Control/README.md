@@ -17,7 +17,6 @@ Hold a finger or thumb on the screen and drag to navigate the waiter from the ki
 ## Main Programming Focus
 This microgame primarily demonstrates:
 - 
-
 Examples might include movement, vectors, delta time, physics, collisions, timing, Boolean logic, collections, searching or sorting.
 
 ## Student-Authored Programming
