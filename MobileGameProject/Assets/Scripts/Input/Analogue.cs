@@ -36,20 +36,24 @@ namespace MobileGameProject.InputSystem
             Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
             _direction = transform.InverseTransformPoint(worldPoint);
 
-            Vector2 clamped2, normalized;
+            Vector2 clamped, normalized;
             float distance;
 
-            GetClampedDirectionAndDistance(_direction, maxDistance, out  clamped2, out normalized, out distance);
+            GetClampedDirectionNormalizedDirectionAndDistance(_direction, maxDistance, out clamped, out normalized, out distance);
 
-            var clamped = Vector2.ClampMagnitude(_direction, maxDistance);
             _stick.localPosition = clamped;
-            _value = clamped.normalized * Mathf.Min(_direction.magnitude, maxDistance) / maxDistance;
-
-           
+            _value = normalized * Mathf.Min(distance, maxDistance) / maxDistance;
         }
 
-        private void GetClampedDirectionAndDistance(Vector2 direction, float maxDistance, out Vector2 clampedDirection, out Vector2 normalizedDirection, out float distance)
+        private void GetClampedDirectionNormalizedDirectionAndDistance(Vector2 direction, float maxDistance, out Vector2 clampedDirection, out Vector2 normalizedDirection, out float distance)
         {
+            if( direction == Vector2.zero)
+            {
+                clampedDirection = normalizedDirection = Vector2.zero;
+                distance = 0f;
+                return;
+            }
+
             var sqrDistance = Mathf.Pow(direction.x,2) + Mathf.Pow(direction.y,2);
             distance = Mathf.Sqrt(sqrDistance);
             var scalar = 1 / distance;
@@ -58,7 +62,7 @@ namespace MobileGameProject.InputSystem
             if(distance < maxDistance)
                 clampedDirection = direction;
             else
-                clampedDirection = normalizedDirection * (distance / maxDistance);
+                clampedDirection = normalizedDirection * maxDistance;
             
         }
 

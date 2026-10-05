@@ -29,7 +29,7 @@ namespace MobileGameProject.InputSystem
             }
 
 
-            Debug.Log(((IVector2Value)analogue).Value);
+            Debug.Log($"{((IVector2Value)analogue).Value.x}, {((IVector2Value)analogue).Value.y}");
         }
     }
 }
