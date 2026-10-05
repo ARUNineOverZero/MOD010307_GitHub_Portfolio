@@ -21,6 +21,11 @@ namespace PhysicsSandbox.Motion
         [SerializeField] private Vector2 _boundsMin = new Vector2(-4.6f, -9.0f);
         [SerializeField] private Vector2 _boundsMax = new Vector2(4.6f, 9.0f);
 
+        [Header("Turning")]
+        [Tooltip("Fastest turn, in degrees per second.")]
+        [SerializeField, Min(0f)]
+        private float _turnSpeed = 540f;
+
         private Camera _mainCamera;
         private Vector2 _target;
         private bool _hasTarget;
@@ -40,11 +45,12 @@ namespace PhysicsSandbox.Motion
 
             Vector2 position = transform.position;
 
-            if(_hasTarget) 
+            if (_hasTarget)
                 Steer(position);
 
             position += _velocity * Time.deltaTime;
             transform.position = BounceOffBounds(position);
+            FaceVelocity();
         }
 
         private void Steer(Vector2 position)
@@ -75,12 +81,21 @@ namespace PhysicsSandbox.Motion
             return position;
         }
 
+        private void FaceVelocity()
+        {
+            if (_velocity.sqrMagnitude < .01f) return;
+
+            float angle = Mathf.Atan2(_velocity.y, _velocity.x) * Mathf.Rad2Deg - 90f;
+            Quaternion wanted = Quaternion.Euler(0f,0f, angle);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, wanted, _turnSpeed * Time.deltaTime);
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position, transform.position + (Vector3)_velocity);
 
-            if(!_hasTarget) return;
+            if (!_hasTarget) return;
 
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(_target, .2f);
