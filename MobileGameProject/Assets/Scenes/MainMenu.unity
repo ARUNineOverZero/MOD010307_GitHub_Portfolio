@@ -624,7 +624,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 470329410}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398294825}
+        m_TargetAssemblyTypeName: MobileGameProject.Framework.SceneNavigator, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameFour
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &470329410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 499114180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398294825}
+        m_TargetAssemblyTypeName: MobileGameProject.Framework.SceneNavigator, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameTwo
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &499114180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1791,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1962164578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398294825}
+        m_TargetAssemblyTypeName: MobileGameProject.Framework.SceneNavigator, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameThree
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1962164578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2113,7 +2149,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2070038444}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398294825}
+        m_TargetAssemblyTypeName: MobileGameProject.Framework.SceneNavigator, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameOne
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2070038444
 MonoBehaviour:
   m_ObjectHideFlags: 0
