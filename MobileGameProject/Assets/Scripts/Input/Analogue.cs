@@ -5,10 +5,11 @@ namespace MobileGameProject.InputSystem
 {
     public class Analogue : MonoBehaviour, IVector2Value
     {
+        [Header("Scene Reference")]
         [SerializeField] public Transform _stick;
-        [SerializeField] public float _maxDistance = .5f;
 
-        private Vector2 _start, _current;
+        public float maxDistance = .5f;
+        private Vector2 _direction;
         private Vector2 _value = Vector2.zero; 
 
         private bool _isActive = true; 
@@ -23,8 +24,8 @@ namespace MobileGameProject.InputSystem
 
         public void StartInteraction(Vector2 start)
         {
-            transform.position = _start = _current = start;
-            _value = Vector2.zero;
+            transform.position = start;
+            _direction = _value = Vector2.zero;
             _isActive = true;
         }
 
@@ -33,16 +34,37 @@ namespace MobileGameProject.InputSystem
             if(!_isActive) return;
 
             Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
-            _current = worldPoint - transform.position;
-            Vector2 direction = _current - _start;
-            var clamped = Vector2.ClampMagnitude(direction, _maxDistance);
+            _direction = transform.InverseTransformPoint(worldPoint);
+
+            Vector2 clamped2, normalized;
+            float distance;
+
+            GetClampedDirectionAndDistance(_direction, maxDistance, out  clamped2, out normalized, out distance);
+
+            var clamped = Vector2.ClampMagnitude(_direction, maxDistance);
             _stick.localPosition = clamped;
-            _value = clamped.normalized;
+            _value = clamped.normalized * Mathf.Min(_direction.magnitude, maxDistance) / maxDistance;
+
+           
+        }
+
+        private void GetClampedDirectionAndDistance(Vector2 direction, float maxDistance, out Vector2 clampedDirection, out Vector2 normalizedDirection, out float distance)
+        {
+            var sqrDistance = Mathf.Pow(direction.x,2) + Mathf.Pow(direction.y,2);
+            distance = Mathf.Sqrt(sqrDistance);
+            var scalar = 1 / distance;
+            normalizedDirection = new Vector2(direction.x * scalar, direction.y * scalar);
+
+            if(distance < maxDistance)
+                clampedDirection = direction;
+            else
+                clampedDirection = normalizedDirection * (distance / maxDistance);
+            
         }
 
         public void FinishInteraction()
         {
-            _value = _start = _current = Vector2.zero;
+            _value =  _direction = Vector2.zero;
             _stick.localPosition = Vector3.zero;
             _isActive = false;
         }

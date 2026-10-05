@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 232788200}
   - component: {fileID: 232788202}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: ThumbStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1224458469}
   - component: {fileID: 1224458470}
   m_Layer: 0
-  m_Name: Thumb
+  m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
