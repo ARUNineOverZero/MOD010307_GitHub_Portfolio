@@ -35,11 +35,11 @@ namespace PhysicsSandbox
 
         private bool CanSee(Vector2 target)
         {
-            Vector2 direction = target - (Vector2)transform.position;
+            Vector2 toTarget = target - (Vector2)transform.position;
             
-            if(direction.sqrMagnitude > _viewRange * _viewRange) return false;
+            if(toTarget.sqrMagnitude > _viewRange * _viewRange) return false;
 
-            float dot = Vector2.Dot(transform.up, direction.normalized);
+            float dot = Vector2.Dot(transform.up, toTarget.normalized);
             float limit = Mathf.Cos(_viewAngle * .5f * Mathf.Deg2Rad);
 
             return dot >= limit;
