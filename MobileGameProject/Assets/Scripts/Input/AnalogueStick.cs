@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MobileGameProject.InputSystem
+namespace MobileGameProject.MGPInputSystem
 {
-    public class Analogue : MonoBehaviour, IVector2Value
+    public class AnalogueStick : MonoBehaviour, IVector2Value
     {
         [Header("Scene Reference")]
         [SerializeField] public Transform _stick;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2bcd2660ca9b64942af0de543d8d7100
+guid: c13bd4537e124ed4f9f4d1234c3c750e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: MobileGameProject.MGPInput
+  wrapperCodeNamespace: MobileGameProject.MGPInputSystem

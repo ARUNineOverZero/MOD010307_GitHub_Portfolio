@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MobileGameProject.InputSystem
+namespace MobileGameProject.MGPInputSystem
 {
     public interface IVector2Value
     {

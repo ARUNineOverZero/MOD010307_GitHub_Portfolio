@@ -1,11 +1,12 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MobileGameProject.InputSystem
+namespace MobileGameProject.MGPInputSystem
 {
     public class AnalogueTest : MonoBehaviour
     {
-        public Analogue analogue;
+        public AnalogueStick analogue;
 
         private Camera _mainCamera;
 
