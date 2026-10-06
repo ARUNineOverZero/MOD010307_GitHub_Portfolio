@@ -3,16 +3,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace MobileGameProject.MGPInputSystem
+namespace MobileGameProject.MGPInputSystem.KitchenWaiter
 {
-    public sealed class KitchenWaiterPlayerInputHandler : APlayerInputHandler
+    public sealed class PlayerInputHandler : APlayerInputHandler
     {
         private Vector2 _position;
         public Vector2 Position => _position;
         public  UnityEvent OnPressed;
         public  UnityEvent OnRelease;
         public  UnityEvent<Vector2> OnPositionChanged;
-
 
         protected override void RegisterActions()
         {
@@ -47,20 +46,35 @@ namespace MobileGameProject.MGPInputSystem
             _inputSystem.KitchenWaiter.Enable();
         }
 
-        private void OnPositionMove(InputAction.CallbackContext context)
+        private void OnContactPerformed(InputAction.CallbackContext context)
         {
-            var temp = context.ReadValue<Vector2>();
-            if(_position == temp)
+            MovePointer(GetPositionByType(context));
+            Debug.Log($"down {context.control.path}");
+            OnPressed?.Invoke();
+        }
+
+        private void MovePointer(Vector2 moveTo)
+        {
+            if(_position == moveTo)
                 return;
 
-            _position = temp;
+            _position = moveTo;
             OnPositionChanged?.Invoke(_position);
         }
 
-        private void OnContactPerformed(InputAction.CallbackContext context)
+        private void OnPositionMove(InputAction.CallbackContext context)
         {
-            Debug.Log($"down {context.control.path}");
-            OnPressed?.Invoke();
+            MovePointer(context.ReadValue<Vector2>());
+        }
+
+        private Vector2 GetPositionByType(InputAction.CallbackContext context)
+        {
+            if(context.control?.device is Touchscreen t)
+                return t.primaryTouch.position.ReadValue();
+            else if (context.control?.device is Pointer p)
+                return p.position.ReadValue();
+
+            return Vector2.zero;
         }
 
         private void OnContactCanceled(InputAction.CallbackContext context)

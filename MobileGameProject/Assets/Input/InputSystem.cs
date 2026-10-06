@@ -95,15 +95,6 @@ namespace MobileGameProject.MGPInputSystem
             ""id"": ""f8c55d6d-303a-4d8f-bf97-4c506b2b4a8a"",
             ""actions"": [
                 {
-                    ""name"": ""Contact"",
-                    ""type"": ""Button"",
-                    ""id"": ""01ebe836-7763-4073-b58f-f6c3ea9cb402"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Position"",
                     ""type"": ""Value"",
                     ""id"": ""294a1cbb-cc92-4228-9730-2edcf760a09d"",
@@ -111,6 +102,15 @@ namespace MobileGameProject.MGPInputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Contact"",
+                    ""type"": ""Button"",
+                    ""id"": ""01ebe836-7763-4073-b58f-f6c3ea9cb402"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -171,8 +171,8 @@ namespace MobileGameProject.MGPInputSystem
 }");
             // KitchenWaiter
             m_KitchenWaiter = asset.FindActionMap("KitchenWaiter", throwIfNotFound: true);
-            m_KitchenWaiter_Contact = m_KitchenWaiter.FindAction("Contact", throwIfNotFound: true);
             m_KitchenWaiter_Position = m_KitchenWaiter.FindAction("Position", throwIfNotFound: true);
+            m_KitchenWaiter_Contact = m_KitchenWaiter.FindAction("Contact", throwIfNotFound: true);
             // DrinkRunner
             m_DrinkRunner = asset.FindActionMap("DrinkRunner", throwIfNotFound: true);
             m_DrinkRunner_Newaction = m_DrinkRunner.FindAction("New action", throwIfNotFound: true);
@@ -257,8 +257,8 @@ namespace MobileGameProject.MGPInputSystem
         // KitchenWaiter
         private readonly InputActionMap m_KitchenWaiter;
         private List<IKitchenWaiterActions> m_KitchenWaiterActionsCallbackInterfaces = new List<IKitchenWaiterActions>();
-        private readonly InputAction m_KitchenWaiter_Contact;
         private readonly InputAction m_KitchenWaiter_Position;
+        private readonly InputAction m_KitchenWaiter_Contact;
         /// <summary>
         /// Provides access to input actions defined in input action map "KitchenWaiter".
         /// </summary>
@@ -271,13 +271,13 @@ namespace MobileGameProject.MGPInputSystem
             /// </summary>
             public KitchenWaiterActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
             /// <summary>
-            /// Provides access to the underlying input action "KitchenWaiter/Contact".
-            /// </summary>
-            public InputAction @Contact => m_Wrapper.m_KitchenWaiter_Contact;
-            /// <summary>
             /// Provides access to the underlying input action "KitchenWaiter/Position".
             /// </summary>
             public InputAction @Position => m_Wrapper.m_KitchenWaiter_Position;
+            /// <summary>
+            /// Provides access to the underlying input action "KitchenWaiter/Contact".
+            /// </summary>
+            public InputAction @Contact => m_Wrapper.m_KitchenWaiter_Contact;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -304,12 +304,12 @@ namespace MobileGameProject.MGPInputSystem
             {
                 if (instance == null || m_Wrapper.m_KitchenWaiterActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_KitchenWaiterActionsCallbackInterfaces.Add(instance);
-                @Contact.started += instance.OnContact;
-                @Contact.performed += instance.OnContact;
-                @Contact.canceled += instance.OnContact;
                 @Position.started += instance.OnPosition;
                 @Position.performed += instance.OnPosition;
                 @Position.canceled += instance.OnPosition;
+                @Contact.started += instance.OnContact;
+                @Contact.performed += instance.OnContact;
+                @Contact.canceled += instance.OnContact;
             }
 
             /// <summary>
@@ -321,12 +321,12 @@ namespace MobileGameProject.MGPInputSystem
             /// <seealso cref="KitchenWaiterActions" />
             private void UnregisterCallbacks(IKitchenWaiterActions instance)
             {
-                @Contact.started -= instance.OnContact;
-                @Contact.performed -= instance.OnContact;
-                @Contact.canceled -= instance.OnContact;
                 @Position.started -= instance.OnPosition;
                 @Position.performed -= instance.OnPosition;
                 @Position.canceled -= instance.OnPosition;
+                @Contact.started -= instance.OnContact;
+                @Contact.performed -= instance.OnContact;
+                @Contact.canceled -= instance.OnContact;
             }
 
             /// <summary>
@@ -464,19 +464,19 @@ namespace MobileGameProject.MGPInputSystem
         public interface IKitchenWaiterActions
         {
             /// <summary>
-            /// Method invoked when associated input action "Contact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-            /// </summary>
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnContact(InputAction.CallbackContext context);
-            /// <summary>
             /// Method invoked when associated input action "Position" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPosition(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Contact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnContact(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DrinkRunner" which allows adding and removing callbacks.
