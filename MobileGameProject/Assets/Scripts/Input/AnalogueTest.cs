@@ -19,7 +19,7 @@ namespace MobileGameProject.MGPInputSystem
         {
             if(Input.GetMouseButtonDown(0))
             {
-                analogue.StartInteraction(_mainCamera.ScreenToWorldPoint(Pointer.current.position.ReadValue()));
+                //analogue.StartInteraction(_mainCamera.ScreenToWorldPoint(Pointer.current.position.ReadValue()));
                 analogue.gameObject.SetActive(true);
             }
 

@@ -1,4 +1,4 @@
-using UnityEditorInternal;
+using MobileGameProject.MGPInputSystem;
 using UnityEngine;
 
 
@@ -27,11 +27,16 @@ namespace MobileGameProject
 
         #endregion Static
 
+        private InputSystem _inputSystem;
+        public InputSystem InputSystem => _inputSystem;
+
 
         public void Awake()
         {
             if(!CreateGameManager(this))
                 return;
+
+            _inputSystem = new InputSystem();
         }
     }
 }

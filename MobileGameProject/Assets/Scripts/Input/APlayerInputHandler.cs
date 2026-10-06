@@ -1,4 +1,5 @@
 using System;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace MobileGameProject.MGPInputSystem
@@ -7,7 +8,7 @@ namespace MobileGameProject.MGPInputSystem
     {
         protected InputSystem _inputSystem;
 
-        public void SetUnputSystem(InputSystem inputSystem)
+        public void SetInputSystem(InputSystem inputSystem)
         {
             if(_inputSystem != null)
                 DeregisterActions();

@@ -100,7 +100,7 @@ namespace MobileGameProject.MGPInputSystem
                     ""id"": ""01ebe836-7763-4073-b58f-f6c3ea9cb402"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {

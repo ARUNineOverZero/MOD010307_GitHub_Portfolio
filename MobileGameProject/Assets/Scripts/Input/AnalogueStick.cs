@@ -5,8 +5,11 @@ namespace MobileGameProject.MGPInputSystem
 {
     public class AnalogueStick : MonoBehaviour, IVector2Value
     {
-        [Header("Scene Reference")]
+        [Header("Prefab Reference")]
         [SerializeField] public Transform _stick;
+
+        [Header("Scene Reference")]
+        [SerializeField]private KitchenWaiterPlayerInputHandler _inputHandler;
 
         public float maxDistance = .5f;
         private Vector2 _direction;
@@ -22,9 +25,9 @@ namespace MobileGameProject.MGPInputSystem
             _mainCamera = Camera.main;
         }
 
-        public void StartInteraction(Vector2 start)
+        public void StartInteraction()
         {
-            transform.position = start;
+            transform.position = _inputHandler.Position;
             _direction = _value = Vector2.zero;
             _isActive = true;
         }
@@ -33,7 +36,7 @@ namespace MobileGameProject.MGPInputSystem
         {
             if(!_isActive) return;
 
-            Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
+            Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(_inputHandler.Position);
             _direction = transform.InverseTransformPoint(worldPoint);
 
             Vector2 clamped, normalized;
