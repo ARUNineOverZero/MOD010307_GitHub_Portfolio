@@ -1128,6 +1128,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
+      propertyPath: _speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
+      propertyPath: _acceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
+      propertyPath: _deceleration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
+      propertyPath: _rotationSpeed
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
       propertyPath: _moveInputObject
       value: 
       objectReference: {fileID: 232788199}

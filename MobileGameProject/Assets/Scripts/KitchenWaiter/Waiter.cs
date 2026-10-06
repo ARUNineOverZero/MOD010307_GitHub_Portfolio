@@ -22,18 +22,12 @@ namespace MobileGameProject.KitchenWaiter
             _moveInput = _moveInputObject.GetComponent<IVector2Value>();
         }
 
-        private bool ValueHasChangedSign(float newVal, float oldVal) =>  (newVal < 0 && oldVal > 0) || (newVal < 0 && oldVal > 0);
-
         public void Update()
         {
-
-
-            
             var val = _moveInput.Value;
             _velocity = _rb.linearVelocity;
             if(val == Vector2.zero)
             {
-                
                 if(_velocity != Vector2.zero)
                 {
                     var newVel = Vector2.MoveTowards(_velocity, Vector2.zero, _deceleration * Time.deltaTime);
@@ -58,7 +52,7 @@ namespace MobileGameProject.KitchenWaiter
             }
             else
             {
-                _velocity += _moveInput.Value * _acceleration * Time.deltaTime;
+                _velocity += _moveInput.Normalized * _acceleration * Time.deltaTime;
                 _velocity = Vector2.ClampMagnitude(_velocity, _speed * _moveInput.Magnitude);
             }
 
