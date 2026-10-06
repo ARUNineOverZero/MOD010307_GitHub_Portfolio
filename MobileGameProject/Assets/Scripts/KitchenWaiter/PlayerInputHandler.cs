@@ -49,7 +49,6 @@ namespace MobileGameProject.MGPInputSystem.KitchenWaiter
         private void OnContactPerformed(InputAction.CallbackContext context)
         {
             MovePointer(GetPositionByType(context));
-            Debug.Log($"down {context.control.path}");
             OnPressed?.Invoke();
         }
 
@@ -79,14 +78,7 @@ namespace MobileGameProject.MGPInputSystem.KitchenWaiter
 
         private void OnContactCanceled(InputAction.CallbackContext context)
         {
-            Debug.Log($"Up {context.control.path}");
             OnRelease?.Invoke();
         }
-
-
-    
-
-
-        
     }
 }
