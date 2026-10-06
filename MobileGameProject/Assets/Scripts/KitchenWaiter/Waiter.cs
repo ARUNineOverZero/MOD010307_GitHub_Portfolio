@@ -26,6 +26,9 @@ namespace MobileGameProject.KitchenWaiter
 
         public void Update()
         {
+
+
+            
             var val = _moveInput.Value;
             _velocity = _rb.linearVelocity;
             if(val == Vector2.zero)
@@ -55,8 +58,8 @@ namespace MobileGameProject.KitchenWaiter
             }
             else
             {
-                _velocity += val * _acceleration * Time.deltaTime;
-                _velocity = Vector2.ClampMagnitude(_velocity, _speed);
+                _velocity += _moveInput.Value * _acceleration * Time.deltaTime;
+                _velocity = Vector2.ClampMagnitude(_velocity, _speed * _moveInput.Magnitude);
             }
 
             _rb.linearVelocity = _velocity;

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace MobileGameProject.MGPInputSystem.Virtual
 {
@@ -13,9 +12,14 @@ namespace MobileGameProject.MGPInputSystem.Virtual
 
         private Vector2 _direction;
         private Vector2 _value = Vector2.zero; 
+        private Vector2 _normalized = Vector2.zero;
+        private float _magnitude = 0f; 
 
         private bool _isActive = true; 
         Vector2 IVector2Value.Value => _value;
+        Vector2 IVector2Value.Normalized => _normalized;
+        float IVector2Value.Magnitude => _magnitude;
+
 
         private Camera _mainCamera;
 
@@ -49,6 +53,8 @@ namespace MobileGameProject.MGPInputSystem.Virtual
 
             _stick.localPosition = clamped;
             _value = normalized * Mathf.Min(distance, maxDistance) / maxDistance;
+            //_magnitude = distance >= maxDistance ? 1 : _value.magnitude;
+            //_normalized = normalized;
         }
 
         private void GetClampedDirectionNormalizedDirectionAndDistance(Vector2 direction, float maxDistance, out Vector2 clampedDirection, out Vector2 normalizedDirection, out float distance)
