@@ -20,5 +20,4 @@ namespace MobileGameProject.Framework
             LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-
 }
