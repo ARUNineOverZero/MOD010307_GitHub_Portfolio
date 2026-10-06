@@ -8,10 +8,9 @@ namespace MobileGameProject.MGPInputSystem
         [Header("Prefab Reference")]
         [SerializeField] public Transform _stick;
 
-        [Header("Scene Reference")]
-        [SerializeField]private KitchenWaiterPlayerInputHandler _inputHandler;
-
+        private Vector2 _inputPosition;
         public float maxDistance = .5f;
+
         private Vector2 _direction;
         private Vector2 _value = Vector2.zero; 
 
@@ -27,16 +26,20 @@ namespace MobileGameProject.MGPInputSystem
 
         public void StartInteraction()
         {
-            transform.position = _inputHandler.Position;
+            transform.position = (Vector2)_mainCamera.ScreenToWorldPoint(_inputPosition);
             _direction = _value = Vector2.zero;
             _isActive = true;
         }
 
         public void Update()
         {
-            if(!_isActive) return;
+            if(_isActive) 
+                DragThumbstick();
+        }
 
-            Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(_inputHandler.Position);
+        private void DragThumbstick()
+        {
+            Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(_inputPosition);
             _direction = transform.InverseTransformPoint(worldPoint);
 
             Vector2 clamped, normalized;
@@ -74,6 +77,11 @@ namespace MobileGameProject.MGPInputSystem
             _value =  _direction = Vector2.zero;
             _stick.localPosition = Vector3.zero;
             _isActive = false;
+        }
+
+        public void SetInputPosition(Vector2 position)
+        {
+            _inputPosition = position;
         }
     }
 }

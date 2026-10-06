@@ -11,6 +11,8 @@ namespace MobileGameProject.MGPInputSystem
         public Vector2 Position => _position;
         public  UnityEvent OnPressed;
         public  UnityEvent OnRelease;
+        public  UnityEvent<Vector2> OnPositionChanged;
+
 
         protected override void RegisterActions()
         {
@@ -47,16 +49,23 @@ namespace MobileGameProject.MGPInputSystem
 
         private void OnPositionMove(InputAction.CallbackContext context)
         {
-            _position = context.ReadValue<Vector2>();
+            var temp = context.ReadValue<Vector2>();
+            if(_position == temp)
+                return;
+
+            _position = temp;
+            OnPositionChanged?.Invoke(_position);
         }
 
         private void OnContactPerformed(InputAction.CallbackContext context)
         {
+            Debug.Log($"down {context.control.path}");
             OnPressed?.Invoke();
         }
 
         private void OnContactCanceled(InputAction.CallbackContext context)
         {
+            Debug.Log($"Up {context.control.path}");
             OnRelease?.Invoke();
         }
 
