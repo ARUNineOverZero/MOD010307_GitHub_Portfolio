@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MobileGameProject.MGPInputSystem
+namespace MobileGameProject.MGPInputSystem.Virtual
 {
     public class AnalogueStick : MonoBehaviour, IVector2Value
     {
