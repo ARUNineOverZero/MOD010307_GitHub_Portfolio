@@ -8,6 +8,25 @@
 
 
 ## What does this change add?
+
+
+### Touch Analogue Control
+
+
+### Input System Implamentation
+
+
+### Player Input Handling
+
+
+### Player Character 
+
+
+### Responsive Sprite Based Play Area 
+
+
+### Character 
+
 Briefly describe the feature, fix, refactor or experiment.
 
 ## Why was this change needed?
@@ -37,7 +56,7 @@ Examples:
 ## AI Assistance
 Select the closest description:
 
-- [ ] No substantive AI assistance
+- [x] No substantive AI assistance
 - [ ] Research / documentation assistance
 - [ ] Explanation of an error or concept
 - [ ] Test or debugging suggestions
@@ -55,7 +74,7 @@ Do not identify AI-generated code as student-authored evidence for Learning Outc
 
 ## Related Evidence
 **Microgame / system:**  
-**Learning outcome(s):**  
+**Learning outcome(s):**  LO1, LO2, LO3, LO4
 **Relevant issue, commit or documentation link:**  
 
 ## Before Merging
