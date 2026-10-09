@@ -1285,7 +1285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5125597478608574141, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
       propertyPath: m_AngularDamping
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
       propertyPath: _speed

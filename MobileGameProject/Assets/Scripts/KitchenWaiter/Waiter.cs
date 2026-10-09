@@ -22,7 +22,7 @@ namespace MobileGameProject.KitchenWaiter
             _moveInput = _moveInputObject.GetComponent<IVector2Value>();
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
             var val = _moveInput.Value;
             _velocity = _rb.linearVelocity;
@@ -30,7 +30,7 @@ namespace MobileGameProject.KitchenWaiter
             {
                 if(_velocity != Vector2.zero)
                 {
-                    var newVel = Vector2.MoveTowards(_velocity, Vector2.zero, _deceleration * Time.deltaTime);
+                    var newVel = Vector2.MoveTowards(_velocity, Vector2.zero, _deceleration * Time.fixedDeltaTime);
 
                     if(newVel != Vector2.zero)
                     {
@@ -52,7 +52,7 @@ namespace MobileGameProject.KitchenWaiter
             }
             else
             {
-                _velocity += _moveInput.Normalized * _acceleration * Time.deltaTime;
+                _velocity += _moveInput.Normalized * _acceleration * Time.fixedDeltaTime;
                 _velocity = Vector2.ClampMagnitude(_velocity, _speed * _moveInput.Magnitude);
             }
 
@@ -62,7 +62,7 @@ namespace MobileGameProject.KitchenWaiter
 
             float angle = Mathf.Atan2(_velocity.y, _velocity.x) * Mathf.Rad2Deg - 90f;
             Quaternion desiredRotation = Quaternion.Euler(0f,0f, angle);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _rotationSpeed * Time.fixedDeltaTime);
             transform.position += (Vector3)_velocity * Time.deltaTime;
         }
     }
