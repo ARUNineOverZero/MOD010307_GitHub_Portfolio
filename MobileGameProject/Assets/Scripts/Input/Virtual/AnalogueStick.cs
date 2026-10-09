@@ -6,7 +6,7 @@ namespace MobileGameProject.MGPInputSystem.Virtual
     public class AnalogueStick : MonoBehaviour, IVector2Value
     {
         [Header("Prefab Reference")]
-        [SerializeField] public Transform _stick;
+        [SerializeField] private Transform _stick;
 
         private Vector2 _inputPosition;
         public float maxDistance = .5f;
