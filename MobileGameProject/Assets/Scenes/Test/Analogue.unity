@@ -2927,7 +2927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
       propertyPath: _deceleration
-      value: 1.8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8874488303016946594, guid: 3ec161c35a026674d8e0eefe3c75b6b6, type: 3}
       propertyPath: _moveInputObject
