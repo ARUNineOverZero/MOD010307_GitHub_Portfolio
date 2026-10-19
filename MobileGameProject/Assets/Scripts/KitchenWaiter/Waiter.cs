@@ -1,4 +1,6 @@
 using MobileGameProject.MGPInputSystem;
+using NUnit.Framework;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace MobileGameProject.KitchenWaiter
@@ -6,16 +8,34 @@ namespace MobileGameProject.KitchenWaiter
     public class Waiter : MonoBehaviour
     {
         [SerializeField] private GameObject _moveInputObject;
+        [SerializeField] private Transform _handAnchor;
         [SerializeField] private IVector2Value _moveInput;
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _acceleration = 0.01f; 
-        [SerializeField] private float _deceleration = 0.05f; 
-        [SerializeField] private float _speed; 
+        [SerializeField] private float _acceleration = 0.01f;
+        [SerializeField] private float _deceleration = 0.05f;
+        [SerializeField] private float _speed;
         [SerializeField] private float _rotationSpeed = 90f;
 
         private const float Epsilon = 0.01f;
-
         private Vector2 _velocity = Vector2.zero;
+        private IHeldItem _heldItem;
+        public bool HasTray => (Tray)_heldItem != null;
+        public int TableNumber => _heldItem is Tray t ? t.TableNumber : -1;
+
+        public void TryPickup(IPickUp pickUp)
+        {
+            IHeldItem heldItem = (IHeldItem)pickUp;
+            if (heldItem != null)
+            {
+                _heldItem = heldItem;
+                Transform t = _heldItem.Transform;
+
+                t.parent = _handAnchor;
+                t.localPosition = Vector3.zero;
+                t.localRotation = quaternion.identity;
+                heldItem.Holding();
+            }
+        }
 
         public void Awake()
         {
@@ -26,25 +46,19 @@ namespace MobileGameProject.KitchenWaiter
         {
             var val = _moveInput.Value;
             _velocity = _rb.linearVelocity;
-            if(val == Vector2.zero)
+            if (val == Vector2.zero)
             {
-                if(_velocity != Vector2.zero)
+                if (_velocity != Vector2.zero)
                 {
                     var newVel = Vector2.MoveTowards(_velocity, Vector2.zero, _deceleration * Time.fixedDeltaTime);
 
-                    if(newVel != Vector2.zero)
+                    if (newVel != Vector2.zero)
                     {
-                        if(Mathf.Abs(newVel.x) < Epsilon)
-                        {
-                            Debug.Log($"newVel.x: {newVel.x} is less than {Epsilon}");
+                        if (Mathf.Abs(newVel.x) < Epsilon)
                             newVel.x = 0f;
-                        }
-
-                        if(Mathf.Abs(newVel.y) < Epsilon)
-                        {
-                            Debug.Log($"newVel.y: {newVel.y} is less than {Epsilon}");
+                        
+                        if (Mathf.Abs(newVel.y) < Epsilon)
                             newVel.y = 0f;
-                        }
                     }
 
                     _velocity = newVel;
@@ -58,10 +72,10 @@ namespace MobileGameProject.KitchenWaiter
 
             _rb.linearVelocity = _velocity;
 
-            if(_velocity == Vector2.zero) return;
+            if (_velocity == Vector2.zero) return;
 
             float angle = Mathf.Atan2(_velocity.y, _velocity.x) * Mathf.Rad2Deg - 90f;
-            Quaternion desiredRotation = Quaternion.Euler(0f,0f, angle);
+            Quaternion desiredRotation = Quaternion.Euler(0f, 0f, angle);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _rotationSpeed * Time.fixedDeltaTime);
             transform.position += (Vector3)_velocity * Time.deltaTime;
         }
