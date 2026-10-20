@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PracticeTap.unity
     guid: fd0c0b3f6bd4f4d4a9a0f8ac31a375b0
+  - enabled: 1
+    path: Assets/Scenes/GameTwo.unity
+    guid: 96d66bd2cd296154fbc4815a8389b160
+  - enabled: 1
+    path: Assets/Scenes/GameOne.unity
+    guid: 92915192d5e24c44ebfecdbb9ffef92b
+  - enabled: 1
+    path: Assets/Scenes/GameThree.unity
+    guid: 908c45c56511f1e408b999dbce782b3f
+  - enabled: 1
+    path: Assets/Scenes/GameFour.unity
+    guid: 95b85381f6797c1409a1b9bfd4478ce9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
