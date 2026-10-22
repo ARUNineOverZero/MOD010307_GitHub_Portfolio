@@ -23,7 +23,7 @@ namespace MobileGameProject.KitchenWaiter
             if (waiter == null) return;
 
             waiter.TryPickup(this);
-            _text.text = $"Table: {_tableNumber}";
+            //_text.text = $"Table: {_tableNumber}";
 
         }
 

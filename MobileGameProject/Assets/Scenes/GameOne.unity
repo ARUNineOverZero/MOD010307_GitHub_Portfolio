@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrameworkTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 4908836946724893983, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908836946724893983, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6230092629658663803, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -152,12 +160,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8259033254734529158, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259033254734529158, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8259033254734529158, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.677
+      value: 1.435
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596834259598535789, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8866552793596306761, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_IsActive
