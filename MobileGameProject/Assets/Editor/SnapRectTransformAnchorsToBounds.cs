@@ -46,7 +46,7 @@ public class SnapRectTransformAnchorsToBounds : MonoBehaviour
     [MenuItem("CONTEXT/RectTransform/Snap Anchors", validate = true)]
     private static bool Validate(MenuCommand command)
     {
-        RectTransform rectTransform = command.context as RectTransform;
-        return (rectTransform.parent as RectTransform) != null && !PrefabUtility.IsPartOfImmutablePrefab(rectTransform);
+        RectTransform target = command.context as RectTransform;
+        return (target.parent as RectTransform) != null && !PrefabUtility.IsPartOfImmutablePrefab(target);
     }
 }
