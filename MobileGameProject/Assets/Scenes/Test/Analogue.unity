@@ -489,18 +489,6 @@ PrefabInstance:
       value: Tray
       objectReference: {fileID: 0}
     - target: {fileID: 1345936590636061600, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345936590636061600, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345936590636061600, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345936590636061600, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.34
       objectReference: {fileID: 0}
@@ -540,25 +528,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1692887232932773195, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2607568790990267449, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 2607568790990267449, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.14
-      objectReference: {fileID: 0}
+    - target: {fileID: 4272174206112017164, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 314276699}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 277522919656594604, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1983494425}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
 --- !u!4 &418655468 stripped
 Transform:
@@ -1622,6 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093b651e9855fab479dabae15b378e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.GameManager
+  _camera: {fileID: 0}
 --- !u!4 &816625409
 Transform:
   m_ObjectHideFlags: 0
@@ -2538,24 +2516,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &1983494423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 277522919656594604, guid: 6265c1f4c5dc797489e0187758e91f36, type: 3}
-  m_PrefabInstance: {fileID: 418655467}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1983494425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983494423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce8e0ef2a221404096196ec27f310f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.KitchenWaiter.Tray
-  _text: {fileID: 314276699}
 --- !u!1 &2012768331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,29 +2764,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 15483666}
     m_Modifications:
+    - target: {fileID: 928567550740451647, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 1881122848}
     - target: {fileID: 1954277110275848261, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
       propertyPath: m_Name
       value: ThumbStick
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954277110275848261, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2868786576161867677, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753760627341958243, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753760627341958243, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753760627341958243, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5753760627341958243, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2867,10 +2811,6 @@ PrefabInstance:
     - target: {fileID: 5753760627341958243, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8011408688352819710, guid: bd59707a7680ee0458fa276eae6193a8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

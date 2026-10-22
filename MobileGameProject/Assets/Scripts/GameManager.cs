@@ -1,4 +1,5 @@
 using MobileGameProject.MGPInputSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -29,6 +30,9 @@ namespace MobileGameProject
 
         private InputSystem _inputSystem;
         public InputSystem InputSystem => _inputSystem;
+
+        [SerializeField] private Camera _camera;
+        public Camera MainCamera => _camera;
 
 
         public void Awake()
