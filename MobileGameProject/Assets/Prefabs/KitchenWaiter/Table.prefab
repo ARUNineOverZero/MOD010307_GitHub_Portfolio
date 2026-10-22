@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4698076697866992277}
   - component: {fileID: 7731989174270811418}
   - component: {fileID: 9018941724140226772}
-  - component: {fileID: 3621106602629570842}
+  - component: {fileID: 4452448738740585162}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -140,7 +140,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
---- !u!114 &3621106602629570842
+--- !u!114 &4452448738740585162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,16 +149,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 915076905243440518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7846a8cff3b857a4a91a0d15e168670a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8799895d5a4fac44a94b42f87ca72fba, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.KitchenWaiter.TestTrigger
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.KitchenWaiter.Table
   _sr: {fileID: 7731989174270811418}
   _text: {fileID: 2090708175386095554}
   _off: {r: 0, g: 0, b: 0, a: 0}
   _wrong: {r: 1, g: 0, b: 0, a: 1}
-  _correct: {r: 0.11137152, g: 1, b: 0, a: 1}
-  _speed: 3
-  _tableNumber: 3
+  _correct: {r: 0, g: 1, b: 0.003575325, a: 1}
+  _speed: 5
+  _tableNumber: 0
 --- !u!1 &4011073782882261267
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
