@@ -127,6 +127,78 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemHeld.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemDropped.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemPickedUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2531065121247610102}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemDropped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2531065121247610102}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemHeld.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemHeld.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ItemHeld
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2531065121247610102}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemDropped.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemDropped.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ItemDropped
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ItemPickedUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemHeld.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.KitchenWaiter.KitchenWaiterGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemDropped.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.KitchenWaiter.KitchenWaiterGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.KitchenWaiter.KitchenWaiterGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemDropped.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _itemPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1793240872702083577, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_Name
       value: FrameworkTemplate
@@ -277,6 +349,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f341bb05db8a04ab870ef2a243ea9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Input.Analogue
+--- !u!114 &2531065121247610102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4383569525152229860, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+  m_PrefabInstance: {fileID: 2531065121247610098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c594500a13ec84cbde73defcc797ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.KitchenWaiter.KitchenWaiterMicrogameBehaviour
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -56,5 +56,17 @@ namespace MobileGameProject.KitchenWaiter
                     break;
             }
         }
+
+        public void ItemDelieveredToTable(IHeldItem item)
+        {
+            switch(item)
+            {
+                case Tray t:
+                    //
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
