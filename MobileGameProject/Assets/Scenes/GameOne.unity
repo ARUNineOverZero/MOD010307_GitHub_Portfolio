@@ -131,6 +131,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrameworkTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 4383569525152229860, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _tray
+      value: 
+      objectReference: {fileID: 2531065121247610099}
+    - target: {fileID: 4383569525152229860, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _waiter
+      value: 
+      objectReference: {fileID: 2531065121247610100}
+    - target: {fileID: 4383569525152229860, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: _analogueStick
+      value: 
+      objectReference: {fileID: 2531065121247610101}
     - target: {fileID: 4908836946724893983, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -142,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 6230092629658663803, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482290982226998129, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_Name
+      value: AnalogueStick
       objectReference: {fileID: 0}
     - target: {fileID: 7530898294316027355, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_LocalPosition.x
@@ -174,6 +190,10 @@ PrefabInstance:
     - target: {fileID: 8596834259598535789, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783074797665538519, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_Name
+      value: Waiter
       objectReference: {fileID: 0}
     - target: {fileID: 8866552793596306761, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_IsActive
@@ -224,6 +244,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+--- !u!114 &2531065121247610099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6591456760507382314, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+  m_PrefabInstance: {fileID: 2531065121247610098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce8e0ef2a221404096196ec27f310f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.KitchenWaiter.Tray
+--- !u!114 &2531065121247610100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 77350960121013977, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+  m_PrefabInstance: {fileID: 2531065121247610098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8548414f7be12944b3dc6bc0d9125da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Test.TestCharacter
+--- !u!114 &2531065121247610101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5623213232360937995, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+  m_PrefabInstance: {fileID: 2531065121247610098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f341bb05db8a04ab870ef2a243ea9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Input.Analogue
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

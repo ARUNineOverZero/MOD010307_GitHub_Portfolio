@@ -21,8 +21,6 @@ namespace MobileGameProject.KitchenWaiter
         private Vector2 _velocity = Vector2.zero;
         private IHeldItem _heldItem;
         public bool HasTray => (Tray)_heldItem != null;
-        private int _tableNumber = -1;
-        public int TableNumber => _tableNumber;
 
         [SerializeField] private UnityEvent<IPickUp> _itemPickedUp;
         [SerializeField] private UnityEvent<IHeldItem> _itemHeld;
@@ -92,15 +90,6 @@ namespace MobileGameProject.KitchenWaiter
         {
             _heldItem = item;
 
-            switch(_heldItem)
-            {
-                case Tray tray:
-                    _tableNumber = tray.TableNumber;
-                    break;
-                default:
-                    break;
-            }
-
             Transform t = _heldItem.Transform;
             t.parent = _handAnchor;
             t.localPosition = Vector3.zero;
@@ -108,7 +97,6 @@ namespace MobileGameProject.KitchenWaiter
             item.Holding();
             _itemHeld?.Invoke(item);
         }
-
 
         private void DropItem(IHeldItem item)
         {
