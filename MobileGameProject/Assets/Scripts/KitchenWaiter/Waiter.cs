@@ -2,6 +2,7 @@ using MobileGameProject.MGPInputSystem;
 using NUnit.Framework;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MobileGameProject.KitchenWaiter
 {
@@ -20,22 +21,12 @@ namespace MobileGameProject.KitchenWaiter
         private Vector2 _velocity = Vector2.zero;
         private IHeldItem _heldItem;
         public bool HasTray => (Tray)_heldItem != null;
-        public int TableNumber => _heldItem is Tray t ? t.TableNumber : -1;
+        private int _tableNumber = -1;
+        public int TableNumber => _tableNumber;
 
-        public void TryPickup(IPickUp pickUp)
-        {
-            IHeldItem heldItem = (IHeldItem)pickUp;
-            if (heldItem != null)
-            {
-                _heldItem = heldItem;
-                Transform t = _heldItem.Transform;
-
-                t.parent = _handAnchor;
-                t.localPosition = Vector3.zero;
-                t.localRotation = quaternion.identity;
-                heldItem.Holding();
-            }
-        }
+        [SerializeField] private UnityEvent<IPickUp> _itemPickedUp;
+        [SerializeField] private UnityEvent<IHeldItem> _itemHeld;
+        [SerializeField] private UnityEvent<IHeldItem> _itemDropped;
 
         public void Awake()
         {
@@ -78,6 +69,50 @@ namespace MobileGameProject.KitchenWaiter
             Quaternion desiredRotation = Quaternion.Euler(0f, 0f, angle);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _rotationSpeed * Time.fixedDeltaTime);
             transform.position += (Vector3)_velocity * Time.deltaTime;
+        }
+
+        public void TryPickup(IPickUp pickUp)
+        {
+            if(pickUp == null) return;
+
+            if (pickUp is IHeldItem heldItem)
+            {
+                if(_heldItem != null)
+                    DropItem(_heldItem);
+                
+                HoldItem(heldItem);
+            }
+            else
+            {
+                _itemPickedUp?.Invoke(pickUp);
+            }
+        }
+
+        private void HoldItem(IHeldItem item)
+        {
+            _heldItem = item;
+
+            switch(_heldItem)
+            {
+                case Tray tray:
+                    _tableNumber = tray.TableNumber;
+                    break;
+                default:
+                    break;
+            }
+
+            Transform t = _heldItem.Transform;
+            t.parent = _handAnchor;
+            t.localPosition = Vector3.zero;
+            t.localRotation = quaternion.identity;
+            item.Holding();
+            _itemHeld?.Invoke(item);
+        }
+
+
+        private void DropItem(IHeldItem item)
+        {
+            _itemDropped?.Invoke(item);
         }
     }
 }

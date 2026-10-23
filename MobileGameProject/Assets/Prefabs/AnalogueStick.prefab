@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2868786576161867677}
   - component: {fileID: 928567550740451647}
   m_Layer: 0
-  m_Name: ThumbStick
+  m_Name: AnalogueStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Input.Analogue
   _stick: {fileID: 351888670699572843}
   maxDistance: 0.5
+  _mainCamera: {fileID: 0}
 --- !u!1 &6597963698053147782
 GameObject:
   m_ObjectHideFlags: 0

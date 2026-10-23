@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MobileGameProject.KitchenWaiter
 {
@@ -9,11 +10,9 @@ namespace MobileGameProject.KitchenWaiter
         public int TableNumber => _tableNumber;
         public Transform Transform => transform;
 
-        [SerializeField] public TextMeshProUGUI _text;
-
-        private void Awake()
+        public void SetTableNumber(int tableNumber)
         {
-            _tableNumber = Random.Range(1,6);
+            _tableNumber = tableNumber;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -23,8 +22,6 @@ namespace MobileGameProject.KitchenWaiter
             if (waiter == null) return;
 
             waiter.TryPickup(this);
-            //_text.text = $"Table: {_tableNumber}";
-
         }
 
         public void Holding()
