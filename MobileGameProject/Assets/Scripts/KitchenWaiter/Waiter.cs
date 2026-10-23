@@ -22,8 +22,8 @@ namespace MobileGameProject.KitchenWaiter
         private IHeldItem _heldItem;
         public bool HasTray => (Tray)_heldItem != null;
 
-        [SerializeField] private UnityEvent<IPickUp> _itemPickedUp;
-        [SerializeField] private UnityEvent<IHeldItem> _itemHeld;
+        [SerializeField] private UnityEvent<IPickUp> _onItemPickedUp;
+        [SerializeField] private UnityEvent<IHeldItem> _onItemHeld;
         [SerializeField] private UnityEvent<IHeldItem> _itemDropped;
 
         public void Awake()
@@ -82,7 +82,7 @@ namespace MobileGameProject.KitchenWaiter
             }
             else
             {
-                _itemPickedUp?.Invoke(pickUp);
+                _onItemPickedUp?.Invoke(pickUp);
             }
         }
 
@@ -95,7 +95,7 @@ namespace MobileGameProject.KitchenWaiter
             t.localPosition = Vector3.zero;
             t.localRotation = quaternion.identity;
             item.Holding();
-            _itemHeld?.Invoke(item);
+            _onItemHeld?.Invoke(item);
         }
 
         private void DropItem(IHeldItem item)
