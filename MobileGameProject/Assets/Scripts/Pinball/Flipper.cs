@@ -13,24 +13,28 @@ namespace MobileGameProject.Pinball
         [SerializeField] private float _torque = 10000f;
         [SerializeField] private float _testInterval = 1f;
 
-        private bool _isFlipping;
-        private float _currentTime = 0;
+        private bool _isFlipped;
 
         private void FixedUpdate()
         {
-            _currentTime += Time.fixedDeltaTime;
-
-            if (_currentTime > _testInterval)
-            {
+            if (_isFlipped)
                 Flip();
-                _currentTime = 0;
-            }
         }
 
         public void Flip()
         {
             Vector3 worldAxis = transform.TransformDirection(_hinge.axis);
             _rb.AddTorque(worldAxis * _torque, ForceMode.VelocityChange);
+        }
+
+        public void OnPress()
+        {
+            _isFlipped = true;
+        }
+
+        public void OnRelease()
+        {
+            _isFlipped = false;
         }
     }
 }

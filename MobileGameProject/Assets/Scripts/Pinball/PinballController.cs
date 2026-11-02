@@ -19,9 +19,15 @@ namespace MobileGameProject.Pinball
             Debug.Log($"{_inputHandler.Position} - {screenPosition}");
 
             if(screenPosition.x < 0.5)
-                _leftFlipper.Flip();
+                _leftFlipper.OnPress();
             else
-                _rightFlipper.Flip();
+                _rightFlipper.OnPress();
+        }
+
+        public void OnRelease()
+        {
+            _leftFlipper.OnRelease();
+            _rightFlipper.OnRelease();
         }
     }
 }

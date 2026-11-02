@@ -41,12 +41,12 @@ namespace MobileGameProject.MGPInputSystem.Pinball
 
         protected override void DisableActions()
         {
-            _inputSystem.KitchenWaiter.Disable();
+            _inputSystem.Pinball.Disable();
         }
 
         protected override void EnableActions()
         {
-            _inputSystem.KitchenWaiter.Enable();
+            _inputSystem.Pinball.Enable();
         }
 
         private void OnContactPerformed(InputAction.CallbackContext context)
@@ -68,6 +68,7 @@ namespace MobileGameProject.MGPInputSystem.Pinball
 
         private void OnPositionMove(InputAction.CallbackContext context)
         {
+            Debug.Log($"Position Moved: {context.ReadValue<Vector2>()} ");
             MovePointer(context.ReadValue<Vector2>());
         }
 

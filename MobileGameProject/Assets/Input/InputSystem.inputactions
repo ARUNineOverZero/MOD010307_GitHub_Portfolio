@@ -51,34 +51,6 @@
             ]
         },
         {
-            "name": "DrinkRunner",
-            "id": "7960ebec-1e13-43a7-a84c-cdb9d401be5b",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "f9f291f3-fc5d-415f-b875-d87607b50e81",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "05d7dc6b-4d52-450a-93e1-fee813880cef",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "Pinball",
             "id": "8589c580-66d0-4634-8ca9-a42a383f29d1",
             "actions": [

@@ -139,34 +139,6 @@ namespace MobileGameProject.MGPInputSystem
             ]
         },
         {
-            ""name"": ""DrinkRunner"",
-            ""id"": ""7960ebec-1e13-43a7-a84c-cdb9d401be5b"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""f9f291f3-fc5d-415f-b875-d87607b50e81"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""05d7dc6b-4d52-450a-93e1-fee813880cef"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Pinball"",
             ""id"": ""8589c580-66d0-4634-8ca9-a42a383f29d1"",
             ""actions"": [
@@ -241,9 +213,6 @@ namespace MobileGameProject.MGPInputSystem
             m_KitchenWaiter = asset.FindActionMap("KitchenWaiter", throwIfNotFound: true);
             m_KitchenWaiter_Position = m_KitchenWaiter.FindAction("Position", throwIfNotFound: true);
             m_KitchenWaiter_Contact = m_KitchenWaiter.FindAction("Contact", throwIfNotFound: true);
-            // DrinkRunner
-            m_DrinkRunner = asset.FindActionMap("DrinkRunner", throwIfNotFound: true);
-            m_DrinkRunner_Newaction = m_DrinkRunner.FindAction("New action", throwIfNotFound: true);
             // Pinball
             m_Pinball = asset.FindActionMap("Pinball", throwIfNotFound: true);
             m_Pinball_Position = m_Pinball.FindAction("Position", throwIfNotFound: true);
@@ -254,7 +223,6 @@ namespace MobileGameProject.MGPInputSystem
         ~@InputSystem()
         {
             UnityEngine.Debug.Assert(!m_KitchenWaiter.enabled, "This will cause a leak and performance issues, InputSystem.KitchenWaiter.Disable() has not been called.");
-            UnityEngine.Debug.Assert(!m_DrinkRunner.enabled, "This will cause a leak and performance issues, InputSystem.DrinkRunner.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_Pinball.enabled, "This will cause a leak and performance issues, InputSystem.Pinball.Disable() has not been called.");
         }
 
@@ -435,102 +403,6 @@ namespace MobileGameProject.MGPInputSystem
         /// </summary>
         public KitchenWaiterActions @KitchenWaiter => new KitchenWaiterActions(this);
 
-        // DrinkRunner
-        private readonly InputActionMap m_DrinkRunner;
-        private List<IDrinkRunnerActions> m_DrinkRunnerActionsCallbackInterfaces = new List<IDrinkRunnerActions>();
-        private readonly InputAction m_DrinkRunner_Newaction;
-        /// <summary>
-        /// Provides access to input actions defined in input action map "DrinkRunner".
-        /// </summary>
-        public struct DrinkRunnerActions
-        {
-            private @InputSystem m_Wrapper;
-
-            /// <summary>
-            /// Construct a new instance of the input action map wrapper class.
-            /// </summary>
-            public DrinkRunnerActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-            /// <summary>
-            /// Provides access to the underlying input action "DrinkRunner/Newaction".
-            /// </summary>
-            public InputAction @Newaction => m_Wrapper.m_DrinkRunner_Newaction;
-            /// <summary>
-            /// Provides access to the underlying input action map instance.
-            /// </summary>
-            public InputActionMap Get() { return m_Wrapper.m_DrinkRunner; }
-            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-            public void Enable() { Get().Enable(); }
-            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-            public void Disable() { Get().Disable(); }
-            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-            public bool enabled => Get().enabled;
-            /// <summary>
-            /// Implicitly converts an <see ref="DrinkRunnerActions" /> to an <see ref="InputActionMap" /> instance.
-            /// </summary>
-            public static implicit operator InputActionMap(DrinkRunnerActions set) { return set.Get(); }
-            /// <summary>
-            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-            /// </summary>
-            /// <param name="instance">Callback instance.</param>
-            /// <remarks>
-            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-            /// </remarks>
-            /// <seealso cref="DrinkRunnerActions" />
-            public void AddCallbacks(IDrinkRunnerActions instance)
-            {
-                if (instance == null || m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Add(instance);
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-            }
-
-            /// <summary>
-            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-            /// </summary>
-            /// <remarks>
-            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-            /// </remarks>
-            /// <seealso cref="DrinkRunnerActions" />
-            private void UnregisterCallbacks(IDrinkRunnerActions instance)
-            {
-                @Newaction.started -= instance.OnNewaction;
-                @Newaction.performed -= instance.OnNewaction;
-                @Newaction.canceled -= instance.OnNewaction;
-            }
-
-            /// <summary>
-            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DrinkRunnerActions.UnregisterCallbacks(IDrinkRunnerActions)" />.
-            /// </summary>
-            /// <seealso cref="DrinkRunnerActions.UnregisterCallbacks(IDrinkRunnerActions)" />
-            public void RemoveCallbacks(IDrinkRunnerActions instance)
-            {
-                if (m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Remove(instance))
-                    UnregisterCallbacks(instance);
-            }
-
-            /// <summary>
-            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-            /// </summary>
-            /// <remarks>
-            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-            /// </remarks>
-            /// <seealso cref="DrinkRunnerActions.AddCallbacks(IDrinkRunnerActions)" />
-            /// <seealso cref="DrinkRunnerActions.RemoveCallbacks(IDrinkRunnerActions)" />
-            /// <seealso cref="DrinkRunnerActions.UnregisterCallbacks(IDrinkRunnerActions)" />
-            public void SetCallbacks(IDrinkRunnerActions instance)
-            {
-                foreach (var item in m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces)
-                    UnregisterCallbacks(item);
-                m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Clear();
-                AddCallbacks(instance);
-            }
-        }
-        /// <summary>
-        /// Provides a new <see cref="DrinkRunnerActions" /> instance referencing this action map.
-        /// </summary>
-        public DrinkRunnerActions @DrinkRunner => new DrinkRunnerActions(this);
-
         // Pinball
         private readonly InputActionMap m_Pinball;
         private List<IPinballActions> m_PinballActionsCallbackInterfaces = new List<IPinballActions>();
@@ -669,21 +541,6 @@ namespace MobileGameProject.MGPInputSystem
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnContact(InputAction.CallbackContext context);
-        }
-        /// <summary>
-        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DrinkRunner" which allows adding and removing callbacks.
-        /// </summary>
-        /// <seealso cref="DrinkRunnerActions.AddCallbacks(IDrinkRunnerActions)" />
-        /// <seealso cref="DrinkRunnerActions.RemoveCallbacks(IDrinkRunnerActions)" />
-        public interface IDrinkRunnerActions
-        {
-            /// <summary>
-            /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-            /// </summary>
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnNewaction(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Pinball" which allows adding and removing callbacks.
