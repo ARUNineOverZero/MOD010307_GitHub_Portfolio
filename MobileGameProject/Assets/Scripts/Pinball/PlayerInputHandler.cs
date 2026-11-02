@@ -12,7 +12,6 @@ namespace MobileGameProject.MGPInputSystem.Pinball
         public  UnityEvent OnPressed;
         public  UnityEvent OnRelease;
         public  UnityEvent<Vector2> OnPositionChanged;
-
         private Vector3 _tilt;
         public Vector3 Tilt => _tilt;
 
