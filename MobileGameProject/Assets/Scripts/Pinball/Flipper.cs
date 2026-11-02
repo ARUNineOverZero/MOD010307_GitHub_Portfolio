@@ -17,14 +17,13 @@ namespace MobileGameProject.Pinball
 
         private void FixedUpdate()
         {
-            if (_isFlipped)
-                Flip();
+            Flip(_isFlipped ? _torque : -_torque);
         }
 
-        public void Flip()
+        public void Flip(float torquAmount)
         {
             Vector3 worldAxis = transform.TransformDirection(_hinge.axis);
-            _rb.AddTorque(worldAxis * _torque, ForceMode.VelocityChange);
+            _rb.AddTorque(worldAxis * torquAmount, ForceMode.VelocityChange);
         }
 
         public void OnPress()
