@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MobileGameProject.Framework
@@ -10,6 +11,8 @@ namespace MobileGameProject.Framework
 
         private MicrogameSession _session;
         protected MicrogameSession Session => _session;
+
+        [SerializeField] protected Camera _mainCamera;
         
         public virtual void Begin(MicrogameSession session)
         {

@@ -15,6 +15,7 @@ namespace MobileGameProject.Framework
         [SerializeField] private AMicrogameBehaviour _game;
         [SerializeField] private GameObject _readyPanel;
         [SerializeField] private GameObject _playArea;
+        [SerializeField] private GameObject _uiPlayArea;
         [SerializeField] private GameObject _resultPanel;
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _resultText;
@@ -29,6 +30,7 @@ namespace MobileGameProject.Framework
             _currentPhase = Phase.Ready;
             _readyPanel.SetActive(true);
             _playArea.SetActive(false);
+            _uiPlayArea.SetActive(false);
             _resultPanel.SetActive(false);
             _timerText.text = string.Empty;
         }
@@ -53,6 +55,7 @@ namespace MobileGameProject.Framework
             _currentPhase = Phase.Result;
             _game.End();
             _playArea.SetActive(false);
+            _uiPlayArea.SetActive(false);
             _resultPanel.SetActive(true);
             _won = v;
             _resultText.text = _won ? "You Win!" 
@@ -67,6 +70,7 @@ namespace MobileGameProject.Framework
             _remainingSeconds = _durationSeconds;
             _readyPanel.SetActive(false);
             _playArea.SetActive(true);
+            _uiPlayArea.SetActive(true);
             _resultPanel.SetActive(false);
             _currentPhase = Phase.Plaiying;
             ShowTime();    

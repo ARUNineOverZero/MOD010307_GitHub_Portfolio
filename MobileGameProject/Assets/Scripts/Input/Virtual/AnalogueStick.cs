@@ -24,12 +24,7 @@ namespace MobileGameProject.MGPInputSystem.Virtual
         public Vector2 Normalized => Vector2.zero;
 
         public float Magnitude => 0;
-        private Camera _mainCamera;
-
-        private void Awake()
-        {
-            _mainCamera = Camera.main;
-        }
+        [SerializeField] private Camera _mainCamera;
 
         public void StartInteraction()
         {
