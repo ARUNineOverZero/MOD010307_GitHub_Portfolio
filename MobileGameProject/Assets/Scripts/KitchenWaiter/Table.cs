@@ -64,7 +64,7 @@ namespace MobileGameProject.KitchenWaiter
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var waiter = collision.transform.GetComponentInParent<Waiter>();
+            Waiter waiter = collision.transform.GetComponentInParent<Waiter>();
 
             if (waiter != null)
                 onEnterTable?.Invoke(this);
@@ -72,7 +72,7 @@ namespace MobileGameProject.KitchenWaiter
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            var waiter = collision.transform.GetComponentInParent<Waiter>();
+            Waiter waiter = collision.transform.GetComponentInParent<Waiter>();
 
             if (waiter != null)
                 onLeaveTable?.Invoke(this);
@@ -80,7 +80,7 @@ namespace MobileGameProject.KitchenWaiter
 
         private IEnumerator ShiftColor(Color target)
         {
-            var cc = _sr.color;
+            Color cc = _sr.color;
             float cVal = 0f;
             while (true)
             {

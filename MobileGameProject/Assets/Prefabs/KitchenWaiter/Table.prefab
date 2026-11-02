@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.078431375}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -154,11 +154,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.KitchenWaiter.Table
   _sr: {fileID: 7731989174270811418}
   _text: {fileID: 2090708175386095554}
-  _off: {r: 0, g: 0, b: 0, a: 0}
-  _wrong: {r: 1, g: 0, b: 0, a: 1}
+  _off: {r: 0, g: 0, b: 0, a: 0.078431375}
+  _incorrect: {r: 0, g: 0, b: 0, a: 0}
   _correct: {r: 0, g: 1, b: 0.003575325, a: 1}
   _speed: 5
   _tableNumber: 0
+  onEnterTable:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeaveTable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4011073782882261267
 GameObject:
   m_ObjectHideFlags: 0

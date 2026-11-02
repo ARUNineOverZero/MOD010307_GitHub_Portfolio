@@ -27,30 +27,40 @@ namespace MobileGameProject.KitchenWaiter
         {
             base.Begin(session);
 
-            LayoutTables();
+            LayoutTables(out Vector2 trayPosition);
+            SetTrayPositionAndNumber(trayPosition, _tables.Length);
         }
 
-        private void LayoutTables()
+        private void LayoutTables(out Vector2 trayPosition)
         {
             int tableCount = Random.Range(2, 6);
 
             _tables = new Table[tableCount];
 
-            float sizeX = 2, sizeY = _mainCamera.orthographicSize;
+            float halfSizeY = _mainCamera.orthographicSize,
+                halfSizeX = halfSizeY * _mainCamera.aspect;
 
-            var bounds = new Vector2(sizeX, sizeY);
+            Vector2 halfSize = new Vector2(halfSizeX, halfSizeY);
+
+            Vector2[] tablePositions = GetTablePositions(halfSize, .5f, Vector2.zero, tableCount + 1);
+            trayPosition = tablePositions[^1];
 
             for (int i = 0; i < tableCount; i++)
             {
-                var t = Instantiate(_table, Vector3.zero, Quaternion.identity).GetComponent<Table>();
+                Table t = Instantiate(_table, Vector3.zero, Quaternion.identity).GetComponent<Table>();
+                t.transform.localPosition = tablePositions[i];
                 t.SetTableNumber(i + 1);
                 t.onEnterTable.AddListener(EnterTable);
                 t.onLeaveTable.AddListener(LeaveTable);
                 _tables[i] = t;
             }
+        }
 
-            var trayTableNumber = _tables[UnityEngine.Random.Range(0, tableCount)].TableNumber;
-            _tray.SetTableNumber(tableCount);
+        private void SetTrayPositionAndNumber(Vector2 position, int tableCount)
+        {
+            int trayTableNumber = _tables[Random.Range(0, tableCount)].TableNumber;
+            _tray.SetTableNumber(trayTableNumber);
+            _tray.transform.localPosition = position;
         }
 
         private Vector2[] GetTablePositions(Vector2 size, float maxDistance, Vector2 startPosition, int count)
@@ -74,11 +84,11 @@ namespace MobileGameProject.KitchenWaiter
                 do
                 {
                     candidate = new Vector2(
-                        Random.Range(0f, size.x),
-                        Random.Range(0f, size.y)
+                        Random.Range(-size.x, size.x),
+                        Random.Range(-size.y, size.y)
                     );
                 }
-                while (IsTooClose(candidate, i)); 
+                while (IsTooClose(candidate, i));
 
                 positions[i] = candidate;
             }
