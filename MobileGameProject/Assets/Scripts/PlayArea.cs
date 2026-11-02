@@ -18,7 +18,7 @@ namespace MobileGameProject
         [Header("Scene Reference")]
         [SerializeField] private RectTransform _content;
 
-        [ContextMenu("Execute")]
+        [ContextMenu("Size To Content")]
         public void SizeToContent()
         {
             var camera = Camera.main;
