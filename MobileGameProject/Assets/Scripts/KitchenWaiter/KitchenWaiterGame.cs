@@ -13,9 +13,9 @@ namespace MobileGameProject.KitchenWaiter
         [SerializeField] private TextMeshPro _tableNumberText;
 
         [Header("Scene Game Objects")]
-        [SerializeField] private  AnalogueStick _analogueStick;
-        [SerializeField] private  Waiter _waiter;
-        [SerializeField] private  Tray _tray;
+        [SerializeField] private AnalogueStick _analogueStick;
+        [SerializeField] private Waiter _waiter;
+        [SerializeField] private Tray _tray;
         [SerializeField] private Table[] _tables;
 
         [Header("Prefabs")]
@@ -32,33 +32,41 @@ namespace MobileGameProject.KitchenWaiter
 
         private void LayoutTables()
         {
-            _tables = new Table[1];
+            int tableCount = Random.Range(2, 6);
 
-            var t = Instantiate(_table, Vector3.zero, Quaternion.identity).GetComponent<Table>();
-            t.SetTableNumber(1);
-            t.onEnterTable.AddListener(EnterTable);
-            t.onLeaveTable.AddListener(LeaveTable);
+            _tables = new Table[tableCount];
 
-            _tables[0] = t;
+            float sizeX = 2, sizeY = _mainCamera.orthographicSize;
 
-            var trayTableNumber = _tables[UnityEngine.Random.Range(0, _tables.Length)].TableNumber;
-            _tray.SetTableNumber(trayTableNumber);
+            var bounds = new Vector2(sizeX, sizeY);
+
+            for (int i = 0; i < tableCount; i++)
+            {
+                var t = Instantiate(_table, Vector3.zero, Quaternion.identity).GetComponent<Table>();
+                t.SetTableNumber(i+1);
+                t.onEnterTable.AddListener(EnterTable);
+                t.onLeaveTable.AddListener(LeaveTable);
+                _tables[i] = t;
+            }
+
+            var trayTableNumber = _tables[UnityEngine.Random.Range(0, tableCount)].TableNumber;
+            _tray.SetTableNumber(tableCount);
         }
 
         private void UpdateTableNumber(int tableNumber = -1)
         {
             _targetTableNumber = tableNumber;
-            _tableNumberText.text = $"Table Number: {(_targetTableNumber == -1 ? "None" : _targetTableNumber.ToString()) }";
+            //_tableNumberText.text = $"Table Number: {(_targetTableNumber == -1 ? "None" : _targetTableNumber.ToString()) }";
         }
 
         public void ItemPickedUp(IPickUp item)
         {
-            
+
         }
 
         public void ItemHeld(IHeldItem item)
         {
-            switch(item)
+            switch (item)
             {
                 case Tray t:
                     UpdateTableNumber(t.TableNumber);
@@ -70,7 +78,7 @@ namespace MobileGameProject.KitchenWaiter
 
         public void ItemDropped(IHeldItem item)
         {
-            switch(item)
+            switch (item)
             {
                 case Tray t:
                     UpdateTableNumber();
@@ -82,7 +90,7 @@ namespace MobileGameProject.KitchenWaiter
 
         public void ItemDelieveredToTable(IHeldItem item)
         {
-            switch(item)
+            switch (item)
             {
                 case Tray t:
                     //
@@ -94,17 +102,23 @@ namespace MobileGameProject.KitchenWaiter
 
         public void EnterTable(Table table)
         {
-            if(_targetTableNumber == -1) return;
+            if (_targetTableNumber == -1) return;
 
-            if(table.TableNumber == _targetTableNumber)
+            if (table.TableNumber == _targetTableNumber)
+            {
                 table.CorrectTableEntered();
+                Win();
+            }
             else
+            {
                 table.IncorrectTableEntered();
+                Lose();
+            }
         }
 
         public void LeaveTable(Table table)
         {
-            if(_targetTableNumber == -1) return;
+            if (_targetTableNumber == -1) return;
 
             table.TableExited();
         }

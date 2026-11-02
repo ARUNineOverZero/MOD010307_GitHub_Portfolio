@@ -27,6 +27,7 @@ namespace MobileGameProject.KitchenWaiter
         public void SetTableNumber(int tableNumber)
         {
             _tableNumber = tableNumber;
+            _text.text = _tableNumber.ToString();
         }
 
         private void OnValidate()
