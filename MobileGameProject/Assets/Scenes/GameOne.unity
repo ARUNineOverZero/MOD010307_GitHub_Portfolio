@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrameworkTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 2666916428000084680, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4383569525152229860, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: _tray
       value: 
@@ -310,11 +314,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6230092629658663803, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6482290982226998129, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_Name
       value: AnalogueStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199484963860647306, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7530898294316027355, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_LocalPosition.x
