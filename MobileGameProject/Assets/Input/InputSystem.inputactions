@@ -77,6 +77,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Pinball",
+            "id": "8589c580-66d0-4634-8ca9-a42a383f29d1",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "c96cb6f1-00ab-4adc-ad21-bf214375421a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Contact",
+                    "type": "Button",
+                    "id": "0d9ae8f8-0616-4c20-a5b6-1a0a62582801",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tilt",
+                    "type": "Value",
+                    "id": "0b05a40e-1f7b-41f8-9740-e5753a98c7d4",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d715dd83-30b2-4ce8-bcd7-27a71824eaea",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28942f7a-1d99-44fb-b8a8-820ec0f8d2dc",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Contact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87517277-8e5b-4edd-99e2-5284d87676a9",
+                    "path": "<Accelerometer>/acceleration",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tilt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
