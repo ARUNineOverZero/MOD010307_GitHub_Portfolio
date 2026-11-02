@@ -10,7 +10,7 @@ namespace MobileGameProject.KitchenWaiter
     public class KitchenWaiterGame : AMicrogameBehaviour
     {
         [Header("Scene UI Objects")]
-        [SerializeField] private TextMeshPro _tableNumberText;
+        [SerializeField] private TextMeshProUGUI _tableNumberText;
 
         [Header("Scene Game Objects")]
         [SerializeField] private AnalogueStick _analogueStick;
@@ -99,7 +99,7 @@ namespace MobileGameProject.KitchenWaiter
         private void UpdateTableNumber(int tableNumber = -1)
         {
             _targetTableNumber = tableNumber;
-            //_tableNumberText.text = $"Table Number: {(_targetTableNumber == -1 ? "None" : _targetTableNumber.ToString()) }";
+            _tableNumberText.text = $"Table Number: {(_targetTableNumber == -1 ? "None" : _targetTableNumber.ToString()) }";
         }
 
         public void ItemPickedUp(IPickUp item)
