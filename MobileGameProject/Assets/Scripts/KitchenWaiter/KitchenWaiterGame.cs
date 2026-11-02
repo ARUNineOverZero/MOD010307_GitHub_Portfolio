@@ -43,7 +43,7 @@ namespace MobileGameProject.KitchenWaiter
             for (int i = 0; i < tableCount; i++)
             {
                 var t = Instantiate(_table, Vector3.zero, Quaternion.identity).GetComponent<Table>();
-                t.SetTableNumber(i+1);
+                t.SetTableNumber(i + 1);
                 t.onEnterTable.AddListener(EnterTable);
                 t.onLeaveTable.AddListener(LeaveTable);
                 _tables[i] = t;
@@ -51,6 +51,39 @@ namespace MobileGameProject.KitchenWaiter
 
             var trayTableNumber = _tables[UnityEngine.Random.Range(0, tableCount)].TableNumber;
             _tray.SetTableNumber(tableCount);
+        }
+
+        private Vector2[] GetTablePositions(Vector2 size, float maxDistance, Vector2 startPosition, int count)
+        {
+            Vector2[] positions = new Vector2[count];
+            positions[0] = startPosition;
+
+            bool IsTooClose(Vector2 candidate, int alreadyPlaced)
+            {
+                for (int i = 0; i < alreadyPlaced; i++)
+                {
+                    if (Vector2.Distance(positions[i], candidate) < maxDistance)
+                        return true;
+                }
+                return false;
+            }
+
+            for (int i = 1; i < count; i++)
+            {
+                Vector2 candidate;
+                do
+                {
+                    candidate = new Vector2(
+                        Random.Range(0f, size.x),
+                        Random.Range(0f, size.y)
+                    );
+                }
+                while (IsTooClose(candidate, i)); 
+
+                positions[i] = candidate;
+            }
+
+            return positions;
         }
 
         private void UpdateTableNumber(int tableNumber = -1)
