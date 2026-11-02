@@ -12,21 +12,23 @@ namespace MobileGameProject.Pinball
         [SerializeField] private Flipper _rightFlipper;
         [SerializeField] private Ball _ball;
 
-        public void OnPressed()
+        public void OnLeftPressed()
         {
-            var screenPosition = _camera.ScreenToViewportPoint(_inputHandler.Position);
-
-            Debug.Log($"{_inputHandler.Position} - {screenPosition}");
-
-            if(screenPosition.x < 0.5)
-                _leftFlipper.OnPress();
-            else
-                _rightFlipper.OnPress();
+            _leftFlipper.OnPress();
         }
 
-        public void OnRelease()
+        public void OnRightPressed()
+        {
+            _rightFlipper.OnPress();
+        }
+
+        public void OnLeftReleased()
         {
             _leftFlipper.OnRelease();
+        }
+
+        public void OnRightReleased()
+        {
             _rightFlipper.OnRelease();
         }
     }

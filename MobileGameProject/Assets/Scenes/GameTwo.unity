@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1995225040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7649688137406759286, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+  m_PrefabInstance: {fileID: 5228283882756906144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2111d2964484574db65f105d57e1f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballController
 --- !u!1001 &5228283882756906144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +177,118 @@ PrefabInstance:
     - target: {fileID: 639716607490481412, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1995225040}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1995225040}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1995225040}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1995225040}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLeftPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLeftReleased
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRightPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRightReleased
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnLeftRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: OnRightRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8028439435053341814, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
       propertyPath: m_Name

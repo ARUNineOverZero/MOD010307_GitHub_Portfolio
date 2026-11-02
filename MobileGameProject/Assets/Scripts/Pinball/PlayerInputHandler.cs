@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace MobileGameProject.MGPInputSystem.Pinball
 {
@@ -9,10 +10,14 @@ namespace MobileGameProject.MGPInputSystem.Pinball
     {
         private Vector2 _position;
         public Vector2 Position => _position;
-        public  UnityEvent OnPressed;
-        public  UnityEvent OnRelease;
+        public UnityEvent OnLeftPressed;
+        public UnityEvent OnLeftRelease;
+        public UnityEvent OnRightPressed;
+        public UnityEvent OnRightRelease;
         private Vector3 _tilt;
         public Vector3 Tilt => _tilt;
+        private bool _leftActive;
+        private bool _rightActive;
 
         protected override void RegisterActions()
         {
@@ -34,7 +39,7 @@ namespace MobileGameProject.MGPInputSystem.Pinball
             input.Tilt.performed -= OnTiltPerformed;
         }
 
-        public void Awake()
+        private void Awake()
         {
             SetInputSystem(GameManager.Instance.InputSystem);
         }
@@ -49,32 +54,74 @@ namespace MobileGameProject.MGPInputSystem.Pinball
             _inputSystem.Pinball.Enable();
         }
 
+        private void Update()
+        {
+            EvaluateSideTouchedOrMouse();
+        }
+
+        private void EvaluateSideTouchedOrMouse()
+        {
+            bool leftActive = false;
+            bool rightActive = false;
+            float half = Screen.width * .5f;
+
+            foreach (var touch in Touch.activeTouches)
+            {
+                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase == UnityEngine.InputSystem.TouchPhase.Canceled)
+                    continue;
+
+                float x = touch.screenPosition.x;
+                if (x < half)
+                    leftActive = true;
+                else
+                    rightActive = true;
+            }
+
+            if (Mouse.current != null && Mouse.current.leftButton.isPressed)
+            {
+                Vector2 mousePos = Mouse.current.position.ReadValue();
+                if (mousePos.x < half)
+                    leftActive = true;
+                else
+                    rightActive = true;
+            }
+
+            if (leftActive && !_leftActive)
+                OnLeftPressed?.Invoke();
+            else if (!leftActive && _leftActive)
+                OnLeftRelease?.Invoke();
+
+            if (rightActive && !_rightActive)
+                OnRightPressed?.Invoke();
+            else if (!rightActive && _rightActive)
+                OnRightRelease?.Invoke();
+
+            _leftActive = leftActive;
+            _rightActive = rightActive;
+        }
+
         private void OnContactPerformed(InputAction.CallbackContext context)
         {
             MovePointer(GetPositionByType(context));
-            OnPressed?.Invoke();
-            Debug.Log($"pressed");
+            //OnPressed?.Invoke();
         }
 
         private void MovePointer(Vector2 moveTo)
         {
-            if(_position == moveTo)
+            if (_position == moveTo)
                 return;
 
             _position = moveTo;
-
-            Debug.Log($"Moved {_position}");
         }
 
         private void OnPositionMove(InputAction.CallbackContext context)
         {
-            Debug.Log($"Position Moved: {context.ReadValue<Vector2>()} ");
             MovePointer(context.ReadValue<Vector2>());
         }
 
         private Vector2 GetPositionByType(InputAction.CallbackContext context)
         {
-            if(context.control?.device is Touchscreen t)
+            if (context.control?.device is Touchscreen t)
                 return t.primaryTouch.position.ReadValue();
             else if (context.control?.device is Pointer p)
                 return p.position.ReadValue();
@@ -84,7 +131,7 @@ namespace MobileGameProject.MGPInputSystem.Pinball
 
         private void OnContactCanceled(InputAction.CallbackContext context)
         {
-            OnRelease?.Invoke();
+            //OnRelease?.Invoke();
         }
 
         private void OnTiltPerformed(InputAction.CallbackContext context)
