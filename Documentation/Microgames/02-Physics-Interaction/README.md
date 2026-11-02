@@ -1,16 +1,17 @@
-# Microgame: [Title]
+# Microgame: Drink Runner
 
 ## Concept
-Briefly describe the game in one or two sentences.
-
-The complete game idea should normally be understandable within approximately 10–30 seconds of play.
+Your phone acts as a tray on the screen you can see drinks on the tray, the character will make its way to the table avoiding obsticle. You must tilt the phone to conteract the movement force and avoid spilling the liquid from the drinks or loosing the glass entierly.
 
 ## Player Action
-What does the player do?
+Tilts the phone to prevent the drinks spilling on the floor while the character makes its way to the table 
 
 ## Success / Failure
 **Success condition:**  
+ - Arrive at the table with all drinks on the tray
 **Failure condition:**  
+ - Loose any 1 drink
+ - Lose more than 50% of any drink
 
 ## Main Programming Focus
 This microgame primarily demonstrates:

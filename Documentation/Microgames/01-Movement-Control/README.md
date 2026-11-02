@@ -1,21 +1,22 @@
-# Microgame: [Title]
+# Microgame: Kitchen Waiter
 
 ## Concept
-Briefly describe the game in one or two sentences.
-
-The complete game idea should normally be understandable within approximately 10–30 seconds of play.
+From an arial view, steer the waiter carrying a single plate from the kitchen to the correct table.
 
 ## Player Action
-What does the player do?
+Hold a finger or thumb on the screen and drag to navigate the waiter from the kitchen to the coreect table
 
 ## Success / Failure
 **Success condition:**  
-**Failure condition:**  
+ - Place the plate on the right table 
+**Failure condition:**
+ - An incorrect table accepts the food from the waiter
+ - Walks into another waiter and drops the food
+ - Time runs out
 
 ## Main Programming Focus
 This microgame primarily demonstrates:
 - 
-
 Examples might include movement, vectors, delta time, physics, collisions, timing, Boolean logic, collections, searching or sorting.
 
 ## Student-Authored Programming

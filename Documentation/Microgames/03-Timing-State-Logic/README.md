@@ -1,16 +1,18 @@
-# Microgame: [Title]
+# Microgame: Burger Flipper
 
 ## Concept
-Briefly describe the game in one or two sentences.
-
-The complete game idea should normally be understandable within approximately 10–30 seconds of play.
+You enter the game with multiple burgers on the grill. Each burger side goes through the following states raw -> flip now -> burnt. Flip each burger when its in the flip now state.
 
 ## Player Action
-What does the player do?
+The player does a swipe gesture on the burget to flip it.
 
 ## Success / Failure
 **Success condition:**  
+ - All burgers are flipped before burnt
 **Failure condition:**  
+ - A burger is in the raw state when flipped
+ - A burger is burnt
+ - The time runs out
 
 ## Main Programming Focus
 This microgame primarily demonstrates:

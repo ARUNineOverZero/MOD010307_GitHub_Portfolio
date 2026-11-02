@@ -1,16 +1,17 @@
-# Microgame: [Title]
+# Microgame: Ticket Rack
 
 ## Concept
-Briefly describe the game in one or two sentences.
-
-The complete game idea should normally be understandable within approximately 10–30 seconds of play.
+A number of ticket orders have fallen on the floor, you must place them back onto the ticket rack in the correct order by the time labeled on the ticket.
 
 ## Player Action
-What does the player do?
+Player drags a ticket into the correct empty slot on the ticket rack
 
 ## Success / Failure
 **Success condition:**  
-**Failure condition:**  
+ - All tickets are on the rack in the correct place before the timer ends
+**Failure condition:**
+ - The rack is full in the incorrect order
+ - The time runs out 
 
 ## Main Programming Focus
 This microgame primarily demonstrates:
@@ -47,7 +48,7 @@ Detailed evidence should be recorded in [Testing documentation](../../Documentat
 **Relevant feature branch:** `feature/...`
 
 **Relevant pull request(s):**
-- #
+- 
 
 **Important commits:**
 - 
