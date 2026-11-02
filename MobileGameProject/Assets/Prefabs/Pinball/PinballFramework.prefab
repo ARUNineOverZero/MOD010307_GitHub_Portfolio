@@ -93,9 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2111d2964484574db65f105d57e1f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballController
-  _leftFlipper: {fileID: 0}
-  _rightFlipper: {fileID: 0}
-  _ball: {fileID: 0}
+  _camera: {fileID: 5994468919102454566}
+  _inputHandler: {fileID: 7801341231859573955}
+  _leftFlipper: {fileID: 5954760870285390938}
+  _rightFlipper: {fileID: 1837603369492898717}
+  _ball: {fileID: 6689566624327876002}
 --- !u!1001 &2742203003969140164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.96855
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -158,6 +160,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
   m_PrefabInstance: {fileID: 2742203003969140164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5954760870285390938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8407600844846350750, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+  m_PrefabInstance: {fileID: 2742203003969140164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b298424e8feb2ee45974c401c8ebd0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Flipper
 --- !u!1001 &7867145244636619267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.96855
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -215,6 +228,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+--- !u!114 &1837603369492898717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8407600844846350750, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+  m_PrefabInstance: {fileID: 7867145244636619267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b298424e8feb2ee45974c401c8ebd0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Flipper
 --- !u!4 &6621198613728071225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
@@ -230,7 +254,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 105744123328141244, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 105744123328141244, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -277,6 +301,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
+--- !u!114 &6689566624327876002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3304114446862675529, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
+  m_PrefabInstance: {fileID: 8146044102901978091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ab308632ff3ea4d818f6f739dffaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Ball
 --- !u!4 &8105109664098436183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 105744123328141244, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
@@ -294,6 +329,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Game Two
       objectReference: {fileID: 0}
+    - target: {fileID: 726290944287122894, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 5994468919102454566}
     - target: {fileID: 1675815987619265925, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: m_Name
       value: PinballFramework
@@ -360,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8408005105120958773, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -371,13 +410,51 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5024799456151852095, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 69983576870696206}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7215387416699725057, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7801341231859573955}
   m_SourcePrefab: {fileID: 100100000, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
 --- !u!4 &639716607490481412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
   m_PrefabInstance: {fileID: 8659031073346347507}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2020209964216550642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7215387416699725057, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 8659031073346347507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7801341231859573955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020209964216550642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a80b76cf676d4641a96d5cf1944d4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.MGPInputSystem.Pinball.PlayerInputHandler
+  OnPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7649688137406759286}
+        m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+        m_MethodName: OnPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4436224413697914316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5024799456151852095, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}

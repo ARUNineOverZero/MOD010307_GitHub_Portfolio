@@ -11,7 +11,6 @@ namespace MobileGameProject.MGPInputSystem.Pinball
         public Vector2 Position => _position;
         public  UnityEvent OnPressed;
         public  UnityEvent OnRelease;
-        public  UnityEvent<Vector2> OnPositionChanged;
         private Vector3 _tilt;
         public Vector3 Tilt => _tilt;
 
@@ -54,6 +53,7 @@ namespace MobileGameProject.MGPInputSystem.Pinball
         {
             MovePointer(GetPositionByType(context));
             OnPressed?.Invoke();
+            Debug.Log($"pressed");
         }
 
         private void MovePointer(Vector2 moveTo)
@@ -62,7 +62,8 @@ namespace MobileGameProject.MGPInputSystem.Pinball
                 return;
 
             _position = moveTo;
-            OnPositionChanged?.Invoke(_position);
+
+            Debug.Log($"Moved {_position}");
         }
 
         private void OnPositionMove(InputAction.CallbackContext context)

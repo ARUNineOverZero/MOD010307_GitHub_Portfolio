@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Flipper
   _rb: {fileID: 586697850365589588}
   _hinge: {fileID: 4274723795706131425}
-  _torque: 10000
+  _torque: 100000
   _testInterval: 1
 --- !u!54 &586697850365589588
 Rigidbody:
