@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2893090283383773115, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7801341231859573955, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
       propertyPath: OnLeftPressed.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -295,7 +299,8 @@ PrefabInstance:
       value: PinballFramework
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5155873888324137310, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d04aac6767a5634a9e424966ec49b12, type: 3}
