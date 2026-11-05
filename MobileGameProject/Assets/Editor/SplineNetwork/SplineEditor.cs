@@ -66,40 +66,13 @@ namespace MobileGameProjectEditor.SplineNetwork
                 }
 
                 DrawNodeSquare(pos, size, color);
-
-                if (e.type == EventType.MouseDown && e.button == 0)
-                {
-                    if (isHovered)
-                    {
-                        if (e.shift)
-                        {
-                            if (_selectedNodes.Contains(i))
-                                _selectedNodes.Remove(i);
-                            else
-                                _selectedNodes.Add(i);
-                        }
-                        else
-                        {
-                            _selectedNodes.Clear();
-                            _selectedNodes.Add(i);
-                        }
-
-                        e.Use();
-                        Repaint();
-                    }
-
-                }
             }
-
-            if (e.type == EventType.MouseDown && e.button == 0 && _hoverNode == -1 && !e.shift)
-                ClearSelection(e);
 
             if (_selectedNodes.Count > 0)
             {
                 Vector3 center = Vector3.zero;
                 foreach (int index in _selectedNodes)
                     center += _spline.nodes[index].position;
-
                 center /= _selectedNodes.Count;
 
                 Vector3 newCenter = Handles.PositionHandle(center, quaternion.identity);
@@ -116,8 +89,35 @@ namespace MobileGameProjectEditor.SplineNetwork
                 }
             }
 
-            if(e.type == EventType.MouseMove || e.type == EventType.MouseDrag)
+            if (e.type == EventType.MouseDown && e.button == 0)
+            {
+                if (_hoverNode != -1)
+                {
+                    if (e.shift)
+                    {
+                        if (_selectedNodes.Contains(_hoverNode))
+                            _selectedNodes.Remove(_hoverNode);
+                        else
+                            _selectedNodes.Add(_hoverNode);
+                    }
+                    else
+                    {
+                        _selectedNodes.Clear();
+                        _selectedNodes.Add(_hoverNode);
+                    }
+
+                    e.Use();
+                    Repaint();
+                }
+                else if (!e.shift)
+                {
+                    ClearSelection(e);
+                }
+            }
+
+            if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag)
                 SceneView.RepaintAll();
+
         }
 
         private void ClearSelection(Event e)
