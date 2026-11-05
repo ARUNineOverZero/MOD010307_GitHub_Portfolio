@@ -13,17 +13,19 @@ namespace MobileGameProjectEditor.SplineNetwork
         private Spline _spline;
         private HashSet<int> _selectedNodes = new HashSet<int>();
         private int _hoverNode = -1;
-
-        private float _nodeBaseSize = .12f;
+        private float _nodeBaseSize = .06f;
         private float _hoverSizeMultiplier = 1.35f;
         private Color _normalColor = Color.white;
         private Color _hoverColor = Color.yellow;
         private Color _selectedColor = Color.green;
-
         private const float HoverTestRadiusFactor = 0.6f;
         private const float HoverPixelThreshold = 8f;
 
+        private bool _isEditing = false;
+
         private void OnEnable() => _spline = (Spline)target;
+
+        private void OnDisable() => Tools.hidden = false;
 
         private void OnSceneGUI()
         {
@@ -33,9 +35,38 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             UpdateHover();
             DrawNodes();
-            HandleNodeMovement();
-            HandleSelectionInput(e);
+
+            if (_isEditing)
+            {
+                Tools.hidden = true;
+                HandleNodeMovement();
+                HandleSelectionInput(e);
+            }
+            else
+            {
+                Tools.hidden = false;
+            }
+
             RequestRepaint(e);
+        }
+
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            EditorGUILayout.Space(8);
+
+            GUI.backgroundColor = _isEditing ? Color.green : Color.white;
+
+            if (GUILayout.Button(_isEditing ? "Exit Edit Mode" : "Enter Edit Mode", GUILayout.Height(30)))
+            {
+                _isEditing = !_isEditing;
+                Tools.hidden = _isEditing;
+                _selectedNodes.Clear();
+                SceneView.RepaintAll();
+            }
+
+            GUI.backgroundColor = Color.white;
         }
 
         private void UpdateHover()
@@ -44,10 +75,10 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             for (int i = 0; i < _spline.nodes.Count; i++)
             {
-                Vector3 pos = _spline.nodes[i].position;
-                float size = HandleUtility.GetHandleSize(pos) * _nodeBaseSize;
+                Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[i].position);
+                float size = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
 
-                if (HandleUtility.DistanceToCircle(pos, size * HoverTestRadiusFactor) < HoverPixelThreshold)
+                if (HandleUtility.DistanceToCircle(worldPos, size * HoverTestRadiusFactor) < HoverPixelThreshold)
                 {
                     _hoverNode = i;
                     break;
@@ -59,8 +90,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             for (int i = 0; i < _spline.nodes.Count; i++)
             {
-                Vector3 pos = _spline.nodes[i].position;
-                float baseSize = HandleUtility.GetHandleSize(pos) * _nodeBaseSize;
+                Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[i].position);
+                float baseSize = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
                 bool isSelected = _selectedNodes.Contains(i);
                 bool isHovered = _hoverNode == i;
 
@@ -70,7 +101,6 @@ namespace MobileGameProjectEditor.SplineNetwork
                 if (isSelected)
                 {
                     color = _selectedColor;
-                    size = baseSize;
                 }
                 else if (isHovered)
                 {
@@ -78,29 +108,32 @@ namespace MobileGameProjectEditor.SplineNetwork
                     size = baseSize * _hoverSizeMultiplier;
                 }
 
-                DrawNodeSquare(pos, size, color);
+                DrawNodeSquare(worldPos, size, color);
             }
         }
 
         private void HandleNodeMovement()
         {
             if (_selectedNodes.Count == 0) return;
-
-            Vector3 center = Vector3.zero;
+            
+            Vector3 worldCenter = Vector3.zero;
             foreach (int index in _selectedNodes)
-                center += _spline.nodes[index].position;
-            center /= _selectedNodes.Count;
+                worldCenter += _spline.transform.TransformPoint(_spline.nodes[index].position);
 
-            Vector3 newCenter = Handles.PositionHandle(center, quaternion.identity);
+            worldCenter /= _selectedNodes.Count;
 
-            if (newCenter != center)
+            Vector3 newWorldCenter = Handles.PositionHandle(worldCenter, Quaternion.identity);
+            if (newWorldCenter != worldCenter)
             {
-                Vector3 delta = newCenter - center;
+                Vector3 delta = newWorldCenter - worldCenter;
 
                 Undo.RecordObject(_spline, "Move Spline Nodes");
                 foreach (int index in _selectedNodes)
-                    _spline.nodes[index].position += delta;
-
+                {
+                    Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[index].position);
+                    Vector3 newWorldPos = worldPos + delta;
+                    _spline.nodes[index].position = _spline.transform.InverseTransformPoint(newWorldPos);
+                }
                 EditorUtility.SetDirty(_spline);
             }
         }
