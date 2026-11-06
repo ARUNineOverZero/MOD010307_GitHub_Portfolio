@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MobileGameProject.SplineNetwork;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -83,17 +84,66 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 GUI.backgroundColor = Color.white;
 
+                EditorGUILayout.LabelField("Spline Edit", EditorStyles.boldLabel);
+                EditorGUILayout.Space(4);
+
+                EditorGUILayout.LabelField("Node Edit", EditorStyles.boldLabel);
+                EditorGUILayout.Space(4);
+
+                if (GUILayout.Button("Delete Selected", GUILayout.Height(30)))
+                    DeleteSelectedNodes();
+
+                EditorGUILayout.LabelField("Segment Edit", EditorStyles.boldLabel);
+                EditorGUILayout.Space(4);
+
                 if (GUILayout.Button("Create Segmment", GUILayout.Height(30)))
                     CreateSegmment();
 
                 if (GUILayout.Button("Delete Segment", GUILayout.Height(30)))
                     DeleteSegmment();
 
+
+
                 if (GUILayout.Button("Clear Spline Data", GUILayout.Height(30)))
                     ClearSplineData();
             }
         }
-        
+
+        private void DeleteSelectedNodes()
+        {
+            if (_selectedNodes.Count == 0) return;
+
+            Undo.RecordObject(_spline, "Delete Spline Nodes");
+
+            _spline.segments.RemoveAll(seg => _selectedNodes.Contains(seg.startNodeIndex) ||
+                _selectedNodes.Contains(seg.endNodeIndex));
+
+            var sortedSelectedNodes = _selectedNodes.OrderBy(i => i).ToArray();
+            var indexMap = new Dictionary<int, int>();
+            int newIndex = 0;
+
+            for (int oldIndex = 0; oldIndex < _spline.nodes.Count; oldIndex++)
+            {
+                if (_selectedNodes.Contains(oldIndex)) continue;
+
+                indexMap[oldIndex] = newIndex;
+                newIndex++;
+            }
+
+            foreach (int index in sortedSelectedNodes.OrderByDescending(i => i))
+                _spline.nodes.RemoveAt(index);
+
+            foreach (var seg in _spline.segments)
+            {
+                seg.startNodeIndex = indexMap[seg.startNodeIndex];
+                seg.endNodeIndex = indexMap[seg.endNodeIndex];
+            }
+
+            _selectedNodes.Clear();
+            EditorUtility.SetDirty(_spline);
+            SceneView.RepaintAll();
+        }
+
         private void CreateSegmment()
         {
             if (_selectedNodes.Count != 2) return;
@@ -105,6 +155,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 _spline.AddSegment(indices[0], indices[1]);
             }
 
+            EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
         }
 
@@ -115,15 +166,16 @@ namespace MobileGameProjectEditor.SplineNetwork
             var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
             _spline.segments.Remove(segment);
 
+            EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
         }
 
         private void ClearSplineData()
         {
-
             _spline.nodes.Clear();
             _spline.segments.Clear();
             _selectedNodes.Clear();
+            EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
         }
 
