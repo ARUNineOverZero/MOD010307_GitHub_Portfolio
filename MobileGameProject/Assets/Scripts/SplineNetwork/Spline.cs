@@ -9,6 +9,7 @@ namespace MobileGameProject.SplineNetwork
     public class SplineNode
     {
         public Vector3 position;
+        public Quaternion rotation;
     }
 
     [System.Serializable]
@@ -38,9 +39,17 @@ namespace MobileGameProject.SplineNetwork
         public int AddNode(Vector3 worldPosition, params int[] connectedNodeIndeices)
         {
             int newIndex = nodes.Count;
-            nodes.Add(new SplineNode() { position = worldPosition });
 
-            if(connectedNodeIndeices == null || connectedNodeIndeices.Length == 0) return newIndex;
+            if(connectedNodeIndeices == null || connectedNodeIndeices.Length == 0)
+            {
+                nodes.Add(new SplineNode() { position = worldPosition, rotation = Quaternion.identity });
+                return newIndex;
+            }
+            else
+            {
+                // come back here and add a rotation value that is a combination of lookAt worldPosition - segment[i].positipon 
+                nodes.Add(new SplineNode() { position = worldPosition, rotation = Quaternion.identity });
+            }
 
             foreach(var index in connectedNodeIndeices)
                 AddSegment(index, newIndex);

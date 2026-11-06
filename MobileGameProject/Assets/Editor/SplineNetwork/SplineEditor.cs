@@ -69,7 +69,18 @@ namespace MobileGameProjectEditor.SplineNetwork
                 }
                 else
                 {
-                    HandleNodeMovement();
+                    switch (Tools.current)
+                    {
+                        case Tool.Move:
+                            HandleMovement();
+                            break;
+                        case Tool.Rotate:
+                            HandleRotation();
+                            break;
+                        default:
+                            break;
+                    }
+
                     HandleSelectionInput(e);
                 }
             }
@@ -234,55 +245,89 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         #region Editing
 
-        private void HandleNodeMovement()
+        private void HandleMovement()
         {
             if (_selectedNodeIndices.Count == 0) return;
 
             if (_selectedHandle.HasValue)
-            {
-                var segmentHandle = _selectedHandle.Value;
-                var segment = _spline.segments[segmentHandle.segmentIndex];
-                var nodeIndex = segmentHandle.isStart ? segment.startNodeIndex : segment.endNodeIndex;
-                Vector3 worldPos = GetSplineWorldPosition(nodeIndex);
-                Vector3 handleWorld = worldPos + _spline.transform.TransformVector(segmentHandle.isStart ? segment.startHandleOffset : segment.endHandleOffset);
-                Vector3 newHandleWorld = Handles.PositionHandle(handleWorld, Quaternion.identity);
-                if (newHandleWorld != handleWorld)
-                {
-                    Undo.RecordObject(_spline, "Move Spline Nodes Handle");
-
-                    Vector3 worldOffset = newHandleWorld - worldPos;
-                    Vector3 localOffset = _spline.transform.InverseTransformVector(worldOffset);
-
-                    if (segmentHandle.isStart)
-                        segment.startHandleOffset = localOffset;
-                    else
-                        segment.endHandleOffset = localOffset;
-
-                    EditorUtility.SetDirty(_spline);
-                }
-            }
+                HandleNodeHandleMovement();
             else
+                HandleNodeMovement();
+        }
+
+        private void HandleNodeMovement()
+        {
+            Vector3 worldCenter = Vector3.zero;
+            foreach (int index in _selectedNodeIndices)
+                worldCenter += GetSplineWorldPosition(index);
+
+            worldCenter /= _selectedNodeIndices.Count;
+
+            Vector3 newWorldCenter = Handles.PositionHandle(worldCenter, Quaternion.identity);
+            if (newWorldCenter != worldCenter)
             {
-                Vector3 worldCenter = Vector3.zero;
+                Vector3 delta = newWorldCenter - worldCenter;
+
+                Undo.RecordObject(_spline, "Move Spline Nodes");
                 foreach (int index in _selectedNodeIndices)
-                    worldCenter += GetSplineWorldPosition(index);
-
-                worldCenter /= _selectedNodeIndices.Count;
-
-                Vector3 newWorldCenter = Handles.PositionHandle(worldCenter, Quaternion.identity);
-                if (newWorldCenter != worldCenter)
                 {
-                    Vector3 delta = newWorldCenter - worldCenter;
-
-                    Undo.RecordObject(_spline, "Move Spline Nodes");
-                    foreach (int index in _selectedNodeIndices)
-                    {
-                        Vector3 worldPos = GetSplineWorldPosition(index);
-                        Vector3 newWorldPos = worldPos + delta;
-                        _spline.nodes[index].position = _spline.transform.InverseTransformPoint(newWorldPos);
-                    }
-                    EditorUtility.SetDirty(_spline);
+                    Vector3 worldPos = GetSplineWorldPosition(index);
+                    Vector3 newWorldPos = worldPos + delta;
+                    _spline.nodes[index].position = _spline.transform.InverseTransformPoint(newWorldPos);
                 }
+                EditorUtility.SetDirty(_spline);
+            }
+        }
+
+        private void HandleNodeHandleMovement()
+        {
+            var segmentHandle = _selectedHandle.Value;
+            var segment = _spline.segments[segmentHandle.segmentIndex];
+            var nodeIndex = segmentHandle.isStart ? segment.startNodeIndex : segment.endNodeIndex;
+            Vector3 worldPos = GetSplineWorldPosition(nodeIndex);
+            Vector3 handleWorld = worldPos + _spline.transform.TransformVector(segmentHandle.isStart ? segment.startHandleOffset : segment.endHandleOffset);
+            Vector3 newHandleWorld = Handles.PositionHandle(handleWorld, Quaternion.identity);
+            if (newHandleWorld != handleWorld)
+            {
+                Undo.RecordObject(_spline, "Move Spline Nodes Handle");
+
+                Vector3 worldOffset = newHandleWorld - worldPos;
+                Vector3 localOffset = _spline.transform.InverseTransformVector(worldOffset);
+
+                if (segmentHandle.isStart)
+                    segment.startHandleOffset = localOffset;
+                else
+                    segment.endHandleOffset = localOffset;
+
+                EditorUtility.SetDirty(_spline);
+            }
+        }
+
+        private void HandleRotation()
+        {
+            if (_selectedNodeIndices.Count == 0) return;
+
+            if (!_selectedHandle.HasValue)
+                HandleNodeRotation();
+        }
+
+        private void HandleNodeRotation()
+        {
+            if (_selectedNodeIndices.Count != 1) return;
+
+            int index = _selectedNodeIndices.First();
+            var node = _spline.nodes[index];
+
+            Vector3 worldPos = GetSplineWorldPosition(index);
+            Quaternion worldRot = _spline.transform.rotation * node.rotation;
+
+            Quaternion newWorldRot = Handles.RotationHandle(worldRot, worldPos);
+
+            if (newWorldRot != worldRot)
+            {
+                Undo.RecordObject(_spline, "Rotate Spline Node");
+                node.rotation = Quaternion.Inverse(_spline.transform.rotation) * newWorldRot;
+                EditorUtility.SetDirty(_spline);
             }
         }
 
