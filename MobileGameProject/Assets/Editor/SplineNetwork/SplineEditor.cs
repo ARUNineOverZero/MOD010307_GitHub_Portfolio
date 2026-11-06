@@ -115,30 +115,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Undo.RecordObject(_spline, "Delete Spline Nodes");
 
-            _spline.segments.RemoveAll(seg => _selectedNodes.Contains(seg.startNodeIndex) ||
-                _selectedNodes.Contains(seg.endNodeIndex));
-
-            var sortedSelectedNodes = _selectedNodes.OrderBy(i => i).ToArray();
-            var indexMap = new Dictionary<int, int>();
-            int newIndex = 0;
-
-            for (int oldIndex = 0; oldIndex < _spline.nodes.Count; oldIndex++)
-            {
-                if (_selectedNodes.Contains(oldIndex)) continue;
-
-                indexMap[oldIndex] = newIndex;
-                newIndex++;
-            }
-
-            foreach (int index in sortedSelectedNodes.OrderByDescending(i => i))
-                _spline.nodes.RemoveAt(index);
-
-            foreach (var seg in _spline.segments)
-            {
-                seg.startNodeIndex = indexMap[seg.startNodeIndex];
-                seg.endNodeIndex = indexMap[seg.endNodeIndex];
-            }
-
+            _spline.RemoveAllNodesAt(_selectedNodes.ToArray());
             _selectedNodes.Clear();
             EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
@@ -147,6 +124,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void CreateSegmment()
         {
             if (_selectedNodes.Count != 2) return;
+
+            Undo.RecordObject(_spline, "Create Spline Segment");
 
             var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
             if (segment == null)
@@ -163,8 +142,10 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             if (_selectedNodes.Count != 2) return;
 
+            Undo.RecordObject(_spline, "Delete Spline Segment");
+
             var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
-            _spline.segments.Remove(segment);
+            _spline.RemoveSegment(segment);
 
             EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
@@ -172,8 +153,9 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void ClearSplineData()
         {
-            _spline.nodes.Clear();
-            _spline.segments.Clear();
+            Undo.RecordObject(_spline, "Clear Spline Data");
+            
+            _spline.Clear();
             _selectedNodes.Clear();
             EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
@@ -218,15 +200,15 @@ namespace MobileGameProjectEditor.SplineNetwork
             Undo.RecordObject(_spline, "Add Spline Node");
 
             var localpos = _spline.transform.InverseTransformPoint(worldPos);
-            int lastIndex = _spline.nodes.Count;
-            _spline.AddNode(localpos);
+            //int lastIndex = _spline.nodes.Count;
+            int newIndex = _spline.AddNode(localpos, _selectedNodes.ToArray());
 
-            if (_selectedNodes.Count > 0)
-                foreach (var index in _selectedNodes)
-                    _spline.AddSegment(index, lastIndex);
+            //if (_selectedNodes.Count > 0)
+                //foreach (var index in _selectedNodes)
+                    //_spline.AddSegment(index, lastIndex);
 
             _selectedNodes.Clear();
-            _selectedNodes.Add(lastIndex);
+            _selectedNodes.Add(newIndex);
 
             EditorUtility.SetDirty(_spline);
         }
