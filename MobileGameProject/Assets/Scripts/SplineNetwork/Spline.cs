@@ -143,4 +143,3 @@ namespace MobileGameProject.SplineNetwork
         #endregion Segments
     }
 }
-

@@ -23,8 +23,17 @@ namespace MobileGameProjectEditor.SplineNetwork
         private Color _selectedColor = Color.green;
         private const float HoverTestRadiusFactor = 0.6f;
         private const float HoverPixelThreshold = 8f;
-
         private bool _isEditing = false;
+
+        private struct HandleSelection
+        {
+            public int segmentIndex;
+            public bool isStart;
+        }
+
+        private HandleSelection? _selectedHandle = null;
+        private int _hoverHandleSegment = -1;
+        private bool _hoverHandleIsStart;
 
         private void OnEnable()
         {
@@ -45,6 +54,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Event e = Event.current;
 
             UpdateHover();
+            UpdateHandleHover();
             DrawNodes();
             DrawHandles();
             DrawSegments();
@@ -258,8 +268,22 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             if (e.type != EventType.MouseDown || e.button != 0) return;
 
+            if (_hoverHandleSegment != -1)
+            {
+                _selectedHandle = new HandleSelection
+                {
+                    segmentIndex = _hoverHandleSegment,
+                    isStart = _hoverHandleIsStart
+                };
+                e.Use();
+                Repaint();
+                return;
+            }
+
             if (_hoverNode != -1)
             {
+                _selectedHandle = null;
+
                 if (e.shift)
                 {
                     if (_selectedNodeIndices.Contains(_hoverNode))
@@ -302,8 +326,44 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void ClearSelection(Event e)
         {
             _selectedNodeIndices.Clear();
+            _selectedHandle = null;              // also clear handle
             e.Use();
             Repaint();
+        }
+
+        private bool IsHoveringHandle(int nodeIndex, Vector3 localOffset)
+        {
+            Vector3 handleWorld = GetSplineWorldPosition(nodeIndex) + _spline.transform.TransformVector(localOffset);
+            float size = HandleUtility.GetHandleSize(handleWorld) * _nodeBaseSize * 0.7f;
+            return HandleUtility.DistanceToCircle(handleWorld, size * HoverTestRadiusFactor) < HoverPixelThreshold;
+        }
+
+        private void UpdateHandleHover()
+        {
+            _hoverHandleSegment = -1;
+
+            if (_selectedNodeIndices.Count == 0) return;
+
+            for (int i = 0; i < _spline.segments.Count; i++)
+            {
+                var seg = _spline.segments[i];
+
+                if (_selectedNodeIndices.Contains(seg.startNodeIndex) &&
+                    IsHoveringHandle(seg.startNodeIndex, seg.startHandleOffset))
+                {
+                    _hoverHandleSegment = i;
+                    _hoverHandleIsStart = true;
+                    return;
+                }
+
+                if (_selectedNodeIndices.Contains(seg.endNodeIndex) &&
+                    IsHoveringHandle(seg.endNodeIndex, seg.endHandleOffset))
+                {
+                    _hoverHandleSegment = i;
+                    _hoverHandleIsStart = false;
+                    return;
+                }
+            }
         }
 
         #endregion Selection
@@ -315,12 +375,11 @@ namespace MobileGameProjectEditor.SplineNetwork
             for (int i = 0; i < _spline.nodes.Count; i++)
             {
                 Vector3 worldPos = GetSplineWorldPosition(i);
-                float baseSize = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
                 bool isSelected = _selectedNodeIndices.Contains(i);
                 bool isHovered = _hoverNode == i;
 
                 Color color = _normalColor;
-                float size = baseSize;
+                float size = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
 
                 if (isSelected)
                 {
@@ -329,7 +388,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 else if (isHovered)
                 {
                     color = _hoverColor;
-                    size = baseSize * _hoverSizeMultiplier;
+                    size *=  _hoverSizeMultiplier;
                 }
 
                 DrawNodeSquare(worldPos, size, color);
@@ -357,28 +416,46 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             if (_selectedNodeIndices.Count == 0) return;
 
-            foreach (var seg in _spline.segments)
+            for (int i = 0; i < _spline.segments.Count; i++)
             {
+                var seg = _spline.segments[i];
+
                 if (_selectedNodeIndices.Contains(seg.startNodeIndex))
-                    DrawHandle(seg.startNodeIndex, seg.startHandleOffset);
-                
+                    DrawHandle(i, true, seg.startNodeIndex, seg.startHandleOffset);
+
                 if (_selectedNodeIndices.Contains(seg.endNodeIndex))
-                    DrawHandle(seg.endNodeIndex, seg.endHandleOffset);
+                    DrawHandle(i, false, seg.endNodeIndex, seg.endHandleOffset);
             }
         }
 
-        private void DrawHandle(int nodeIndex, Vector3 localOffset)
+        private void DrawHandle(int segmentIndex, bool isStart, int nodeIndex, Vector3 localOffset)
         {
-            Vector3 nodeWorld = GetSplineWorldPosition(nodeIndex);
-            Vector3 handleWorld = nodeWorld + _spline.transform.TransformVector(localOffset);
+            Vector3 worldPos = GetSplineWorldPosition(nodeIndex);
+            Vector3 handleWorld = worldPos + _spline.transform.TransformVector(localOffset);
+
+            bool isHovered = _hoverHandleSegment == segmentIndex && _hoverHandleIsStart == isStart;
+            bool isSelected = _selectedHandle.HasValue &&
+                              _selectedHandle.Value.segmentIndex == segmentIndex &&
+                              _selectedHandle.Value.isStart == isStart;
 
             Handles.color = _hoverColor;
-            Handles.DrawLine(nodeWorld, handleWorld);
+            Handles.DrawLine(worldPos, handleWorld);
 
-            float size = HandleUtility.GetHandleSize(handleWorld) * _nodeBaseSize;
-            DrawNodeSquare(handleWorld, size, _normalColor);
+            float size = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
+            Color color = _normalColor;
+
+            if (isSelected)
+            {
+                color = _selectedColor;
+            }
+            else if (isHovered)
+            {
+                color = _hoverColor;
+                size *= _hoverSizeMultiplier;
+            }
+
+            DrawNodeSquare(handleWorld, size, color);
         }
-
         private void DrawSegments()
         {
             foreach (var seg in _spline.segments)
