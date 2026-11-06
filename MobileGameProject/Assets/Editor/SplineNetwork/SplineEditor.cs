@@ -238,25 +238,51 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             if (_selectedNodeIndices.Count == 0) return;
 
-            Vector3 worldCenter = Vector3.zero;
-            foreach (int index in _selectedNodeIndices)
-                worldCenter += _spline.transform.TransformPoint(_spline.nodes[index].position);
-
-            worldCenter /= _selectedNodeIndices.Count;
-
-            Vector3 newWorldCenter = Handles.PositionHandle(worldCenter, Quaternion.identity);
-            if (newWorldCenter != worldCenter)
+            if (_selectedHandle.HasValue)
             {
-                Vector3 delta = newWorldCenter - worldCenter;
-
-                Undo.RecordObject(_spline, "Move Spline Nodes");
-                foreach (int index in _selectedNodeIndices)
+                var segmentHandle = _selectedHandle.Value;
+                var segment = _spline.segments[segmentHandle.segmentIndex];
+                var nodeIndex = segmentHandle.isStart ? segment.startNodeIndex : segment.endNodeIndex;
+                Vector3 worldPos = GetSplineWorldPosition(nodeIndex);
+                Vector3 handleWorld = worldPos + _spline.transform.TransformVector(segmentHandle.isStart ? segment.startHandleOffset : segment.endHandleOffset);
+                Vector3 newHandleWorld = Handles.PositionHandle(handleWorld, Quaternion.identity);
+                if (newHandleWorld != handleWorld)
                 {
-                    Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[index].position);
-                    Vector3 newWorldPos = worldPos + delta;
-                    _spline.nodes[index].position = _spline.transform.InverseTransformPoint(newWorldPos);
+                    Undo.RecordObject(_spline, "Move Spline Nodes Handle");
+
+                    Vector3 worldOffset = newHandleWorld - worldPos;
+                    Vector3 localOffset = _spline.transform.InverseTransformVector(worldOffset);
+
+                    if (segmentHandle.isStart)
+                        segment.startHandleOffset = localOffset;
+                    else
+                        segment.endHandleOffset = localOffset;
+
+                    EditorUtility.SetDirty(_spline);
                 }
-                EditorUtility.SetDirty(_spline);
+            }
+            else
+            {
+                Vector3 worldCenter = Vector3.zero;
+                foreach (int index in _selectedNodeIndices)
+                    worldCenter += GetSplineWorldPosition(index);
+
+                worldCenter /= _selectedNodeIndices.Count;
+
+                Vector3 newWorldCenter = Handles.PositionHandle(worldCenter, Quaternion.identity);
+                if (newWorldCenter != worldCenter)
+                {
+                    Vector3 delta = newWorldCenter - worldCenter;
+
+                    Undo.RecordObject(_spline, "Move Spline Nodes");
+                    foreach (int index in _selectedNodeIndices)
+                    {
+                        Vector3 worldPos = GetSplineWorldPosition(index);
+                        Vector3 newWorldPos = worldPos + delta;
+                        _spline.nodes[index].position = _spline.transform.InverseTransformPoint(newWorldPos);
+                    }
+                    EditorUtility.SetDirty(_spline);
+                }
             }
         }
 
@@ -388,7 +414,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 else if (isHovered)
                 {
                     color = _hoverColor;
-                    size *=  _hoverSizeMultiplier;
+                    size *= _hoverSizeMultiplier;
                 }
 
                 DrawNodeSquare(worldPos, size, color);
