@@ -361,8 +361,25 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void DrawSegmentLine(SplineSegment segment, Color color)
         {
             var nodes = _spline.nodes;
+
+            if(_segmentLevelOfDetail <= 2)
+            {
+                Handles.color = color;
+                Handles.DrawLine(GetSplineWorldPosition(segment.startNodeIndex), GetSplineWorldPosition(segment.endNodeIndex));
+                return;
+            }
+
+            Vector3 p0 = GetSplineWorldPosition(segment.startNodeIndex);
+            Vector3 p3 = GetSplineWorldPosition(segment.endNodeIndex);
+            Vector3 p1 = p0 + _spline.transform.TransformVector(segment.startHandleOffset);
+            Vector3 p2 = p3 + _spline.transform.TransformVector(segment.endHandleOffset);
+
+            Vector3[] points = new Vector3[_segmentLevelOfDetail + 1];
+            for (int i = 0; i <= _segmentLevelOfDetail; i++)
+                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float)_segmentLevelOfDetail);
+
             Handles.color = color;
-            Handles.DrawLine(GetSplineWorldPosition(segment.startNodeIndex), GetSplineWorldPosition(segment.endNodeIndex));
+            Handles.DrawPolyLine(points);
         }
 
         private Vector3 EvaluateCubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
