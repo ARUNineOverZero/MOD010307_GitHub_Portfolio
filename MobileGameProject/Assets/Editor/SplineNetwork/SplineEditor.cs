@@ -39,8 +39,16 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_isEditing)
             {
                 Tools.hidden = true;
-                HandleNodeMovement();
-                HandleSelectionInput(e);
+
+                if(e.control)
+                {
+                    HandleCreateInput(e);
+                }
+                else
+                {
+                    HandleNodeMovement();
+                    HandleSelectionInput(e);
+                }
             }
             else
             {
@@ -48,6 +56,28 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
 
             RequestRepaint(e);
+        }
+
+        private void HandleCreateInput(Event e)
+        {
+            if(e.type != EventType.MouseDown || e.button != 0) return;
+
+            if(TryGetClickedWorldPosition(e, out Vector3 worldPos))
+            {
+                CreateNodeAt(worldPos);
+                e.Use();
+                Repaint();
+            }
+        }
+
+        private void CreateNodeAt(Vector3 worldPos)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool TryGetClickedWorldPosition(Event e, out Vector3 worldPos)
+        {
+            throw new NotImplementedException();
         }
 
         public override void OnInspectorGUI()
