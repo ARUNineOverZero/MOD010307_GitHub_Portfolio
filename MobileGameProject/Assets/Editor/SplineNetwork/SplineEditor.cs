@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MobileGameProject.SplineNetwork;
 using Unity.Mathematics;
 using UnityEditor;
@@ -35,6 +36,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             UpdateHover();
             DrawNodes();
+            DrawSegments();
 
             if (_isEditing)
             {
@@ -61,9 +63,13 @@ namespace MobileGameProjectEditor.SplineNetwork
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
             EditorGUILayout.Space(8);
+            DrawEditGUI();
+            GUI.backgroundColor = Color.white;
+        }
 
+        private void DrawEditGUI()
+        {
             GUI.backgroundColor = _isEditing ? Color.green : Color.white;
             if (GUILayout.Button(_isEditing ? "Exit Edit Mode" : "Enter Edit Mode", GUILayout.Height(30)))
             {
@@ -76,16 +82,49 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_isEditing)
             {
                 GUI.backgroundColor = Color.white;
+
+                if (GUILayout.Button("Create Segmment", GUILayout.Height(30)))
+                    CreateSegmment();
+
+                if (GUILayout.Button("Delete Segment", GUILayout.Height(30)))
+                    DeleteSegmment();
+
                 if (GUILayout.Button("Clear Spline Data", GUILayout.Height(30)))
-                {
-                    _spline.nodes.Clear();
-                    _spline.segments.Clear();
-                    _selectedNodes.Clear();
-                    SceneView.RepaintAll();
-                }
+                    ClearSplineData();
+            }
+        }
+        
+        private void CreateSegmment()
+        {
+            if (_selectedNodes.Count != 2) return;
+
+            var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
+            if (segment == null)
+            {
+                var indices = _selectedNodes.ToArray();
+                _spline.AddSegment(indices[0], indices[1]);
             }
 
-            GUI.backgroundColor = Color.white;
+            SceneView.RepaintAll();
+        }
+
+        private void DeleteSegmment()
+        {
+            if (_selectedNodes.Count != 2) return;
+
+            var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
+            _spline.segments.Remove(segment);
+
+            SceneView.RepaintAll();
+        }
+
+        private void ClearSplineData()
+        {
+
+            _spline.nodes.Clear();
+            _spline.segments.Clear();
+            _selectedNodes.Clear();
+            SceneView.RepaintAll();
         }
 
         private bool TryGetClickedWorldPosition(Event e, out Vector3 worldPos)
@@ -105,6 +144,8 @@ namespace MobileGameProjectEditor.SplineNetwork
             worldPos = Vector3.zero;
             return false;
         }
+
+        private Vector3 GetSplineWorldPosition(int index) => _spline.transform.TransformPoint(_spline.nodes[index].position);
 
         #region Create
 
@@ -232,7 +273,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             for (int i = 0; i < _spline.nodes.Count; i++)
             {
-                Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[i].position);
+                Vector3 worldPos = GetSplineWorldPosition(i);
                 float baseSize = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
                 bool isSelected = _selectedNodes.Contains(i);
                 bool isHovered = _hoverNode == i;
@@ -269,6 +310,19 @@ namespace MobileGameProjectEditor.SplineNetwork
             };
 
             Handles.DrawSolidRectangleWithOutline(verts, color, color);
+        }
+
+        private void DrawSegments()
+        {
+            foreach (var seg in _spline.segments)
+                DrawSegmentLine(seg, _normalColor);
+        }
+
+        private void DrawSegmentLine(SplineSegment segment, Color color)
+        {
+            var nodes = _spline.nodes;
+            Handles.color = color;
+            Handles.DrawLine(GetSplineWorldPosition(segment.startNodeIndex), GetSplineWorldPosition(segment.endNodeIndex));
         }
 
         private void RequestRepaint(Event e)
