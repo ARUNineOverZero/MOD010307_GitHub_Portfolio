@@ -13,7 +13,7 @@ namespace MobileGameProjectEditor.SplineNetwork
     public class SplineEditor : Editor
     {
         private Spline _spline;
-        private HashSet<int> _selectedNodes = new HashSet<int>();
+        private HashSet<int> _selectedNodeIndices = new HashSet<int>();
         private int _hoverNode = -1;
         private float _nodeBaseSize = .06f;
         private float _hoverSizeMultiplier = 1.35f;
@@ -46,6 +46,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             UpdateHover();
             DrawNodes();
+            DrawHandles();
             DrawSegments();
 
             if (_isEditing)
@@ -85,7 +86,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 _isEditing = !_isEditing;
                 Tools.hidden = _isEditing;
-                _selectedNodes.Clear();
+                _selectedNodeIndices.Clear();
                 SceneView.RepaintAll();
             }
 
@@ -120,26 +121,26 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void DeleteSelectedNodes()
         {
-            if (_selectedNodes.Count == 0) return;
+            if (_selectedNodeIndices.Count == 0) return;
 
             Undo.RecordObject(_spline, "Delete Spline Nodes");
 
-            _spline.RemoveAllNodesAt(_selectedNodes.ToArray());
-            _selectedNodes.Clear();
+            _spline.RemoveAllNodesAt(_selectedNodeIndices.ToArray());
+            _selectedNodeIndices.Clear();
             EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
         }
 
         private void CreateSegmment()
         {
-            if (_selectedNodes.Count != 2) return;
+            if (_selectedNodeIndices.Count != 2) return;
 
-            var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
+            var segment = _spline.segments.FirstOrDefault(x => _selectedNodeIndices.Contains(x.startNodeIndex) && _selectedNodeIndices.Contains(x.endNodeIndex));
             if (segment == null)
             {
                 Undo.RecordObject(_spline, "Create Spline Segment");
 
-                var indices = _selectedNodes.ToArray();
+                var indices = _selectedNodeIndices.ToArray();
                 _spline.AddSegment(indices[0], indices[1]);
             }
 
@@ -149,9 +150,9 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void DeleteSegmment()
         {
-            if (_selectedNodes.Count != 2) return;
+            if (_selectedNodeIndices.Count != 2) return;
 
-            var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
+            var segment = _spline.segments.FirstOrDefault(x => _selectedNodeIndices.Contains(x.startNodeIndex) && _selectedNodeIndices.Contains(x.endNodeIndex));
             if (segment == null) return;
 
             Undo.RecordObject(_spline, "Delete Spline Segment");
@@ -167,7 +168,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Undo.RecordObject(_spline, "Clear Spline Data");
 
             _spline.Clear();
-            _selectedNodes.Clear();
+            _selectedNodeIndices.Clear();
             EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
         }
@@ -211,10 +212,10 @@ namespace MobileGameProjectEditor.SplineNetwork
             Undo.RecordObject(_spline, "Add Spline Node");
 
             var localpos = _spline.transform.InverseTransformPoint(worldPos);
-            int newIndex = _spline.AddNode(localpos, _selectedNodes.ToArray());
+            int newIndex = _spline.AddNode(localpos, _selectedNodeIndices.ToArray());
 
-            _selectedNodes.Clear();
-            _selectedNodes.Add(newIndex);
+            _selectedNodeIndices.Clear();
+            _selectedNodeIndices.Add(newIndex);
 
             EditorUtility.SetDirty(_spline);
         }
@@ -225,13 +226,13 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void HandleNodeMovement()
         {
-            if (_selectedNodes.Count == 0) return;
+            if (_selectedNodeIndices.Count == 0) return;
 
             Vector3 worldCenter = Vector3.zero;
-            foreach (int index in _selectedNodes)
+            foreach (int index in _selectedNodeIndices)
                 worldCenter += _spline.transform.TransformPoint(_spline.nodes[index].position);
 
-            worldCenter /= _selectedNodes.Count;
+            worldCenter /= _selectedNodeIndices.Count;
 
             Vector3 newWorldCenter = Handles.PositionHandle(worldCenter, Quaternion.identity);
             if (newWorldCenter != worldCenter)
@@ -239,7 +240,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 Vector3 delta = newWorldCenter - worldCenter;
 
                 Undo.RecordObject(_spline, "Move Spline Nodes");
-                foreach (int index in _selectedNodes)
+                foreach (int index in _selectedNodeIndices)
                 {
                     Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[index].position);
                     Vector3 newWorldPos = worldPos + delta;
@@ -261,15 +262,15 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 if (e.shift)
                 {
-                    if (_selectedNodes.Contains(_hoverNode))
-                        _selectedNodes.Remove(_hoverNode);
+                    if (_selectedNodeIndices.Contains(_hoverNode))
+                        _selectedNodeIndices.Remove(_hoverNode);
                     else
-                        _selectedNodes.Add(_hoverNode);
+                        _selectedNodeIndices.Add(_hoverNode);
                 }
                 else
                 {
-                    _selectedNodes.Clear();
-                    _selectedNodes.Add(_hoverNode);
+                    _selectedNodeIndices.Clear();
+                    _selectedNodeIndices.Add(_hoverNode);
                 }
 
                 e.Use();
@@ -300,7 +301,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void ClearSelection(Event e)
         {
-            _selectedNodes.Clear();
+            _selectedNodeIndices.Clear();
             e.Use();
             Repaint();
         }
@@ -315,7 +316,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 Vector3 worldPos = GetSplineWorldPosition(i);
                 float baseSize = HandleUtility.GetHandleSize(worldPos) * _nodeBaseSize;
-                bool isSelected = _selectedNodes.Contains(i);
+                bool isSelected = _selectedNodeIndices.Contains(i);
                 bool isHovered = _hoverNode == i;
 
                 Color color = _normalColor;
@@ -352,6 +353,32 @@ namespace MobileGameProjectEditor.SplineNetwork
             Handles.DrawSolidRectangleWithOutline(verts, color, color);
         }
 
+        private void DrawHandles()
+        {
+            if (_selectedNodeIndices.Count == 0) return;
+
+            foreach (var seg in _spline.segments)
+            {
+                if (_selectedNodeIndices.Contains(seg.startNodeIndex))
+                    DrawHandle(seg.startNodeIndex, seg.startHandleOffset);
+                
+                if (_selectedNodeIndices.Contains(seg.endNodeIndex))
+                    DrawHandle(seg.endNodeIndex, seg.endHandleOffset);
+            }
+        }
+
+        private void DrawHandle(int nodeIndex, Vector3 localOffset)
+        {
+            Vector3 nodeWorld = GetSplineWorldPosition(nodeIndex);
+            Vector3 handleWorld = nodeWorld + _spline.transform.TransformVector(localOffset);
+
+            Handles.color = _hoverColor;
+            Handles.DrawLine(nodeWorld, handleWorld);
+
+            float size = HandleUtility.GetHandleSize(handleWorld) * _nodeBaseSize;
+            DrawNodeSquare(handleWorld, size, _normalColor);
+        }
+
         private void DrawSegments()
         {
             foreach (var seg in _spline.segments)
@@ -362,7 +389,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             var nodes = _spline.nodes;
 
-            if(_segmentLevelOfDetail <= 2)
+            if (_segmentLevelOfDetail <= 2)
             {
                 Handles.color = color;
                 Handles.DrawLine(GetSplineWorldPosition(segment.startNodeIndex), GetSplineWorldPosition(segment.endNodeIndex));
@@ -408,13 +435,10 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void OnUndoRedo()
         {
-            _selectedNodes.RemoveWhere(i => i < 0 || i >= _spline.nodes.Count);
+            _selectedNodeIndices.RemoveWhere(i => i < 0 || i >= _spline.nodes.Count);
             SceneView.RepaintAll();
         }
 
         #endregion Events
-
-
-
     }
 }
