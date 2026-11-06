@@ -637,63 +637,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: -12.610861, y: -6.2864445e-16, z: 23.851347}
-  - position: {x: -17.668522, y: 2.750712e-16, z: -16.848387}
-  - position: {x: -36.240723, y: -3.5230694e-16, z: 11.406214}
-  - position: {x: -23.455435, y: -2.7417273e-16, z: 7.887362}
-  - position: {x: -1.3952153, y: 5, z: 1.762423}
-  - position: {x: 29.002737, y: -3.4224091e-18, z: -4.3061485}
-  - position: {x: 7.4942665, y: -6.0161584e-16, z: 22.634089}
-  - position: {x: 3.749091, y: 3.9433659e-16, z: -22.21962}
+  - position: {x: 40.26708, y: -4.4789975e-16, z: 15.711332}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 34.52308, y: -8.885375e-18, z: -4.060118}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 30.246876, y: 4.533012e-16, z: -24.875149}
+    rotation: {x: 0, y: -0.38268346, z: 0, w: 0.9238795}
+  - position: {x: 53.141434, y: 2.0455402e-17, z: -5.3815093}
+    rotation: {x: 0, y: 0.5, z: 0, w: 0.8660254}
   segments:
   - startNodeIndex: 0
     endNodeIndex: 1
-    startHandleOffset: {x: -1.6690282, y: 2.9822617e-16, z: -13.430913}
-    endHandleOffset: {x: 1.6690282, y: -2.9822617e-16, z: 13.430913}
+    startHandleOffset: {x: -1.8955199, y: 1.4487474e-16, z: -6.5245786}
+    endHandleOffset: {x: 1.8955199, y: -1.4487474e-16, z: 6.5245786}
   - startNodeIndex: 1
     endNodeIndex: 2
-    startHandleOffset: {x: -6.1288266, y: -2.070348e-16, z: 9.3240185}
-    endHandleOffset: {x: 6.1288266, y: 2.070348e-16, z: -9.3240185}
-  - startNodeIndex: 2
-    endNodeIndex: 0
-    startHandleOffset: {x: 7.797855, y: -9.119138e-17, z: 4.106894}
-    endHandleOffset: {x: -7.797855, y: 9.119138e-17, z: -4.106894}
+    startHandleOffset: {x: -1.4111471, y: 1.5252158e-16, z: -6.8689604}
+    endHandleOffset: {x: 1.4111471, y: -1.5252158e-16, z: 6.8689604}
   - startNodeIndex: 2
     endNodeIndex: 3
-    startHandleOffset: {x: 4.2191453, y: 2.578429e-17, z: -1.1612211}
-    endHandleOffset: {x: -4.2191453, y: -2.578429e-17, z: 1.1612211}
-  - startNodeIndex: 1
-    endNodeIndex: 3
-    startHandleOffset: {x: -1.9096813, y: -1.8125049e-16, z: 8.162797}
-    endHandleOffset: {x: 1.9096813, y: 1.8125049e-16, z: -8.162797}
-  - startNodeIndex: 0
-    endNodeIndex: 3
-    startHandleOffset: {x: -3.5787096, y: 1.1697567e-16, z: -5.2681155}
-    endHandleOffset: {x: 3.5787096, y: -1.1697567e-16, z: 5.2681155}
-  - startNodeIndex: 3
-    endNodeIndex: 4
-    startHandleOffset: {x: 7.2798724, y: 1.6500001, z: -2.02123}
-    endHandleOffset: {x: -7.2798724, y: -1.6500001, z: 2.02123}
-  - startNodeIndex: 4
-    endNodeIndex: 5
-    startHandleOffset: {x: 10.031325, y: -1.6500001, z: -2.0026288}
-    endHandleOffset: {x: -10.031325, y: 1.6500001, z: 2.0026288}
-  - startNodeIndex: 5
-    endNodeIndex: 6
-    startHandleOffset: {x: -7.0977955, y: -1.9740385e-16, z: 8.890279}
-    endHandleOffset: {x: 7.0977955, y: 1.9740385e-16, z: -8.890279}
-  - startNodeIndex: 6
-    endNodeIndex: 0
-    startHandleOffset: {x: -6.634692, y: -8.919441e-18, z: 0.4016953}
-    endHandleOffset: {x: 6.634692, y: 8.919441e-18, z: -0.4016953}
-  - startNodeIndex: 1
-    endNodeIndex: 7
-    startHandleOffset: {x: 7.0678124, y: 3.935758e-17, z: -1.772507}
-    endHandleOffset: {x: -7.0678124, y: -3.935758e-17, z: 1.772507}
-  - startNodeIndex: 7
-    endNodeIndex: 5
-    startHandleOffset: {x: 8.333704, y: -1.3126047e-16, z: 5.9114456}
-    endHandleOffset: {x: -8.333704, y: 1.3126047e-16, z: -5.9114456}
+    startHandleOffset: {x: 7.5552044, y: -1.4283912e-16, z: 6.432901}
+    endHandleOffset: {x: -7.5552044, y: 1.4283912e-16, z: -6.432901}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
@@ -703,7 +667,7 @@ Transform:
   m_GameObject: {fileID: 1368272001}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -0, z: 4.46028}
+  m_LocalPosition: {x: -12.97, y: 0, z: 4.46028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
