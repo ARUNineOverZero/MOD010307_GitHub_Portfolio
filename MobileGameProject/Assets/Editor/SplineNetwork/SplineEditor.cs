@@ -65,7 +65,6 @@ namespace MobileGameProjectEditor.SplineNetwork
             EditorGUILayout.Space(8);
 
             GUI.backgroundColor = _isEditing ? Color.green : Color.white;
-
             if (GUILayout.Button(_isEditing ? "Exit Edit Mode" : "Enter Edit Mode", GUILayout.Height(30)))
             {
                 _isEditing = !_isEditing;
@@ -74,30 +73,19 @@ namespace MobileGameProjectEditor.SplineNetwork
                 SceneView.RepaintAll();
             }
 
-            GUI.backgroundColor = Color.white;
-        }
-
-        private void HandleCreateInput(Event e)
-        {
-            if (e.type != EventType.MouseDown || e.button != 0) return;
-
-            if (TryGetClickedWorldPosition(e, out Vector3 worldPos))
+            if (_isEditing)
             {
-                CreateNodeAt(worldPos);
-                e.Use();
-                Repaint();
+                GUI.backgroundColor = Color.white;
+                if (GUILayout.Button("Clear Spline Data", GUILayout.Height(30)))
+                {
+                    _spline.nodes.Clear();
+                    _spline.segments.Clear();
+                    _selectedNodes.Clear();
+                    SceneView.RepaintAll();
+                }
             }
-        }
 
-        private void CreateNodeAt(Vector3 worldPos)
-        {
-            _spline.AddNode(_spline.transform.InverseTransformPoint(worldPos));
-
-            int lastIndex = _spline.nodes.Count - 1;
-
-            if (_selectedNodes.Count > 0)
-                foreach (var index in _selectedNodes)
-                    _spline.AddSegment(index, lastIndex);
+            GUI.backgroundColor = Color.white;
         }
 
         private bool TryGetClickedWorldPosition(Event e, out Vector3 worldPos)
@@ -118,7 +106,39 @@ namespace MobileGameProjectEditor.SplineNetwork
             return false;
         }
 
-        
+        #region Create
+
+        private void HandleCreateInput(Event e)
+        {
+            if (e.type != EventType.MouseDown || e.button != 0) return;
+
+            if (TryGetClickedWorldPosition(e, out Vector3 worldPos))
+            {
+                CreateNodeAt(worldPos);
+                e.Use();
+                Repaint();
+            }
+        }
+
+        private void CreateNodeAt(Vector3 worldPos)
+        {
+            Undo.RecordObject(_spline, "Add Spline Node");
+
+            var localpos = _spline.transform.InverseTransformPoint(worldPos);
+            int lastIndex = _spline.nodes.Count;
+            _spline.AddNode(localpos);
+
+            if (_selectedNodes.Count > 0)
+                foreach (var index in _selectedNodes)
+                    _spline.AddSegment(index, lastIndex);
+
+            _selectedNodes.Clear();
+            _selectedNodes.Add(lastIndex);
+
+            EditorUtility.SetDirty(_spline);
+        }
+
+        #endregion Create
 
         #region Editing
 
@@ -206,7 +226,6 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         #endregion Selection
 
-
         #region Draw
 
         private void DrawNodes()
@@ -252,7 +271,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Handles.DrawSolidRectangleWithOutline(verts, color, color);
         }
 
-         private void RequestRepaint(Event e)
+        private void RequestRepaint(Event e)
         {
             if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag)
                 SceneView.RepaintAll();
