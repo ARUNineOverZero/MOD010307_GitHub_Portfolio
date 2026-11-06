@@ -17,6 +17,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private int _hoverNode = -1;
         private float _nodeBaseSize = .06f;
         private float _hoverSizeMultiplier = 1.35f;
+        private int _segmentLevelOfDetail = 10;
         private Color _normalColor = Color.white;
         private Color _hoverColor = Color.yellow;
         private Color _selectedColor = Color.green;
@@ -151,10 +152,10 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_selectedNodes.Count != 2) return;
 
             var segment = _spline.segments.FirstOrDefault(x => _selectedNodes.Contains(x.startNodeIndex) && _selectedNodes.Contains(x.endNodeIndex));
-            if(segment == null) return;
+            if (segment == null) return;
 
             Undo.RecordObject(_spline, "Delete Spline Segment");
-            
+
             _spline.RemoveSegment(segment);
 
             EditorUtility.SetDirty(_spline);
@@ -164,7 +165,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void ClearSplineData()
         {
             Undo.RecordObject(_spline, "Clear Spline Data");
-            
+
             _spline.Clear();
             _selectedNodes.Clear();
             EditorUtility.SetDirty(_spline);
@@ -364,6 +365,20 @@ namespace MobileGameProjectEditor.SplineNetwork
             Handles.DrawLine(GetSplineWorldPosition(segment.startNodeIndex), GetSplineWorldPosition(segment.endNodeIndex));
         }
 
+        private Vector3 EvaluateCubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+        {
+            float u = 1f - t;
+            float tt = t * t;
+            float uu = u * u;
+            float uuu = uu * u;
+            float ttt = tt * t;
+
+            return uuu * p0
+                 + 3f * uu * t * p1
+                 + 3f * u * tt * p2
+                 + ttt * p3;
+        }
+
         private void RequestRepaint(Event e)
         {
             if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag)
@@ -381,5 +396,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         #endregion Events
+
+
+
     }
 }
