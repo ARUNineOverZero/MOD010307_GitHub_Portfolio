@@ -54,8 +54,8 @@ namespace MobileGameProjectEditor.SplineNetwork
             UpdateHover();
             UpdateHandleHover();
             _drawer.DrawNodes(_spline, _selectedNodeIndices, _hoverNodeIndex);
-            //DrawHandles();
-            //DrawSegments();
+            _drawer.DrawHandles(_spline, _selectedNodeIndices, _hoverHandleSegment, _hoverHandleIsStart, _selectedHandle);
+            _drawer.DrawSegments(_spline);
 
             if (_isEditing)
             {
