@@ -22,6 +22,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         private HandleSelection? _selectedHandle;
         public HandleSelection? SelectedHandle => _selectedHandle;
         
+        public int SelectededCount => _selectedNodeIndices.Count;
+        
 
         public SplineSelector(SplineEditorSettings settings) => _settings = settings;
 
@@ -110,11 +112,11 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
         }
 
-        public void ClearSelection(Event e)
+        public void ClearSelection(Event e = null)
         {
             _selectedNodeIndices.Clear();
             _selectedHandle = null;
-            e.Use();
+            e?.Use();
         }
 
         public void ClearSelectedHandle()
@@ -129,5 +131,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             float size = HandleUtility.GetHandleSize(handleWorld) * _settings.nodeBaseSize * 0.7f;
             return HandleUtility.DistanceToCircle(handleWorld, size * _settings.hoverTestRadiusFactor) < _settings.hoverPixelThreshold;
         }
+
+        public bool IsNodeSelected(int index) => _selectedNodeIndices.Contains(index);
     }
 }

@@ -138,7 +138,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void DeleteSelectedNodes()
         {
-            if (_selector.SelectedNodeIndices.Count == 0) return;
+            if (_selector.SelectededCount == 0) return;
 
             Undo.RecordObject(_spline, "Delete Spline Nodes");
 
@@ -150,10 +150,10 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void CreateSegmment()
         {
-            if (_selector.SelectedNodeIndices.Count != 2) return;
+            if (_selector.SelectededCount != 2) return;
 
             var segment = _spline.segments.FirstOrDefault(x =>
-                _selector.SelectedNodeIndices.Contains(x.startNodeIndex) && _selector.SelectedNodeIndices.Contains(x.endNodeIndex));
+                _selector.IsNodeSelected(x.startNodeIndex) && _selector.IsNodeSelected(x.endNodeIndex));
             if (segment == null)
             {
                 Undo.RecordObject(_spline, "Create Spline Segment");
@@ -168,10 +168,10 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void DeleteSegmment()
         {
-            if (_selector.SelectedNodeIndices.Count != 2) return;
+            if (_selector.SelectededCount != 2) return;
 
             var segment = _spline.segments.FirstOrDefault(x =>
-                _selector.SelectedNodeIndices.Contains(x.startNodeIndex) && _selector.SelectedNodeIndices.Contains(x.endNodeIndex));
+                _selector.IsNodeSelected(x.startNodeIndex) && _selector.IsNodeSelected(x.endNodeIndex);
             if (segment == null) return;
 
             Undo.RecordObject(_spline, "Delete Spline Segment");
@@ -187,7 +187,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Undo.RecordObject(_spline, "Clear Spline Data");
 
             _spline.Clear();
-            _selector.SelectedNodeIndices.Clear();
+            _selector.ClearSelection();
             EditorUtility.SetDirty(_spline);
             SceneView.RepaintAll();
         }
@@ -266,7 +266,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void HandleMovement()
         {
-            if (_selector.SelectedNodeIndices.Count == 0) return;
+            if (_selector.SelectededCount == 0) return;
 
             if (_selector.SelectedHandle.HasValue)
                 HandleNodeHandleMovement();
@@ -280,7 +280,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             foreach (int index in _selector.SelectedNodeIndices)
                 worldCenter += GetSplineWorldPosition(index);
 
-            worldCenter /= _selector.SelectedNodeIndices.Count;
+            worldCenter /= _selector.SelectededCount;
 
             int pivotIndex = _selector.SelectedNodeIndices.First();
             Quaternion handleRot = GetHandleRotation(pivotIndex);
@@ -329,7 +329,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void HandleRotation()
         {
-            if (_selector.SelectedNodeIndices.Count == 0) return;
+            if (_selector.SelectededCount == 0) return;
 
             if (!_selector.SelectedHandle.HasValue)
                 HandleNodeRotation();
@@ -337,7 +337,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void HandleNodeRotation()
         {
-            if (_selector.SelectedNodeIndices.Count != 1) return;
+            if (_selector.SelectededCount != 1) return;
 
             int index = _selector.SelectedNodeIndices.First();
             var node = _spline.nodes[index];
