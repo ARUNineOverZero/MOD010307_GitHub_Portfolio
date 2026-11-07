@@ -5,9 +5,15 @@ using UnityEngine;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
+    public struct HandleSelection
+    {
+        public int segmentIndex;
+        public bool isStart;
+    }
+    
     public class SplineSelector
     {
-        private SplineEditorSettings _settings;
+        private readonly SplineEditorSettings _settings;
 
         public int _hoverNodeIndex = -1;
         public int HoverNodeIndex => _hoverNodeIndex;

@@ -1,30 +1,26 @@
-﻿using System.CodeDom;
-using System.Collections.Generic;
-using MobileGameProject.SplineNetwork;
+﻿using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
-using static MobileGameProjectEditor.SplineNetwork.SplineEditor;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
-    public struct HandleSelection
-    {
-        public int segmentIndex;
-        public bool isStart;
-    }
-    
     public class SplineDrawer
     {
-        private SplineEditorSettings _settings;
-        public SplineDrawer(SplineEditorSettings settings) => _settings = settings;
+        private readonly SplineEditorSettings _settings;
+        private readonly SplineSelector _selector;
+        public SplineDrawer(SplineEditorSettings settings, SplineSelector selector)
+        {
+            _settings = settings;
+            _selector = selector;
+        }
 
-        public void DrawNodes(Spline spline, HashSet<int> selectedNodeIndices, int hoverIndex)
+        public void DrawNodes(Spline spline)
         {
             for (int i = 0; i < spline.nodes.Count; i++)
             {
                 Vector3 worldPos = spline.GetNodeWorldPosition(i);
-                bool isSelected = selectedNodeIndices != null && selectedNodeIndices.Contains(i);
-                bool isHovered = hoverIndex == i;
+                bool isSelected = _selector.IsNodeSelected(i);
+                bool isHovered = _selector.HoverNodeIndex == i;
 
                 Color color = _settings.normalColor;
                 float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
@@ -41,24 +37,17 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
         }
 
-        public void DrawHandles(
-            Spline spline,
-            HashSet<int> selectedNodeIndices,
-            int hoverHandleSegment,
-            bool hoverHandleIsStart,
-            HandleSelection? selectedHandle)
+        public void DrawHandles(Spline spline)
         {
             for (int i = 0; i < spline.segments.Count; i++)
             {
                 var seg = spline.segments[i];
 
-                if (selectedNodeIndices.Contains(seg.startNodeIndex))
-                    DrawHandle(spline, i, true, seg.startNodeIndex, seg.startHandleOffset,
-                               hoverHandleSegment, hoverHandleIsStart, selectedHandle);
+                if (_selector.IsNodeSelected(seg.startNodeIndex))
+                    DrawHandle(spline, i, true, seg.startNodeIndex, seg.startHandleOffset);
 
-                if (selectedNodeIndices.Contains(seg.endNodeIndex))
-                    DrawHandle(spline, i, false, seg.endNodeIndex, seg.endHandleOffset,
-                               hoverHandleSegment, hoverHandleIsStart, selectedHandle);
+                if (_selector.IsNodeSelected(seg.endNodeIndex))
+                    DrawHandle(spline, i, false, seg.endNodeIndex, seg.endHandleOffset);
             }
         }
 
@@ -79,18 +68,15 @@ namespace MobileGameProjectEditor.SplineNetwork
             int segmentIndex,
             bool isStart,
             int nodeIndex,
-            Vector3 localOffset,
-            int hoverHandleSegment,
-            bool hoverHandleIsStart,
-            HandleSelection? selectedHandle)
+            Vector3 localOffset)
         {
             Vector3 worldPos = spline.GetNodeWorldPosition(nodeIndex);
             Vector3 handleWorld = worldPos + spline.transform.TransformVector(localOffset);
 
-            bool isHovered = hoverHandleSegment == segmentIndex && hoverHandleIsStart == isStart;
-            bool isSelected = selectedHandle.HasValue &&
-                              selectedHandle.Value.segmentIndex == segmentIndex &&
-                              selectedHandle.Value.isStart == isStart;
+            bool isHovered = _selector.HoverHandleSegmentIndex == segmentIndex && _selector.HoverHandleIsStart == isStart;
+            bool isSelected = _selector.SelectedHandle.HasValue &&
+                              _selector.SelectedHandle.Value.segmentIndex == segmentIndex &&
+                              _selector.SelectedHandle.Value.isStart == isStart;
 
             Handles.color = _settings.hoverColor;
             Handles.DrawLine(worldPos, handleWorld);

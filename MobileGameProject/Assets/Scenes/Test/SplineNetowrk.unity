@@ -637,197 +637,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: -1.6651325, y: 2.2864847e-16, z: -14.757692}
+  - position: {x: -0.29907894, y: 5.3159814e-16, z: -28.40133}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 13.513562, y: 5, z: 2.2649102}
-    rotation: {x: -0.067378715, y: 0.54251134, z: 0.043714076, w: 0.8362001}
-  - position: {x: 24.30053, y: 1.8145608e-16, z: -12.632336}
-    rotation: {x: 0.03466576, y: 0.9002849, z: -0.07296262, w: 0.42774042}
-  - position: {x: 3.1217341, y: 5, z: 11.9391165}
-    rotation: {x: 0, y: -0.3886225, z: -0, w: 0.9213971}
-  - position: {x: 16.49976, y: 1.5065482e-16, z: 14.6920805}
-    rotation: {x: 0.18408656, y: 0.11560042, z: -0.021807238, w: 0.97584486}
-  - position: {x: 10.736586, y: -6.194293e-17, z: 28.112818}
-    rotation: {x: 7.1286806e-18, y: -0.20141815, z: 1.4658884e-18, w: 0.97950536}
-  - position: {x: -4.9130344, y: -4.668817e-16, z: 39.0526}
-    rotation: {x: 9.403683e-18, y: -0.46209484, z: 4.899914e-18, w: 0.8868305}
-  - position: {x: -14.78, y: -5.6302905e-16, z: -22.83528}
-    rotation: {x: -1.0519925e-18, y: 0.95181507, z: -3.2650523e-18, w: -0.30667272}
-  - position: {x: -24.02174, y: -4.5481656e-16, z: 12.623753}
-    rotation: {x: -6.8246855e-18, y: -0.9363173, z: -1.1349621e-18, w: 0.35115507}
-  - position: {x: -22.925648, y: -5.213005e-16, z: 34.73656}
-    rotation: {x: 6.278206e-18, y: -0.17447437, z: 1.1124491e-18, w: 0.98466176}
-  - position: {x: -17.752419, y: -6.7757157e-16, z: 50.98341}
-    rotation: {x: 8.586112e-18, y: -0.1561133, z: 1.3570447e-18, w: 0.98773915}
-  - position: {x: 3.9633667, y: -2.1669919e-16, z: 47.91366}
-    rotation: {x: -1.7767012e-17, y: 0.3896213, z: 7.5163876e-18, w: 0.9209752}
-  - position: {x: 2.0680003, y: -7.292028e-17, z: 56.75704}
-    rotation: {x: -7.516854e-18, y: 0.41445598, z: 3.4232613e-18, w: 0.9100694}
-  - position: {x: 14.218947, y: 1.9964291e-16, z: 48.753677}
-    rotation: {x: -4.4426096e-18, y: 0.8803588, z: 8.245884e-18, w: 0.47430828}
-  - position: {x: 24.523201, y: 3.4978956e-16, z: -20.213402}
-    rotation: {x: -2.907651e-18, y: 0.9398202, z: 7.997984e-18, w: 0.34166968}
-  - position: {x: 14.400454, y: 0.875, z: -27.647778}
-    rotation: {x: -2.6700056e-18, y: -0.8558549, z: -4.4181503e-18, w: 0.5172159}
-  - position: {x: 0.63011837, y: 4.714266e-16, z: -27.811304}
-    rotation: {x: 5.646113e-19, y: -0.68207663, z: 5.266215e-19, w: 0.7312808}
-  - position: {x: -23.39605, y: 1.7318732e-17, z: -5.2402463}
-    rotation: {x: -2.3117602e-19, y: 0.9998468, z: 1.32045935e-17, w: 0.017504558}
-  - position: {x: -21.133015, y: 3.8517066e-16, z: -21.806822}
-    rotation: {x: -7.461237e-19, y: 0.997697, z: 1.0974741e-17, w: 0.06782897}
-  - position: {x: -13.833522, y: 5.8653013e-16, z: -30.875246}
-    rotation: {x: -2.8749684e-18, y: 0.94313043, z: 8.156688e-18, w: 0.33242294}
-  - position: {x: -2.5739326, y: 7.5555985e-16, z: -38.48767}
-    rotation: {x: -2.9163164e-18, y: 0.8832014, z: 5.491958e-18, w: 0.4689939}
-  - position: {x: 10.673848, y: 7.49277e-16, z: -38.204716}
-    rotation: {x: 1.6941769e-19, y: 0.6995163, z: -1.6583781e-19, w: 0.71461666}
-  - position: {x: 34.936455, y: 8.149156e-16, z: -41.160816}
-    rotation: {x: -8.901957e-19, y: 0.74864656, z: 1.0052381e-18, w: 0.66296935}
-  - position: {x: 25.963718, y: 7.326126e-16, z: -30.697922}
-    rotation: {x: -2.4361615e-18, y: 0.836939, z: 3.7254383e-18, w: 0.5472962}
-  - position: {x: -1.618576, y: 6.088178e-16, z: -33.364403}
-    rotation: {x: 5.131823e-18, y: -0.48543456, z: 2.8494126e-18, w: 0.874273}
+  - position: {x: 27.56882, y: 3.8858984e-16, z: -24.150915}
+    rotation: {x: 1.9948821e-18, y: 0.6208067, z: -1.5797111e-18, w: 0.7839637}
+  - position: {x: 34.859653, y: 2.8421526e-16, z: -17.260195}
+    rotation: {x: 3.8663377e-18, y: 0.54122573, z: -2.4885458e-18, w: 0.84087735}
+  - position: {x: 26.79758, y: 5.9608334e-16, z: -31.305485}
+    rotation: {x: -2.4410863e-18, y: 0.9677779, z: 9.381963e-18, w: 0.25180542}
+  - position: {x: 4.304744, y: 5.625, z: -17.81431}
+    rotation: {x: 3.0113853e-18, y: 0.9213774, z: 7.138778e-18, w: -0.3886691}
   segments:
-  - startNodeIndex: 0
-    endNodeIndex: 1
-    startHandleOffset: {x: 5.0089693, y: 1.6500001, z: 5.617459}
-    endHandleOffset: {x: -5.0089693, y: -1.6500001, z: -5.617459}
   - startNodeIndex: 1
     endNodeIndex: 2
-    startHandleOffset: {x: 3.5596993, y: -1.6500001, z: -4.916091}
-    endHandleOffset: {x: -3.5596993, y: 1.6500001, z: 4.916091}
+    startHandleOffset: {x: 4.3026867, y: -4.3470618e-17, z: 1.9577429}
+    endHandleOffset: {x: -4.3026867, y: 4.3470618e-17, z: -1.9577429}
   - startNodeIndex: 1
     endNodeIndex: 3
-    startHandleOffset: {x: -3.4293036, y: 0, z: 3.192488}
-    endHandleOffset: {x: 3.4293036, y: 0, z: -3.192488}
-  - startNodeIndex: 1
-    endNodeIndex: 4
-    startHandleOffset: {x: 0.9854452, y: -1.6500001, z: 4.100966}
-    endHandleOffset: {x: -0.9854452, y: 1.6500001, z: -4.100966}
-  - startNodeIndex: 4
-    endNodeIndex: 5
-    startHandleOffset: {x: -1.9018475, y: -7.0157264e-17, z: 4.4288435}
-    endHandleOffset: {x: 1.9018475, y: 7.0157264e-17, z: -4.4288435}
-  - startNodeIndex: 5
-    endNodeIndex: 6
-    startHandleOffset: {x: -5.164375, y: -1.336298e-16, z: 3.6101286}
-    endHandleOffset: {x: 5.164375, y: 1.336298e-16, z: -3.6101286}
-  - startNodeIndex: 6
-    endNodeIndex: 7
-    startHandleOffset: {x: -2.6998606, y: -3.1728627e-17, z: -3.7548127}
-    endHandleOffset: {x: 9.375, y: 3.1728637e-17, z: -5.875}
-  - startNodeIndex: 7
-    endNodeIndex: 8
-    startHandleOffset: {x: -8.25, y: 9.4499337e-17, z: 0.875}
-    endHandleOffset: {x: 5.121773, y: -9.449936e-17, z: -22.37468}
-  - startNodeIndex: 8
-    endNodeIndex: 9
-    startHandleOffset: {x: 3.9350743, y: -1.0387383e-16, z: 4.2782474}
-    endHandleOffset: {x: -3.9350743, y: 1.0387383e-16, z: -4.2782474}
-  - startNodeIndex: 7
-    endNodeIndex: 9
-    startHandleOffset: {x: 1.125, y: -9.374484e-18, z: 20.25}
-    endHandleOffset: {x: 5.270649, y: 9.374484e-18, z: -9.071842}
-  - startNodeIndex: 6
-    endNodeIndex: 9
-    startHandleOffset: {x: -5.4662094, y: -4.110309e-17, z: 1.8401406}
-    endHandleOffset: {x: 8.34121, y: -3.625, z: 8.159863}
-  - startNodeIndex: 8
-    endNodeIndex: 10
-    startHandleOffset: {x: 2.6304781, y: -1.3373271e-16, z: 6.8432126}
-    endHandleOffset: {x: -2.6304781, y: 1.3373271e-16, z: -6.8432126}
-  - startNodeIndex: 6
-    endNodeIndex: 10
-    startHandleOffset: {x: -6.7708054, y: -7.0961965e-17, z: 4.4051056}
-    endHandleOffset: {x: 15.675262, y: 7.0961985e-17, z: -2.5998163}
-  - startNodeIndex: 6
-    endNodeIndex: 11
-    startHandleOffset: {x: 0.13703324, y: 8.256023e-17, z: 3.956989}
-    endHandleOffset: {x: -0.13703324, y: -8.256023e-17, z: -3.956989}
-  - startNodeIndex: 10
-    endNodeIndex: 11
-    startHandleOffset: {x: 4.37403, y: 1.5208789e-16, z: 0.019821854}
-    endHandleOffset: {x: -4.37403, y: -1.5208789e-16, z: -0.019821854}
-  - startNodeIndex: 11
-    endNodeIndex: 12
-    startHandleOffset: {x: 2.1667082, y: 4.7447047e-17, z: 1.8854755}
-    endHandleOffset: {x: -3.9584885, y: 0.05283928, z: -0.49607682}
-  - startNodeIndex: 12
-    endNodeIndex: 13
-    startHandleOffset: {x: 3.759813, y: 8.994585e-17, z: -0.01610899}
-    endHandleOffset: {x: -4.009813, y: -8.994585e-17, z: 2.6411092}
+    startHandleOffset: {x: 1.6422027, y: 5.944586e-17, z: -2.677203}
+    endHandleOffset: {x: -1.6422027, y: -5.944586e-17, z: 2.677203}
   - startNodeIndex: 0
-    endNodeIndex: 14
-    startHandleOffset: {x: 13.635133, y: 3.9976567e-17, z: 8.297413}
-    endHandleOffset: {x: -4.9282007, y: -3.9976567e-17, z: 9.003122}
+    endNodeIndex: 3
+    startHandleOffset: {x: 8.941898, y: 2.1280116e-17, z: -0.9583708}
+    endHandleOffset: {x: -8.941898, y: -2.1280116e-17, z: 0.9583708}
   - startNodeIndex: 2
-    endNodeIndex: 14
-    startHandleOffset: {x: 1.9194708, y: 5.5550035e-17, z: -2.8279438}
-    endHandleOffset: {x: 4.9467993, y: -5.555006e-17, z: 2.6281223}
-  - startNodeIndex: 14
-    endNodeIndex: 15
-    startHandleOffset: {x: -3.9568863, y: 4.6144704e-17, z: -2.0781722}
-    endHandleOffset: {x: 5.0623636, y: -4.6144714e-17, z: -6.9493866}
-  - startNodeIndex: 15
-    endNodeIndex: 16
-    startHandleOffset: {x: -3.2268605, y: 0, z: 3.8006134}
-    endHandleOffset: {x: 9.72686, y: 4.220977e-18, z: 3.9745693}
-  - startNodeIndex: 16
-    endNodeIndex: 0
-    startHandleOffset: {x: -2.2994232, y: -8.1900304e-17, z: 3.8495693}
-    endHandleOffset: {x: -2.4898672, y: 8.1900304e-17, z: -5.702587}
-  - startNodeIndex: 8
-    endNodeIndex: 17
-    startHandleOffset: {x: 0.20647787, y: 1.5580466e-16, z: -5.8951197}
-    endHandleOffset: {x: -0.20647787, y: -1.5580466e-16, z: 5.8951197}
-  - startNodeIndex: 17
-    endNodeIndex: 18
-    startHandleOffset: {x: 0.7468015, y: 1.2139114e-16, z: -5.4669704}
-    endHandleOffset: {x: -0.7468015, y: -1.2139114e-16, z: 5.4669704}
-  - startNodeIndex: 18
-    endNodeIndex: 19
-    startHandleOffset: {x: 2.4088328, y: 6.644863e-17, z: -2.9925802}
-    endHandleOffset: {x: -2.4088328, y: -6.644863e-17, z: 2.9925802}
-  - startNodeIndex: 19
-    endNodeIndex: 20
-    startHandleOffset: {x: 3.7156646, y: 5.5779806e-17, z: -2.5121002}
-    endHandleOffset: {x: -3.7156646, y: -5.5779806e-17, z: 2.5121002}
-  - startNodeIndex: 20
-    endNodeIndex: 21
-    startHandleOffset: {x: 4.371768, y: -2.0733462e-18, z: 0.093375206}
-    endHandleOffset: {x: -4.371768, y: 2.0733462e-18, z: -0.093375206}
-  - startNodeIndex: 21
-    endNodeIndex: 22
-    startHandleOffset: {x: 8.00666, y: 2.1660737e-17, z: -0.9755132}
-    endHandleOffset: {x: -8.00666, y: -2.1660737e-17, z: 0.9755132}
-  - startNodeIndex: 22
-    endNodeIndex: 23
-    startHandleOffset: {x: -4.579196, y: -3.3402887e-17, z: 1.5043335}
-    endHandleOffset: {x: 4.579196, y: 3.3402887e-17, z: -1.5043335}
-  - startNodeIndex: 15
-    endNodeIndex: 23
-    startHandleOffset: {x: 3.0640645, y: 0, z: 5.544859}
-    endHandleOffset: {x: 0.560935, y: -7.394402e-17, z: 8.455141}
-  - startNodeIndex: 21
-    endNodeIndex: 23
-    startHandleOffset: {x: 3.4274647, y: -1.1742148e-17, z: 0.5288203}
-    endHandleOffset: {x: -0.8024645, y: 1.1742153e-17, z: -8.653822}
-  - startNodeIndex: 15
-    endNodeIndex: 24
-    startHandleOffset: {x: -5.800113, y: 1.9479968e-17, z: -0.87729895}
-    endHandleOffset: {x: 12.925113, y: -1.9479958e-17, z: -1.8727016}
-  - startNodeIndex: 21
-    endNodeIndex: 24
-    startHandleOffset: {x: -1.0617132, y: -6.620616e-17, z: 3.3566628}
-    endHandleOffset: {x: 6.561713, y: 6.620616e-17, z: -5.7316628}
-  - startNodeIndex: 20
-    endNodeIndex: 24
-    startHandleOffset: {x: -0.8149453, y: -6.8279524e-17, z: 3.075038}
-    endHandleOffset: {x: 3.3149452, y: 6.827954e-17, z: -5.450039}
-  - startNodeIndex: 24
-    endNodeIndex: 0
-    startHandleOffset: {x: -7.1336317, y: -1.1625495e-16, z: 4.52067}
-    endHandleOffset: {x: -9.491368, y: 1.1625493e-16, z: -5.64567}
+    endNodeIndex: 3
+    startHandleOffset: {x: -2.660484, y: 1.0291647e-16, z: -4.634946}
+    endHandleOffset: {x: 2.660484, y: -1.0291647e-16, z: 4.634946}
+  - startNodeIndex: 3
+    endNodeIndex: 4
+    startHandleOffset: {x: -8.623276, y: 5.8840963e-17, z: -2.6499627}
+    endHandleOffset: {x: 11.001381, y: -6.875, z: 15.613285}
+  - startNodeIndex: 0
+    endNodeIndex: 4
+    startHandleOffset: {x: 0.31862253, y: 8.012108e-17, z: -3.6083333}
+    endHandleOffset: {x: -0.31862253, y: -8.012108e-17, z: 3.6083333}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
