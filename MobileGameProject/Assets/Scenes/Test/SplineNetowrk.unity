@@ -637,33 +637,129 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: 0.2505045, y: 1.1905514e-16, z: -9.822046}
+  - position: {x: -1.6651325, y: 2.2864847e-16, z: -14.757692}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 12.107351, y: 5, z: 1.6010938}
-    rotation: {x: -0.076199025, y: 0.6013683, z: 0.057768524, w: 0.7932292}
-  - position: {x: 24.413086, y: 1.3428912e-16, z: -10.508124}
-    rotation: {x: 0.038917053, y: 0.8768882, z: -0.072045945, w: 0.47366866}
-  - position: {x: -7.390034, y: -2.3324903e-18, z: 10.629393}
-    rotation: {x: -0.10568751, y: 0.89288825, z: -0.2816722, w: -0.33502465}
-  - position: {x: 6.5575333, y: -3.783003e-16, z: 23.903942}
-    rotation: {x: 2.0792804e-18, y: 0.8986748, z: -4.260215e-18, w: 0.4386156}
+  - position: {x: 13.513562, y: 5, z: 2.2649102}
+    rotation: {x: -0.067378715, y: 0.54251134, z: 0.043714076, w: 0.8362001}
+  - position: {x: 24.30053, y: 1.8145608e-16, z: -12.632336}
+    rotation: {x: 0.03466576, y: 0.9002849, z: -0.07296262, w: 0.42774042}
+  - position: {x: 3.1217341, y: 5, z: 11.9391165}
+    rotation: {x: 0, y: -0.3886225, z: -0, w: 0.9213971}
+  - position: {x: 16.49976, y: 1.5065482e-16, z: 14.6920805}
+    rotation: {x: 0.18408656, y: 0.11560042, z: -0.021807238, w: 0.97584486}
+  - position: {x: 10.736586, y: -6.194293e-17, z: 28.112818}
+    rotation: {x: 7.1286806e-18, y: -0.20141815, z: 1.4658884e-18, w: 0.97950536}
+  - position: {x: -4.9130344, y: -4.668817e-16, z: 39.0526}
+    rotation: {x: 9.403683e-18, y: -0.46209484, z: 4.899914e-18, w: 0.8868305}
+  - position: {x: -14.78, y: -5.6302905e-16, z: -2.33528}
+    rotation: {x: -1.0519925e-18, y: 0.95181507, z: -3.2650523e-18, w: -0.30667272}
+  - position: {x: -33.40177, y: -2.7666735e-16, z: 31.664398}
+    rotation: {x: -5.3428696e-18, y: -0.63529706, z: -4.395249e-18, w: 0.7722679}
+  - position: {x: -22.925648, y: -5.213005e-16, z: 34.73656}
+    rotation: {x: 6.278206e-18, y: -0.17447437, z: 1.1124491e-18, w: 0.98466176}
+  - position: {x: -17.752419, y: -6.7757157e-16, z: 50.98341}
+    rotation: {x: 8.586112e-18, y: -0.1561133, z: 1.3570447e-18, w: 0.98773915}
+  - position: {x: 3.9633667, y: -2.1669919e-16, z: 47.91366}
+    rotation: {x: -1.7767012e-17, y: 0.3896213, z: 7.5163876e-18, w: 0.9209752}
+  - position: {x: 2.0680003, y: -7.292028e-17, z: 56.75704}
+    rotation: {x: -7.516854e-18, y: 0.41445598, z: 3.4232613e-18, w: 0.9100694}
+  - position: {x: 14.218947, y: 1.9964291e-16, z: 48.753677}
+    rotation: {x: -4.4426096e-18, y: 0.8803588, z: 8.245884e-18, w: 0.47430828}
+  - position: {x: 24.523201, y: 3.4978956e-16, z: -20.213402}
+    rotation: {x: -2.907651e-18, y: 0.9398202, z: 7.997984e-18, w: 0.34166968}
+  - position: {x: 12.532637, y: 4.89622e-16, z: -26.510893}
+    rotation: {x: -2.6700056e-18, y: -0.8558549, z: -4.4181503e-18, w: 0.5172159}
+  - position: {x: 4.2694235, y: 4.768312e-16, z: -25.934849}
+    rotation: {x: 5.646113e-19, y: -0.68207663, z: 5.266215e-19, w: 0.7312808}
   segments:
   - startNodeIndex: 0
     endNodeIndex: 1
-    startHandleOffset: {x: 3.9127595, y: 1.6500001, z: 3.7696362}
-    endHandleOffset: {x: -3.9127595, y: -1.6500001, z: -3.7696362}
+    startHandleOffset: {x: 5.0089693, y: 1.6500001, z: 5.617459}
+    endHandleOffset: {x: -5.0089693, y: -1.6500001, z: -5.617459}
   - startNodeIndex: 1
     endNodeIndex: 2
-    startHandleOffset: {x: 4.0608926, y: -1.6500001, z: -3.9960423}
-    endHandleOffset: {x: -4.0608926, y: 1.6500001, z: 3.9960423}
+    startHandleOffset: {x: 3.5596993, y: -1.6500001, z: -4.916091}
+    endHandleOffset: {x: -3.5596993, y: 1.6500001, z: 4.916091}
   - startNodeIndex: 1
     endNodeIndex: 3
-    startHandleOffset: {x: -6.4341373, y: -1.6500001, z: 2.979339}
-    endHandleOffset: {x: 6.4341373, y: 1.6500001, z: -2.979339}
-  - startNodeIndex: 3
+    startHandleOffset: {x: -3.4293036, y: 0, z: 3.192488}
+    endHandleOffset: {x: 3.4293036, y: 0, z: -3.192488}
+  - startNodeIndex: 1
     endNodeIndex: 4
-    startHandleOffset: {x: 4.6026974, y: -1.2406938e-16, z: 4.3806014}
-    endHandleOffset: {x: -4.6026974, y: 1.2406938e-16, z: -4.3806014}
+    startHandleOffset: {x: 0.9854452, y: -1.6500001, z: 4.100966}
+    endHandleOffset: {x: -0.9854452, y: 1.6500001, z: -4.100966}
+  - startNodeIndex: 4
+    endNodeIndex: 5
+    startHandleOffset: {x: -1.9018475, y: -7.0157264e-17, z: 4.4288435}
+    endHandleOffset: {x: 1.9018475, y: 7.0157264e-17, z: -4.4288435}
+  - startNodeIndex: 5
+    endNodeIndex: 6
+    startHandleOffset: {x: -5.164375, y: -1.336298e-16, z: 3.6101286}
+    endHandleOffset: {x: 5.164375, y: 1.336298e-16, z: -3.6101286}
+  - startNodeIndex: 6
+    endNodeIndex: 7
+    startHandleOffset: {x: -2.6998606, y: -3.1728627e-17, z: -3.7548127}
+    endHandleOffset: {x: 9.277378, y: 3.1728637e-17, z: -0.78238106}
+  - startNodeIndex: 7
+    endNodeIndex: 8
+    startHandleOffset: {x: -6.701423, y: 9.449936e-17, z: 1.3167056}
+    endHandleOffset: {x: 6.701423, y: -9.449936e-17, z: -1.3167056}
+  - startNodeIndex: 8
+    endNodeIndex: 9
+    startHandleOffset: {x: 3.9350743, y: -1.0387383e-16, z: 4.2782474}
+    endHandleOffset: {x: -3.9350743, y: 1.0387383e-16, z: -4.2782474}
+  - startNodeIndex: 7
+    endNodeIndex: 9
+    startHandleOffset: {x: -0.125, y: -9.374484e-18, z: 15.75}
+    endHandleOffset: {x: 5.270649, y: 9.374484e-18, z: -9.071842}
+  - startNodeIndex: 6
+    endNodeIndex: 9
+    startHandleOffset: {x: -5.4662094, y: -4.110309e-17, z: 1.8401406}
+    endHandleOffset: {x: 8.34121, y: -3.625, z: 8.159863}
+  - startNodeIndex: 8
+    endNodeIndex: 10
+    startHandleOffset: {x: 2.6304781, y: -1.3373271e-16, z: 6.8432126}
+    endHandleOffset: {x: -2.6304781, y: 1.3373271e-16, z: -6.8432126}
+  - startNodeIndex: 6
+    endNodeIndex: 10
+    startHandleOffset: {x: -6.7708054, y: -7.0961965e-17, z: 4.4051056}
+    endHandleOffset: {x: 15.675262, y: 7.0961985e-17, z: -2.5998163}
+  - startNodeIndex: 6
+    endNodeIndex: 11
+    startHandleOffset: {x: 0.13703324, y: 8.256023e-17, z: 3.956989}
+    endHandleOffset: {x: -0.13703324, y: -8.256023e-17, z: -3.956989}
+  - startNodeIndex: 10
+    endNodeIndex: 11
+    startHandleOffset: {x: 4.37403, y: 1.5208789e-16, z: 0.019821854}
+    endHandleOffset: {x: -4.37403, y: -1.5208789e-16, z: -0.019821854}
+  - startNodeIndex: 11
+    endNodeIndex: 12
+    startHandleOffset: {x: 2.1667082, y: 4.7447047e-17, z: 1.8854755}
+    endHandleOffset: {x: -3.9584885, y: 0.05283928, z: -0.49607682}
+  - startNodeIndex: 12
+    endNodeIndex: 13
+    startHandleOffset: {x: 3.759813, y: 8.994585e-17, z: -0.01610899}
+    endHandleOffset: {x: -4.009813, y: -8.994585e-17, z: 2.6411092}
+  - startNodeIndex: 0
+    endNodeIndex: 14
+    startHandleOffset: {x: 13.635133, y: 3.9976567e-17, z: 8.297413}
+    endHandleOffset: {x: -4.9282007, y: -3.9976567e-17, z: 9.003122}
+  - startNodeIndex: 2
+    endNodeIndex: 14
+    startHandleOffset: {x: 1.9194708, y: 5.5550035e-17, z: -2.8279438}
+    endHandleOffset: {x: 4.9467993, y: -5.555006e-17, z: 2.6281223}
+  - startNodeIndex: 14
+    endNodeIndex: 15
+    startHandleOffset: {x: -3.9568863, y: 4.6144704e-17, z: -2.0781722}
+    endHandleOffset: {x: 5.0623636, y: -4.6144714e-17, z: -6.9493866}
+  - startNodeIndex: 15
+    endNodeIndex: 16
+    startHandleOffset: {x: -2.7268605, y: -4.220977e-18, z: 3.8006134}
+    endHandleOffset: {x: 2.7268605, y: 4.220977e-18, z: -4.4004307}
+  - startNodeIndex: 16
+    endNodeIndex: 0
+    startHandleOffset: {x: -2.2994232, y: -8.1900304e-17, z: 3.8495693}
+    endHandleOffset: {x: -2.4898672, y: 8.1900304e-17, z: -5.702587}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
@@ -672,13 +768,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368272001}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.6077224, z: 0, w: 0.7941495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.97, y: 0, z: 4.46028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -74.85, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1762528824
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,6 +35,8 @@ namespace MobileGameProject.SplineNetwork
         }
 
         #region Nodes
+        
+        public Vector3 GetNodeWorldPosition(int index) => transform.TransformPoint(nodes[index].position);
 
         public int AddNode(Vector3 localPosition, params int[] connectedNodeIndeices)
         {
