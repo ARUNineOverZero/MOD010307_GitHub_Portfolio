@@ -143,5 +143,14 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         public bool IsNodeSelected(int index) => _selectedNodeIndices.Contains(index);
+        
+        public IEnumerable<SplineSegment> GetSelectedSegments()
+        {
+            if (_selectedNodeIndices.Count < 2) yield break;
+
+            foreach (var segment in _spline.segments)
+                if (_selectedNodeIndices.Contains(segment.startNodeIndex) && _selectedNodeIndices.Contains(segment.endNodeIndex))
+                    yield return segment;
+        }
     }
 }

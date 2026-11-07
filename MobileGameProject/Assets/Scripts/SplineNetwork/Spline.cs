@@ -26,7 +26,7 @@ namespace MobileGameProject.SplineNetwork
         public List<SplineNode> nodes = new List<SplineNode>();
         public List<SplineSegment> segments = new List<SplineSegment>();
 
-        private const float DefaultHandleOffsetFactor = .33f;
+        public  const float DefaultHandleOffsetFactor = .33f;
 
         public void Clear()
         {

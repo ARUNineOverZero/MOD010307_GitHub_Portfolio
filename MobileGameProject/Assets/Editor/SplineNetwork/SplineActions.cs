@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -124,6 +125,86 @@ namespace MobileGameProjectEditor.SplineNetwork
                 worldPos = Snapping.Snap(worldPos, EditorSnapSettings.move);
             
             return true;
+        }
+        
+        public void ResetHandlesOnSelectedSegments()
+        {
+            if (_selector.SelectededCount < 2) return;
+
+            Undo.RecordObject(_spline, "Reset Segment Handles");
+
+            bool changed = false;
+
+            foreach (var segment in _selector.GetSelectedSegments())
+            {
+                Vector3 startPos = _spline.nodes[segment.startNodeIndex].position;
+                Vector3 endPos = _spline.nodes[segment.endNodeIndex].position;
+                Vector3 delta = endPos - startPos;
+
+                segment.startHandleOffset = delta * Spline.DefaultHandleOffsetFactor;
+                segment.endHandleOffset = -delta * Spline.DefaultHandleOffsetFactor;
+
+                changed = true;
+            }
+
+            if (changed)
+                EditorUtility.SetDirty(_spline);
+        }
+
+        public void DropSelectedNodesToSurface()
+        {
+            if (_selector.SelectededCount == 0) return;
+
+            Undo.RecordObject(_spline, "Drop Nodes to Surface");
+
+            bool changed = false;
+            foreach (int index in _selector.SelectedNodeIndices)
+            {
+                Vector3 worldPos = _spline.GetNodeWorldPosition(index);
+                Ray ray = new Ray(worldPos, Vector3.down);
+
+                if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+                {
+                    _spline.nodes[index].position = _spline.transform.InverseTransformPoint(hit.point);
+                    changed = true;
+                }
+            }
+
+            if (changed)
+                EditorUtility.SetDirty(_spline);
+        }
+
+        public void ResetNodeHandles()
+        {
+            if (_selector.SelectededCount == 0) return;
+
+            Undo.RecordObject(_spline, "Reset Node Handles");
+
+            bool changed = false;
+
+            foreach (var segment in _spline.segments)
+            {
+                bool startSelected = _selector.IsNodeSelected(segment.startNodeIndex);
+                bool endSelected = _selector.IsNodeSelected(segment.endNodeIndex);
+
+                if (!startSelected && !endSelected)
+                    continue;
+
+                Vector3 startPos = _spline.nodes[segment.startNodeIndex].position;
+                Vector3 endPos = _spline.nodes[segment.endNodeIndex].position;
+                Vector3 delta = endPos - startPos;
+
+                if (startSelected)
+                    segment.startHandleOffset = delta * Spline.DefaultHandleOffsetFactor;
+
+                if (endSelected)
+                    segment.endHandleOffset = -delta * Spline.DefaultHandleOffsetFactor;
+
+                changed = true;
+            }
+
+            if (changed)
+                EditorUtility.SetDirty(_spline);
         }
     }
 }

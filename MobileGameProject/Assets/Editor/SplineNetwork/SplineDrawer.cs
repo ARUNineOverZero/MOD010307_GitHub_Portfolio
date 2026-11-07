@@ -66,11 +66,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 SceneView.RepaintAll();
         }
 
-        private void DrawHandle(
-            int segmentIndex,
-            bool isStart,
-            int nodeIndex,
-            Vector3 localOffset)
+        private void DrawHandle(int segmentIndex, bool isStart, int nodeIndex, Vector3 localOffset)
         {
             Vector3 worldPos = _spline.GetNodeWorldPosition(nodeIndex);
             Vector3 handleWorld = worldPos + _spline.transform.TransformVector(localOffset);

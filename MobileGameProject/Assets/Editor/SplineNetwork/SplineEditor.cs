@@ -47,6 +47,12 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Event e = Event.current;
             
+            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.End)
+            {
+                _actions.DropSelectedNodesToSurface();
+                e.Use();
+            }
+            
             if (e.type == EventType.KeyDown && e.keyCode == KeyCode.N)
                 _createHeld = true;
             else if (e.type == EventType.KeyUp && e.keyCode == KeyCode.N)
@@ -119,17 +125,31 @@ namespace MobileGameProjectEditor.SplineNetwork
                 EditorGUILayout.LabelField("Node Edit", EditorStyles.boldLabel);
                 EditorGUILayout.Space(4);
 
+                GUI.backgroundColor = Color.red;
+                
                 if (GUILayout.Button("Delete Selected", GUILayout.Height(30)))
                     _actions.DeleteSelectedNodes();
+                
+                GUI.backgroundColor = Color.white;
+                
+                if (GUILayout.Button("Reset Node Handles", GUILayout.Height(30)))
+                    _actions.ResetNodeHandles();
 
                 EditorGUILayout.LabelField("Segment Edit", EditorStyles.boldLabel);
                 EditorGUILayout.Space(4);
 
                 if (GUILayout.Button("Create Segmment", GUILayout.Height(30)))
                     _actions.CreateSegmentBetweenSelected();
-
+                
+                GUI.backgroundColor = Color.red;
+                
                 if (GUILayout.Button("Delete Segment", GUILayout.Height(30)))
                     _actions.DeleteSegmentBetweenSelected();
+                
+                GUI.backgroundColor = Color.white;
+                
+                if (GUILayout.Button("Reset Segmment Handles", GUILayout.Height(30)))
+                    _actions.ResetHandlesOnSelectedSegments();
 
                 if (GUILayout.Button("Clear Spline Data", GUILayout.Height(30)))
                     _actions.Clear();
