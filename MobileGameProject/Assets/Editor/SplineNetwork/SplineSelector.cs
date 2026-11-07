@@ -13,8 +13,8 @@ namespace MobileGameProjectEditor.SplineNetwork
     
     public class SplineSelector
     {
+        private readonly Spline _spline;
         private readonly SplineEditorSettings _settings;
-
         public int _hoverNodeIndex = -1;
         public int HoverNodeIndex => _hoverNodeIndex;
         public int _hoverHandleSegmentIndex = -1;
@@ -31,16 +31,20 @@ namespace MobileGameProjectEditor.SplineNetwork
         public int SelectededCount => _selectedNodeIndices.Count;
         
 
-        public SplineSelector(SplineEditorSettings settings) => _settings = settings;
+        public SplineSelector(Spline spline, SplineEditorSettings settings)
+        {
+            _spline = spline;
+            _settings = settings;
+        }
 
-        public void UpdateHover(Spline spline)
+        public void UpdateHover()
         {
             _hoverNodeIndex = -1;
-            if (spline == null) return;
+            if (_spline == null) return;
 
-            for (int i = 0; i < spline.nodes.Count; i++)
+            for (int i = 0; i < _spline.nodes.Count; i++)
             {
-                Vector3 worldPos = spline.transform.TransformPoint(spline.nodes[i].position);
+                Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[i].position);
                 float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
 
                 if (HandleUtility.DistanceToCircle(worldPos, size * _settings.hoverTestRadiusFactor) < _settings.hoverPixelThreshold)
@@ -51,17 +55,17 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
         }
 
-        public void UpdateHandleHover(Spline spline)
+        public void UpdateHandleHover()
         {
             _hoverHandleSegmentIndex = -1;
-            if (spline == null || _selectedNodeIndices == null || _selectedNodeIndices.Count == 0) return;
+            if (_spline == null || _selectedNodeIndices == null || _selectedNodeIndices.Count == 0) return;
 
-            for (int i = 0; i < spline.segments.Count; i++)
+            for (int i = 0; i < _spline.segments.Count; i++)
             {
-                var seg = spline.segments[i];
+                var seg = _spline.segments[i];
 
                 if (_selectedNodeIndices.Contains(seg.startNodeIndex) &&
-                    IsHoveringHandle(spline, seg.startNodeIndex, seg.startHandleOffset))
+                    IsHoveringHandle(seg.startNodeIndex, seg.startHandleOffset))
                 {
                     _hoverHandleSegmentIndex = i;
                     _hoverHandleIsStart = true;
@@ -69,7 +73,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 }
 
                 if (_selectedNodeIndices.Contains(seg.endNodeIndex) &&
-                    IsHoveringHandle(spline, seg.endNodeIndex, seg.endHandleOffset))
+                    IsHoveringHandle(seg.endNodeIndex, seg.endHandleOffset))
                 {
                     _hoverHandleSegmentIndex = i;
                     _hoverHandleIsStart = false;
@@ -130,10 +134,10 @@ namespace MobileGameProjectEditor.SplineNetwork
             _selectedHandle = null;
         }
 
-        private bool IsHoveringHandle(Spline spline, int nodeIndex, Vector3 localOffset)
+        private bool IsHoveringHandle(int nodeIndex, Vector3 localOffset)
         {
-            Vector3 handleWorld = spline.transform.TransformPoint(spline.nodes[nodeIndex].position)
-                                  + spline.transform.TransformVector(localOffset);
+            Vector3 handleWorld = _spline.transform.TransformPoint(_spline.nodes[nodeIndex].position)
+                                  + _spline.transform.TransformVector(localOffset);
             float size = HandleUtility.GetHandleSize(handleWorld) * _settings.nodeBaseSize * 0.7f;
             return HandleUtility.DistanceToCircle(handleWorld, size * _settings.hoverTestRadiusFactor) < _settings.hoverPixelThreshold;
         }

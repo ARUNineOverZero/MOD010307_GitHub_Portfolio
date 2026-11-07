@@ -637,41 +637,97 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: -0.29907894, y: 5.3159814e-16, z: -28.40133}
+  - position: {x: -6.2422915, y: -1.5302166e-16, z: 2.4312024}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 27.56882, y: 3.8858984e-16, z: -24.150915}
-    rotation: {x: 1.9948821e-18, y: 0.6208067, z: -1.5797111e-18, w: 0.7839637}
-  - position: {x: 34.859653, y: 2.8421526e-16, z: -17.260195}
-    rotation: {x: 3.8663377e-18, y: 0.54122573, z: -2.4885458e-18, w: 0.84087735}
-  - position: {x: 26.79758, y: 5.9608334e-16, z: -31.305485}
-    rotation: {x: -2.4410863e-18, y: 0.9677779, z: 9.381963e-18, w: 0.25180542}
-  - position: {x: 4.304744, y: 5.625, z: -17.81431}
-    rotation: {x: 3.0113853e-18, y: 0.9213774, z: 7.138778e-18, w: -0.3886691}
+  - position: {x: 12.3099785, y: -0.125, z: -8.085279}
+    rotation: {x: -0.09018467, y: 0.71939474, z: 0.09511245, w: 0.6821228}
+  - position: {x: 17.263536, y: 3, z: 1.5937304}
+    rotation: {x: 0.13680914, y: 0.68355757, z: -0.13272956, w: 0.7045674}
+  - position: {x: 27.970001, y: -1.6111138e-16, z: 2.7955317}
+    rotation: {x: 0.18059877, y: 0.6137432, z: -0.14692682, w: 0.75439775}
+  - position: {x: 23.2667, y: -9.4070076e-17, z: -0.22374058}
+    rotation: {x: 2.9150074e-18, y: 0.883006, z: 5.4839775e-18, w: -0.46936172}
+  - position: {x: 20.1733, y: -6.85749e-17, z: -16.744173}
+    rotation: {x: -2.205868e-18, y: -0.82096875, z: -3.1716888e-18, w: 0.5709731}
+  - position: {x: 6.7200003, y: -7.008004e-17, z: -16.676386}
+    rotation: {x: 9.8725357e-20, y: -0.7026742, z: 9.749911e-20, w: 0.71151173}
+  - position: {x: 10.832974, y: -5.1786806e-16, z: 18.862427}
+    rotation: {x: 0.034253705, y: -0.06891822, z: 0.0023677333, w: 0.9970313}
+  - position: {x: 13.09258, y: 2.5541138e-16, z: -15.962986}
+    rotation: {x: -0.000390677, y: 0.99874353, z: 0.007884509, w: 0.04948769}
+  - position: {x: 12.838083, y: 2.9468054e-16, z: -19.33528}
+    rotation: {x: 7.846194e-19, y: 0.9974478, z: 1.0960985e-17, w: -0.07140023}
+  - position: {x: 12.696969, y: 4.1084073e-16, z: -22.9629}
+    rotation: {x: 1.4964353e-19, y: 0.9999091, z: 1.10971896e-17, w: -0.013483588}
   segments:
+  - startNodeIndex: 0
+    endNodeIndex: 1
+    startHandleOffset: {x: 6.122249, y: 1.6500001, z: -0.32585996}
+    endHandleOffset: {x: -6.122249, y: -1.6500001, z: 0.32585996}
   - startNodeIndex: 1
     endNodeIndex: 2
-    startHandleOffset: {x: 4.3026867, y: -4.3470618e-17, z: 1.9577429}
-    endHandleOffset: {x: -4.3026867, y: 4.3470618e-17, z: -1.9577429}
-  - startNodeIndex: 1
-    endNodeIndex: 3
-    startHandleOffset: {x: 1.6422027, y: 5.944586e-17, z: -2.677203}
-    endHandleOffset: {x: -1.6422027, y: -5.944586e-17, z: 2.677203}
-  - startNodeIndex: 0
-    endNodeIndex: 3
-    startHandleOffset: {x: 8.941898, y: 2.1280116e-17, z: -0.9583708}
-    endHandleOffset: {x: -8.941898, y: -2.1280116e-17, z: 0.9583708}
+    startHandleOffset: {x: 1.6346742, y: -0.66, z: 0.04949421}
+    endHandleOffset: {x: -1.6346742, y: 0.66, z: -0.04949421}
   - startNodeIndex: 2
     endNodeIndex: 3
-    startHandleOffset: {x: -2.660484, y: 1.0291647e-16, z: -4.634946}
-    endHandleOffset: {x: 2.660484, y: -1.0291647e-16, z: 4.634946}
+    startHandleOffset: {x: 1.9084426, y: -0.99, z: 0.39659443}
+    endHandleOffset: {x: -1.9084426, y: 0.99, z: -0.39659443}
   - startNodeIndex: 3
     endNodeIndex: 4
-    startHandleOffset: {x: -8.623276, y: 5.8840963e-17, z: -2.6499627}
-    endHandleOffset: {x: 11.001381, y: -6.875, z: 15.613285}
+    startHandleOffset: {x: -1.4763719, y: 2.2123632e-17, z: -0.9963599}
+    endHandleOffset: {x: 1.4763719, y: -2.2123632e-17, z: 0.9963599}
+  - startNodeIndex: 4
+    endNodeIndex: 5
+    startHandleOffset: {x: -1.0208226, y: 8.413408e-18, z: -0.37890625}
+    endHandleOffset: {x: 1.0208226, y: -8.413408e-18, z: 0.37890625}
+  - startNodeIndex: 5
+    endNodeIndex: 6
+    startHandleOffset: {x: -1.7896978, y: -4.966955e-19, z: 0.022369295}
+    endHandleOffset: {x: 1.7896978, y: 4.966955e-19, z: -0.022369295}
+  - startNodeIndex: 6
+    endNodeIndex: 0
+    startHandleOffset: {x: -5.3784738, y: -2.7370738e-17, z: 1.2326682}
+    endHandleOffset: {x: 5.3784738, y: 2.7370738e-17, z: -1.2326682}
   - startNodeIndex: 0
-    endNodeIndex: 4
-    startHandleOffset: {x: 0.31862253, y: 8.012108e-17, z: -3.6083333}
-    endHandleOffset: {x: -0.31862253, y: -8.012108e-17, z: 3.6083333}
+    endNodeIndex: 7
+    startHandleOffset: {x: 5.634838, y: -1.2039931e-16, z: 5.4223046}
+    endHandleOffset: {x: -5.634838, y: 1.2039931e-16, z: -5.4223046}
+  - startNodeIndex: 1
+    endNodeIndex: 7
+    startHandleOffset: {x: -0.48741138, y: 11.625, z: 5.748164}
+    endHandleOffset: {x: 0.48741138, y: 3.125, z: -5.748163}
+  - startNodeIndex: 6
+    endNodeIndex: 7
+    startHandleOffset: {x: -3.375, y: -1.4777005e-16, z: 6.6549726}
+    endHandleOffset: {x: -0.2563642, y: 1.4777005e-16, z: -6.6549726}
+  - startNodeIndex: 5
+    endNodeIndex: 7
+    startHandleOffset: {x: 2.7967005, y: -1.4826675e-16, z: 24.658894}
+    endHandleOffset: {x: 1.5333337, y: 1.4826675e-16, z: -6.6773415}
+  - startNodeIndex: 2
+    endNodeIndex: 7
+    startHandleOffset: {x: -2.1220856, y: -0.99, z: 5.69867}
+    endHandleOffset: {x: 2.1220856, y: 0.99, z: -5.69867}
+  - startNodeIndex: 4
+    endNodeIndex: 7
+    startHandleOffset: {x: -2.5541563, y: -1.3985335e-16, z: 6.298435}
+    endHandleOffset: {x: 2.5541563, y: 1.3985335e-16, z: -6.298435}
+  - startNodeIndex: 3
+    endNodeIndex: 7
+    startHandleOffset: {x: -4.030528, y: -1.177297e-16, z: 5.3020754}
+    endHandleOffset: {x: 4.030528, y: 1.177297e-16, z: -5.3020754}
+  - startNodeIndex: 1
+    endNodeIndex: 8
+    startHandleOffset: {x: 0.25825846, y: 0.04125, z: -2.5996432}
+    endHandleOffset: {x: -2.2475796, y: -0.04125, z: 2.5996437}
+  - startNodeIndex: 8
+    endNodeIndex: 9
+    startHandleOffset: {x: 1.7524204, y: 1.125, z: -1.9972935}
+    endHandleOffset: {x: 0.083983876, y: -2.9468054e-16, z: 1}
+  - startNodeIndex: 9
+    endNodeIndex: 10
+    startHandleOffset: {x: -0.0465677, y: 3.8332866e-17, z: -1.7263582}
+    endHandleOffset: {x: 0.0465677, y: -3.8332866e-17, z: 1.7263582}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0

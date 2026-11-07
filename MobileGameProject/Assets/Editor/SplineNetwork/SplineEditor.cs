@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -19,6 +17,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineDrawer _drawer;
         private SplineSelector _selector;
         private SplineManipulator _manipulator;
+        private SplineActions _actions;
 
         #endregion Fields
 
@@ -28,9 +27,10 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             _spline = (Spline) target;
             _settings = new SplineEditorSettings();
-            _selector = new SplineSelector(_settings);
-            _drawer = new SplineDrawer(_settings, _selector);
+            _selector = new SplineSelector(_spline, _settings);
+            _drawer = new SplineDrawer(_spline, _settings, _selector);
             _manipulator = new SplineManipulator(_spline, _selector);
+            _actions = new SplineActions(_spline, _selector);
             Undo.undoRedoPerformed += OnUndoRedo;
         }
 
@@ -46,22 +46,18 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Event e = Event.current;
 
-            _selector.UpdateHover(_spline);
-            _selector.UpdateHandleHover(_spline);
+            _selector.UpdateHover();
+            _selector.UpdateHandleHover();
 
-            _drawer.DrawNodes(_spline);
-            _drawer.DrawHandles(_spline);
-            _drawer.DrawSegments(_spline);
+            _drawer.DrawNodes();
+            _drawer.DrawHandles();
+            _drawer.DrawSegments();
 
             if (_isEditing)
             {
                 Tools.hidden = true;
 
-                if (e.control)
-                {
-                    HandleCreateInput(e);
-                }
-                else
+                if (!e.control)
                 {
                     switch (Tools.current)
                     {
@@ -75,11 +71,11 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                     _selector.HandleSelectionInput(e);
                 }
+                else
+                    _actions.HandleCreateInput(e);
             }
             else
-            {
                 Tools.hidden = false;
-            }
 
             _drawer.RequestRepaint(e);
         }
@@ -118,133 +114,23 @@ namespace MobileGameProjectEditor.SplineNetwork
                 EditorGUILayout.Space(4);
 
                 if (GUILayout.Button("Delete Selected", GUILayout.Height(30)))
-                    DeleteSelectedNodes();
+                    _actions.DeleteSelectedNodes();
 
                 EditorGUILayout.LabelField("Segment Edit", EditorStyles.boldLabel);
                 EditorGUILayout.Space(4);
 
                 if (GUILayout.Button("Create Segmment", GUILayout.Height(30)))
-                    CreateSegmment();
+                    _actions.CreateSegmentBetweenSelected();
 
                 if (GUILayout.Button("Delete Segment", GUILayout.Height(30)))
-                    DeleteSegmment();
+                    _actions.DeleteSegmentBetweenSelected();
 
                 if (GUILayout.Button("Clear Spline Data", GUILayout.Height(30)))
-                    ClearSplineData();
+                    _actions.Clear();
             }
-        }
-
-        private void DeleteSelectedNodes()
-        {
-            if (_selector.SelectededCount == 0) return;
-
-            Undo.RecordObject(_spline, "Delete Spline Nodes");
-
-            _spline.RemoveAllNodesAt(_selector.SelectedNodeIndices.ToArray());
-            _selector.SelectedNodeIndices.Clear();
-            EditorUtility.SetDirty(_spline);
-            SceneView.RepaintAll();
-        }
-
-        private void CreateSegmment()
-        {
-            if (_selector.SelectededCount != 2) return;
-
-            var segment = _spline.segments.FirstOrDefault(x =>
-                _selector.IsNodeSelected(x.startNodeIndex) && _selector.IsNodeSelected(x.endNodeIndex));
-            if (segment == null)
-            {
-                Undo.RecordObject(_spline, "Create Spline Segment");
-
-                var indices = _selector.SelectedNodeIndices.ToArray();
-                _spline.AddSegment(indices[0], indices[1]);
-            }
-
-            EditorUtility.SetDirty(_spline);
-            SceneView.RepaintAll();
-        }
-
-        private void DeleteSegmment()
-        {
-            if (_selector.SelectededCount != 2) return;
-
-            var segment = _spline.segments.FirstOrDefault(x =>
-                _selector.IsNodeSelected(x.startNodeIndex) && _selector.IsNodeSelected(x.endNodeIndex));
-            if (segment == null) return;
-
-            Undo.RecordObject(_spline, "Delete Spline Segment");
-
-            _spline.RemoveSegment(segment);
-
-            EditorUtility.SetDirty(_spline);
-            SceneView.RepaintAll();
-        }
-
-        private void ClearSplineData()
-        {
-            Undo.RecordObject(_spline, "Clear Spline Data");
-
-            _spline.Clear();
-            _selector.ClearSelection();
-            EditorUtility.SetDirty(_spline);
-            SceneView.RepaintAll();
         }
 
         #endregion Inspector
-
-        #region Helpers
-
-        private bool TryGetClickedWorldPosition(Event e, out Vector3 worldPos)
-        {
-            var cam = SceneView.currentDrawingSceneView.camera;
-            var position = e.mousePosition;
-
-            position.y = cam.scaledPixelHeight - position.y;
-            var ray = cam.ScreenPointToRay(position);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
-            {
-                worldPos = hit.point;
-                return true;
-            }
-
-            worldPos = Vector3.zero;
-            return false;
-        }
-
-        #endregion Helpers
-
-        #region Create
-
-        private void HandleCreateInput(Event e)
-        {
-            if (e.type != EventType.MouseDown || e.button != 0) return;
-
-            if (_selector.SelectedHandle.HasValue)
-                _selector.ClearSelectedHandle();
-
-            if (TryGetClickedWorldPosition(e, out Vector3 worldPos))
-            {
-                CreateNodeAt(worldPos);
-                e.Use();
-                Repaint();
-            }
-        }
-
-        private void CreateNodeAt(Vector3 worldPos)
-        {
-            Undo.RecordObject(_spline, "Add Spline Node");
-
-            var localpos = _spline.transform.InverseTransformPoint(worldPos);
-            int newIndex = _spline.AddNode(localpos, _selector.SelectedNodeIndices.ToArray());
-
-            _selector.SelectedNodeIndices.Clear();
-            _selector.SelectedNodeIndices.Add(newIndex);
-
-            EditorUtility.SetDirty(_spline);
-        }
-
-        #endregion Create
 
         #region Events
 
