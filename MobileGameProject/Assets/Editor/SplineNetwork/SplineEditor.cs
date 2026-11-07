@@ -220,6 +220,9 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             if (e.type != EventType.MouseDown || e.button != 0) return;
 
+            if (_selectedHandle.HasValue)
+                _selectedHandle = null;
+            
             if (TryGetClickedWorldPosition(e, out Vector3 worldPos))
             {
                 CreateNodeAt(worldPos);

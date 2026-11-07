@@ -36,24 +36,39 @@ namespace MobileGameProject.SplineNetwork
 
         #region Nodes
 
-        public int AddNode(Vector3 worldPosition, params int[] connectedNodeIndeices)
+        public int AddNode(Vector3 localPosition, params int[] connectedNodeIndeices)
         {
             int newIndex = nodes.Count;
-
-            if(connectedNodeIndeices == null || connectedNodeIndeices.Length == 0)
+            var rotation = Quaternion.identity;
+            bool hasConnectedNodes = connectedNodeIndeices != null & connectedNodeIndeices.Length > 0;
+            
+            if(hasConnectedNodes)
             {
-                nodes.Add(new SplineNode() { position = worldPosition, rotation = Quaternion.identity });
-                return newIndex;
-            }
-            else
-            {
-                // come back here and add a rotation value that is a combination of lookAt worldPosition - segment[i].positipon 
-                nodes.Add(new SplineNode() { position = worldPosition, rotation = Quaternion.identity });
-            }
+                Vector3 averageDirection = Vector3.zero;
+                int valid = 0;
 
-            foreach(var index in connectedNodeIndeices)
-                AddSegment(index, newIndex);
+                foreach (var index in connectedNodeIndeices)
+                {
+                    if (index < 0 || index >= nodes.Count) continue;
 
+                    Vector3 direction = localPosition - nodes[index].position;
+                    if (direction.sqrMagnitude > .0001f)
+                    {
+                        averageDirection += direction.normalized;
+                        valid++;
+                    }
+                }
+                
+                if (valid > 0 && averageDirection.sqrMagnitude > .0001f)
+                    rotation = Quaternion.LookRotation(averageDirection.normalized, Vector3.up);
+            }
+            
+            nodes.Add(new SplineNode() { position = localPosition, rotation = rotation });
+            
+            if (hasConnectedNodes)
+                foreach(var index in connectedNodeIndeices)
+                    AddSegment(index, newIndex);
+            
             return newIndex;
         }
 
