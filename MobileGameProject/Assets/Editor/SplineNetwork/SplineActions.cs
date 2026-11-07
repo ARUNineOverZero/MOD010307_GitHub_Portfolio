@@ -113,14 +113,17 @@ namespace MobileGameProjectEditor.SplineNetwork
             position.y = cam.scaledPixelHeight - position.y;
             var ray = cam.ScreenPointToRay(position);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+            if (!Physics.Raycast(ray, out RaycastHit hit, 1000f))
             {
-                worldPos = hit.point;
-                return true;
+                worldPos = Vector3.zero;
+                return false;
             }
 
-            worldPos = Vector3.zero;
-            return false;
+            worldPos = hit.point;
+            if (EditorSnapSettings.gridSnapActive && EditorSnapSettings.gridSnapEnabled)
+                worldPos = Snapping.Snap(worldPos, EditorSnapSettings.move);
+            
+            return true;
         }
     }
 }

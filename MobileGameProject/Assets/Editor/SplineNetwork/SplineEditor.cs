@@ -18,6 +18,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineSelector _selector;
         private SplineManipulator _manipulator;
         private SplineActions _actions;
+        private bool _createHeld;
 
         #endregion Fields
 
@@ -45,6 +46,11 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_spline == null) return;
 
             Event e = Event.current;
+            
+            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.N)
+                _createHeld = true;
+            else if (e.type == EventType.KeyUp && e.keyCode == KeyCode.N)
+                _createHeld = false;
 
             _selector.UpdateHover();
             _selector.UpdateHandleHover();
@@ -57,7 +63,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 Tools.hidden = true;
 
-                if (!e.control)
+                if (!_createHeld)
                 {
                     switch (Tools.current)
                     {

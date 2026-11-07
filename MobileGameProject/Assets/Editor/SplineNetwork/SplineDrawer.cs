@@ -83,7 +83,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Handles.color = _settings.hoverColor;
             Handles.DrawLine(worldPos, handleWorld);
 
-            float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
+            float size = HandleUtility.GetHandleSize(handleWorld) * _settings.nodeBaseSize;
             Color color = _settings.normalColor;
 
             if (isSelected)
