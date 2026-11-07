@@ -90,7 +90,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 color = _settings.selectedColor;
             else if (isHovered)
                 size *= _settings.hoverSizeMultiplier;
-            
+
             DrawWithOcclusion(
                 () => DrawNodeSquare(handleWorld, size, color),
                 color,
@@ -106,7 +106,8 @@ namespace MobileGameProjectEditor.SplineNetwork
             Color occluded = new Color(color.r, color.g, color.b, color.a * 0.35f);
             if (_settings.segmentLevelOfDetail <= 2)
             {
-                DrawWithOcclusion(() => Handles.DrawLine(_spline.GetNodeWorldPosition(segment.startNodeIndex), _spline.GetNodeWorldPosition(segment.endNodeIndex)), 
+                DrawWithOcclusion(
+                    () => Handles.DrawLine(_spline.GetNodeWorldPosition(segment.startNodeIndex), _spline.GetNodeWorldPosition(segment.endNodeIndex)),
                     color,
                     occluded);
                 return;

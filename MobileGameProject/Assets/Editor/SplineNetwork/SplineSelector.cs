@@ -9,6 +9,16 @@ namespace MobileGameProjectEditor.SplineNetwork
     {
         public int segmentIndex;
         public bool isStart;
+        
+        public bool Equals(HandleSelection other) =>
+            segmentIndex == other.segmentIndex && isStart == other.isStart;
+
+        public override bool Equals(object obj) => obj is HandleSelection other && Equals(other);
+
+        public override int GetHashCode() => (segmentIndex, isStart).GetHashCode();
+
+        public static bool operator ==(HandleSelection a, HandleSelection b) => a.Equals(b);
+        public static bool operator !=(HandleSelection a, HandleSelection b) => !a.Equals(b);
     }
     
     public class SplineSelector
@@ -151,6 +161,13 @@ namespace MobileGameProjectEditor.SplineNetwork
             foreach (var segment in _spline.segments)
                 if (_selectedNodeIndices.Contains(segment.startNodeIndex) && _selectedNodeIndices.Contains(segment.endNodeIndex))
                     yield return segment;
+        }
+
+        public void SelectAll()
+        {
+            _selectedNodeIndices.Clear();
+            for (int i = 0; i < _spline.nodes.Count; i++)
+                _selectedNodeIndices.Add(i);
         }
     }
 }

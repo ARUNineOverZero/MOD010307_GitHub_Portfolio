@@ -18,6 +18,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineSelector _selector;
         private SplineManipulator _manipulator;
         private SplineActions _actions;
+        private SplineSelectionInfo _selectionInfo;
         private bool _createHeld;
 
         #endregion Fields
@@ -32,6 +33,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _drawer = new SplineDrawer(_spline, _settings, _selector);
             _manipulator = new SplineManipulator(_spline, _selector);
             _actions = new SplineActions(_spline, _selector);
+            _selectionInfo = new SplineSelectionInfo(_spline, _selector);
             Undo.undoRedoPerformed += OnUndoRedo;
         }
 
@@ -47,16 +49,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Event e = Event.current;
             
-            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.End)
-            {
-                _actions.DropSelectedNodesToSurface();
-                e.Use();
-            }
-            
-            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.N)
-                _createHeld = true;
-            else if (e.type == EventType.KeyUp && e.keyCode == KeyCode.N)
-                _createHeld = false;
+            CheckShortcuts(e);
 
             _selector.UpdateHover();
             _selector.UpdateHandleHover();
@@ -81,7 +74,13 @@ namespace MobileGameProjectEditor.SplineNetwork
                             break;
                     }
 
+                    int prevCount = _selector.SelectededCount;
+                    var prevHandle = _selector.SelectedHandle;
+                    
                     _selector.HandleSelectionInput(e);
+                    
+                    if (_selector.SelectededCount != prevCount || _selector.SelectedHandle != prevHandle)
+                        Repaint();
                 }
                 else
                     _actions.HandleCreateInput(e);
@@ -94,10 +93,27 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public override void OnInspectorGUI()
         {
+            DrawSettingsGUI();
             DrawDefaultInspector();
             EditorGUILayout.Space(8);
             DrawEditGUI();
             GUI.backgroundColor = Color.white;
+        }
+        
+        private void DrawSettingsGUI()
+        {
+            EditorGUILayout.LabelField("Visual Settings", EditorStyles.boldLabel);
+
+            _settings.nodeBaseSize = EditorGUILayout.Slider("Node Size", _settings.nodeBaseSize, 0.02f, 0.3f);
+            _settings.hoverSizeMultiplier = EditorGUILayout.Slider("Hover Multiplier", _settings.hoverSizeMultiplier, 1f, 2f);
+            _settings.segmentLevelOfDetail = EditorGUILayout.IntSlider("Segment LOD", _settings.segmentLevelOfDetail, 2, 50);
+
+            _settings.normalColor = EditorGUILayout.ColorField("Normal", _settings.normalColor);
+            _settings.hoverColor = EditorGUILayout.ColorField("Hover", _settings.hoverColor);
+            _settings.selectedColor = EditorGUILayout.ColorField("Selected", _settings.selectedColor);
+
+            if (GUI.changed)
+                SceneView.RepaintAll();
         }
 
         #endregion Unity Callbacks
@@ -114,6 +130,8 @@ namespace MobileGameProjectEditor.SplineNetwork
                 _selector.SelectedNodeIndices.Clear();
                 SceneView.RepaintAll();
             }
+            
+            _selectionInfo.DrawGUI();
 
             if (_isEditing)
             {
@@ -157,6 +175,49 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         #endregion Inspector
+        
+        #region Shortcuts
+
+        private void CheckShortcuts(Event e)
+        {
+            DropNodeShortCut(e);
+            CheckCreateMode(e);
+            SelectAll(e);
+        }
+
+        private void DropNodeShortCut(Event e)
+        {
+            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.End)
+            {
+                _actions.DropSelectedNodesToSurface();
+                e.Use();
+            }
+        }
+
+        private void CheckCreateMode(Event e)
+        {
+            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.N)
+            {
+                _createHeld = true;
+                e.Use();
+            }
+            else if (e.type == EventType.KeyUp && e.keyCode == KeyCode.N)
+            {
+                _createHeld = false;
+                e.Use();
+            }
+        }
+        
+        private void SelectAll(Event e)
+        {
+            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.A && e.control)
+            {
+                _selector.SelectAll();
+                e.Use();
+            }
+        }
+        
+        #endregion Shortcuts
 
         #region Events
 

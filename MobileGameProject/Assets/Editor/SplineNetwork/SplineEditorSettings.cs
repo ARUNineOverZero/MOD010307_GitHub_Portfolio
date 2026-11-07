@@ -2,6 +2,7 @@
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
+    [System.Serializable]
     public class SplineEditorSettings
     {
         public float nodeBaseSize = 0.06f;
