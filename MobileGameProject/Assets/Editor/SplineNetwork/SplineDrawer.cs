@@ -1,6 +1,7 @@
 ﻿using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
@@ -36,7 +37,10 @@ namespace MobileGameProjectEditor.SplineNetwork
                     size *= _settings.hoverSizeMultiplier;
                 }
 
-                DrawNodeSquare(worldPos, size, color);
+                DrawWithOcclusion(
+                    () => DrawNodeSquare(worldPos, size, color),
+                    color,
+                    new Color(color.r, color.g, color.b, color.a * 0.4f));
             }
         }
 
@@ -80,17 +84,17 @@ namespace MobileGameProjectEditor.SplineNetwork
             Handles.DrawLine(worldPos, handleWorld);
 
             float size = HandleUtility.GetHandleSize(handleWorld) * _settings.nodeBaseSize;
-            Color color = _settings.normalColor;
+            Color color = _settings.hoverColor;
 
             if (isSelected)
                 color = _settings.selectedColor;
             else if (isHovered)
-            {
-                color = _settings.hoverColor;
                 size *= _settings.hoverSizeMultiplier;
-            }
-
-            DrawNodeSquare(handleWorld, size, color);
+            
+            DrawWithOcclusion(
+                () => DrawNodeSquare(handleWorld, size, color),
+                color,
+                new Color(color.r, color.g, color.b, color.a * 0.4f));
         }
 
         private void DrawSegmentLine(SplineSegment segment, Color color)
@@ -99,12 +103,12 @@ namespace MobileGameProjectEditor.SplineNetwork
                 segment.endNodeIndex < 0 || segment.endNodeIndex >= _spline.nodes.Count)
                 return;
 
+            Color occluded = new Color(color.r, color.g, color.b, color.a * 0.35f);
             if (_settings.segmentLevelOfDetail <= 2)
             {
-                Handles.color = color;
-                Handles.DrawLine(
-                    _spline.GetNodeWorldPosition(segment.startNodeIndex),
-                    _spline.GetNodeWorldPosition(segment.endNodeIndex));
+                DrawWithOcclusion(() => Handles.DrawLine(_spline.GetNodeWorldPosition(segment.startNodeIndex), _spline.GetNodeWorldPosition(segment.endNodeIndex)), 
+                    color,
+                    occluded);
                 return;
             }
 
@@ -117,8 +121,10 @@ namespace MobileGameProjectEditor.SplineNetwork
             for (int i = 0; i <= _settings.segmentLevelOfDetail; i++)
                 points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float) _settings.segmentLevelOfDetail);
 
-            Handles.color = color;
-            Handles.DrawPolyLine(points);
+            DrawWithOcclusion(
+                () => Handles.DrawPolyLine(points),
+                color,
+                occluded);
         }
 
         private void DrawNodeSquare(Vector3 center, float size, Color color)
@@ -152,6 +158,23 @@ namespace MobileGameProjectEditor.SplineNetwork
                    + 3f * uu * t * p1
                    + 3f * u * tt * p2
                    + ttt * p3;
+        }
+
+        private void DrawWithOcclusion(System.Action draw, Color normalColor, Color occludedColor)
+        {
+            var prevZTest = Handles.zTest;
+            var prevColor = Handles.color;
+
+            Handles.zTest = CompareFunction.Greater;
+            Handles.color = occludedColor;
+            draw();
+
+            Handles.zTest = CompareFunction.LessEqual;
+            Handles.color = normalColor;
+            draw();
+
+            Handles.zTest = prevZTest;
+            Handles.color = prevColor;
         }
     }
 }
