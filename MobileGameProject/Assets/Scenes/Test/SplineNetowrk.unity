@@ -667,9 +667,9 @@ MonoBehaviour:
     rotation: {x: -4.4426096e-18, y: 0.8803588, z: 8.245884e-18, w: 0.47430828}
   - position: {x: 24.523201, y: 3.4978956e-16, z: -20.213402}
     rotation: {x: -2.907651e-18, y: 0.9398202, z: 7.997984e-18, w: 0.34166968}
-  - position: {x: 12.532637, y: 4.89622e-16, z: -26.510893}
+  - position: {x: 14.400454, y: 0.875, z: -27.647778}
     rotation: {x: -2.6700056e-18, y: -0.8558549, z: -4.4181503e-18, w: 0.5172159}
-  - position: {x: 4.2694235, y: 4.768312e-16, z: -25.934849}
+  - position: {x: 0.63011837, y: 4.714266e-16, z: -27.811304}
     rotation: {x: 5.646113e-19, y: -0.68207663, z: 5.266215e-19, w: 0.7312808}
   - position: {x: -23.39605, y: 1.7318732e-17, z: -5.2402463}
     rotation: {x: -2.3117602e-19, y: 0.9998468, z: 1.32045935e-17, w: 0.017504558}
@@ -683,7 +683,7 @@ MonoBehaviour:
     rotation: {x: 1.6941769e-19, y: 0.6995163, z: -1.6583781e-19, w: 0.71461666}
   - position: {x: 34.936455, y: 8.149156e-16, z: -41.160816}
     rotation: {x: -8.901957e-19, y: 0.74864656, z: 1.0052381e-18, w: 0.66296935}
-  - position: {x: 21.060104, y: 7.136947e-16, z: -36.60223}
+  - position: {x: 25.963718, y: 7.326126e-16, z: -30.697922}
     rotation: {x: -2.4361615e-18, y: 0.836939, z: 3.7254383e-18, w: 0.5472962}
   - position: {x: -1.618576, y: 6.088178e-16, z: -33.364403}
     rotation: {x: 5.131823e-18, y: -0.48543456, z: 2.8494126e-18, w: 0.874273}
@@ -770,8 +770,8 @@ MonoBehaviour:
     endHandleOffset: {x: 5.0623636, y: -4.6144714e-17, z: -6.9493866}
   - startNodeIndex: 15
     endNodeIndex: 16
-    startHandleOffset: {x: -2.7268605, y: -4.220977e-18, z: 3.8006134}
-    endHandleOffset: {x: 2.7268605, y: 4.220977e-18, z: -4.4004307}
+    startHandleOffset: {x: -3.2268605, y: 0, z: 3.8006134}
+    endHandleOffset: {x: 9.72686, y: 4.220977e-18, z: 3.9745693}
   - startNodeIndex: 16
     endNodeIndex: 0
     startHandleOffset: {x: -2.2994232, y: -8.1900304e-17, z: 3.8495693}
@@ -806,19 +806,19 @@ MonoBehaviour:
     endHandleOffset: {x: 4.579196, y: 3.3402887e-17, z: -1.5043335}
   - startNodeIndex: 15
     endNodeIndex: 23
-    startHandleOffset: {x: 2.8140645, y: 7.3944e-17, z: -3.3301413}
-    endHandleOffset: {x: -2.8140645, y: -7.3944e-17, z: 3.3301413}
+    startHandleOffset: {x: 3.0640645, y: 0, z: 5.544859}
+    endHandleOffset: {x: 0.560935, y: -7.394402e-17, z: 8.455141}
   - startNodeIndex: 21
     endNodeIndex: 23
     startHandleOffset: {x: 3.4274647, y: -1.1742148e-17, z: 0.5288203}
-    endHandleOffset: {x: -3.4274647, y: 1.1742148e-17, z: -0.5288203}
+    endHandleOffset: {x: -0.8024645, y: 1.1742153e-17, z: -8.653822}
   - startNodeIndex: 15
     endNodeIndex: 24
     startHandleOffset: {x: -5.800113, y: 1.9479968e-17, z: -0.87729895}
     endHandleOffset: {x: 12.925113, y: -1.9479958e-17, z: -1.8727016}
   - startNodeIndex: 21
     endNodeIndex: 24
-    startHandleOffset: {x: -5.186713, y: -6.620618e-17, z: 2.9816628}
+    startHandleOffset: {x: -1.0617132, y: -6.620616e-17, z: 3.3566628}
     endHandleOffset: {x: 6.561713, y: 6.620616e-17, z: -5.7316628}
   - startNodeIndex: 20
     endNodeIndex: 24
