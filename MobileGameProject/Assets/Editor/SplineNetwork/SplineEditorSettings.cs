@@ -12,7 +12,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         public Color hoverColor = Color.yellow;
         public Color selectedColor = Color.green;
 
-        public const float hoverTestRadiusFactor = 0.6f;
-        public const float hoverPixelThreshold = 8f;
+        public float hoverTestRadiusFactor = 0.6f;
+        public float hoverPixelThreshold = 8f;
     }
 }

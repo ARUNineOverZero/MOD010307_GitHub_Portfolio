@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom;
+using System.Collections.Generic;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -14,12 +15,8 @@ namespace MobileGameProjectEditor.SplineNetwork
     
     public class SplineDrawer
     {
-        public float nodeBaseSize = 0.06f;
-        public float hoverSizeMultiplier = 1.35f;
-        public int segmentLevelOfDetail = 10;
-        public Color normalColor = Color.white;
-        public Color hoverColor = Color.yellow;
-        public Color selectedColor = Color.green;
+        private SplineEditorSettings _settings;
+        public SplineDrawer(SplineEditorSettings settings) => _settings = settings;
 
         public void DrawNodes(Spline spline, HashSet<int> selectedNodeIndices, int hoverIndex)
         {
@@ -29,15 +26,15 @@ namespace MobileGameProjectEditor.SplineNetwork
                 bool isSelected = selectedNodeIndices != null && selectedNodeIndices.Contains(i);
                 bool isHovered = hoverIndex == i;
 
-                Color color = normalColor;
-                float size = HandleUtility.GetHandleSize(worldPos) * nodeBaseSize;
+                Color color = _settings.normalColor;
+                float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
 
                 if (isSelected)
-                    color = selectedColor;
+                    color = _settings.selectedColor;
                 else if (isHovered)
                 {
-                    color = hoverColor;
-                    size *= hoverSizeMultiplier;
+                    color = _settings.hoverColor;
+                    size *= _settings.hoverSizeMultiplier;
                 }
 
                 DrawNodeSquare(worldPos, size, color);
@@ -68,7 +65,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         public void DrawSegments(Spline spline)
         {
             foreach (var seg in spline.segments)
-                DrawSegmentLine(spline, seg, normalColor);
+                DrawSegmentLine(spline, seg, _settings.normalColor);
         }
 
         public void RequestRepaint(Event e)
@@ -95,18 +92,18 @@ namespace MobileGameProjectEditor.SplineNetwork
                               selectedHandle.Value.segmentIndex == segmentIndex &&
                               selectedHandle.Value.isStart == isStart;
 
-            Handles.color = hoverColor;
+            Handles.color = _settings.hoverColor;
             Handles.DrawLine(worldPos, handleWorld);
 
-            float size = HandleUtility.GetHandleSize(worldPos) * nodeBaseSize;
-            Color color = normalColor;
+            float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
+            Color color = _settings.normalColor;
 
             if (isSelected)
-                color = selectedColor;
+                color = _settings.selectedColor;
             else if (isHovered)
             {
-                color = hoverColor;
-                size *= hoverSizeMultiplier;
+                color = _settings.hoverColor;
+                size *= _settings.hoverSizeMultiplier;
             }
 
             DrawNodeSquare(handleWorld, size, color);
@@ -118,7 +115,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 segment.endNodeIndex < 0 || segment.endNodeIndex >= spline.nodes.Count)
                 return;
 
-            if (segmentLevelOfDetail <= 2)
+            if (_settings.segmentLevelOfDetail <= 2)
             {
                 Handles.color = color;
                 Handles.DrawLine(
@@ -132,9 +129,9 @@ namespace MobileGameProjectEditor.SplineNetwork
             Vector3 p1 = p0 + spline.transform.TransformVector(segment.startHandleOffset);
             Vector3 p2 = p3 + spline.transform.TransformVector(segment.endHandleOffset);
 
-            Vector3[] points = new Vector3[segmentLevelOfDetail + 1];
-            for (int i = 0; i <= segmentLevelOfDetail; i++)
-                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float)segmentLevelOfDetail);
+            Vector3[] points = new Vector3[_settings.segmentLevelOfDetail + 1];
+            for (int i = 0; i <= _settings.segmentLevelOfDetail; i++)
+                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float)_settings.segmentLevelOfDetail);
 
             Handles.color = color;
             Handles.DrawPolyLine(points);
@@ -172,15 +169,5 @@ namespace MobileGameProjectEditor.SplineNetwork
                  + 3f * u * tt * p2
                  + ttt * p3;
         }
-    }
-    
-    public class SplineSelector
-    {
-        
-    }
-
-    public class SplineManipulator
-    {
-        
     }
 }
