@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
+using UnityEditor.ShortcutManagement;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
@@ -21,6 +22,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineActions _actions;
         private SplineSelectionInfo _selectionInfo;
         private bool _createHeld;
+        
+   
 
         #endregion Fields
 
@@ -28,6 +31,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void OnEnable()
         {
+            _current = this;
             _spline = (Spline) target;
             _settings = new SplineEditorSettings();
             _selector = new SplineSelector(_spline, _settings);
@@ -40,6 +44,9 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void OnDisable()
         {
+            if (_current == this)
+                _current = null;
+            
             Tools.hidden = false;
             Undo.undoRedoPerformed -= OnUndoRedo;
         }
@@ -50,7 +57,6 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Event e = Event.current;
 
-            CheckShortcuts(e);
             _selector.UpdateHoverSelection();
             _drawer.DrawSceneGUI();
 
@@ -214,49 +220,6 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         #endregion Inspector
 
-        #region Shortcuts
-
-        private void CheckShortcuts(Event e)
-        {
-            DropNodeShortCut(e);
-            CheckCreateMode(e);
-            SelectAll(e);
-        }
-
-        private void DropNodeShortCut(Event e)
-        {
-            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.End)
-            {
-                _actions.DropSelectedNodesToSurface();
-                e.Use();
-            }
-        }
-
-        private void CheckCreateMode(Event e)
-        {
-            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.N)
-            {
-                _createHeld = true;
-                e.Use();
-            }
-            else if (e.type == EventType.KeyUp && e.keyCode == KeyCode.N)
-            {
-                _createHeld = false;
-                e.Use();
-            }
-        }
-
-        private void SelectAll(Event e)
-        {
-            if (e.type == EventType.KeyDown && e.keyCode == KeyCode.A && e.control)
-            {
-                _selector.SelectAll();
-                e.Use();
-            }
-        }
-
-        #endregion Shortcuts
-
         #region Events
 
         private void OnUndoRedo()
@@ -266,5 +229,35 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         #endregion Events
+        
+        #region Static
+        
+        private static SplineEditor _current;
+        public static bool IsEditing => _current != null && _current._isEditing;
+        
+        [Shortcut("Spline Network/Drop Nodes to Surface", typeof(SplineShortcutContext), KeyCode.End)]
+        private static void DropNodesShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._actions.DropSelectedNodesToSurface();
+            _current.Repaint();
+        }
+
+        [Shortcut("Spline Network/Select All Nodes", typeof(SplineShortcutContext), KeyCode.A, ShortcutModifiers.Action)]
+        private static void SelectAllShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._selector.SelectAll();
+            _current.Repaint();
+        }
+
+        [ClutchShortcut("Spline Network/Create Node", typeof(SplineShortcutContext), KeyCode.N)]
+        private static void CreateNodeClutch(ShortcutArguments args)
+        {
+            if (_current == null) return;
+            _current._createHeld = args.stage == ShortcutStage.Begin;
+        }
+        
+        #endregion Static
     }
 }
