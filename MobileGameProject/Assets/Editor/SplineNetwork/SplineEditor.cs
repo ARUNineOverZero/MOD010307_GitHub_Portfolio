@@ -195,7 +195,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 GUI.backgroundColor = Color.white;
 
                 if (GUILayout.Button("Reset Node Handles", GUILayout.Height(30)))
-                    _actions.ResetNodeHandles();
+                    _actions.ResetHandles();
 
                 EditorGUILayout.LabelField("Segment Edit", EditorStyles.boldLabel);
                 EditorGUILayout.Space(4);
@@ -250,12 +250,62 @@ namespace MobileGameProjectEditor.SplineNetwork
             _current._selector.SelectAll();
             _current.Repaint();
         }
+        
+        [Shortcut("Spline Network/Select Segments From Selected Nodes", typeof(SplineShortcutContext), KeyCode.A, ShortcutModifiers.Alt)]
+        private static void SelectSegmentsFromSelectedNodesShortcut()
+        {
+            Debug.Log("Try to run SelectSegmentsFromSelectedNodes");
+            
+            if (_current == null || !_current._isEditing) return;
+            _current._selector.SelectSegmentsFromSelectedNodes();
+            _current.Repaint();
+        }
 
-        [ClutchShortcut("Spline Network/Create Node", typeof(SplineShortcutContext), KeyCode.N)]
+        [ClutchShortcut("Spline Network/Create Node", typeof(SplineShortcutContext), KeyCode.C)]
         private static void CreateNodeClutch(ShortcutArguments args)
         {
             if (_current == null) return;
             _current._createHeld = args.stage == ShortcutStage.Begin;
+        }
+        
+        [ClutchShortcut("Spline Network/Create Segment", typeof(SplineShortcutContext), KeyCode.F)]
+        private static void CreateSegmentClutch(ShortcutArguments args)
+        {
+            if (_current == null) return;
+            _current._actions.CreateSegmentBetweenSelected();
+            _current.Repaint();
+        }
+        
+        [Shortcut("Spline Network/Delete Nodes", typeof(SplineShortcutContext), KeyCode.X)]
+        private static void DeleteNodesShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._actions.DeleteSelectedNodes();
+            _current.Repaint();
+        }
+
+        [Shortcut("Spline Network/Delete Segment", typeof(SplineShortcutContext), KeyCode.X, ShortcutModifiers.Alt)]
+        private static void DeleteSegmentShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._actions.DeleteSegmentBetweenSelected();
+            _current.Repaint();
+        }
+        
+        [Shortcut("Spline Network/Reset Nodes Handles", typeof(SplineShortcutContext), KeyCode.Z)]
+        private static void ResetNodeHandlesShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._actions.ResetHandles();
+            _current.Repaint();
+        }
+
+        [Shortcut("Spline Network/Reset Segment Handles", typeof(SplineShortcutContext), KeyCode.Z, ShortcutModifiers.Alt)]
+        private static void ResetNodeSegmentShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._actions.ResetHandlesOnSelectedSegments();
+            _current.Repaint();
         }
         
         #endregion Static

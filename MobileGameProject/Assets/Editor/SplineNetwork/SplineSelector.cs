@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -174,6 +175,21 @@ namespace MobileGameProjectEditor.SplineNetwork
             _selectedNodeIndices.Clear();
             for (int i = 0; i < _spline.nodes.Count; i++)
                 _selectedNodeIndices.Add(i);
+        }
+
+        public void SelectSegmentsFromSelectedNodes()
+        {
+            var oldSelectedNodeIndices = new HashSet<int>(_selectedNodeIndices);
+            foreach (var segment in _spline.segments)
+            {
+                if (oldSelectedNodeIndices.Contains(segment.startNodeIndex) || oldSelectedNodeIndices.Contains(segment.endNodeIndex))
+                {
+                    if(!_selectedNodeIndices.Contains(segment.startNodeIndex))
+                        _selectedNodeIndices.Add(segment.startNodeIndex);
+                    else if(!_selectedNodeIndices.Contains(segment.endNodeIndex))
+                        _selectedNodeIndices.Add(segment.endNodeIndex);
+                }
+            }
         }
     }
 }

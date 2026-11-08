@@ -173,34 +173,53 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (changed)
                 EditorUtility.SetDirty(_spline);
         }
-
-        public void ResetNodeHandles()
+        
+        public void ResetHandles()
         {
-            if (_selector.SelectededCount == 0) return;
+            if (_selector.SelectededCount == 0 && !_selector.SelectedHandle.HasValue) return;
 
-            Undo.RecordObject(_spline, "Reset Node Handles");
+            Undo.RecordObject(_spline, "Reset Handles");
 
             bool changed = false;
 
-            foreach (var segment in _spline.segments)
+            if (_selector.SelectedHandle.HasValue)
             {
-                bool startSelected = _selector.IsNodeSelected(segment.startNodeIndex);
-                bool endSelected = _selector.IsNodeSelected(segment.endNodeIndex);
-
-                if (!startSelected && !endSelected)
-                    continue;
+                var hs = _selector.SelectedHandle.Value;
+                var segment = _spline.segments[hs.segmentIndex];
 
                 Vector3 startPos = _spline.nodes[segment.startNodeIndex].position;
                 Vector3 endPos = _spline.nodes[segment.endNodeIndex].position;
                 Vector3 delta = endPos - startPos;
 
-                if (startSelected)
+                if (hs.isStart)
                     segment.startHandleOffset = delta * Spline.DefaultHandleOffsetFactor;
-
-                if (endSelected)
+                else
                     segment.endHandleOffset = -delta * Spline.DefaultHandleOffsetFactor;
 
                 changed = true;
+            }
+            else
+            {
+                foreach (var segment in _spline.segments)
+                {
+                    bool startSelected = _selector.IsNodeSelected(segment.startNodeIndex);
+                    bool endSelected = _selector.IsNodeSelected(segment.endNodeIndex);
+
+                    if (!startSelected && !endSelected)
+                        continue;
+
+                    Vector3 startPos = _spline.nodes[segment.startNodeIndex].position;
+                    Vector3 endPos = _spline.nodes[segment.endNodeIndex].position;
+                    Vector3 delta = endPos - startPos;
+
+                    if (startSelected)
+                        segment.startHandleOffset = delta * Spline.DefaultHandleOffsetFactor;
+
+                    if (endSelected)
+                        segment.endHandleOffset = -delta * Spline.DefaultHandleOffsetFactor;
+
+                    changed = true;
+                }
             }
 
             if (changed)

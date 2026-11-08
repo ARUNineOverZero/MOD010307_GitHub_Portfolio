@@ -470,52 +470,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431202741}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &828305713
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 828305715}
-  - component: {fileID: 828305714}
-  m_Layer: 0
-  m_Name: SplineNetwork (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &828305714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828305713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ce8e576977b65409276f78a7ad1ca0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
-  nodes: []
-  segments: []
---- !u!4 &828305715
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828305713}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +665,22 @@ MonoBehaviour:
     rotation: {x: 0.37822402, y: -0.07630973, z: 0.031302776, w: 0.9220323}
   - position: {x: -1.5, y: 0, z: 8.5}
     rotation: {x: 0.38268346, y: 0, z: 0, w: 0.92387956}
+  - position: {x: -1.5, y: 0, z: 5.5}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: -1.5, y: 0, z: 2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
+  - position: {x: -2.5, y: 0, z: 2.5}
+    rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  - position: {x: -2.5, y: 0, z: -2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
+  - position: {x: 1.5, y: 0, z: 5.5}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  - position: {x: 1.5, y: 0, z: 2.5}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  - position: {x: 2.5, y: 0, z: 2.5}
+    rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  - position: {x: 2.5, y: 0, z: -2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
   segments:
   - startNodeIndex: 0
     endNodeIndex: 1
@@ -808,6 +778,82 @@ MonoBehaviour:
     endNodeIndex: 10
     startHandleOffset: {x: 0.495, y: 0, z: 0}
     endHandleOffset: {x: -0.495, y: 0, z: 0}
+  - startNodeIndex: 14
+    endNodeIndex: 15
+    startHandleOffset: {x: 0, y: 0, z: -0.99}
+    endHandleOffset: {x: 0, y: 0, z: 0.99}
+  - startNodeIndex: 15
+    endNodeIndex: 16
+    startHandleOffset: {x: -0.33, y: 0, z: 0}
+    endHandleOffset: {x: 0.33, y: 0, z: 0}
+  - startNodeIndex: 16
+    endNodeIndex: 17
+    startHandleOffset: {x: 0, y: 0, z: -1.6500001}
+    endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+  - startNodeIndex: 14
+    endNodeIndex: 0
+    startHandleOffset: {x: 0, y: 0.99, z: -0.00000015735627}
+    endHandleOffset: {x: 0, y: -0.99, z: 0.00000015735627}
+  - startNodeIndex: 15
+    endNodeIndex: 1
+    startHandleOffset: {x: 0, y: 0.99, z: 0}
+    endHandleOffset: {x: 0, y: -0.99, z: 0}
+  - startNodeIndex: 14
+    endNodeIndex: 13
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: 0, y: 0, z: -0.99}
+  - startNodeIndex: 3
+    endNodeIndex: 18
+    startHandleOffset: {x: 0, y: -0.99, z: 0}
+    endHandleOffset: {x: 0, y: 0.99, z: 0}
+  - startNodeIndex: 18
+    endNodeIndex: 12
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: 0, y: 0, z: -0.99}
+  - startNodeIndex: 2
+    endNodeIndex: 19
+    startHandleOffset: {x: 0, y: -0.99, z: 0}
+    endHandleOffset: {x: 0, y: 0.99, z: 0}
+  - startNodeIndex: 19
+    endNodeIndex: 18
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: 0, y: 0, z: -0.99}
+  - startNodeIndex: 1
+    endNodeIndex: 6
+    startHandleOffset: {x: -0.33, y: 0.66, z: 0}
+    endHandleOffset: {x: 0.33, y: -0.66, z: 0}
+  - startNodeIndex: 2
+    endNodeIndex: 5
+    startHandleOffset: {x: 0.33, y: 0.66, z: 0}
+    endHandleOffset: {x: -0.33, y: -0.66, z: 0}
+  - startNodeIndex: 6
+    endNodeIndex: 16
+    startHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: 1.6500001, z: 0}
+  - startNodeIndex: 19
+    endNodeIndex: 20
+    startHandleOffset: {x: 0.33, y: 0, z: 0}
+    endHandleOffset: {x: -0.33, y: 0, z: 0}
+  - startNodeIndex: 20
+    endNodeIndex: 5
+    startHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+  - startNodeIndex: 20
+    endNodeIndex: 21
+    startHandleOffset: {x: 0, y: 0, z: -1.6500001}
+    endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+  - startNodeIndex: 21
+    endNodeIndex: 7
+    startHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+  - startNodeIndex: 17
+    endNodeIndex: 21
+    startHandleOffset: {x: 1.6500001, y: 0, z: 0}
+    endHandleOffset: {x: -1.6500001, y: 0, z: 0}
+  - startNodeIndex: 17
+    endNodeIndex: 8
+    startHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: -1.6500001, z: 0}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
@@ -970,6 +1016,268 @@ Transform:
   - {fileID: 431202742}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2073245532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2073245534}
+  - component: {fileID: 2073245533}
+  m_Layer: 0
+  m_Name: SplineNetwork (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2073245533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073245532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ce8e576977b65409276f78a7ad1ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
+  nodes:
+  - position: {x: -1.5, y: 3, z: 5.4999995}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: -1.5, y: 3, z: 2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
+  - position: {x: 1.5, y: 3, z: 2.5}
+    rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  - position: {x: 1.5, y: 3, z: 5.5}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 0, y: 5.25, z: 4}
+    rotation: {x: 0, y: -0.38268346, z: -0, w: 0.92387956}
+  - position: {x: 2.5, y: 5, z: 2.5}
+    rotation: {x: -0.14589997, y: 0.83117104, z: 0.2576871, w: 0.47060102}
+  - position: {x: -2.5, y: 5, z: 2.5}
+    rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 2.5, y: 5, z: -2.5}
+    rotation: {x: -0.04408409, y: 0.9551652, z: -0.18674321, w: -0.2254839}
+  - position: {x: -2.5, y: 5, z: -2.5}
+    rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 0, y: 9, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 0, y: 0, z: 8.5}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  - position: {x: 0, y: 3, z: 5.5}
+    rotation: {x: 0.47185794, y: 0, z: 0, w: 0.8816746}
+  - position: {x: 1.5, y: 0, z: 8.5}
+    rotation: {x: 0.37822402, y: -0.07630973, z: 0.031302776, w: 0.9220323}
+  - position: {x: -1.5, y: 0, z: 8.5}
+    rotation: {x: 0.38268346, y: 0, z: 0, w: 0.92387956}
+  - position: {x: -1.5, y: 0, z: 5.5}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: -1.5, y: 0, z: 2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
+  - position: {x: -2.5, y: 0, z: 2.5}
+    rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  - position: {x: -2.5, y: 0, z: -2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
+  - position: {x: 1.5, y: 0, z: 5.5}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  - position: {x: 1.5, y: 0, z: 2.5}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  - position: {x: 2.5, y: 0, z: 2.5}
+    rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  - position: {x: 2.5, y: 0, z: -2.5}
+    rotation: {x: 0, y: 1, z: 0, w: 0}
+  segments:
+  - startNodeIndex: 0
+    endNodeIndex: 1
+    startHandleOffset: {x: 0, y: 0, z: -0.99}
+    endHandleOffset: {x: -0, y: -0, z: 0.99}
+  - startNodeIndex: 1
+    endNodeIndex: 2
+    startHandleOffset: {x: 0.99, y: 0, z: 0}
+    endHandleOffset: {x: -0.99, y: -0, z: -0}
+  - startNodeIndex: 2
+    endNodeIndex: 3
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: -0, y: -0, z: -0.99}
+  - startNodeIndex: 3
+    endNodeIndex: 0
+    startHandleOffset: {x: -0.99, y: 0, z: 0}
+    endHandleOffset: {x: 0.99, y: -0, z: -0}
+  - startNodeIndex: 3
+    endNodeIndex: 4
+    startHandleOffset: {x: -1, y: 0, z: -1}
+    endHandleOffset: {x: 0, y: -1.75, z: 0}
+  - startNodeIndex: 0
+    endNodeIndex: 4
+    startHandleOffset: {x: 1, y: 0, z: -1}
+    endHandleOffset: {x: 0, y: -1.75, z: 0}
+  - startNodeIndex: 2
+    endNodeIndex: 4
+    startHandleOffset: {x: -1.5, y: 0, z: 1.5}
+    endHandleOffset: {x: 0, y: -1.75, z: 0}
+  - startNodeIndex: 1
+    endNodeIndex: 4
+    startHandleOffset: {x: 1.5, y: 0, z: 1.5}
+    endHandleOffset: {x: 0, y: -1.75, z: 0}
+  - startNodeIndex: 4
+    endNodeIndex: 5
+    startHandleOffset: {x: 0.82500005, y: -0.0825, z: -0.495}
+    endHandleOffset: {x: -0.82500005, y: 0.0825, z: 0.495}
+  - startNodeIndex: 5
+    endNodeIndex: 6
+    startHandleOffset: {x: -1.6500001, y: 0, z: 0}
+    endHandleOffset: {x: 1.6500001, y: -0, z: -0}
+  - startNodeIndex: 6
+    endNodeIndex: 4
+    startHandleOffset: {x: 0.82500005, y: 0.0825, z: 0.495}
+    endHandleOffset: {x: -0.82500005, y: -0.0825, z: -0.495}
+  - startNodeIndex: 5
+    endNodeIndex: 7
+    startHandleOffset: {x: 0, y: 0, z: -1.6500001}
+    endHandleOffset: {x: -0, y: -0, z: 1.6500001}
+  - startNodeIndex: 7
+    endNodeIndex: 8
+    startHandleOffset: {x: -1.6500001, y: 0, z: 0}
+    endHandleOffset: {x: 1.6500001, y: -0, z: -0}
+  - startNodeIndex: 8
+    endNodeIndex: 6
+    startHandleOffset: {x: 0, y: 0, z: 1.6500001}
+    endHandleOffset: {x: -0, y: -0, z: -1.6500001}
+  - startNodeIndex: 8
+    endNodeIndex: 9
+    startHandleOffset: {x: 0.82500005, y: 1.32, z: 0.82500005}
+    endHandleOffset: {x: -0.82500005, y: -1.32, z: -0.82500005}
+  - startNodeIndex: 6
+    endNodeIndex: 9
+    startHandleOffset: {x: 0.82500005, y: 1.32, z: -0.82500005}
+    endHandleOffset: {x: -0.82500005, y: -1.32, z: 0.82500005}
+  - startNodeIndex: 5
+    endNodeIndex: 9
+    startHandleOffset: {x: -0.82500005, y: 1.32, z: -0.82500005}
+    endHandleOffset: {x: 0.82500005, y: -1.32, z: 0.82500005}
+  - startNodeIndex: 7
+    endNodeIndex: 9
+    startHandleOffset: {x: -0.82500005, y: 1.32, z: 0.82500005}
+    endHandleOffset: {x: 0.82500005, y: -1.32, z: -0.82500005}
+  - startNodeIndex: 4
+    endNodeIndex: 11
+    startHandleOffset: {x: 0, y: -1.75, z: 0}
+    endHandleOffset: {x: 0, y: 0, z: -1}
+  - startNodeIndex: 11
+    endNodeIndex: 10
+    startHandleOffset: {x: 0, y: -2, z: 0}
+    endHandleOffset: {x: 0, y: 0, z: -2}
+  - startNodeIndex: 3
+    endNodeIndex: 12
+    startHandleOffset: {x: 0, y: -2, z: 0}
+    endHandleOffset: {x: 0, y: 0, z: -2}
+  - startNodeIndex: 0
+    endNodeIndex: 13
+    startHandleOffset: {x: 0, y: -2, z: 0}
+    endHandleOffset: {x: 0, y: 0, z: -2}
+  - startNodeIndex: 12
+    endNodeIndex: 10
+    startHandleOffset: {x: -0.495, y: 0, z: 0}
+    endHandleOffset: {x: 0.495, y: -0, z: -0}
+  - startNodeIndex: 13
+    endNodeIndex: 10
+    startHandleOffset: {x: 0.495, y: 0, z: 0}
+    endHandleOffset: {x: -0.495, y: 0, z: 0}
+  - startNodeIndex: 14
+    endNodeIndex: 15
+    startHandleOffset: {x: 0, y: 0, z: -0.99}
+    endHandleOffset: {x: 0, y: 0, z: 0.99}
+  - startNodeIndex: 15
+    endNodeIndex: 16
+    startHandleOffset: {x: -0.33, y: 0, z: 0}
+    endHandleOffset: {x: 0.33, y: 0, z: 0}
+  - startNodeIndex: 16
+    endNodeIndex: 17
+    startHandleOffset: {x: 0, y: 0, z: -1.6500001}
+    endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+  - startNodeIndex: 14
+    endNodeIndex: 0
+    startHandleOffset: {x: 0, y: 0.99, z: -0.00000015735627}
+    endHandleOffset: {x: 0, y: -0.99, z: 0.00000015735627}
+  - startNodeIndex: 15
+    endNodeIndex: 1
+    startHandleOffset: {x: 0, y: 0.99, z: 0}
+    endHandleOffset: {x: 0, y: -0.99, z: 0}
+  - startNodeIndex: 14
+    endNodeIndex: 13
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: 0, y: 0, z: -0.99}
+  - startNodeIndex: 3
+    endNodeIndex: 18
+    startHandleOffset: {x: 0, y: -0.99, z: 0}
+    endHandleOffset: {x: 0, y: 0.99, z: 0}
+  - startNodeIndex: 18
+    endNodeIndex: 12
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: 0, y: 0, z: -0.99}
+  - startNodeIndex: 2
+    endNodeIndex: 19
+    startHandleOffset: {x: 0, y: -0.99, z: 0}
+    endHandleOffset: {x: 0, y: 0.99, z: 0}
+  - startNodeIndex: 19
+    endNodeIndex: 18
+    startHandleOffset: {x: 0, y: 0, z: 0.99}
+    endHandleOffset: {x: 0, y: 0, z: -0.99}
+  - startNodeIndex: 1
+    endNodeIndex: 6
+    startHandleOffset: {x: -0.33, y: 0.66, z: 0}
+    endHandleOffset: {x: 0.33, y: -0.66, z: 0}
+  - startNodeIndex: 2
+    endNodeIndex: 5
+    startHandleOffset: {x: 0.33, y: 0.66, z: 0}
+    endHandleOffset: {x: -0.33, y: -0.66, z: 0}
+  - startNodeIndex: 6
+    endNodeIndex: 16
+    startHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: 1.6500001, z: 0}
+  - startNodeIndex: 19
+    endNodeIndex: 20
+    startHandleOffset: {x: 0.33, y: 0, z: 0}
+    endHandleOffset: {x: -0.33, y: 0, z: 0}
+  - startNodeIndex: 20
+    endNodeIndex: 5
+    startHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+  - startNodeIndex: 20
+    endNodeIndex: 21
+    startHandleOffset: {x: 0, y: 0, z: -1.6500001}
+    endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+  - startNodeIndex: 21
+    endNodeIndex: 7
+    startHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+  - startNodeIndex: 17
+    endNodeIndex: 21
+    startHandleOffset: {x: 1.6500001, y: 0, z: 0}
+    endHandleOffset: {x: -1.6500001, y: 0, z: 0}
+  - startNodeIndex: 17
+    endNodeIndex: 8
+    startHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+--- !u!4 &2073245534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073245532}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -978,4 +1286,4 @@ SceneRoots:
   - {fileID: 2054169927}
   - {fileID: 961739753}
   - {fileID: 1368272003}
-  - {fileID: 828305715}
+  - {fileID: 2073245534}
