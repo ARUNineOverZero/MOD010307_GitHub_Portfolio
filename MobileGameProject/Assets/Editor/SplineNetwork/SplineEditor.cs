@@ -171,14 +171,14 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 _isEditing = !_isEditing;
                 Tools.hidden = _isEditing;
-                _selector.SelectedNodeIndices.Clear();
+                _selector.ClearSelection();
                 SceneView.RepaintAll();
             }
-
-            _selectionInfo.DrawGUI();
-
+            
             if (_isEditing)
             {
+                _selectionInfo.DrawGUI();
+                
                 GUI.backgroundColor = Color.white;
 
                 EditorGUILayout.LabelField("Spline Edit", EditorStyles.boldLabel);
