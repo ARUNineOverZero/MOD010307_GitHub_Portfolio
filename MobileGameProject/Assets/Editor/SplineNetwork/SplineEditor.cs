@@ -242,7 +242,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _current._actions.DropSelectedNodesToSurface();
             _current.Repaint();
         }
-
+        
         [Shortcut("Spline Network/Select All Nodes", typeof(SplineShortcutContext), KeyCode.A, ShortcutModifiers.Action)]
         private static void SelectAllShortcut()
         {
