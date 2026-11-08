@@ -123,10 +123,10 @@ namespace MobileGameProjectEditor.SplineNetwork
             worldPos = hit.point;
             if (EditorSnapSettings.gridSnapActive && EditorSnapSettings.gridSnapEnabled)
                 worldPos = Snapping.Snap(worldPos, EditorSnapSettings.move);
-            
+
             return true;
         }
-        
+
         public void ResetHandlesOnSelectedSegments()
         {
             if (_selector.SelectededCount < 2) return;
@@ -173,7 +173,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (changed)
                 EditorUtility.SetDirty(_spline);
         }
-        
+
         public void ResetHandles()
         {
             if (_selector.SelectededCount == 0 && !_selector.SelectedHandle.HasValue) return;
@@ -224,6 +224,99 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             if (changed)
                 EditorUtility.SetDirty(_spline);
+        }
+
+        public void SmoothHandles()
+        {
+            if (_selector.SelectededCount == 0) return;
+            
+            Undo.RecordObject(_spline, "Smooth Handles");
+
+            bool changed = false;
+
+            var nodesToSmooth = new HashSet<int>(_selector.SelectedNodeIndices);
+
+            foreach (int nodeIndex in nodesToSmooth)
+            {
+                var segmentCount = _spline.segments.Where(x => x.startNodeIndex == nodeIndex ||  x.endNodeIndex == nodeIndex).Count();
+
+                if (segmentCount != 2) continue;
+                
+                if (TryGetSmoothDirection(nodeIndex, out Vector3 smoothDir))
+                {
+                    ApplySmoothDirection(nodeIndex, smoothDir);
+                    changed = true;
+                }
+            }
+
+            if (changed)
+                EditorUtility.SetDirty(_spline);
+        }
+
+        private bool TryGetSmoothDirection(int nodeIndex, out Vector3 direction)
+        {
+            direction = Vector3.zero;
+            Vector3 nodePos = _spline.nodes[nodeIndex].position;
+
+            var neighbors = new List<Vector3>();
+
+            foreach (var segment in _spline.segments)
+            {
+                if (segment.startNodeIndex == nodeIndex)
+                    neighbors.Add(_spline.nodes[segment.endNodeIndex].position);
+                else if (segment.endNodeIndex == nodeIndex)
+                    neighbors.Add(_spline.nodes[segment.startNodeIndex].position);
+            }
+
+            if (neighbors.Count == 0) return false;
+            
+            if (neighbors.Count == 2)
+            {
+                direction = neighbors[1] - neighbors[0];
+                if (direction.sqrMagnitude < 0.0001f) return false;
+                direction.Normalize();
+                return true;
+            }
+            
+            foreach (var n in neighbors)
+            {
+                Vector3 d = n - nodePos;
+                if (d.sqrMagnitude > 0.0001f)
+                    direction += d.normalized;
+            }
+
+            if (direction.sqrMagnitude < 0.0001f) return false;
+            direction.Normalize();
+            return true;
+        }
+
+        private void ApplySmoothDirection(int nodeIndex, Vector3 smoothDir)
+        {
+            Vector3 nodePos = _spline.nodes[nodeIndex].position;
+
+            foreach (var segment in _spline.segments)
+            {
+                bool isStart = segment.startNodeIndex == nodeIndex;
+                bool isEnd = segment.endNodeIndex == nodeIndex;
+                if (!isStart && !isEnd) continue;
+
+                int otherIndex = isStart ? segment.endNodeIndex : segment.startNodeIndex;
+                Vector3 toOther = _spline.nodes[otherIndex].position - nodePos;
+                
+                Vector3 handleDir = Vector3.Dot(toOther, smoothDir) >= 0f ? smoothDir : -smoothDir;
+
+                float length = isStart
+                    ? segment.startHandleOffset.magnitude
+                    : segment.endHandleOffset.magnitude;
+
+                if (length < 0.0001f)
+                    length = toOther.magnitude * Spline.DefaultHandleOffsetFactor;
+
+                if (isStart)
+                    segment.startHandleOffset = handleDir * length;
+                else
+                    segment.endHandleOffset = handleDir * length;
+            }
         }
     }
 }

@@ -196,6 +196,9 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                 if (GUILayout.Button("Reset Node Handles", GUILayout.Height(30)))
                     _actions.ResetHandles();
+                
+                if (GUILayout.Button("Smooth Segmment Handles", GUILayout.Height(30)))
+                    _actions.SmoothHandles();
 
                 EditorGUILayout.LabelField("Segment Edit", EditorStyles.boldLabel);
                 EditorGUILayout.Space(4);
