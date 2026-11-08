@@ -18,6 +18,13 @@ namespace MobileGameProjectEditor.SplineNetwork
             _selector = selector;
         }
 
+        public void DrawSceneGUI()
+        {
+            DrawNodes();
+            DrawHandles();
+            DrawSegments();
+        }
+
         public void DrawNodes()
         {
             for (int i = 0; i < _spline.nodes.Count; i++)

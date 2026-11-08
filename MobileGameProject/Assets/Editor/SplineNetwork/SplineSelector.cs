@@ -47,6 +47,12 @@ namespace MobileGameProjectEditor.SplineNetwork
             _settings = settings;
         }
 
+        public void UpdateHoverSelection()
+        {
+            UpdateHover();
+            UpdateHandleHover();
+        }
+
         public void UpdateHover()
         {
             _hoverNodeIndex = -1;

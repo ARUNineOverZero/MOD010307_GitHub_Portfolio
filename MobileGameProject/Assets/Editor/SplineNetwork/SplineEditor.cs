@@ -12,7 +12,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private Spline _spline;
         private int _hoverNodeIndex = -1;
-        private bool _isEditing = false;
+        private bool _isEditing;
 
         private SplineEditorSettings _settings;
         private SplineDrawer _drawer;
@@ -49,58 +49,13 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_spline == null) return;
 
             Event e = Event.current;
-    
+
             CheckShortcuts(e);
-
-            _selector.UpdateHover();
-            _selector.UpdateHandleHover();
-
-            _drawer.DrawNodes();
-            _drawer.DrawHandles();
-            _drawer.DrawSegments();
+            _selector.UpdateHoverSelection();
+            _drawer.DrawSceneGUI();
 
             if (_isEditing)
-            {
-                Tools.hidden = true;
-        
-                if (!_createHeld)
-                {
-                    switch (Tools.current)
-                    {
-                        case Tool.Move:
-                            _manipulator.HandleMovement();
-                            break;
-                        case Tool.Rotate:
-                            _manipulator.HandleRotation();
-                            break;
-                    }
-
-                    int prevCount = _selector.SelectededCount;
-                    var prevHandle = _selector.SelectedHandle;
-                    var prevNodes = new HashSet<int>(_selector.SelectedNodeIndices);
-            
-                    _selector.HandleSelectionInput(e);
-                    _manipulator.RefreshPivot();
-
-                    bool nodesChanged = !prevNodes.SetEquals(_selector.SelectedNodeIndices);
-                    bool handleChanged = !Equals(prevHandle, _selector.SelectedHandle);
-
-                    if (nodesChanged || handleChanged || _selector.SelectededCount != prevCount)
-                        Repaint();
-                }
-                else
-                {
-                    int prevCount = _selector.SelectededCount;
-
-                    _actions.HandleCreateInput(e);
-
-                    if (_selector.SelectededCount != prevCount)
-                    {
-                        _manipulator.RefreshPivot();
-                        Repaint();
-                    }
-                }
-            }
+                EditSceneGUI(e);
             else
                 Tools.hidden = false;
 
@@ -115,7 +70,74 @@ namespace MobileGameProjectEditor.SplineNetwork
             DrawEditGUI();
             GUI.backgroundColor = Color.white;
         }
-        
+
+        #endregion Unity Callbacks
+
+        #region SceneGUI
+
+        private void EditSceneGUI(Event e)
+        {
+            Tools.hidden = true;
+
+            if (!_createHeld)
+            {
+                ManipulateSceneGUI();
+                SelectionSceneGUI(e);
+            }
+            else
+                CreateSceneGUI(e);
+        }
+
+        private void SelectionSceneGUI(Event e)
+        {
+            int prevCount = _selector.SelectededCount;
+            var prevHandle = _selector.SelectedHandle;
+            var prevNodes = new HashSet<int>(_selector.SelectedNodeIndices);
+
+            _selector.HandleSelectionInput(e);
+            _manipulator.RefreshPivot();
+
+            if (SelectionChanged(prevCount, prevHandle, prevNodes))
+                Repaint();
+        }
+
+        private void ManipulateSceneGUI()
+        {
+            switch (Tools.current)
+            {
+                case Tool.Move:
+                    _manipulator.HandleMovement();
+                    break;
+                case Tool.Rotate:
+                    _manipulator.HandleRotation();
+                    break;
+            }
+        }
+
+        private void CreateSceneGUI(Event e)
+        {
+            int prevCount = _selector.SelectededCount;
+
+            _actions.HandleCreateInput(e);
+
+            if (_selector.SelectededCount != prevCount)
+            {
+                _manipulator.RefreshPivot();
+                Repaint();
+            }
+        }
+
+        private bool SelectionChanged(int prevCount, HandleSelection? prevHandle, HashSet<int> prevNodes)
+        {
+            return _selector.SelectededCount != prevCount
+                   || !Equals(prevHandle, _selector.SelectedHandle)
+                   || !prevNodes.SetEquals(_selector.SelectedNodeIndices);
+        }
+
+        #endregion SceneGUI
+
+        #region InspectorGUI
+
         private void DrawSettingsGUI()
         {
             EditorGUILayout.LabelField("Visual Settings", EditorStyles.boldLabel);
@@ -132,7 +154,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 SceneView.RepaintAll();
         }
 
-        #endregion Unity Callbacks
+        #endregion InspectorGUI
 
         #region Inspector
 
@@ -146,7 +168,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 _selector.SelectedNodeIndices.Clear();
                 SceneView.RepaintAll();
             }
-            
+
             _selectionInfo.DrawGUI();
 
             if (_isEditing)
@@ -160,12 +182,12 @@ namespace MobileGameProjectEditor.SplineNetwork
                 EditorGUILayout.Space(4);
 
                 GUI.backgroundColor = Color.red;
-                
+
                 if (GUILayout.Button("Delete Selected", GUILayout.Height(30)))
                     _actions.DeleteSelectedNodes();
-                
+
                 GUI.backgroundColor = Color.white;
-                
+
                 if (GUILayout.Button("Reset Node Handles", GUILayout.Height(30)))
                     _actions.ResetNodeHandles();
 
@@ -174,14 +196,14 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                 if (GUILayout.Button("Create Segmment", GUILayout.Height(30)))
                     _actions.CreateSegmentBetweenSelected();
-                
+
                 GUI.backgroundColor = Color.red;
-                
+
                 if (GUILayout.Button("Delete Segment", GUILayout.Height(30)))
                     _actions.DeleteSegmentBetweenSelected();
-                
+
                 GUI.backgroundColor = Color.white;
-                
+
                 if (GUILayout.Button("Reset Segmment Handles", GUILayout.Height(30)))
                     _actions.ResetHandlesOnSelectedSegments();
 
@@ -191,7 +213,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         #endregion Inspector
-        
+
         #region Shortcuts
 
         private void CheckShortcuts(Event e)
@@ -223,7 +245,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 e.Use();
             }
         }
-        
+
         private void SelectAll(Event e)
         {
             if (e.type == EventType.KeyDown && e.keyCode == KeyCode.A && e.control)
@@ -232,7 +254,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 e.Use();
             }
         }
-        
+
         #endregion Shortcuts
 
         #region Events
