@@ -33,7 +33,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _drawer = new SplineDrawer(_spline, _settings, _selector);
             _manipulator = new SplineManipulator(_spline, _selector);
             _actions = new SplineActions(_spline, _selector);
-            _selectionInfo = new SplineSelectionInfo(_spline, _selector);
+            _selectionInfo = new SplineSelectionInfo(_spline, _manipulator, _selector);
             Undo.undoRedoPerformed += OnUndoRedo;
         }
 
@@ -61,7 +61,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_isEditing)
             {
                 Tools.hidden = true;
-
+                
                 if (!_createHeld)
                 {
                     switch (Tools.current)
@@ -78,6 +78,8 @@ namespace MobileGameProjectEditor.SplineNetwork
                     var prevHandle = _selector.SelectedHandle;
                     
                     _selector.HandleSelectionInput(e);
+                    
+                    _manipulator.RefreshPivot();
                     
                     if (_selector.SelectededCount != prevCount || _selector.SelectedHandle != prevHandle)
                         Repaint();

@@ -8,97 +8,84 @@ namespace MobileGameProjectEditor.SplineNetwork
     public class SplineSelectionInfo
     {
         private readonly Spline _spline;
+        private readonly SplineManipulator _manipulator;
         private readonly SplineSelector _selector;
 
-        public SplineSelectionInfo(Spline spline, SplineSelector selector)
+        public SplineSelectionInfo(Spline spline, SplineManipulator manipulator, SplineSelector selector)
         {
             _spline = spline;
+            _manipulator = manipulator;
             _selector = selector;
         }
 
         public void DrawGUI()
         {
+            if (!_manipulator.HasSelectionPivot) return;
+
             EditorGUILayout.Space(6);
-            EditorGUILayout.LabelField("Selection (Local to Spline)", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Selection", EditorStyles.boldLabel);
 
             if (_selector.SelectedHandle.HasValue)
             {
-                DrawHandleInfo();
+                DrawHandleOffset();
                 return;
             }
 
+            Vector3 localPos = _spline.transform.InverseTransformPoint(_manipulator.SelectionPivotPosition);
+            Quaternion localRot = Quaternion.Inverse(_spline.transform.rotation) * _manipulator.SelectionPivotRotation;
+
+            EditorGUI.BeginChangeCheck();
+            Vector3 newLocalPos = EditorGUILayout.Vector3Field("Position", localPos);
+            Vector3 newEuler = EditorGUILayout.Vector3Field("Rotation", localRot.eulerAngles);
+
+            if (!EditorGUI.EndChangeCheck()) return;
+
+            Undo.RecordObject(_spline, "Edit Selection");
+
+            if (newLocalPos != localPos)
+            {
+                Vector3 worldDelta = _spline.transform.TransformVector(newLocalPos - localPos);
+                ApplyNodePositionDelta(worldDelta);
+            }
+
             if (_selector.SelectededCount == 1)
-                DrawNodeInfo();
-            else if (_selector.SelectededCount > 1)
-                DrawNodesInfo();
-        }
-
-        private void DrawNodeInfo()
-        {
-            int index = _selector.SelectedNodeIndices.First();
-            var node = _spline.nodes[index];
-
-            EditorGUI.BeginChangeCheck();
-            Vector3 newPos = EditorGUILayout.Vector3Field("Position", node.position);
-            Vector3 newEuler = EditorGUILayout.Vector3Field("Rotation", node.rotation.eulerAngles);
-            if (EditorGUI.EndChangeCheck())
             {
-                Undo.RecordObject(_spline, "Edit Node");
-                node.position = newPos;
+                var node = _spline.nodes[_selector.SelectedNodeIndices.First()];
                 node.rotation = Quaternion.Euler(newEuler);
-                EditorUtility.SetDirty(_spline);
             }
-        }
-        
-        private void DrawNodesInfo()
-        {
-            var nodes = _selector.SelectedNodeIndices.Select(x => _spline.nodes[x]).ToArray();
-            Vector3 center = Vector3.zero;
 
-            foreach (SplineNode node in nodes)
-                center += node.position;
-
-            center /= nodes.Length;
-
-            EditorGUI.BeginChangeCheck();
-            Vector3 newCenter = EditorGUILayout.Vector3Field("Position", center);
-            Vector3 newEuler = EditorGUILayout.Vector3Field("Rotation", Quaternion.identity.eulerAngles);
-            if (EditorGUI.EndChangeCheck())
-            {
-                Undo.RecordObject(_spline, "Edit Node");
-
-                var delta = newCenter - center;
-                
-                foreach (SplineNode node in nodes)
-                    node.position += delta;
-                
-                EditorUtility.SetDirty(_spline);
-            }
+            EditorUtility.SetDirty(_spline);
         }
 
-        private void DrawHandleInfo()
+        private void DrawHandleOffset()
         {
-            var selectedHandle = _selector.SelectedHandle.Value;
-            var segment = _spline.segments[selectedHandle.segmentIndex];
+            var hs = _selector.SelectedHandle.Value;
+            var segment = _spline.segments[hs.segmentIndex];
 
-            Vector3 offset = selectedHandle.isStart ? segment.startHandleOffset : segment.endHandleOffset;
+            Vector3 offset = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
 
             EditorGUI.BeginChangeCheck();
             Vector3 newOffset = EditorGUILayout.Vector3Field("Handle Offset", offset);
-            
-            if (EditorGUI.EndChangeCheck())
-            {
-                Undo.RecordObject(_spline, "Move Handle");
-                if (selectedHandle.isStart)
-                    segment.startHandleOffset = newOffset;
-                else
-                    segment.endHandleOffset = newOffset;
-                
-                EditorUtility.SetDirty(_spline);
-            }
 
-            using (var gui = new EditorGUI.DisabledGroupScope(true))
-                EditorGUILayout.Vector3Field("Node Rotation (Eular)", Quaternion.identity.eulerAngles);
+            if (!EditorGUI.EndChangeCheck()) return;
+
+            Undo.RecordObject(_spline, "Edit Handle Offset");
+
+            if (hs.isStart)
+                segment.startHandleOffset = newOffset;
+            else
+                segment.endHandleOffset = newOffset;
+
+            EditorUtility.SetDirty(_spline);
+        }
+
+        private void ApplyNodePositionDelta(Vector3 worldDelta)
+        {
+            foreach (int index in _selector.SelectedNodeIndices)
+            {
+                Vector3 worldPos = _spline.GetNodeWorldPosition(index);
+                _spline.nodes[index].position = _spline.transform.InverseTransformPoint(worldPos + worldDelta);
+            }
         }
     }
 }
