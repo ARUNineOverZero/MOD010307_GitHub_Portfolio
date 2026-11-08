@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -48,7 +49,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_spline == null) return;
 
             Event e = Event.current;
-            
+    
             CheckShortcuts(e);
 
             _selector.UpdateHover();
@@ -61,7 +62,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_isEditing)
             {
                 Tools.hidden = true;
-                
+        
                 if (!_createHeld)
                 {
                     switch (Tools.current)
@@ -76,16 +77,29 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                     int prevCount = _selector.SelectededCount;
                     var prevHandle = _selector.SelectedHandle;
-                    
+                    var prevNodes = new HashSet<int>(_selector.SelectedNodeIndices);
+            
                     _selector.HandleSelectionInput(e);
-                    
                     _manipulator.RefreshPivot();
-                    
-                    if (_selector.SelectededCount != prevCount || _selector.SelectedHandle != prevHandle)
+
+                    bool nodesChanged = !prevNodes.SetEquals(_selector.SelectedNodeIndices);
+                    bool handleChanged = !Equals(prevHandle, _selector.SelectedHandle);
+
+                    if (nodesChanged || handleChanged || _selector.SelectededCount != prevCount)
                         Repaint();
                 }
                 else
+                {
+                    int prevCount = _selector.SelectededCount;
+
                     _actions.HandleCreateInput(e);
+
+                    if (_selector.SelectededCount != prevCount)
+                    {
+                        _manipulator.RefreshPivot();
+                        Repaint();
+                    }
+                }
             }
             else
                 Tools.hidden = false;
