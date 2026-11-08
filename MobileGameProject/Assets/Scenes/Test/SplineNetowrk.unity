@@ -499,72 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ce8e576977b65409276f78a7ad1ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
-  nodes:
-  - position: {x: 2.5, y: 0, z: -2.5}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 2.5, y: 1, z: -2.5}
-    rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  - position: {x: 2.5, y: 1, z: -1.5}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 2.5, y: 0, z: -1.5}
-    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  - position: {x: 2.5, y: 0, z: 2.5}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 2.5, y: 0, z: 1.5}
-    rotation: {x: 0, y: 1, z: 0, w: 0}
-  - position: {x: 2.5, y: 1, z: 1.5}
-    rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  - position: {x: 2.5, y: 1, z: 2.5}
-    rotation: {x: 0, y: -0.28978416, z: -0, w: 0.95709205}
-  - position: {x: 2.5, y: 3.5, z: -1.5}
-    rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  - position: {x: 2.5, y: 3.5, z: 1.5}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  segments:
-  - startNodeIndex: 0
-    endNodeIndex: 1
-    startHandleOffset: {x: 0, y: 0.33, z: 0}
-    endHandleOffset: {x: -0, y: -0.33, z: -0}
-  - startNodeIndex: 1
-    endNodeIndex: 2
-    startHandleOffset: {x: 0, y: 0, z: 0.33}
-    endHandleOffset: {x: -0, y: -0, z: -0.33}
-  - startNodeIndex: 2
-    endNodeIndex: 3
-    startHandleOffset: {x: 0, y: -0.33, z: 0}
-    endHandleOffset: {x: -0, y: 0.33, z: -0}
-  - startNodeIndex: 3
-    endNodeIndex: 0
-    startHandleOffset: {x: 0, y: 0, z: -0.33}
-    endHandleOffset: {x: -0, y: -0, z: 0.33}
-  - startNodeIndex: 4
-    endNodeIndex: 5
-    startHandleOffset: {x: 0, y: 0, z: -0.33}
-    endHandleOffset: {x: -0, y: -0, z: 0.33}
-  - startNodeIndex: 5
-    endNodeIndex: 6
-    startHandleOffset: {x: 0, y: 0.33, z: 0}
-    endHandleOffset: {x: -0, y: -0.33, z: -0}
-  - startNodeIndex: 6
-    endNodeIndex: 7
-    startHandleOffset: {x: 0, y: 0, z: 0.33}
-    endHandleOffset: {x: -0, y: -0, z: -0.33}
-  - startNodeIndex: 7
-    endNodeIndex: 4
-    startHandleOffset: {x: 0, y: -0.33, z: 0}
-    endHandleOffset: {x: -0, y: 0.33, z: -0}
-  - startNodeIndex: 2
-    endNodeIndex: 8
-    startHandleOffset: {x: 0, y: 1, z: 0}
-    endHandleOffset: {x: 0, y: -0.82500005, z: 0}
-  - startNodeIndex: 8
-    endNodeIndex: 9
-    startHandleOffset: {x: 0, y: 0, z: 0.99}
-    endHandleOffset: {x: 0, y: 0, z: -0.99}
-  - startNodeIndex: 9
-    endNodeIndex: 6
-    startHandleOffset: {x: 0, y: -0.82500005, z: 0}
-    endHandleOffset: {x: 0, y: 0.82500005, z: 0}
+  nodes: []
+  segments: []
 --- !u!4 &828305715
 Transform:
   m_ObjectHideFlags: 0
@@ -747,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: -1, y: 3, z: 5}
+  - position: {x: -1.5, y: 3, z: 5.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
   - position: {x: -1.5, y: 3, z: 2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
@@ -769,6 +705,8 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 1}
   - position: {x: 0, y: 0, z: 8.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  - position: {x: 0, y: 3, z: 5.5}
+    rotation: {x: 0.47185794, y: 0, z: 0, w: 0.8816746}
   segments:
   - startNodeIndex: 0
     endNodeIndex: 1
@@ -817,10 +755,10 @@ MonoBehaviour:
   - startNodeIndex: 5
     endNodeIndex: 7
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
-    endHandleOffset: {x: 5, y: 0, z: 1.75}
+    endHandleOffset: {x: -0, y: -0, z: 1.6500001}
   - startNodeIndex: 7
     endNodeIndex: 8
-    startHandleOffset: {x: -3.5, y: 0, z: 1.75}
+    startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
   - startNodeIndex: 8
     endNodeIndex: 6
@@ -828,7 +766,7 @@ MonoBehaviour:
     endHandleOffset: {x: -0, y: -0, z: -1.6500001}
   - startNodeIndex: 8
     endNodeIndex: 9
-    startHandleOffset: {x: 0.82500005, y: 0, z: 0.82500005}
+    startHandleOffset: {x: 0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: -0.82500005}
   - startNodeIndex: 6
     endNodeIndex: 9
@@ -836,16 +774,20 @@ MonoBehaviour:
     endHandleOffset: {x: -0.82500005, y: -1.32, z: 0.82500005}
   - startNodeIndex: 5
     endNodeIndex: 9
-    startHandleOffset: {x: -0.82500005, y: 0, z: -0.82500005}
+    startHandleOffset: {x: -0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: 0.82500005}
   - startNodeIndex: 7
     endNodeIndex: 9
-    startHandleOffset: {x: 1.25, y: 1.3200002, z: -0.5}
+    startHandleOffset: {x: -0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: -0.82500005}
   - startNodeIndex: 4
+    endNodeIndex: 11
+    startHandleOffset: {x: 0, y: -0.7425, z: 0.495}
+    endHandleOffset: {x: 0, y: 0.7425, z: -0.495}
+  - startNodeIndex: 11
     endNodeIndex: 10
-    startHandleOffset: {x: 0, y: -0.7425, z: 0}
-    endHandleOffset: {x: 0, y: 0.7425, z: 0}
+    startHandleOffset: {x: 0, y: -2, z: 0}
+    endHandleOffset: {x: 0, y: 0, z: -2}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
