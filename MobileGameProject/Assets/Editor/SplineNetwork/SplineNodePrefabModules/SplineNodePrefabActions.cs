@@ -1,3 +1,4 @@
+using System.Linq;
 using MobileGameProject.SplineNetwork;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _selector = selector;
         }
 
-        private void ResetPivot()
+        public void ResetPivot()
         {
             if (_selector.SelectedCount != 1) return;
 
