@@ -504,45 +504,45 @@ MonoBehaviour:
     rotation: {x: 0, y: 0.90054655, z: 0, w: -0.43475962}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - position: {x: -1.5, y: 0, z: -1.5}
-    rotation: {x: 0, y: 1, z: 0, w: 0}
+    rotation: {x: 0, y: 0.5, z: 0, w: 0.8660254}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -1.5, y: 3, z: -3.5}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
+    rotation: {x: 0.25881904, y: 0, z: 0, w: 0.9659258}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -2.5, y: 5, z: -6.5}
-    rotation: {x: 0.044570662, y: 0.94810617, z: 0.27465677, w: -0.15385647}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -2.5, y: 5, z: -11.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   segments:
   - startNodeIndex: 0
-    startSocket: 
+    startSocket: End
     endNodeIndex: 1
-    endSocket: 
-    startHandleOffset: {x: -0.742774, y: 0, z: -0.9307151}
-    endHandleOffset: {x: 0.791442, y: -0, z: 0.32014605}
+    endSocket: End
+    startHandleOffset: {x: -1.0940267, y: 0, z: -0.8904462}
+    endHandleOffset: {x: 0.69993556, y: 0, z: 0.29562712}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - startNodeIndex: 1
-    startSocket: 
+    startSocket: Start
     endNodeIndex: 2
-    endSocket: 
-    startHandleOffset: {x: 0, y: 0.99, z: -0.66}
+    endSocket: End
+    startHandleOffset: {x: -1.3660252, y: -0.00999999, z: -1.0439744}
     endHandleOffset: {x: 0.16660981, y: -0.833049, z: 0.833049}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - startNodeIndex: 2
-    startSocket: 
+    startSocket: Start
     endNodeIndex: 3
-    endSocket: 
+    endSocket: End
     startHandleOffset: {x: -0.17289916, y: 0.8644958, z: -0.8644958}
     endHandleOffset: {x: 0.14864607, y: -0.29729214, z: 1.1891686}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - startNodeIndex: 3
-    startSocket: 
+    startSocket: Start
     endNodeIndex: 4
-    endSocket: 
+    endSocket: End
     startHandleOffset: {x: -0.19863667, y: 0.39727333, z: -1.5890933}
-    endHandleOffset: {x: 0, y: 0, z: 1.485}
+    endHandleOffset: {x: 0, y: 0, z: 1.75}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
 --- !u!4 &780207634
 Transform:
