@@ -10,7 +10,7 @@ namespace MobileGameProjectEditor.SplineNetwork
     {
         public int segmentIndex;
         public bool isStart;
-        
+
         public bool Equals(HandleSelection other) =>
             segmentIndex == other.segmentIndex && isStart == other.isStart;
 
@@ -21,7 +21,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         public static bool operator ==(HandleSelection a, HandleSelection b) => a.Equals(b);
         public static bool operator !=(HandleSelection a, HandleSelection b) => !a.Equals(b);
     }
-    
+
     public class SplineSelector
     {
         private readonly Spline _spline;
@@ -37,9 +37,9 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private HandleSelection? _selectedHandle;
         public HandleSelection? SelectedHandle => _selectedHandle;
-        
+
         public int SelectedCount => _selectedNodeIndices.Count;
-        
+
         public SplineSelector(Spline spline)
         {
             _spline = spline;
@@ -79,7 +79,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 var seg = _spline.segments[i];
 
                 if (_selectedNodeIndices.Contains(seg.startNodeIndex) &&
-                    IsHoveringHandle(seg.startNodeIndex, seg.startHandleOffset))
+                    IsHoveringHandle(seg, true))
                 {
                     _hoverHandleSegmentIndex = i;
                     _hoverHandleIsStart = true;
@@ -87,13 +87,27 @@ namespace MobileGameProjectEditor.SplineNetwork
                 }
 
                 if (_selectedNodeIndices.Contains(seg.endNodeIndex) &&
-                    IsHoveringHandle(seg.endNodeIndex, seg.endHandleOffset))
+                    IsHoveringHandle(seg, false))
                 {
                     _hoverHandleSegmentIndex = i;
                     _hoverHandleIsStart = false;
                     return;
                 }
             }
+        }
+
+        private bool IsHoveringHandle(SplineSegment segment, bool isStart)
+        {
+            int nodeIndex = isStart ? segment.startNodeIndex : segment.endNodeIndex;
+            string socketId = isStart ? segment.startSocket : segment.endSocket;
+            Vector3 localOffset = isStart ? segment.startHandleOffset : segment.endHandleOffset;
+
+            Vector3 origin = _spline.GetSegmentEndWorldPosition(nodeIndex, socketId);
+            Vector3 handleWorld = origin + _spline.transform.TransformVector(localOffset);
+
+            float size = HandleUtility.GetHandleSize(handleWorld) * SplineEditorSettings.nodeBaseSize * 0.7f;
+            return HandleUtility.DistanceToCircle(handleWorld, size * SplineEditorSettings.hoverTestRadiusFactor)
+                   < SplineEditorSettings.hoverPixelThreshold;
         }
 
         public void HandleSelectionInput(Event e)
@@ -132,7 +146,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
             else if (!e.shift)
                 ClearSelection(e);
-            
+
         }
 
         public void ClearSelection(Event e = null)
@@ -156,7 +170,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         public bool IsNodeSelected(int index) => _selectedNodeIndices.Contains(index);
-        
+
         public IEnumerable<SplineSegment> GetSelectedSegments()
         {
             if (_selectedNodeIndices.Count < 2) yield break;
@@ -180,9 +194,9 @@ namespace MobileGameProjectEditor.SplineNetwork
             {
                 if (oldSelectedNodeIndices.Contains(segment.startNodeIndex) || oldSelectedNodeIndices.Contains(segment.endNodeIndex))
                 {
-                    if(!_selectedNodeIndices.Contains(segment.startNodeIndex))
+                    if (!_selectedNodeIndices.Contains(segment.startNodeIndex))
                         _selectedNodeIndices.Add(segment.startNodeIndex);
-                    else if(!_selectedNodeIndices.Contains(segment.endNodeIndex))
+                    else if (!_selectedNodeIndices.Contains(segment.endNodeIndex))
                         _selectedNodeIndices.Add(segment.endNodeIndex);
                 }
             }

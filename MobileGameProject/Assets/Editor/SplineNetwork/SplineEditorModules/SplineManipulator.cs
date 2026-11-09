@@ -120,7 +120,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             var node = _spline.nodes[nodeIndex];
             return _spline.transform.rotation * node.rotation;
         }
-        
+
         public void RefreshPivot()
         {
             _hasSelectionPivot = false;
@@ -131,16 +131,17 @@ namespace MobileGameProjectEditor.SplineNetwork
                 var hs = _selector.SelectedHandle.Value;
                 var segment = _spline.segments[hs.segmentIndex];
                 int nodeIndex = hs.isStart ? segment.startNodeIndex : segment.endNodeIndex;
-
-                Vector3 nodeWorld = _spline.GetNodeWorldPosition(nodeIndex);
+                string socketId = hs.isStart ? segment.startSocket : segment.endSocket;
                 Vector3 localOffset = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
 
-                _selectionPivotPosition = nodeWorld + _spline.transform.TransformVector(localOffset);
+                Vector3 origin = _spline.GetSegmentEndWorldPosition(nodeIndex, socketId);
+
+                _selectionPivotPosition = origin + _spline.transform.TransformVector(localOffset);
                 _selectionPivotRotation = GetHandleRotation(nodeIndex);
                 _hasSelectionPivot = true;
                 return;
             }
-            
+
             if (_selector.SelectedCount == 1)
             {
                 var index = _selector.SelectedNodeIndices.First();
@@ -158,7 +159,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                 _selectionPivotRotation = GetHandleRotation();
             }
-            
+
             _hasSelectionPivot = true;
         }
     }

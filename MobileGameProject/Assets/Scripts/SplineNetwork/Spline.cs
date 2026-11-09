@@ -42,6 +42,22 @@ namespace MobileGameProject.SplineNetwork
         
         public Vector3 GetNodeWorldPosition(int index) => transform.TransformPoint(nodes[index].position);
 
+        public Vector3 GetSegmentEndWorldPosition(int nodeIndex, string socketId)
+        {
+            Vector3 nodeWorld = GetNodeWorldPosition(nodeIndex);
+            var node = nodes[nodeIndex];
+
+            if (node.prefab == null || string.IsNullOrEmpty(socketId))
+                return nodeWorld;
+
+            var socket = node.prefab.sockets.FirstOrDefault(s => s.id == socketId);
+            if (socket == null)
+                return nodeWorld;
+
+            Quaternion nodeWorldRot = transform.rotation * node.rotation;
+            return nodeWorld + nodeWorldRot * socket.localPosition;
+        }
+
         public int AddNode(Vector3 localPosition, params int[] connectedNodeIndeices)
         {
             int newIndex = nodes.Count;

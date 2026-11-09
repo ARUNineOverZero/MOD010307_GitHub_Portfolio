@@ -74,7 +74,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             var seg = _spline.segments[segmentIndex];
             string socketId = isStart ? seg.startSocket : seg.endSocket;
 
-            Vector3 origin = GetSegmentEndWorldPosition(nodeIndex, socketId);
+            Vector3 origin = _spline.GetSegmentEndWorldPosition(nodeIndex, socketId);
             Vector3 handleWorld = origin + _spline.transform.TransformVector(localOffset);
 
             bool isHovered = _selector.HoverHandleSegmentIndex == segmentIndex && _selector.HoverHandleIsStart == isStart;
@@ -105,8 +105,8 @@ namespace MobileGameProjectEditor.SplineNetwork
                 segment.endNodeIndex < 0 || segment.endNodeIndex >= _spline.nodes.Count)
                 return;
 
-            Vector3 p0 = GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
-            Vector3 p3 = GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
+            Vector3 p0 = _spline.GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
+            Vector3 p3 = _spline.GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
 
             Color occluded = new Color(color.r, color.g, color.b, color.a * 0.35f);
 
@@ -139,22 +139,6 @@ namespace MobileGameProjectEditor.SplineNetwork
                    + 3f * uu * t * p1
                    + 3f * u * tt * p2
                    + ttt * p3;
-        }
-
-        private Vector3 GetSegmentEndWorldPosition(int nodeIndex, string socketId)
-        {
-            Vector3 nodeWorld = _spline.GetNodeWorldPosition(nodeIndex);
-            var node = _spline.nodes[nodeIndex];
-
-            if (node.prefab == null || string.IsNullOrEmpty(socketId))
-                return nodeWorld;
-
-            var socket = node.prefab.sockets.FirstOrDefault(s => s.id == socketId);
-            if (socket == null)
-                return nodeWorld;
-
-            Quaternion nodeWorldRot = _spline.transform.rotation * node.rotation;
-            return nodeWorld + nodeWorldRot * socket.localPosition;
         }
     }
 }
