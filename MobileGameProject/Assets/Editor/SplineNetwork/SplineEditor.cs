@@ -226,9 +226,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         
         [Shortcut("Spline Network/Select Segments From Selected Nodes", typeof(SplineShortcutContext), KeyCode.A, ShortcutModifiers.Alt)]
         private static void SelectSegmentsFromSelectedNodesShortcut()
-        {
-            Debug.Log("Try to run SelectSegmentsFromSelectedNodes");
-            
+        {            
             if (_current == null || !_current._isEditing) return;
             _current._selector.SelectSegmentsFromSelectedNodes();
             _current.Repaint();

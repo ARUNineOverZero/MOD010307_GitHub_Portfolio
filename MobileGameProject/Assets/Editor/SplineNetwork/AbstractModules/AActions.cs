@@ -25,7 +25,6 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
 
             worldPos = hit.point;
-            Debug.Log($"Is Snapping {EditorSnapSettings.gridSnapActive} - {EditorSnapSettings.gridSnapEnabled}");
             if (EditorSnapSettings.snapEnabled && EditorSnapSettings.gridSnapEnabled)
                 worldPos = Snapping.Snap(worldPos, EditorSnapSettings.gridSize);
 
