@@ -46,7 +46,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void DeleteSelectedNodes()
         {
-            if (_selector.SelectededCount == 0) return;
+            if (_selector.SelectedCount == 0) return;
 
             Undo.RecordObject(_spline, "Delete Spline Nodes");
 
@@ -58,7 +58,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void CreateSegmentBetweenSelected()
         {
-            if (_selector.SelectededCount != 2) return;
+            if (_selector.SelectedCount != 2) return;
 
             var segment = _spline.segments.FirstOrDefault(x =>
                 _selector.IsNodeSelected(x.startNodeIndex) &&
@@ -76,7 +76,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void DeleteSegmentBetweenSelected()
         {
-            if (_selector.SelectededCount != 2) return;
+            if (_selector.SelectedCount != 2) return;
 
             var segment = _spline.segments.FirstOrDefault(x =>
                 _selector.IsNodeSelected(x.startNodeIndex) &&
@@ -129,7 +129,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void ResetHandlesOnSelectedSegments()
         {
-            if (_selector.SelectededCount < 2) return;
+            if (_selector.SelectedCount < 2) return;
 
             Undo.RecordObject(_spline, "Reset Segment Handles");
 
@@ -153,7 +153,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void DropSelectedNodesToSurface()
         {
-            if (_selector.SelectededCount == 0) return;
+            if (_selector.SelectedCount == 0) return;
 
             Undo.RecordObject(_spline, "Drop Nodes to Surface");
 
@@ -176,7 +176,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void ResetHandles()
         {
-            if (_selector.SelectededCount == 0 && !_selector.SelectedHandle.HasValue) return;
+            if (_selector.SelectedCount == 0 && !_selector.SelectedHandle.HasValue) return;
 
             Undo.RecordObject(_spline, "Reset Handles");
 
@@ -228,7 +228,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void SmoothHandles()
         {
-            if (_selector.SelectededCount == 0) return;
+            if (_selector.SelectedCount == 0) return;
             
             Undo.RecordObject(_spline, "Smooth Handles");
 

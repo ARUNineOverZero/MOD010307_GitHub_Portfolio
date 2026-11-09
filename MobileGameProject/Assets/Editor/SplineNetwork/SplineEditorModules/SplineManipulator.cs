@@ -24,7 +24,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void HandleMovement()
         {
-            if (_selector.SelectededCount == 0) return;
+            if (_selector.SelectedCount == 0) return;
 
             if (_selector.SelectedHandle.HasValue)
                 HandleNodeHandleMovement();
@@ -34,7 +34,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void HandleRotation()
         {
-            if (_selector.SelectededCount == 0) return;
+            if (_selector.SelectedCount == 0) return;
 
             if (!_selector.SelectedHandle.HasValue)
                 HandleNodeRotation();
@@ -44,7 +44,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             if (!_hasSelectionPivot) return;
 
-            Quaternion handleRot = GetHandleRotation(_selector.SelectededCount == 1 ? _selector.SelectedNodeIndices.First() : -1);
+            Quaternion handleRot = GetHandleRotation(_selector.SelectedCount == 1 ? _selector.SelectedNodeIndices.First() : -1);
 
             Vector3 newWorldCenter = Handles.PositionHandle(_selectionPivotPosition, handleRot);
             if (newWorldCenter != _selectionPivotPosition)
@@ -89,7 +89,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void HandleNodeRotation()
         {
-            if (_selector.SelectededCount != 1) return;
+            if (_selector.SelectedCount != 1) return;
 
             int index = _selector.SelectedNodeIndices.First();
             var node = _spline.nodes[index];
@@ -124,7 +124,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         public void RefreshPivot()
         {
             _hasSelectionPivot = false;
-            if (_selector.SelectededCount == 0 && !_selector.SelectedHandle.HasValue) return;
+            if (_selector.SelectedCount == 0 && !_selector.SelectedHandle.HasValue) return;
 
             if (_selector.SelectedHandle.HasValue)
             {
@@ -141,7 +141,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 return;
             }
             
-            if (_selector.SelectededCount == 1)
+            if (_selector.SelectedCount == 1)
             {
                 var index = _selector.SelectedNodeIndices.First();
                 _selectionPivotPosition = _spline.GetNodeWorldPosition(index);
@@ -152,7 +152,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 Vector3 center = Vector3.zero;
                 foreach (int index in _selector.SelectedNodeIndices)
                     center += _spline.GetNodeWorldPosition(index);
-                center /= _selector.SelectededCount;
+                center /= _selector.SelectedCount;
 
                 _selectionPivotPosition = center;
 

@@ -8,10 +8,12 @@ namespace MobileGameProjectEditor.SplineNetwork
     public class SplineNodePrefabDrawer : ADrawer
     {
         private SplineNodePrefab _splineNodePrefab;
+        private SplineNodePrefabSelector _selector;
 
-        public SplineNodePrefabDrawer(SplineNodePrefab splineNodePrefab)
+        public SplineNodePrefabDrawer(SplineNodePrefab splineNodePrefab, SplineNodePrefabSelector selector)
         {
             _splineNodePrefab = splineNodePrefab;
+            _selector = selector;
         }
 
         public void DrawSceneGUI()
@@ -24,8 +26,20 @@ namespace MobileGameProjectEditor.SplineNetwork
             for (int i = 0; i < _splineNodePrefab.sockets.Count; i++)
             {
                 Vector3 worldPosition = _splineNodePrefab.GetSocketWorldPosition(i);
+                bool isSelected = _selector.IsNodeSelected(i);
+                bool isHovered = _selector.HoverSocketIndex == i;
+                
                 Color color = SplineEditorSettings.normalColor;
                 float size = HandleUtility.GetHandleSize(worldPosition) * SplineEditorSettings.nodeBaseSize;
+
+                if (isSelected)
+                    color = SplineEditorSettings.selectedColor;
+                else if (isHovered)
+                {
+                    color = SplineEditorSettings.hoverColor;
+                    size *= SplineEditorSettings.hoverSizeMultiplier;
+                }
+
 
                 DrawWithOcclusion(
                     () => DrawNodeSquare(worldPosition, size, color),

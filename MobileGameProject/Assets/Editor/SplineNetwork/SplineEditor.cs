@@ -91,14 +91,16 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void SelectionSceneGUI(Event e)
         {
-            int prevCount = _selector.SelectededCount;
+            int prevCount = _selector.SelectedCount;
             var prevHandle = _selector.SelectedHandle;
             var prevNodes = new HashSet<int>(_selector.SelectedNodeIndices);
 
             _selector.HandleSelectionInput(e);
             _manipulator.RefreshPivot();
 
-            if (SelectionChanged(prevCount, prevHandle, prevNodes))
+            if (_selector.SelectedCount != prevCount
+                   || !Equals(prevHandle, _selector.SelectedHandle)
+                   || !prevNodes.SetEquals(_selector.SelectedNodeIndices))
                 Repaint();
         }
 
@@ -117,22 +119,15 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void CreateSceneGUI(Event e)
         {
-            int prevCount = _selector.SelectededCount;
+            int prevCount = _selector.SelectedCount;
 
             _actions.HandleCreateInput(e);
 
-            if (_selector.SelectededCount != prevCount)
+            if (_selector.SelectedCount != prevCount)
             {
                 _manipulator.RefreshPivot();
                 Repaint();
             }
-        }
-
-        private bool SelectionChanged(int prevCount, HandleSelection? prevHandle, HashSet<int> prevNodes)
-        {
-            return _selector.SelectededCount != prevCount
-                   || !Equals(prevHandle, _selector.SelectedHandle)
-                   || !prevNodes.SetEquals(_selector.SelectedNodeIndices);
         }
 
         #endregion SceneGUI

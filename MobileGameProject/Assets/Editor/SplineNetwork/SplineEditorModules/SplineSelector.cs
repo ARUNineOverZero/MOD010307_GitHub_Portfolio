@@ -25,9 +25,9 @@ namespace MobileGameProjectEditor.SplineNetwork
     public class SplineSelector
     {
         private readonly Spline _spline;
-        public int _hoverNodeIndex = -1;
+        private int _hoverNodeIndex = -1;
         public int HoverNodeIndex => _hoverNodeIndex;
-        public int _hoverHandleSegmentIndex = -1;
+        private int _hoverHandleSegmentIndex = -1;
         public int HoverHandleSegmentIndex => _hoverHandleSegmentIndex;
         private bool _hoverHandleIsStart;
         public bool HoverHandleIsStart => _hoverHandleIsStart;
@@ -38,7 +38,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private HandleSelection? _selectedHandle;
         public HandleSelection? SelectedHandle => _selectedHandle;
         
-        public int SelectededCount => _selectedNodeIndices.Count;
+        public int SelectedCount => _selectedNodeIndices.Count;
         
 
         public SplineSelector(Spline spline)
@@ -112,29 +112,28 @@ namespace MobileGameProjectEditor.SplineNetwork
                 return;
             }
 
-            if (HoverNodeIndex != -1)
+            if (_hoverNodeIndex != -1)
             {
                 _selectedHandle = null;
 
                 if (e.shift)
                 {
-                    if (_selectedNodeIndices.Contains(HoverNodeIndex))
-                        _selectedNodeIndices.Remove(HoverNodeIndex);
+                    if (_selectedNodeIndices.Contains(_hoverNodeIndex))
+                        _selectedNodeIndices.Remove(_hoverNodeIndex);
                     else
-                        _selectedNodeIndices.Add(HoverNodeIndex);
+                        _selectedNodeIndices.Add(_hoverNodeIndex);
                 }
                 else
                 {
                     _selectedNodeIndices.Clear();
-                    _selectedNodeIndices.Add(HoverNodeIndex);
+                    _selectedNodeIndices.Add(_hoverNodeIndex);
                 }
 
                 e.Use();
             }
             else if (!e.shift)
-            {
                 ClearSelection(e);
-            }
+            
         }
 
         public void ClearSelection(Event e = null)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3716006571167652581}
   - component: {fileID: 4617653542830313119}
   - component: {fileID: 3483231882748327980}
+  - component: {fileID: 2816364392059319327}
   m_Layer: 0
   m_Name: ChannelRamp
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019864616355584054}
   serializedVersion: 2
-  m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.1875, y: 0.25, z: 7.2276826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -113,3 +114,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 5e609b9aba89a4e46b5b83541e0c3fd6, type: 2}
+--- !u!114 &2816364392059319327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019864616355584054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28900b5b233f0748b807c2bd3246b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.SplineNodePrefab
+  sockets: []

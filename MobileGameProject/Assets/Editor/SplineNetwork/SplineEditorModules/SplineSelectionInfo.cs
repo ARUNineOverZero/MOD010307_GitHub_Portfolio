@@ -48,7 +48,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 ApplyNodePositionDelta(worldDelta);
             }
 
-            if (_selector.SelectededCount == 1)
+            if (_selector.SelectedCount == 1)
             {
                 var node = _spline.nodes[_selector.SelectedNodeIndices.First()];
                 node.rotation = Quaternion.Euler(newEuler);
