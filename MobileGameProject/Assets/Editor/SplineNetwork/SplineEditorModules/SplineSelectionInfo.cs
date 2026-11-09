@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -97,6 +98,8 @@ namespace MobileGameProjectEditor.SplineNetwork
                     segment.prefab = prefab;
                     EditorUtility.SetDirty(_spline);
                 }
+
+                DrawSegmentSockets(segment);
             }
         }
 
@@ -120,6 +123,53 @@ namespace MobileGameProjectEditor.SplineNetwork
                 segment.endHandleOffset = newOffset;
 
             EditorUtility.SetDirty(_spline);
+        }
+
+        private void DrawSegmentSockets(SplineSegment segment)
+        {
+            var startNode = _spline.nodes[segment.startNodeIndex];
+            var endNode = _spline.nodes[segment.endNodeIndex];
+
+            DrawSocketPopup("Start Socket", startNode.prefab, segment.startSocket, value =>
+            {
+                Undo.RecordObject(_spline, "Set Start Socket");
+                segment.startSocket = value;
+                EditorUtility.SetDirty(_spline);
+            });
+
+            DrawSocketPopup("End Socket", endNode.prefab, segment.endSocket, value =>
+            {
+                Undo.RecordObject(_spline, "Set End Socket");
+                segment.endSocket = value;
+                EditorUtility.SetDirty(_spline);
+            });
+        }
+
+        private void DrawSocketPopup(string label, SplineNodePrefab prefab, string currentId, System.Action<string> onChanged)
+        {
+            var options = new List<string> { "None" };
+
+            if (prefab != null)
+            {
+                foreach (var socket in prefab.sockets)
+                {
+                    if (!string.IsNullOrEmpty(socket.id) && !options.Contains(socket.id))
+                        options.Add(socket.id);
+                }
+            }
+
+            int currentIndex = 0;
+            if (!string.IsNullOrEmpty(currentId))
+            {
+                int found = options.IndexOf(currentId);
+                currentIndex = found >= 0 ? found : 0;
+            }
+
+            int newIndex = EditorGUILayout.Popup(label, currentIndex, options.ToArray());
+            string newValue = newIndex <= 0 ? null : options[newIndex];
+
+            if (newValue != currentId)
+                onChanged?.Invoke(newValue);
         }
 
         private void ApplyNodePositionDelta(Vector3 worldDelta)

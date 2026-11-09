@@ -1,4 +1,5 @@
-﻿using MobileGameProject.SplineNetwork;
+﻿using System.Linq;
+using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,8 +71,11 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void DrawHandle(int segmentIndex, bool isStart, int nodeIndex, Vector3 localOffset)
         {
-            Vector3 worldPos = _spline.GetNodeWorldPosition(nodeIndex);
-            Vector3 handleWorld = worldPos + _spline.transform.TransformVector(localOffset);
+            var seg = _spline.segments[segmentIndex];
+            string socketId = isStart ? seg.startSocket : seg.endSocket;
+
+            Vector3 origin = GetSegmentEndWorldPosition(nodeIndex, socketId);
+            Vector3 handleWorld = origin + _spline.transform.TransformVector(localOffset);
 
             bool isHovered = _selector.HoverHandleSegmentIndex == segmentIndex && _selector.HoverHandleIsStart == isStart;
             bool isSelected = _selector.SelectedHandle.HasValue &&
@@ -79,7 +83,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                               _selector.SelectedHandle.Value.isStart == isStart;
 
             Handles.color = SplineEditorSettings.hoverColor;
-            Handles.DrawLine(worldPos, handleWorld);
+            Handles.DrawLine(origin, handleWorld);
 
             float size = HandleUtility.GetHandleSize(handleWorld) * SplineEditorSettings.nodeBaseSize;
             Color color = SplineEditorSettings.hoverColor;
@@ -101,29 +105,25 @@ namespace MobileGameProjectEditor.SplineNetwork
                 segment.endNodeIndex < 0 || segment.endNodeIndex >= _spline.nodes.Count)
                 return;
 
+            Vector3 p0 = GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
+            Vector3 p3 = GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
+
             Color occluded = new Color(color.r, color.g, color.b, color.a * 0.35f);
+
             if (SplineEditorSettings.segmentLevelOfDetail <= 2)
             {
-                DrawWithOcclusion(
-                    () => Handles.DrawLine(_spline.GetNodeWorldPosition(segment.startNodeIndex), _spline.GetNodeWorldPosition(segment.endNodeIndex)),
-                    color,
-                    occluded);
+                DrawWithOcclusion(() => Handles.DrawLine(p0, p3), color, occluded);
                 return;
             }
 
-            Vector3 p0 = _spline.GetNodeWorldPosition(segment.startNodeIndex);
-            Vector3 p3 = _spline.GetNodeWorldPosition(segment.endNodeIndex);
             Vector3 p1 = p0 + _spline.transform.TransformVector(segment.startHandleOffset);
             Vector3 p2 = p3 + _spline.transform.TransformVector(segment.endHandleOffset);
 
             Vector3[] points = new Vector3[SplineEditorSettings.segmentLevelOfDetail + 1];
             for (int i = 0; i <= SplineEditorSettings.segmentLevelOfDetail; i++)
-                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float) SplineEditorSettings.segmentLevelOfDetail);
+                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float)SplineEditorSettings.segmentLevelOfDetail);
 
-            DrawWithOcclusion(
-                () => Handles.DrawPolyLine(points),
-                color,
-                occluded);
+            DrawWithOcclusion(() => Handles.DrawPolyLine(points), color, occluded);
         }
 
 
@@ -139,6 +139,22 @@ namespace MobileGameProjectEditor.SplineNetwork
                    + 3f * uu * t * p1
                    + 3f * u * tt * p2
                    + ttt * p3;
+        }
+
+        private Vector3 GetSegmentEndWorldPosition(int nodeIndex, string socketId)
+        {
+            Vector3 nodeWorld = _spline.GetNodeWorldPosition(nodeIndex);
+            var node = _spline.nodes[nodeIndex];
+
+            if (node.prefab == null || string.IsNullOrEmpty(socketId))
+                return nodeWorld;
+
+            var socket = node.prefab.sockets.FirstOrDefault(s => s.id == socketId);
+            if (socket == null)
+                return nodeWorld;
+
+            Quaternion nodeWorldRot = _spline.transform.rotation * node.rotation;
+            return nodeWorld + nodeWorldRot * socket.localPosition;
         }
     }
 }
