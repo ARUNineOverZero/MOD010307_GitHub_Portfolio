@@ -9,7 +9,6 @@ namespace MobileGameProjectEditor.SplineNetwork
     {
         private readonly Spline _spline;
         private readonly SplineSelector _selector;
-
         private Vector3 _selectionPivotPosition;
         public Vector3 SelectionPivotPosition => _selectionPivotPosition;
         private Quaternion _selectionPivotRotation;
