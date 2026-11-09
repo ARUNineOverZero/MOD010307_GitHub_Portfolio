@@ -1,10 +1,12 @@
+using System;
 using System.Linq;
 using MobileGameProject.SplineNetwork;
+using UnityEditor;
 using UnityEngine;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
-    public class SplineNodePrefabActions
+    public class SplineNodePrefabActions : AActions
     {
         private readonly SplineNodePrefab _splineNodePrefab;
         private readonly SplineNodePrefabSelector _selector;
@@ -67,6 +69,30 @@ namespace MobileGameProjectEditor.SplineNetwork
                 mc.sharedMesh = null;
                 mc.sharedMesh = mesh;
             }
+        }
+
+        public override void CreateNodeAt(Vector3 worldPos)
+        {
+            Undo.RecordObject(_splineNodePrefab, "Add Spline Node");
+
+            Vector3 localPos = _splineNodePrefab.transform.InverseTransformPoint(worldPos);
+            int newIndex = _splineNodePrefab.AddSocket(localPos);
+            _selector.SelectedSocketIndices.Clear();
+            _selector.SelectedSocketIndices.Add(newIndex);
+
+            EditorUtility.SetDirty(_splineNodePrefab);
+        }
+
+        public void DeleteSelectedSockets()
+        {
+            if (_selector.SelectedCount == 0) return;
+
+            Undo.RecordObject(_splineNodePrefab, "Delete Spline Nodes");
+
+            _splineNodePrefab.RemoveAllSocketsAt(_selector.SelectedSocketIndices.ToArray());
+            _selector.ClearSelection();
+
+            EditorUtility.SetDirty(_splineNodePrefab);
         }
     }
 }

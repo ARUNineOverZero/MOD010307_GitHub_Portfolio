@@ -21,4 +21,23 @@ namespace MobileGameProjectEditor.SplineNetwork
             };
         }
     }
+
+    public class SplineNodePrefabShortcutContext : IShortcutContext
+    {
+        public bool active => SplineNodePrefabEditor.IsEditing;
+    }
+    
+    [InitializeOnLoad]
+    public static class SplineNodePrefabShortcutContextRegistrar
+    {
+        private static readonly SplineNodePrefabShortcutContext Context = new SplineNodePrefabShortcutContext();
+
+        static SplineNodePrefabShortcutContextRegistrar()
+        {
+            EditorApplication.delayCall += () =>
+            {
+                ShortcutManager.RegisterContext(Context);
+            };
+        }
+    }
 }

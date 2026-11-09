@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
-    public class SplineActions
+    public class SplineActions : AActions
     {
         private readonly Spline _spline;
         private readonly SplineSelector _selector;
@@ -17,21 +17,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _selector = selector;
         }
 
-        public void HandleCreateInput(Event e)
-        {
-            if (e.type != EventType.MouseDown || e.button != 0) return;
-
-            if (_selector.SelectedHandle.HasValue)
-                _selector.ClearSelectedHandle();
-
-            if (TryGetClickedWorldPosition(e, out Vector3 worldPos))
-            {
-                CreateNodeAt(worldPos);
-                e.Use();
-            }
-        }
-
-        public void CreateNodeAt(Vector3 worldPos)
+        public override void CreateNodeAt(Vector3 worldPos)
         {
             Undo.RecordObject(_spline, "Add Spline Node");
 
@@ -99,32 +85,6 @@ namespace MobileGameProjectEditor.SplineNetwork
             _selector.ClearSelection();
 
             EditorUtility.SetDirty(_spline);
-        }
-
-        private bool TryGetClickedWorldPosition(Event e, out Vector3 worldPos)
-        {
-            var cam = SceneView.currentDrawingSceneView?.camera;
-            if (cam == null)
-            {
-                worldPos = Vector3.zero;
-                return false;
-            }
-
-            var position = e.mousePosition;
-            position.y = cam.scaledPixelHeight - position.y;
-            var ray = cam.ScreenPointToRay(position);
-
-            if (!Physics.Raycast(ray, out RaycastHit hit, 1000f))
-            {
-                worldPos = Vector3.zero;
-                return false;
-            }
-
-            worldPos = hit.point;
-            if (EditorSnapSettings.gridSnapActive && EditorSnapSettings.gridSnapEnabled)
-                worldPos = Snapping.Snap(worldPos, EditorSnapSettings.move);
-
-            return true;
         }
 
         public void ResetHandlesOnSelectedSegments()

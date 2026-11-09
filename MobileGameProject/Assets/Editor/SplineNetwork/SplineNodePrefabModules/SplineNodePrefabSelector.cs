@@ -76,5 +76,12 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             return _selectedSocketIndices.Contains(i);
         }
+
+        public void SelectAll()
+        {
+            for(int i = 0; i < _splineNodePrefab.sockets.Count; i++)
+                if(!_selectedSocketIndices.Contains(i))
+                    _selectedSocketIndices.Add(i);
+        }
     }
 }
