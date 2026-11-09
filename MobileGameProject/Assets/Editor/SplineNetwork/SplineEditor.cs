@@ -310,6 +310,14 @@ namespace MobileGameProjectEditor.SplineNetwork
             _current._actions.ResetHandlesOnSelectedSegments();
             _current.Repaint();
         }
+
+        [Shortcut("Spline Network/Smooth Nodes Handles", typeof(SplineShortcutContext), KeyCode.Z, ShortcutModifiers.Shift)]
+        private static void SmoothNodeSegmentShortcut()
+        {
+            if (_current == null || !_current._isEditing) return;
+            _current._actions.SmoothHandles();
+            _current.Repaint();
+        }
         
         #endregion Static
     }
