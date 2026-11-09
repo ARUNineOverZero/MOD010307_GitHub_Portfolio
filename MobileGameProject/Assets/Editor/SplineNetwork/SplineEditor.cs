@@ -65,7 +65,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public override void OnInspectorGUI()
         {
-            SplineEditorSettings.DrawSettingsGUI();
+            SplineEditorSettings.DrawSplineSettingsGUI();
             DrawDefaultInspector();
             EditorGUILayout.Space(8);
             DrawEditGUI();
