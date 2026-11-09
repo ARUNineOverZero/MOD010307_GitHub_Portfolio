@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
-    public class SplineDrawer
+    public class SplineDrawer : ADrawer
     {
         private readonly Spline _spline;
         private readonly SplineSelector _selector;
@@ -69,12 +69,6 @@ namespace MobileGameProjectEditor.SplineNetwork
                 DrawSegmentLine(seg, SplineEditorSettings.normalColor);
         }
 
-        public void RequestRepaint(Event e)
-        {
-            if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag)
-                SceneView.RepaintAll();
-        }
-
         private void DrawHandle(int segmentIndex, bool isStart, int nodeIndex, Vector3 localOffset)
         {
             Vector3 worldPos = _spline.GetNodeWorldPosition(nodeIndex);
@@ -133,24 +127,6 @@ namespace MobileGameProjectEditor.SplineNetwork
                 occluded);
         }
 
-        private void DrawNodeSquare(Vector3 center, float size, Color color)
-        {
-            var cam = SceneView.currentDrawingSceneView.camera;
-            if (cam == null) return;
-
-            Vector3 right = cam.transform.right * size;
-            Vector3 up = cam.transform.up * size;
-
-            Vector3[] verts =
-            {
-                center - right - up,
-                center - right + up,
-                center + right + up,
-                center + right - up
-            };
-
-            Handles.DrawSolidRectangleWithOutline(verts, color, color);
-        }
 
         private static Vector3 EvaluateCubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
@@ -164,23 +140,6 @@ namespace MobileGameProjectEditor.SplineNetwork
                    + 3f * uu * t * p1
                    + 3f * u * tt * p2
                    + ttt * p3;
-        }
-
-        private void DrawWithOcclusion(System.Action draw, Color normalColor, Color occludedColor)
-        {
-            var prevZTest = Handles.zTest;
-            var prevColor = Handles.color;
-
-            Handles.zTest = CompareFunction.Greater;
-            Handles.color = occludedColor;
-            draw();
-
-            Handles.zTest = CompareFunction.LessEqual;
-            Handles.color = normalColor;
-            draw();
-
-            Handles.zTest = prevZTest;
-            Handles.color = prevColor;
         }
     }
 }
