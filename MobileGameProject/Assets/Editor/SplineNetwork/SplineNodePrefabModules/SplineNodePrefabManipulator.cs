@@ -48,7 +48,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public void HandleRotation()
         {
-
+            
         }
 
         private Quaternion GetHandleRotation(int socketIndex = -1)
