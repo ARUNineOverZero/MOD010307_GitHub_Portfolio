@@ -8,13 +8,11 @@ namespace MobileGameProjectEditor.SplineNetwork
     public class SplineDrawer
     {
         private readonly Spline _spline;
-        private readonly SplineEditorSettings _settings;
         private readonly SplineSelector _selector;
 
-        public SplineDrawer(Spline spline, SplineEditorSettings settings, SplineSelector selector)
+        public SplineDrawer(Spline spline, SplineSelector selector)
         {
             _spline = spline;
-            _settings = settings;
             _selector = selector;
         }
 
@@ -33,15 +31,15 @@ namespace MobileGameProjectEditor.SplineNetwork
                 bool isSelected = _selector.IsNodeSelected(i);
                 bool isHovered = _selector.HoverNodeIndex == i;
 
-                Color color = _settings.normalColor;
-                float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
+                Color color = SplineEditorSettings.normalColor;
+                float size = HandleUtility.GetHandleSize(worldPos) * SplineEditorSettings.nodeBaseSize;
 
                 if (isSelected)
-                    color = _settings.selectedColor;
+                    color = SplineEditorSettings.selectedColor;
                 else if (isHovered)
                 {
-                    color = _settings.hoverColor;
-                    size *= _settings.hoverSizeMultiplier;
+                    color = SplineEditorSettings.hoverColor;
+                    size *= SplineEditorSettings.hoverSizeMultiplier;
                 }
 
                 DrawWithOcclusion(
@@ -68,7 +66,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         public void DrawSegments()
         {
             foreach (var seg in _spline.segments)
-                DrawSegmentLine(seg, _settings.normalColor);
+                DrawSegmentLine(seg, SplineEditorSettings.normalColor);
         }
 
         public void RequestRepaint(Event e)
@@ -87,16 +85,16 @@ namespace MobileGameProjectEditor.SplineNetwork
                               _selector.SelectedHandle.Value.segmentIndex == segmentIndex &&
                               _selector.SelectedHandle.Value.isStart == isStart;
 
-            Handles.color = _settings.hoverColor;
+            Handles.color = SplineEditorSettings.hoverColor;
             Handles.DrawLine(worldPos, handleWorld);
 
-            float size = HandleUtility.GetHandleSize(handleWorld) * _settings.nodeBaseSize;
-            Color color = _settings.hoverColor;
+            float size = HandleUtility.GetHandleSize(handleWorld) * SplineEditorSettings.nodeBaseSize;
+            Color color = SplineEditorSettings.hoverColor;
 
             if (isSelected)
-                color = _settings.selectedColor;
+                color = SplineEditorSettings.selectedColor;
             else if (isHovered)
-                size *= _settings.hoverSizeMultiplier;
+                size *= SplineEditorSettings.hoverSizeMultiplier;
 
             DrawWithOcclusion(
                 () => DrawNodeSquare(handleWorld, size, color),
@@ -111,7 +109,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 return;
 
             Color occluded = new Color(color.r, color.g, color.b, color.a * 0.35f);
-            if (_settings.segmentLevelOfDetail <= 2)
+            if (SplineEditorSettings.segmentLevelOfDetail <= 2)
             {
                 DrawWithOcclusion(
                     () => Handles.DrawLine(_spline.GetNodeWorldPosition(segment.startNodeIndex), _spline.GetNodeWorldPosition(segment.endNodeIndex)),
@@ -125,9 +123,9 @@ namespace MobileGameProjectEditor.SplineNetwork
             Vector3 p1 = p0 + _spline.transform.TransformVector(segment.startHandleOffset);
             Vector3 p2 = p3 + _spline.transform.TransformVector(segment.endHandleOffset);
 
-            Vector3[] points = new Vector3[_settings.segmentLevelOfDetail + 1];
-            for (int i = 0; i <= _settings.segmentLevelOfDetail; i++)
-                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float) _settings.segmentLevelOfDetail);
+            Vector3[] points = new Vector3[SplineEditorSettings.segmentLevelOfDetail + 1];
+            for (int i = 0; i <= SplineEditorSettings.segmentLevelOfDetail; i++)
+                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float) SplineEditorSettings.segmentLevelOfDetail);
 
             DrawWithOcclusion(
                 () => Handles.DrawPolyLine(points),

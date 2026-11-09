@@ -25,7 +25,6 @@ namespace MobileGameProjectEditor.SplineNetwork
     public class SplineSelector
     {
         private readonly Spline _spline;
-        private readonly SplineEditorSettings _settings;
         public int _hoverNodeIndex = -1;
         public int HoverNodeIndex => _hoverNodeIndex;
         public int _hoverHandleSegmentIndex = -1;
@@ -42,10 +41,9 @@ namespace MobileGameProjectEditor.SplineNetwork
         public int SelectededCount => _selectedNodeIndices.Count;
         
 
-        public SplineSelector(Spline spline, SplineEditorSettings settings)
+        public SplineSelector(Spline spline)
         {
             _spline = spline;
-            _settings = settings;
         }
 
         public void UpdateHoverSelection()
@@ -62,9 +60,9 @@ namespace MobileGameProjectEditor.SplineNetwork
             for (int i = 0; i < _spline.nodes.Count; i++)
             {
                 Vector3 worldPos = _spline.transform.TransformPoint(_spline.nodes[i].position);
-                float size = HandleUtility.GetHandleSize(worldPos) * _settings.nodeBaseSize;
+                float size = HandleUtility.GetHandleSize(worldPos) * SplineEditorSettings.nodeBaseSize;
 
-                if (HandleUtility.DistanceToCircle(worldPos, size * _settings.hoverTestRadiusFactor) < _settings.hoverPixelThreshold)
+                if (HandleUtility.DistanceToCircle(worldPos, size * SplineEditorSettings.hoverTestRadiusFactor) < SplineEditorSettings.hoverPixelThreshold)
                 {
                     _hoverNodeIndex = i;
                     break;
@@ -155,8 +153,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             Vector3 handleWorld = _spline.transform.TransformPoint(_spline.nodes[nodeIndex].position)
                                   + _spline.transform.TransformVector(localOffset);
-            float size = HandleUtility.GetHandleSize(handleWorld) * _settings.nodeBaseSize * 0.7f;
-            return HandleUtility.DistanceToCircle(handleWorld, size * _settings.hoverTestRadiusFactor) < _settings.hoverPixelThreshold;
+            float size = HandleUtility.GetHandleSize(handleWorld) * SplineEditorSettings.nodeBaseSize * 0.7f;
+            return HandleUtility.DistanceToCircle(handleWorld, size * SplineEditorSettings.hoverTestRadiusFactor) < SplineEditorSettings.hoverPixelThreshold;
         }
 
         public bool IsNodeSelected(int index) => _selectedNodeIndices.Contains(index);

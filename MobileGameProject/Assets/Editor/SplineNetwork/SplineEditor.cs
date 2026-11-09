@@ -14,16 +14,12 @@ namespace MobileGameProjectEditor.SplineNetwork
         private Spline _spline;
         private int _hoverNodeIndex = -1;
         private bool _isEditing;
-
-        private SplineEditorSettings _settings;
         private SplineDrawer _drawer;
         private SplineSelector _selector;
         private SplineManipulator _manipulator;
         private SplineActions _actions;
         private SplineSelectionInfo _selectionInfo;
         private bool _createHeld;
-        
-   
 
         #endregion Fields
 
@@ -33,9 +29,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             _current = this;
             _spline = (Spline) target;
-            _settings = new SplineEditorSettings();
-            _selector = new SplineSelector(_spline, _settings);
-            _drawer = new SplineDrawer(_spline, _settings, _selector);
+            _selector = new SplineSelector(_spline);
+            _drawer = new SplineDrawer(_spline, _selector);
             _manipulator = new SplineManipulator(_spline, _selector);
             _actions = new SplineActions(_spline, _selector);
             _selectionInfo = new SplineSelectionInfo(_spline, _manipulator, _selector);
@@ -70,7 +65,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         public override void OnInspectorGUI()
         {
-            DrawSettingsGUI();
+            SplineEditorSettings.DrawSettingsGUI();
             DrawDefaultInspector();
             EditorGUILayout.Space(8);
             DrawEditGUI();
@@ -141,26 +136,6 @@ namespace MobileGameProjectEditor.SplineNetwork
         }
 
         #endregion SceneGUI
-
-        #region InspectorGUI
-
-        private void DrawSettingsGUI()
-        {
-            EditorGUILayout.LabelField("Visual Settings", EditorStyles.boldLabel);
-
-            _settings.nodeBaseSize = EditorGUILayout.Slider("Node Size", _settings.nodeBaseSize, 0.02f, 0.3f);
-            _settings.hoverSizeMultiplier = EditorGUILayout.Slider("Hover Multiplier", _settings.hoverSizeMultiplier, 1f, 2f);
-            _settings.segmentLevelOfDetail = EditorGUILayout.IntSlider("Segment LOD", _settings.segmentLevelOfDetail, 2, 50);
-
-            _settings.normalColor = EditorGUILayout.ColorField("Normal", _settings.normalColor);
-            _settings.hoverColor = EditorGUILayout.ColorField("Hover", _settings.hoverColor);
-            _settings.selectedColor = EditorGUILayout.ColorField("Selected", _settings.selectedColor);
-
-            if (GUI.changed)
-                SceneView.RepaintAll();
-        }
-
-        #endregion InspectorGUI
 
         #region Inspector
 
