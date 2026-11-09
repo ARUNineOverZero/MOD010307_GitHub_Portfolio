@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace MobileGameProject.SplineNetwork
@@ -21,7 +19,7 @@ namespace MobileGameProject.SplineNetwork
         public int AddSocket(Vector3 localPos)
         {
             int newIndex = sockets.Count;
-            sockets.Add(new NodeSocket() { localPosition = localPos, localRotation = quaternion.identity});
+            sockets.Add(new NodeSocket() { localPosition = localPos, localRotation = Quaternion.identity});
             return newIndex;
         }
 

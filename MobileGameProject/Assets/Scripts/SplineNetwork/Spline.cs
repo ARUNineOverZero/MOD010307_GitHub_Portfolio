@@ -10,15 +10,19 @@ namespace MobileGameProject.SplineNetwork
     {
         public Vector3 position;
         public Quaternion rotation;
+        public SplineNodePrefab prefab;
     }
 
     [System.Serializable]
     public class SplineSegment
     {
         public int startNodeIndex;
+        public string startSocket;
         public int endNodeIndex;
+        public string endSocket;
         public Vector3 startHandleOffset;
         public Vector3 endHandleOffset;
+        public SplineNodePrefab prefab;
     }
 
     public class Spline : MonoBehaviour

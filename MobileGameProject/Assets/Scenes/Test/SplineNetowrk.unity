@@ -500,129 +500,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: -1.5, y: 0, z: 0.5}
-    rotation: {x: 0, y: 0.38268346, z: 0, w: 0.9238795}
+  - position: {x: 0.898309, y: 0, z: -0.5298605}
+    rotation: {x: 0, y: 0.90054655, z: 0, w: -0.43475962}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - position: {x: -1.5, y: 0, z: -1.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -1.5, y: 3, z: -3.5}
     rotation: {x: 0, y: 0.8816746, z: 0.47185796, w: 0}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -2.5, y: 5, z: -6.5}
     rotation: {x: 0.044570662, y: 0.94810617, z: 0.27465677, w: -0.15385647}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -2.5, y: 5, z: -11.5}
-    rotation: {x: 0, y: 1, z: 0, w: 0}
-  - position: {x: 1.3033566, y: 0.082377195, z: -3.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 1.5532147, y: -1.278524e-16, z: -3.2420406}
-    rotation: {x: 0.104278326, y: 0.3729199, z: -0.042222265, w: 0.921018}
-  - position: {x: 1.6719251, y: -1.5669923e-16, z: -1.942894}
-    rotation: {x: 1.1044689e-17, y: 0.04554555, z: -5.03559e-19, w: 0.9989623}
-  - position: {x: 2.4847882, y: -1.3168333e-16, z: -3.06951}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 2.5851605, y: -1.5376486e-16, z: -2.075047}
-    rotation: {x: 1.1032147e-17, y: 0.05027406, z: -5.5533303e-19, w: 0.9987355}
-  - position: {x: 2.3609588, y: -1.5799977e-16, z: -1.8843231}
-    rotation: {x: 6.5299093e-18, y: -0.41955388, z: 3.0181308e-18, w: 0.90773046}
-  - position: {x: 2.08862, y: -1.6430337e-16, z: -1.6004338}
-    rotation: {x: 7.433323e-18, y: -0.3730719, z: 2.9889594e-18, w: 0.92780244}
-  - position: {x: 1.7687391, y: -1.6655153e-16, z: -1.4991865}
-    rotation: {x: 2.7028809e-18, y: -0.5908634, z: 1.9795359e-18, w: 0.80677164}
-  - position: {x: 1.9714684, y: -1.3442752e-16, z: -2.9459229}
-    rotation: {x: -7.647431e-19, y: 0.99757814, z: 1.0968186e-17, w: 0.069554895}
-  - position: {x: 2.2876067, y: -1.383118e-16, z: -2.7709908}
-    rotation: {x: 4.630488e-18, y: 0.50785774, z: -2.7298784e-18, w: 0.86144096}
-  - position: {x: 3.287202, y: -1.4383133e-16, z: -2.5224133}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  - position: {x: 3.4234352, y: -1.5148668e-16, z: -2.177647}
-    rotation: {x: 1.01431195e-17, y: 0.18704963, z: -1.9313542e-18, w: 0.98235047}
-  - position: {x: 3.5927105, y: -1.5428695e-16, z: -2.0515332}
-    rotation: {x: 5.9278852e-18, y: 0.4486411, z: -2.9757827e-18, w: 0.89371204}
-  - position: {x: 3.6775076, y: -1.5449816e-16, z: -2.0420213}
-    rotation: {x: 9.226442e-19, y: 0.66653067, z: -8.2493487e-19, w: 0.7454777}
-  - position: {x: 3.7460315, y: -1.5659257e-16, z: -1.9476981}
-    rotation: {x: 8.542653e-18, y: 0.3089975, z: -2.7754827e-18, w: 0.95106286}
-  - position: {x: 3.8046536, y: -1.5969847e-16, z: -1.8078203}
-    rotation: {x: 1.00383976e-17, y: 0.19712973, z: -2.0184741e-18, w: 0.98037744}
-  - position: {x: 3.788293, y: -1.6339947e-16, z: -1.6411428}
-    rotation: {x: 1.1035973e-17, y: -0.048902865, z: 5.403371e-19, w: 0.99880356}
-  - position: {x: 3.6892462, y: -1.6969924e-16, z: -1.3574252}
-    rotation: {x: 1.0334349e-17, y: -0.1671495, z: 1.7520295e-18, w: 0.9859316}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   segments:
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 1
-    startHandleOffset: {x: 0, y: 0, z: -0.66}
-    endHandleOffset: {x: 0, y: 0, z: 0.8944273}
+    endSocket: 
+    startHandleOffset: {x: -0.742774, y: 0, z: -0.9307151}
+    endHandleOffset: {x: 0.791442, y: -0, z: 0.32014605}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 2
-    startHandleOffset: {x: 0, y: 0, z: -2}
+    endSocket: 
+    startHandleOffset: {x: 0, y: 0.99, z: -0.66}
     endHandleOffset: {x: 0.16660981, y: -0.833049, z: 0.833049}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 3
+    endSocket: 
     startHandleOffset: {x: -0.17289916, y: 0.8644958, z: -0.8644958}
     endHandleOffset: {x: 0.14864607, y: -0.29729214, z: 1.1891686}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: -0.19863667, y: 0.39727333, z: -1.5890933}
     endHandleOffset: {x: 0, y: 0, z: 1.485}
-  - startNodeIndex: 5
-    endNodeIndex: 6
-    startHandleOffset: {x: 0.082453154, y: -0.027184475, z: 0.08512659}
-    endHandleOffset: {x: -0.082453154, y: 0.027184475, z: -0.08512659}
-  - startNodeIndex: 6
-    endNodeIndex: 7
-    startHandleOffset: {x: 0.039174434, y: -9.519455e-18, z: 0.42871842}
-    endHandleOffset: {x: -0.039174434, y: 9.519455e-18, z: -0.42871842}
-  - startNodeIndex: 8
-    endNodeIndex: 9
-    startHandleOffset: {x: 0.033122864, y: -7.2869045e-18, z: 0.3281728}
-    endHandleOffset: {x: -0.033122864, y: 7.2869045e-18, z: -0.3281728}
-  - startNodeIndex: 9
-    endNodeIndex: 10
-    startHandleOffset: {x: -0.07398656, y: -1.3975214e-18, z: 0.06293889}
-    endHandleOffset: {x: 0.07398656, y: 1.3975214e-18, z: -0.06293889}
-  - startNodeIndex: 10
-    endNodeIndex: 11
-    startHandleOffset: {x: -0.08987183, y: -2.08019e-18, z: 0.093683474}
-    endHandleOffset: {x: 0.08987183, y: 2.08019e-18, z: -0.093683474}
-  - startNodeIndex: 11
-    endNodeIndex: 12
-    startHandleOffset: {x: -0.10556068, y: -7.418921e-19, z: 0.033411615}
-    endHandleOffset: {x: 0.10556068, y: 7.418921e-19, z: -0.033411615}
-  - startNodeIndex: 12
-    endNodeIndex: 13
-    startHandleOffset: {x: 0.066900685, y: 1.0600926e-17, z: -0.477423}
-    endHandleOffset: {x: -0.066900685, y: -1.0600926e-17, z: 0.477423}
-  - startNodeIndex: 13
-    endNodeIndex: 14
-    startHandleOffset: {x: 0.10432563, y: -1.2818129e-18, z: 0.057727564}
-    endHandleOffset: {x: -0.10432563, y: 1.2818129e-18, z: -0.057727564}
-  - startNodeIndex: 15
-    endNodeIndex: 16
-    startHandleOffset: {x: 0.044957, y: -2.526266e-18, z: 0.11377283}
-    endHandleOffset: {x: -0.044957, y: 2.526266e-18, z: -0.11377283}
-  - startNodeIndex: 16
-    endNodeIndex: 17
-    startHandleOffset: {x: 0.055860847, y: -9.240873e-19, z: 0.041617587}
-    endHandleOffset: {x: -0.055860847, y: 9.240873e-19, z: -0.041617587}
-  - startNodeIndex: 17
-    endNodeIndex: 18
-    startHandleOffset: {x: 0.027983058, y: -6.970115e-20, z: 0.0031389429}
-    endHandleOffset: {x: -0.027983058, y: 6.970115e-20, z: -0.0031389429}
-  - startNodeIndex: 18
-    endNodeIndex: 19
-    startHandleOffset: {x: 0.022612883, y: -6.911547e-19, z: 0.031126643}
-    endHandleOffset: {x: -0.022612883, y: 6.911547e-19, z: -0.031126643}
-  - startNodeIndex: 19
-    endNodeIndex: 20
-    startHandleOffset: {x: 0.0193453, y: -1.0249463e-18, z: 0.046159673}
-    endHandleOffset: {x: -0.0193453, y: 1.0249463e-18, z: -0.046159673}
-  - startNodeIndex: 20
-    endNodeIndex: 21
-    startHandleOffset: {x: -0.005399051, y: -1.2213316e-18, z: 0.05500357}
-    endHandleOffset: {x: 0.005399051, y: 1.2213316e-18, z: -0.05500357}
-  - startNodeIndex: 21
-    endNodeIndex: 22
-    startHandleOffset: {x: -0.032685414, y: -2.0789235e-18, z: 0.09362682}
-    endHandleOffset: {x: 0.032685414, y: 2.0789235e-18, z: -0.09362682}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
 --- !u!4 &780207634
 Transform:
   m_ObjectHideFlags: 0
@@ -807,221 +728,372 @@ MonoBehaviour:
   nodes:
   - position: {x: -1.5, y: 3, z: 5.4999995}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 3, z: 2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 3, z: 2.5}
     rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 3, z: 5.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 5.25, z: 4}
     rotation: {x: 0, y: -0.38268346, z: -0, w: 0.92387956}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 5, z: 2.5}
     rotation: {x: -0.14589997, y: 0.83117104, z: 0.2576871, w: 0.47060102}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 5, z: 2.5}
     rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 5, z: -2.5}
     rotation: {x: -0.04408409, y: 0.9551652, z: -0.18674321, w: -0.2254839}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 5, z: -2.5}
     rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 9, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 0, z: 8.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 3, z: 5.5}
     rotation: {x: 0.47185794, y: 0, z: 0, w: 0.8816746}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 0, z: 8.5}
     rotation: {x: 0.37822402, y: -0.07630973, z: 0.031302776, w: 0.9220323}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 0, z: 8.5}
     rotation: {x: 0.38268346, y: 0, z: 0, w: 0.92387956}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 0, z: 5.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 0, z: 2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 0, z: 2.5}
     rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 0, z: -2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 0, z: 5.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 0, z: 2.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 0, z: 2.5}
     rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 0, z: -2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   segments:
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 1
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: -0, y: -0, z: 0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 2
+    endSocket: 
     startHandleOffset: {x: 0.99, y: 0, z: 0}
     endHandleOffset: {x: -0.99, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 3
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: -0, y: -0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 0
+    endSocket: 
     startHandleOffset: {x: -0.99, y: 0, z: 0}
     endHandleOffset: {x: 0.99, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: -1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: 1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: -1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: 1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 4
+    startSocket: 
     endNodeIndex: 5
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: -0.0825, z: -0.495}
     endHandleOffset: {x: -0.82500005, y: 0.0825, z: 0.495}
+    prefab: {fileID: 0}
   - startNodeIndex: 5
+    startSocket: 
     endNodeIndex: 6
+    endSocket: 
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 6
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: 0.0825, z: 0.495}
     endHandleOffset: {x: -0.82500005, y: -0.0825, z: -0.495}
+    prefab: {fileID: 0}
   - startNodeIndex: 5
+    startSocket: 
     endNodeIndex: 7
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: -0, y: -0, z: 1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 7
+    startSocket: 
     endNodeIndex: 8
+    endSocket: 
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 8
+    startSocket: 
     endNodeIndex: 6
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 1.6500001}
     endHandleOffset: {x: -0, y: -0, z: -1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 8
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: -0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 6
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: 0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 5
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: -0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: 0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 7
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: -0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: -0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 4
+    startSocket: 
     endNodeIndex: 11
+    endSocket: 
     startHandleOffset: {x: 0, y: -1.75, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -1}
+    prefab: {fileID: 0}
   - startNodeIndex: 11
+    startSocket: 
     endNodeIndex: 10
+    endSocket: 
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 12
+    endSocket: 
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
+    prefab: {fileID: 0}
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 13
+    endSocket: 
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
+    prefab: {fileID: 0}
   - startNodeIndex: 12
+    startSocket: 
     endNodeIndex: 10
+    endSocket: 
     startHandleOffset: {x: -0.495, y: 0, z: 0}
     endHandleOffset: {x: 0.495, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 13
+    startSocket: 
     endNodeIndex: 10
+    endSocket: 
     startHandleOffset: {x: 0.495, y: 0, z: 0}
     endHandleOffset: {x: -0.495, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 14
+    startSocket: 
     endNodeIndex: 15
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: 0, y: 0, z: 0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 15
+    startSocket: 
     endNodeIndex: 16
+    endSocket: 
     startHandleOffset: {x: -0.33, y: 0, z: 0}
     endHandleOffset: {x: 0.33, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 16
+    startSocket: 
     endNodeIndex: 17
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 14
+    startSocket: 
     endNodeIndex: 0
+    endSocket: 
     startHandleOffset: {x: 0, y: 0.99, z: -0.00000015735627}
     endHandleOffset: {x: 0, y: -0.99, z: 0.00000015735627}
+    prefab: {fileID: 0}
   - startNodeIndex: 15
+    startSocket: 
     endNodeIndex: 1
+    endSocket: 
     startHandleOffset: {x: 0, y: 0.99, z: 0}
     endHandleOffset: {x: 0, y: -0.99, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 14
+    startSocket: 
     endNodeIndex: 13
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 18
+    endSocket: 
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 18
+    startSocket: 
     endNodeIndex: 12
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 19
+    endSocket: 
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 19
+    startSocket: 
     endNodeIndex: 18
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 6
+    endSocket: 
     startHandleOffset: {x: -0.33, y: 0.66, z: 0}
     endHandleOffset: {x: 0.33, y: -0.66, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 5
+    endSocket: 
     startHandleOffset: {x: 0.33, y: 0.66, z: 0}
     endHandleOffset: {x: -0.33, y: -0.66, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 6
+    startSocket: 
     endNodeIndex: 16
+    endSocket: 
     startHandleOffset: {x: 0, y: -1.6500001, z: 0}
     endHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 19
+    startSocket: 
     endNodeIndex: 20
+    endSocket: 
     startHandleOffset: {x: 0.33, y: 0, z: 0}
     endHandleOffset: {x: -0.33, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 20
+    startSocket: 
     endNodeIndex: 5
+    endSocket: 
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 20
+    startSocket: 
     endNodeIndex: 21
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 21
+    startSocket: 
     endNodeIndex: 7
+    endSocket: 
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 17
+    startSocket: 
     endNodeIndex: 21
+    endSocket: 
     startHandleOffset: {x: 1.6500001, y: 0, z: 0}
     endHandleOffset: {x: -1.6500001, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 17
+    startSocket: 
     endNodeIndex: 8
+    endSocket: 
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    prefab: {fileID: 0}
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,221 +1288,372 @@ MonoBehaviour:
   nodes:
   - position: {x: -1.5, y: 3, z: 5.4999995}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 3, z: 2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 3, z: 2.5}
     rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 3, z: 5.5}
     rotation: {x: 0, y: 0.5, z: 0, w: 0.8660254}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 5.25, z: 4}
     rotation: {x: 0, y: -0.38268346, z: -0, w: 0.92387956}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 5, z: 2.5}
     rotation: {x: -0.14589997, y: 0.83117104, z: 0.2576871, w: 0.47060102}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 5, z: 2.5}
     rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 5, z: -2.5}
     rotation: {x: -0.04408409, y: 0.9551652, z: -0.18674321, w: -0.2254839}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 5, z: -2.5}
     rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 9, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 0, z: 8.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 0, y: 3, z: 5.5}
     rotation: {x: 0.47185794, y: 0, z: 0, w: 0.8816746}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 0, z: 8.5}
     rotation: {x: 0.37822402, y: -0.07630973, z: 0.031302776, w: 0.9220323}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 0, z: 8.5}
     rotation: {x: 0.38268346, y: 0, z: 0, w: 0.92387956}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 0, z: 5.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 0}
   - position: {x: -1.5, y: 0, z: 2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 0, z: 2.5}
     rotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: -2.5, y: 0, z: -2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 0, z: 5.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 1.5, y: 0, z: 2.5}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 0, z: 2.5}
     rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    prefab: {fileID: 0}
   - position: {x: 2.5, y: 0, z: -2.5}
     rotation: {x: 0, y: 1, z: 0, w: 0}
+    prefab: {fileID: 0}
   segments:
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 1
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: -0, y: -0, z: 0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 2
+    endSocket: 
     startHandleOffset: {x: 0.99, y: 0, z: 0}
     endHandleOffset: {x: -0.99, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 3
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: -0, y: -0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 0
+    endSocket: 
     startHandleOffset: {x: -0.99, y: 0, z: 0}
     endHandleOffset: {x: 0.99, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: -1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: 1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: -1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: 1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 4
+    startSocket: 
     endNodeIndex: 5
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: -0.0825, z: -0.495}
     endHandleOffset: {x: -0.82500005, y: 0.0825, z: 0.495}
+    prefab: {fileID: 0}
   - startNodeIndex: 5
+    startSocket: 
     endNodeIndex: 6
+    endSocket: 
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 6
+    startSocket: 
     endNodeIndex: 4
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: 0.0825, z: 0.495}
     endHandleOffset: {x: -0.82500005, y: -0.0825, z: -0.495}
+    prefab: {fileID: 0}
   - startNodeIndex: 5
+    startSocket: 
     endNodeIndex: 7
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: -0, y: -0, z: 1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 7
+    startSocket: 
     endNodeIndex: 8
+    endSocket: 
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 8
+    startSocket: 
     endNodeIndex: 6
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 1.6500001}
     endHandleOffset: {x: -0, y: -0, z: -1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 8
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: -0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 6
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: 0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: 0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 5
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: -0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: 0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 7
+    startSocket: 
     endNodeIndex: 9
+    endSocket: 
     startHandleOffset: {x: -0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: -0.82500005}
+    prefab: {fileID: 0}
   - startNodeIndex: 4
+    startSocket: 
     endNodeIndex: 11
+    endSocket: 
     startHandleOffset: {x: 0, y: -1.75, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -1}
+    prefab: {fileID: 0}
   - startNodeIndex: 11
+    startSocket: 
     endNodeIndex: 10
+    endSocket: 
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 12
+    endSocket: 
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
+    prefab: {fileID: 0}
   - startNodeIndex: 0
+    startSocket: 
     endNodeIndex: 13
+    endSocket: 
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
+    prefab: {fileID: 0}
   - startNodeIndex: 12
+    startSocket: 
     endNodeIndex: 10
+    endSocket: 
     startHandleOffset: {x: -0.495, y: 0, z: 0}
     endHandleOffset: {x: 0.495, y: -0, z: -0}
+    prefab: {fileID: 0}
   - startNodeIndex: 13
+    startSocket: 
     endNodeIndex: 10
+    endSocket: 
     startHandleOffset: {x: 0.495, y: 0, z: 0}
     endHandleOffset: {x: -0.495, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 14
+    startSocket: 
     endNodeIndex: 15
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: 0, y: 0, z: 0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 15
+    startSocket: 
     endNodeIndex: 16
+    endSocket: 
     startHandleOffset: {x: -0.33, y: 0, z: 0}
     endHandleOffset: {x: 0.33, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 16
+    startSocket: 
     endNodeIndex: 17
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 14
+    startSocket: 
     endNodeIndex: 0
+    endSocket: 
     startHandleOffset: {x: 0, y: 0.99, z: -0.00000015735627}
     endHandleOffset: {x: 0, y: -0.99, z: 0.00000015735627}
+    prefab: {fileID: 0}
   - startNodeIndex: 15
+    startSocket: 
     endNodeIndex: 1
+    endSocket: 
     startHandleOffset: {x: 0, y: 0.99, z: 0}
     endHandleOffset: {x: 0, y: -0.99, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 14
+    startSocket: 
     endNodeIndex: 13
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 3
+    startSocket: 
     endNodeIndex: 18
+    endSocket: 
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 18
+    startSocket: 
     endNodeIndex: 12
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 19
+    endSocket: 
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 19
+    startSocket: 
     endNodeIndex: 18
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
+    prefab: {fileID: 0}
   - startNodeIndex: 1
+    startSocket: 
     endNodeIndex: 6
+    endSocket: 
     startHandleOffset: {x: -0.33, y: 0.66, z: 0}
     endHandleOffset: {x: 0.33, y: -0.66, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 2
+    startSocket: 
     endNodeIndex: 5
+    endSocket: 
     startHandleOffset: {x: 0.33, y: 0.66, z: 0}
     endHandleOffset: {x: -0.33, y: -0.66, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 6
+    startSocket: 
     endNodeIndex: 16
+    endSocket: 
     startHandleOffset: {x: 0, y: -1.6500001, z: 0}
     endHandleOffset: {x: 0, y: 1.6500001, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 19
+    startSocket: 
     endNodeIndex: 20
+    endSocket: 
     startHandleOffset: {x: 0.33, y: 0, z: 0}
     endHandleOffset: {x: -0.33, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 20
+    startSocket: 
     endNodeIndex: 5
+    endSocket: 
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 20
+    startSocket: 
     endNodeIndex: 21
+    endSocket: 
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
+    prefab: {fileID: 0}
   - startNodeIndex: 21
+    startSocket: 
     endNodeIndex: 7
+    endSocket: 
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 17
+    startSocket: 
     endNodeIndex: 21
+    endSocket: 
     startHandleOffset: {x: 1.6500001, y: 0, z: 0}
     endHandleOffset: {x: -1.6500001, y: 0, z: 0}
+    prefab: {fileID: 0}
   - startNodeIndex: 17
+    startSocket: 
     endNodeIndex: 8
+    endSocket: 
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
+    prefab: {fileID: 0}
 --- !u!4 &2073245534
 Transform:
   m_ObjectHideFlags: 0

@@ -38,29 +38,72 @@ namespace MobileGameProjectEditor.SplineNetwork
             Vector3 newLocalPos = EditorGUILayout.Vector3Field("Position", localPos);
             Vector3 newEuler = EditorGUILayout.Vector3Field("Rotation", localRot.eulerAngles);
 
-            if (!EditorGUI.EndChangeCheck()) return;
-
-            Undo.RecordObject(_spline, "Edit Selection");
-
-            if (newLocalPos != localPos)
+            if (EditorGUI.EndChangeCheck())
             {
-                Vector3 worldDelta = _spline.transform.TransformVector(newLocalPos - localPos);
-                ApplyNodePositionDelta(worldDelta);
+                Undo.RecordObject(_spline, "Edit Selection");
+
+                if (newLocalPos != localPos)
+                {
+                    Vector3 worldDelta = _spline.transform.TransformVector(newLocalPos - localPos);
+                    ApplyNodePositionDelta(worldDelta);
+                }
+
+                if (_selector.SelectedCount == 1)
+                {
+                    SplineNode node = _spline.nodes[_selector.SelectedNodeIndices.First()];
+                    node.rotation = Quaternion.Euler(newEuler);
+                }
+
+                EditorUtility.SetDirty(_spline);
             }
 
-            if (_selector.SelectedCount == 1)
+            DrawPrefabField();
+        }
+
+        private void DrawPrefabField()
+        {
+            Debug.Log($"Entered DrawPrefabField");
+            if (_selector.SelectedCount == 1 && !_selector.SelectedHandle.HasValue)
             {
-                var node = _spline.nodes[_selector.SelectedNodeIndices.First()];
-                node.rotation = Quaternion.Euler(newEuler);
+                Debug.Log($"Draw Node DrawPrefabField");
+                SplineNode node = _spline.nodes[_selector.SelectedNodeIndices.First()];
+
+                EditorGUI.BeginChangeCheck();
+                SplineNodePrefab prefab = (SplineNodePrefab)EditorGUILayout.ObjectField("Node Prefab", node.prefab, typeof(SplineNodePrefab), false);
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(_spline, "Set Node Prefab");
+                    node.prefab = prefab;
+                    EditorUtility.SetDirty(_spline);
+                }
+                return;
             }
 
-            EditorUtility.SetDirty(_spline);
+            if (_selector.SelectedCount == 2)
+            {
+                SplineSegment segment = _spline.segments.FirstOrDefault(s =>
+                    _selector.IsNodeSelected(s.startNodeIndex) &&
+                    _selector.IsNodeSelected(s.endNodeIndex));
+
+                if (segment == null) return;
+
+                EditorGUI.BeginChangeCheck();
+                SplineNodePrefab prefab = (SplineNodePrefab)EditorGUILayout.ObjectField("Segment Prefab", segment.prefab, typeof(SplineNodePrefab), false);
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(_spline, "Set Segment Prefab");
+                    segment.prefab = prefab;
+                    EditorUtility.SetDirty(_spline);
+                }
+            }
         }
 
         private void DrawHandleOffset()
         {
-            var hs = _selector.SelectedHandle.Value;
-            var segment = _spline.segments[hs.segmentIndex];
+            HandleSelection hs = _selector.SelectedHandle.Value;
+            SplineSegment segment = _spline.segments[hs.segmentIndex];
 
             Vector3 offset = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
 

@@ -19,6 +19,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineManipulator _manipulator;
         private SplineActions _actions;
         private SplineSelectionInfo _selectionInfo;
+        private SplineMeshDrawer _meshDrawer;
         private bool _createHeld;
 
         #endregion Fields
@@ -34,6 +35,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _manipulator = new SplineManipulator(_spline, _selector);
             _actions = new SplineActions(_spline, _selector);
             _selectionInfo = new SplineSelectionInfo(_spline, _manipulator, _selector);
+            _meshDrawer = new SplineMeshDrawer(_spline);
             Undo.undoRedoPerformed += OnUndoRedo;
         }
 
@@ -54,6 +56,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             _selector.UpdateHoverSelection();
             _drawer.DrawSceneGUI();
+            _meshDrawer.DrawSceneGUI();
 
             if (_isEditing)
                 EditSceneGUI(e);
