@@ -7,8 +7,8 @@ namespace MobileGameProjectEditor.SplineNetwork
 {
     public class SplineNodePrefabDrawer : ADrawer
     {
-        private SplineNodePrefab _splineNodePrefab;
-        private SplineNodePrefabSelector _selector;
+        private readonly SplineNodePrefab _splineNodePrefab;
+        private readonly SplineNodePrefabSelector _selector;
 
         public SplineNodePrefabDrawer(SplineNodePrefab splineNodePrefab, SplineNodePrefabSelector selector)
         {
@@ -28,7 +28,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 Vector3 worldPosition = _splineNodePrefab.GetSocketWorldPosition(i);
                 bool isSelected = _selector.IsNodeSelected(i);
                 bool isHovered = _selector.HoverSocketIndex == i;
-                
+
                 Color color = SplineEditorSettings.normalColor;
                 float size = HandleUtility.GetHandleSize(worldPosition) * SplineEditorSettings.nodeBaseSize;
 

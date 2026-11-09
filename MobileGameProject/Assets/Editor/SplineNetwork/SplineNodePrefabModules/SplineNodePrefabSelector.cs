@@ -8,7 +8,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 {
     public class SplineNodePrefabSelector
     {
-        private SplineNodePrefab _splineNodePrefab;
+        private readonly SplineNodePrefab _splineNodePrefab;
 
         private int _hoverSocketIndex = -1;
         public int HoverSocketIndex => _hoverSocketIndex;

@@ -40,7 +40,6 @@ namespace MobileGameProjectEditor.SplineNetwork
         
         public int SelectedCount => _selectedNodeIndices.Count;
         
-
         public SplineSelector(Spline spline)
         {
             _spline = spline;

@@ -126,4 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28900b5b233f0748b807c2bd3246b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.SplineNodePrefab
-  sockets: []
+  sockets:
+  - id: 
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
