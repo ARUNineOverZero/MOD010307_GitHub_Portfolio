@@ -23,6 +23,8 @@ namespace MobileGameProject.SplineNetwork
         public Vector3 startHandleOffset;
         public Vector3 endHandleOffset;
         public SplineNodePrefab prefab;
+
+        public bool isDirty = true;
     }
 
     public class Spline : MonoBehaviour
@@ -30,7 +32,7 @@ namespace MobileGameProject.SplineNetwork
         public List<SplineNode> nodes = new List<SplineNode>();
         public List<SplineSegment> segments = new List<SplineSegment>();
 
-        public  const float DefaultHandleOffsetFactor = .33f;
+        public const float DefaultHandleOffsetFactor = .33f;
 
         public void Clear()
         {
@@ -39,7 +41,7 @@ namespace MobileGameProject.SplineNetwork
         }
 
         #region Nodes
-        
+
         public Vector3 GetNodeWorldPosition(int index) => transform.TransformPoint(nodes[index].position);
 
         public Vector3 GetSegmentEndWorldPosition(int nodeIndex, string socketId)
@@ -63,8 +65,8 @@ namespace MobileGameProject.SplineNetwork
             int newIndex = nodes.Count;
             var rotation = Quaternion.identity;
             bool hasConnectedNodes = connectedNodeIndeices != null & connectedNodeIndeices.Length > 0;
-            
-            if(hasConnectedNodes)
+
+            if (hasConnectedNodes)
             {
                 Vector3 averageDirection = Vector3.zero;
                 int valid = 0;
@@ -80,17 +82,17 @@ namespace MobileGameProject.SplineNetwork
                         valid++;
                     }
                 }
-                
+
                 if (valid > 0 && averageDirection.sqrMagnitude > .0001f)
                     rotation = Quaternion.LookRotation(averageDirection.normalized, Vector3.up);
             }
-            
+
             nodes.Add(new SplineNode() { position = localPosition, rotation = rotation });
-            
+
             if (hasConnectedNodes)
-                foreach(var index in connectedNodeIndeices)
+                foreach (var index in connectedNodeIndeices)
                     AddSegment(index, newIndex);
-            
+
             return newIndex;
         }
 
@@ -125,7 +127,7 @@ namespace MobileGameProject.SplineNetwork
         {
             if (indices == null || indices.Length == 0) return;
 
-            foreach(var i in indices.OrderByDescending(x => x))
+            foreach (var i in indices.OrderByDescending(x => x))
                 RemoveNodeAt(i);
         }
 
@@ -145,6 +147,17 @@ namespace MobileGameProject.SplineNetwork
                 RemoveNodeAt(index);
 
             return indicesToRemove.Count;
+        }
+
+        public void SetNodeSegmentsDirty(params int[] indices)
+        {
+            foreach (var index in indices)
+            {
+                var node = nodes[index];
+
+                foreach (var seg in segments.Where(x => x.startNodeIndex == index || x.endNodeIndex == index))
+                    seg.isDirty = true;
+            }
         }
 
         #endregion Nodes
@@ -184,6 +197,11 @@ namespace MobileGameProject.SplineNetwork
         public int RemoveAllSegments(Predicate<SplineSegment> predicate)
         {
             return segments.RemoveAll(predicate);
+        }
+
+        public void SetSegmentsDirty(int i)
+        {
+            segments[i].isDirty = true;
         }
 
         #endregion Segments

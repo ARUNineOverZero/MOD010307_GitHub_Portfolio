@@ -49,12 +49,15 @@ namespace MobileGameProjectEditor.SplineNetwork
                     ApplyNodePositionDelta(worldDelta);
                 }
 
-                if (_selector.SelectedCount == 1)
+                var selectedNodeIndices = _selector.SelectedNodeIndices.ToArray();
+
+                if (selectedNodeIndices.Length == 1)
                 {
-                    SplineNode node = _spline.nodes[_selector.SelectedNodeIndices.First()];
+                    SplineNode node = _spline.nodes[selectedNodeIndices[0]];
                     node.rotation = Quaternion.Euler(newEuler);
                 }
 
+                _spline.SetNodeSegmentsDirty(selectedNodeIndices);
                 EditorUtility.SetDirty(_spline);
             }
 
@@ -117,11 +120,14 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Undo.RecordObject(_spline, "Edit Handle Offset");
 
+            
+
             if (hs.isStart)
                 segment.startHandleOffset = newOffset;
             else
                 segment.endHandleOffset = newOffset;
 
+            segment.isDirty = true;
             EditorUtility.SetDirty(_spline);
         }
 

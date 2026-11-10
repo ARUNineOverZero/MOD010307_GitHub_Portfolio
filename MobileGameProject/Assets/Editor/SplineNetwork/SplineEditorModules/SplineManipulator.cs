@@ -52,11 +52,13 @@ namespace MobileGameProjectEditor.SplineNetwork
                 Vector3 delta = newWorldCenter - _selectionPivotPosition;
 
                 Undo.RecordObject(_spline, "Move Spline Nodes");
-                foreach (int index in _selector.SelectedNodeIndices)
+                var selectedNodeIndices = _selector.SelectedNodeIndices.ToArray();
+                foreach (int index in selectedNodeIndices)
                 {
                     Vector3 worldPos = _spline.GetNodeWorldPosition(index);
                     _spline.nodes[index].position = _spline.transform.InverseTransformPoint(worldPos + delta);
                 }
+                _spline.SetNodeSegmentsDirty(selectedNodeIndices);
                 EditorUtility.SetDirty(_spline);
             }
         }
@@ -83,6 +85,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 else
                     segment.endHandleOffset = newLocalOffset;
 
+                segment.isDirty = true;
                 EditorUtility.SetDirty(_spline);
             }
         }
