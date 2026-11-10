@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Codice.CM.Common.Matcher;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -72,93 +70,173 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void RebuildSegmentMesh(int index)
         {
             SplineSegment segment = _spline.segments[index];
-            SplineNodePrefab prefab = segment.prefab;
+            if (segment.prefab == null) return;
 
-            NodeSocket startSocket = prefab.sockets.FirstOrDefault(s => s.id == "start");
-            NodeSocket endSocket = prefab.sockets.FirstOrDefault(s => s.id == "end");
-            if (startSocket == null || endSocket == null) return;
+            if (!TryGetPieceInfo(segment.prefab, out PieceInfo piece)) return;
+            if (!TryGetSourceMesh(segment.prefab, out Mesh source)) return;
+            if (!TryGetCurve(segment, out CurveInfo curve)) return;
 
-            Vector3 pieceStart = startSocket.localPosition;
-            Vector3 pieceEnd = endSocket.localPosition;
-            Vector3 pieceDir = pieceEnd - pieceStart;
-            float pieceLen = pieceDir.magnitude;
-            if (pieceLen < 0.001f) return;
-            Vector3 pieceForward = pieceDir / pieceLen;
+            int count = Mathf.Max(1, Mathf.CeilToInt(curve.length / piece.length));
 
-            MeshFilter mf = prefab.GetComponent<MeshFilter>();
-            if (mf == null || mf.sharedMesh == null) return;
+            var allVerts = new List<Vector3>();
+            var allNormals = new List<Vector3>();
+            var allTris = new List<int>();
 
-            Mesh source = mf.sharedMesh;
+            for (int pieceIndex = 0; pieceIndex < count; pieceIndex++)
+                AppendDeformedPiece(source, piece, curve, pieceIndex, allVerts, allNormals, allTris);
+
+            AssignSegmentMesh(index, allVerts, allNormals, allTris);
+        }
+
+        #region Segment Mesh Generation
+
+        private struct PieceInfo
+        {
+            public Vector3 start;
+            public Vector3 forward;
+            public float length;
+        }
+
+        private struct CurveInfo
+        {
+            public Vector3 p0, p1, p2, p3;
+            public float length;
+            public Quaternion startRotation;
+            public Quaternion endRotation;
+        }
+
+        private bool TryGetPieceInfo(SplineNodePrefab prefab, out PieceInfo info)
+        {
+            info = default;
+
+            var startSocket = prefab.sockets.FirstOrDefault(s => s.id == "start");
+            var endSocket = prefab.sockets.FirstOrDefault(s => s.id == "end");
+            if (startSocket == null || endSocket == null) return false;
+
+            Vector3 dir = endSocket.localPosition - startSocket.localPosition;
+            float len = dir.magnitude;
+            if (len < 0.001f) return false;
+
+            info.start = startSocket.localPosition;
+            info.forward = dir / len;
+            info.length = len;
+            return true;
+        }
+
+        private bool TryGetSourceMesh(SplineNodePrefab prefab, out Mesh mesh)
+        {
+            mesh = null;
+            var mf = prefab.GetComponent<MeshFilter>();
+            if (mf == null || mf.sharedMesh == null) return false;
+            mesh = mf.sharedMesh;
+            return true;
+        }
+
+        private bool TryGetCurve(SplineSegment segment, out CurveInfo curve)
+        {
+            curve = default;
+
+            curve.p0 = _spline.GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
+            curve.p3 = _spline.GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
+            curve.p1 = curve.p0 + _spline.transform.TransformVector(segment.startHandleOffset);
+            curve.p2 = curve.p3 + _spline.transform.TransformVector(segment.endHandleOffset);
+
+            curve.startRotation = _spline.nodes[segment.startNodeIndex].rotation;
+            curve.endRotation = _spline.nodes[segment.endNodeIndex].rotation;
+
+            curve.length = EstimateCurveLength(curve.p0, curve.p1, curve.p2, curve.p3, SplineEditorSettings.segmentLevelOfDetail);
+            return curve.length >= 0.001f;
+        }
+
+        private void AppendDeformedPiece(
+            Mesh source,
+            PieceInfo piece,
+            CurveInfo curve,
+            int pieceIndex,
+            List<Vector3> verts,
+            List<Vector3> normals,
+            List<int> tris)
+        {
             Vector3[] srcVerts = source.vertices;
             Vector3[] srcNormals = source.normals;
             int[] srcTris = source.triangles;
 
-            Vector3 p0 = _spline.GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
-            Vector3 p3 = _spline.GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
-            Vector3 p1 = p0 + _spline.transform.TransformVector(segment.startHandleOffset);
-            Vector3 p2 = p3 + _spline.transform.TransformVector(segment.endHandleOffset);
+            float distBase = pieceIndex * piece.length;
+            int baseIndex = verts.Count;
 
-            float curveLength = EstimateCurveLength(p0, p1, p2, p3, SplineEditorSettings.segmentLevelOfDetail);
-            int count = Mathf.Max(1, Mathf.CeilToInt(curveLength / pieceLen));
-
-            List<Vector3> allVerts = new List<Vector3>();
-            List<Vector3> allNormals = new List<Vector3>();
-            List<int> allTris = new List<int>();
-
-            for (int piece = 0; piece < count; piece++)
+            for (int v = 0; v < srcVerts.Length; v++)
             {
-                float distBase = piece * pieceLen;
-                int baseIndex = allVerts.Count;
+                Vector3 deformed = DeformVertex(srcVerts[v], piece, curve, distBase);
+                verts.Add(deformed);
 
-                for (int v = 0; v < srcVerts.Length; v++)
-                {
-                    Vector3 vert = srcVerts[v];
-                    float along = Vector3.Dot(vert - pieceStart, pieceForward);
-                    float u = Mathf.Clamp01(along / pieceLen);
-
-                    Vector3 lateral = vert - pieceStart - pieceForward * along;
-
-                    float dist = distBase + u * pieceLen;
-                    float t = Mathf.Clamp01(dist / curveLength);
-
-                    Vector3 pathPos = EvaluateCubicBezier(p0, p1, p2, p3, t);
-                    Vector3 tangent = EvaluateCubicBezierTangent(p0, p1, p2, p3, t).normalized;
-                    if (tangent.sqrMagnitude < 0.0001f) tangent = Vector3.forward;
-
-                    Vector3 up = Vector3.up;
-                    if (Mathf.Abs(Vector3.Dot(tangent, up)) > 0.99f) up = Vector3.forward;
-                    Vector3 binormal = Vector3.Cross(tangent, up).normalized;
-                    Vector3 normal = Vector3.Cross(binormal, tangent).normalized;
-                    Vector3 deformed = pathPos + normal * lateral.y + binormal * lateral.x;
-
-                    allVerts.Add(deformed);
-
-                    if (srcNormals != null && srcNormals.Length == srcVerts.Length)
-                    {
-                        Vector3 n = srcNormals[v];
-                        Vector3 deformedN = (normal * n.y + binormal * n.x + tangent * n.z).normalized;
-                        allNormals.Add(deformedN);
-                    }
-                }
-
-                for (int tri = 0; tri < srcTris.Length; tri++)
-                    allTris.Add(srcTris[tri] + baseIndex);
+                if (srcNormals != null && srcNormals.Length == srcVerts.Length)
+                    normals.Add(DeformNormal(srcNormals[v], piece, curve, distBase, srcVerts[v]));
             }
 
+            for (int i = 0; i < srcTris.Length; i++)
+                tris.Add(srcTris[i] + baseIndex);
+        }
+
+        private Vector3 DeformVertex(Vector3 vert, PieceInfo piece, CurveInfo curve, float distBase)
+        {
+            float along = Vector3.Dot(vert - piece.start, piece.forward);
+            float u = Mathf.Clamp01(along / piece.length);
+            Vector3 lateral = vert - piece.start - piece.forward * along;
+
+            float t = Mathf.Clamp01((distBase + u * piece.length) / curve.length);
+
+            Vector3 pathPos = EvaluateCubicBezier(curve.p0, curve.p1, curve.p2, curve.p3, t);
+            GetFrame(curve, t, out Vector3 tangent, out Vector3 normal, out Vector3 binormal);
+
+            return pathPos + normal * lateral.y + binormal * lateral.x;
+        }
+
+        private Vector3 DeformNormal(Vector3 normal, PieceInfo piece, CurveInfo curve, float distBase, Vector3 vert)
+        {
+            float along = Vector3.Dot(vert - piece.start, piece.forward);
+            float u = Mathf.Clamp01(along / piece.length);
+            float t = Mathf.Clamp01((distBase + u * piece.length) / curve.length);
+
+            GetFrame(curve, t, out Vector3 tangent, out Vector3 n, out Vector3 binormal);
+            return (n * normal.y + binormal * normal.x + tangent * normal.z).normalized;
+        }
+
+        private void GetFrame(CurveInfo curve, float t, out Vector3 tangent, out Vector3 normal, out Vector3 binormal)
+        {
+            tangent = EvaluateCubicBezierTangent(curve.p0, curve.p1, curve.p2, curve.p3, t).normalized;
+            if (tangent.sqrMagnitude < 0.0001f)
+                tangent = Vector3.forward;
+
+            Quaternion nodeRot = Quaternion.Slerp(curve.startRotation, curve.endRotation, t);
+            Vector3 up = nodeRot * Vector3.up;
+
+            if (Mathf.Abs(Vector3.Dot(tangent, up)) > 0.99f)
+                up = nodeRot * Vector3.forward;
+
+            binormal = Vector3.Cross(tangent, up).normalized;
+            normal = Vector3.Cross(binormal, tangent).normalized;
+        }
+
+        private void AssignSegmentMesh(int index, List<Vector3> verts, List<Vector3> normals, List<int> tris)
+        {
             if (_segmentMeshes[index] != null)
                 GameObject.DestroyImmediate(_segmentMeshes[index]);
 
             Mesh mesh = new Mesh { name = "Segment_" + index };
-            mesh.SetVertices(allVerts);
-            if (allNormals.Count == allVerts.Count)
-                mesh.SetNormals(allNormals);
-            mesh.SetTriangles(allTris, 0);
+            mesh.SetVertices(verts);
+            if (normals.Count == verts.Count)
+                mesh.SetNormals(normals);
+            mesh.SetTriangles(tris, 0);
             mesh.RecalculateBounds();
-            if (allNormals.Count != allVerts.Count)
+            if (normals.Count != verts.Count)
                 mesh.RecalculateNormals();
 
             _segmentMeshes[index] = mesh;
         }
+
+    
+
+        #endregion Segment Mesh Generation
 
         private float EstimateCurveLength(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, int steps = 32)
         {
