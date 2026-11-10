@@ -234,7 +234,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             _segmentMeshes[index] = mesh;
         }
 
-    
+
 
         #endregion Segment Mesh Generation
 
@@ -292,6 +292,77 @@ namespace MobileGameProjectEditor.SplineNetwork
             Camera cam = SceneView.currentDrawingSceneView.camera;
 
             Graphics.DrawMesh(mf.sharedMesh, matrix, mat, 0, cam);
+        }
+
+        public Mesh GenerateCombinedMesh()
+        {
+            var combines = new List<CombineInstance>();
+
+            for (int i = 0; i < _spline.nodes.Count; i++)
+            {
+                var node = _spline.nodes[i];
+                if (node.prefab == null) continue;
+
+                var mf = node.prefab.GetComponent<MeshFilter>();
+                if (mf == null || mf.sharedMesh == null) continue;
+
+                Vector3 worldPos = _spline.GetNodeWorldPosition(i);
+                Quaternion worldRot = _spline.transform.rotation * node.rotation;
+                Vector3 scale = _spline.transform.lossyScale;
+
+                combines.Add(new CombineInstance
+                {
+                    mesh = mf.sharedMesh,
+                    transform = Matrix4x4.TRS(worldPos, worldRot, scale)
+                });
+            }
+
+            if (_segmentMeshes != null)
+            {
+                for (int i = 0; i < _segmentMeshes.Length; i++)
+                {
+                    if (_segmentMeshes[i] == null) continue;
+
+                    combines.Add(new CombineInstance
+                    {
+                        mesh = _segmentMeshes[i],
+                        transform = Matrix4x4.identity
+                    });
+                }
+            }
+
+            if (combines.Count == 0) return null;
+
+            Mesh combined = new Mesh { name = "SplineCombined" };
+            combined.CombineMeshes(combines.ToArray(), true, true);
+            combined.RecalculateBounds();
+            return combined;
+        }
+
+        public Material GetFirstMaterial()
+        {
+            bool TryGetMaterialFromPrefab(GameObject gameObject, out Material material)
+            {
+                material = null;
+                var meshRenderer = gameObject.GetComponent<MeshRenderer>();
+                if (meshRenderer == null || meshRenderer.sharedMaterial == null) return false;
+
+
+                material = meshRenderer.sharedMaterial;
+                return true;
+            }
+
+            Material material;
+
+            for (int i = 0; i < _spline.nodes.Count; i++)
+                if (_spline.nodes[i].prefab != null && TryGetMaterialFromPrefab(_spline.nodes[i].prefab.gameObject, out material))
+                    return material;
+
+            for (int i = 0; i < _spline.segments.Count; i++)
+                if (_spline.segments[i].prefab != null && TryGetMaterialFromPrefab(_spline.segments[i].prefab.gameObject, out material))
+                    return material;
+
+            return null;
         }
     }
 }

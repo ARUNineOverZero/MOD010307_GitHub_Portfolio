@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
@@ -10,11 +11,13 @@ namespace MobileGameProjectEditor.SplineNetwork
     {
         private readonly Spline _spline;
         private readonly SplineSelector _selector;
+        private readonly SplineMeshDrawer _meshDrawer;
 
-        public SplineActions(Spline spline, SplineSelector selector)
+        public SplineActions(Spline spline, SplineSelector selector, SplineMeshDrawer meshDrawer)
         {
             _spline = spline;
             _selector = selector;
+            _meshDrawer = meshDrawer;
         }
 
         public override void CreateNodeAt(Vector3 worldPos)
@@ -277,6 +280,21 @@ namespace MobileGameProjectEditor.SplineNetwork
                 else
                     segment.endHandleOffset = handleDir * length;
             }
+        }
+
+        public void CreateMeshObject()
+        {
+            var mesh = _meshDrawer.GenerateCombinedMesh();
+
+            if(mesh == null) return;
+
+            GameObject go = new GameObject();
+            var mf = go.AddComponent<MeshFilter>();
+            mf.sharedMesh = mesh;
+            var mc = go.AddComponent<MeshCollider>();
+            mc.sharedMesh = mesh;
+            var mr = go.AddComponent<MeshRenderer>();
+            mr.sharedMaterial = _meshDrawer.GetFirstMaterial();
         }
     }
 }

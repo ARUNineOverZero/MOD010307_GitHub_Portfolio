@@ -104,6 +104,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (newWorldRot != worldRot)
             {
                 Undo.RecordObject(_spline, "Rotate Spline Node");
+                _spline.SetNodeSegmentsDirty(index);
                 node.rotation = Quaternion.Inverse(_spline.transform.rotation) * newWorldRot;
                 EditorUtility.SetDirty(_spline);
             }

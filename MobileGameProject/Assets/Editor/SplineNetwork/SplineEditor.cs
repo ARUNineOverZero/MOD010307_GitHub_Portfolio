@@ -32,10 +32,11 @@ namespace MobileGameProjectEditor.SplineNetwork
             _spline = (Spline) target;
             _selector = new SplineSelector(_spline);
             _drawer = new SplineDrawer(_spline, _selector);
+             _meshDrawer = new SplineMeshDrawer(_spline);
             _manipulator = new SplineManipulator(_spline, _selector);
-            _actions = new SplineActions(_spline, _selector);
+            _actions = new SplineActions(_spline, _selector, _meshDrawer);
             _selectionInfo = new SplineSelectionInfo(_spline, _manipulator, _selector);
-            _meshDrawer = new SplineMeshDrawer(_spline);
+           
             Undo.undoRedoPerformed += OnUndoRedo;
         }
 
@@ -192,6 +193,9 @@ namespace MobileGameProjectEditor.SplineNetwork
                 if (GUILayout.Button("Clear Spline Data", GUILayout.Height(30)))
                     _actions.Clear();
             }
+            else if (GUILayout.Button("Create Mesh", GUILayout.Height(30)))
+                _actions.CreateMeshObject();
+           
         }
 
         #endregion Inspector
