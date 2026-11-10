@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Codice.CM.Common.Matcher;
 using MobileGameProject.SplineNetwork;
@@ -77,11 +78,20 @@ namespace MobileGameProjectEditor.SplineNetwork
             NodeSocket endSocket = prefab.sockets.FirstOrDefault(s => s.id == "end");
             if (startSocket == null || endSocket == null) return;
 
-            float pieceLength = Vector3.Distance(startSocket.localPosition, endSocket.localPosition);
-            if (pieceLength < 0.001f) return;
+            Vector3 pieceStart = startSocket.localPosition;
+            Vector3 pieceEnd = endSocket.localPosition;
+            Vector3 pieceDir = pieceEnd - pieceStart;
+            float pieceLen = pieceDir.magnitude;
+            if (pieceLen < 0.001f) return;
+            Vector3 pieceForward = pieceDir / pieceLen;
 
             MeshFilter mf = prefab.GetComponent<MeshFilter>();
             if (mf == null || mf.sharedMesh == null) return;
+
+            Mesh source = mf.sharedMesh;
+            Vector3[] srcVerts = source.vertices;
+            Vector3[] srcNormals = source.normals;
+            int[] srcTris = source.triangles;
 
             Vector3 p0 = _spline.GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
             Vector3 p3 = _spline.GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
@@ -89,23 +99,64 @@ namespace MobileGameProjectEditor.SplineNetwork
             Vector3 p2 = p3 + _spline.transform.TransformVector(segment.endHandleOffset);
 
             float curveLength = EstimateCurveLength(p0, p1, p2, p3, SplineEditorSettings.segmentLevelOfDetail);
-            int count = Mathf.Max(1, Mathf.CeilToInt(curveLength / pieceLength));
+            int count = Mathf.Max(1, Mathf.FloorToInt(curveLength / pieceLen));
 
-            Vector3 localStart = startSocket.localPosition;
-            Vector3 pieceForward = (endSocket.localPosition - startSocket.localPosition).normalized;
+            List<Vector3> allVerts = new List<Vector3>();
+            List<Vector3> allNormals = new List<Vector3>();
+            List<int> allTris = new List<int>();
 
-            CombineInstance[] combines = new CombineInstance[count];
-
-            for (int i = 0; i < count; i++)
+            for (int piece = 0; piece < count; piece++)
             {
-                //working out 
+                float distBase = piece * pieceLen;
+                int baseIndex = allVerts.Count;
+
+                for (int v = 0; v < srcVerts.Length; v++)
+                {
+                    Vector3 vert = srcVerts[v];
+                    float along = Vector3.Dot(vert - pieceStart, pieceForward);
+                    float u = Mathf.Clamp01(along / pieceLen);
+
+                    Vector3 lateral = vert - pieceStart - pieceForward * along;
+
+                    float dist = distBase + u * pieceLen;
+                    float t = Mathf.Clamp01(dist / curveLength);
+
+                    Vector3 pathPos = EvaluateCubicBezier(p0, p1, p2, p3, t);
+                    Vector3 tangent = EvaluateCubicBezierTangent(p0, p1, p2, p3, t).normalized;
+                    if (tangent.sqrMagnitude < 0.0001f) tangent = Vector3.forward;
+
+                    Vector3 up = Vector3.up;
+                    if (Mathf.Abs(Vector3.Dot(tangent, up)) > 0.99f) up = Vector3.forward;
+                    Vector3 binormal = Vector3.Cross(tangent, up).normalized;
+                    Vector3 normal = Vector3.Cross(binormal, tangent).normalized;
+                    Vector3 deformed = pathPos + normal * lateral.y + binormal * lateral.x;
+
+                    allVerts.Add(deformed);
+
+                    if (srcNormals != null && srcNormals.Length == srcVerts.Length)
+                    {
+                        Vector3 n = srcNormals[v];
+                        Vector3 deformedN = (normal * n.y + binormal * n.x + tangent * n.z).normalized;
+                        allNormals.Add(deformedN);
+                    }
+                }
+
+                for (int tri = 0; tri < srcTris.Length; tri++)
+                    allTris.Add(srcTris[tri] + baseIndex);
             }
 
             if (_segmentMeshes[index] != null)
                 GameObject.DestroyImmediate(_segmentMeshes[index]);
 
             Mesh mesh = new Mesh { name = "Segment_" + index };
-            mesh.CombineMeshes(combines, true, true);
+            mesh.SetVertices(allVerts);
+            if (allNormals.Count == allVerts.Count)
+                mesh.SetNormals(allNormals);
+            mesh.SetTriangles(allTris, 0);
+            mesh.RecalculateBounds();
+            if (allNormals.Count != allVerts.Count)
+                mesh.RecalculateNormals();
+
             _segmentMeshes[index] = mesh;
         }
 
