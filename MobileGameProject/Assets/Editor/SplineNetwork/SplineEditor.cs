@@ -3,6 +3,7 @@ using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.ShortcutManagement;
+using Unity.Mathematics;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
@@ -21,6 +22,10 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineSelectionInfo _selectionInfo;
         private SplineMeshDrawer _meshDrawer;
         private bool _createHeld;
+
+        private Vector3 _lastPosition;
+        private Quaternion _lastRotation;
+        private Vector3 _lastLocalScale;
 
         #endregion Fields
 
@@ -52,6 +57,8 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void OnSceneGUI()
         {
             if (_spline == null) return;
+
+            
 
             Event e = Event.current;
 

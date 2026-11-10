@@ -77,6 +77,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 {
                     Undo.RecordObject(_spline, "Set Node Prefab");
                     node.prefab = prefab;
+                    _spline.SetSegmentsDirty(0);
                     EditorUtility.SetDirty(_spline);
                 }
                 return;
@@ -97,6 +98,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 {
                     Undo.RecordObject(_spline, "Set Segment Prefab");
                     segment.prefab = prefab;
+                    segment.isDirty = true;
                     EditorUtility.SetDirty(_spline);
                 }
 

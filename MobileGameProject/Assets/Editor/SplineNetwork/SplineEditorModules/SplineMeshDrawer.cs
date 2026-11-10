@@ -61,7 +61,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 MeshRenderer mr = segment.prefab.GetComponent<MeshRenderer>();
                 if (mr == null || mr.sharedMaterial == null) continue;
 
-                Graphics.DrawMesh(_segmentMeshes[i], Matrix4x4.identity, mr.sharedMaterial, 0, cam);
+                Graphics.DrawMesh(_segmentMeshes[i], _spline.transform.localToWorldMatrix, mr.sharedMaterial, 0, cam);
             }
         }
 
@@ -136,16 +136,30 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             curve = default;
 
-            curve.p0 = _spline.GetSegmentEndWorldPosition(segment.startNodeIndex, segment.startSocket);
-            curve.p3 = _spline.GetSegmentEndWorldPosition(segment.endNodeIndex, segment.endSocket);
-            curve.p1 = curve.p0 + _spline.transform.TransformVector(segment.startHandleOffset);
-            curve.p2 = curve.p3 + _spline.transform.TransformVector(segment.endHandleOffset);
+            curve.p0 = GetSegmentEndLocalPosition(segment.startNodeIndex, segment.startSocket);
+            curve.p3 = GetSegmentEndLocalPosition(segment.endNodeIndex, segment.endSocket);
+            curve.p1 = curve.p0 + segment.startHandleOffset;
+            curve.p2 = curve.p3 + segment.endHandleOffset;
 
             curve.startRotation = _spline.nodes[segment.startNodeIndex].rotation;
             curve.endRotation = _spline.nodes[segment.endNodeIndex].rotation;
 
             curve.length = EstimateCurveLength(curve.p0, curve.p1, curve.p2, curve.p3, SplineEditorSettings.segmentLevelOfDetail);
             return curve.length >= 0.001f;
+        }
+
+        private Vector3 GetSegmentEndLocalPosition(int nodeIndex, string socketId)
+        {
+            var node = _spline.nodes[nodeIndex];
+            Vector3 pos = node.position;
+
+            if (node.prefab == null || string.IsNullOrEmpty(socketId))
+                return pos;
+
+            var socket = node.prefab.sockets.FirstOrDefault(s => s.id == socketId);
+            if (socket == null) return pos;
+
+            return pos + node.rotation * socket.localPosition;
         }
 
         private void AppendDeformedPiece(
