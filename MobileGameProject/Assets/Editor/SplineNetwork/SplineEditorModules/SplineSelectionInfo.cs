@@ -66,10 +66,8 @@ namespace MobileGameProjectEditor.SplineNetwork
 
         private void DrawPrefabField()
         {
-            Debug.Log($"Entered DrawPrefabField");
             if (_selector.SelectedCount == 1 && !_selector.SelectedHandle.HasValue)
             {
-                Debug.Log($"Draw Node DrawPrefabField");
                 SplineNode node = _spline.nodes[_selector.SelectedNodeIndices.First()];
 
                 EditorGUI.BeginChangeCheck();
