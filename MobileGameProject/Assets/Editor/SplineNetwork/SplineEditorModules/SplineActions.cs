@@ -192,7 +192,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         public void SmoothHandles()
         {
             if (_selector.SelectedCount == 0) return;
-            
+
             Undo.RecordObject(_spline, "Smooth Handles");
 
             bool changed = false;
@@ -201,10 +201,10 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             foreach (int nodeIndex in nodesToSmooth)
             {
-                var segmentCount = _spline.segments.Where(x => x.startNodeIndex == nodeIndex ||  x.endNodeIndex == nodeIndex).Count();
+                var segmentCount = _spline.segments.Where(x => x.startNodeIndex == nodeIndex || x.endNodeIndex == nodeIndex).Count();
 
                 if (segmentCount != 2) continue;
-                
+
                 if (TryGetSmoothDirection(nodeIndex, out Vector3 smoothDir))
                 {
                     ApplySmoothDirection(nodeIndex, smoothDir);
@@ -232,7 +232,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             }
 
             if (neighbors.Count == 0) return false;
-            
+
             if (neighbors.Count == 2)
             {
                 direction = neighbors[1] - neighbors[0];
@@ -240,7 +240,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 direction.Normalize();
                 return true;
             }
-            
+
             foreach (var n in neighbors)
             {
                 Vector3 d = n - nodePos;
@@ -265,7 +265,7 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                 int otherIndex = isStart ? segment.endNodeIndex : segment.startNodeIndex;
                 Vector3 toOther = _spline.nodes[otherIndex].position - nodePos;
-                
+
                 Vector3 handleDir = Vector3.Dot(toOther, smoothDir) >= 0f ? smoothDir : -smoothDir;
 
                 float length = isStart
@@ -286,7 +286,14 @@ namespace MobileGameProjectEditor.SplineNetwork
         {
             var mesh = _meshDrawer.GenerateCombinedMesh();
 
-            if(mesh == null) return;
+            if (mesh == null) return;
+
+            string path = EditorUtility.SaveFilePanelInProject("Save Spline Mesh", "SplineMesh", "asset", "Choose where to save the combined mesh");
+
+            if (string.IsNullOrEmpty(path)) return;
+
+            AssetDatabase.CreateAsset(mesh, path);
+            AssetDatabase.SaveAssets();
 
             GameObject go = new GameObject();
             var mf = go.AddComponent<MeshFilter>();
