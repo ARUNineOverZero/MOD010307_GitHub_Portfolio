@@ -204,6 +204,12 @@ namespace MobileGameProject.SplineNetwork
             segments[i].isDirty = true;
         }
 
+
+
+        #endregion Segments
+
+        #region Helper
+
         public Quaternion GetSocketWorldRotation(int nodeIndex, string socketId)
         {
             var node = nodes[nodeIndex];
@@ -215,7 +221,7 @@ namespace MobileGameProject.SplineNetwork
             return nodeWorldRotation * socket.localRotation;
         }
 
-        private bool TryGetSocket(int nodeIndex, string socketId, out NodeSocket socket)
+        public bool TryGetSocket(int nodeIndex, string socketId, out NodeSocket socket)
         {
             socket = null;
 
@@ -229,6 +235,6 @@ namespace MobileGameProject.SplineNetwork
             return socket != null;
         }
 
-        #endregion Segments
+        #endregion Helper
     }
 }

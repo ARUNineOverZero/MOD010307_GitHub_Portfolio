@@ -111,21 +111,47 @@ namespace MobileGameProjectEditor.SplineNetwork
             HandleSelection hs = _selector.SelectedHandle.Value;
             SplineSegment segment = _spline.segments[hs.segmentIndex];
 
-            Vector3 offset = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
+            int nodeIndex = hs.isStart ? segment.startNodeIndex : segment.endNodeIndex;
+            string socketId = hs.isStart ? segment.startSocket : segment.endSocket;
+
+            Vector3 stored = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
+
+            Quaternion socketInSpline = Quaternion.identity;
+            var node = _spline.nodes[nodeIndex];
+            if (_spline.TryGetSocket(nodeIndex, socketId, out var socket))
+                socketInSpline = node.rotation * socket.localRotation;
+
+            Vector3 socketLocal = Quaternion.Inverse(socketInSpline) * stored;
+
+            void SetZeroWhenLessThan(ref float value, float epsilon = 0.0001f)
+            {
+                if (Mathf.Abs(value) < epsilon)
+                    value = 0;
+            }
+
+            SetZeroWhenLessThan(ref socketLocal.x);
+            SetZeroWhenLessThan(ref socketLocal.y);
+            SetZeroWhenLessThan(ref socketLocal.z);
 
             EditorGUI.BeginChangeCheck();
-            Vector3 newOffset = EditorGUILayout.Vector3Field("Handle Offset", offset);
+            Vector3 newSocketLocal = EditorGUILayout.Vector3Field("Handle Offset", socketLocal);
 
-            if (!EditorGUI.EndChangeCheck()) return;
+            if (GUILayout.Button("Zero X and Y", GUILayout.Height(30)))
+            {
+                newSocketLocal.x = 0;
+                newSocketLocal.y = 0;
+            }
+
+            if (!EditorGUI.EndChangeCheck() &&  socketLocal == newSocketLocal) return;
 
             Undo.RecordObject(_spline, "Edit Handle Offset");
 
-            
+            Vector3 newStored = socketInSpline * newSocketLocal;
 
             if (hs.isStart)
-                segment.startHandleOffset = newOffset;
+                segment.startHandleOffset = newStored;
             else
-                segment.endHandleOffset = newOffset;
+                segment.endHandleOffset = newStored;
 
             segment.isDirty = true;
             EditorUtility.SetDirty(_spline);
