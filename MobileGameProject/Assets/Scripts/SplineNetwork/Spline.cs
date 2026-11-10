@@ -204,6 +204,31 @@ namespace MobileGameProject.SplineNetwork
             segments[i].isDirty = true;
         }
 
+        public Quaternion GetSocketWorldRotation(int nodeIndex, string socketId)
+        {
+            var node = nodes[nodeIndex];
+            Quaternion nodeWorldRotation = transform.rotation * node.rotation;
+
+            if (!TryGetSocket(nodeIndex, socketId, out var socket))
+                return nodeWorldRotation;
+
+            return nodeWorldRotation * socket.localRotation;
+        }
+
+        private bool TryGetSocket(int nodeIndex, string socketId, out NodeSocket socket)
+        {
+            socket = null;
+
+            if (nodeIndex < 0 || nodeIndex >= nodes.Count) return false;
+
+            var node = nodes[nodeIndex];
+            if (node.prefab == null || string.IsNullOrEmpty(socketId))
+                return false;
+
+            socket = node.prefab.sockets.FirstOrDefault(x => x.id == socketId);
+            return socket != null;
+        }
+
         #endregion Segments
     }
 }

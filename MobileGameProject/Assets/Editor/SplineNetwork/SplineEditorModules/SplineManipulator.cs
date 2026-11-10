@@ -138,6 +138,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 Vector3 localOffset = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
 
                 Vector3 origin = _spline.GetSegmentEndWorldPosition(nodeIndex, socketId);
+                Quaternion socketRotation = _spline.GetSocketWorldRotation(nodeIndex, socketId);
 
                 _selectionPivotPosition = origin + _spline.transform.TransformVector(localOffset);
                 _selectionPivotRotation = GetHandleRotation(nodeIndex);
