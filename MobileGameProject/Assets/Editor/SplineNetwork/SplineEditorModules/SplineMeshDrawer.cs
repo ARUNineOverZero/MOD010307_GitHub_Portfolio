@@ -99,7 +99,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Vector3 p2 = p3 + _spline.transform.TransformVector(segment.endHandleOffset);
 
             float curveLength = EstimateCurveLength(p0, p1, p2, p3, SplineEditorSettings.segmentLevelOfDetail);
-            int count = Mathf.Max(1, Mathf.FloorToInt(curveLength / pieceLen));
+            int count = Mathf.Max(1, Mathf.CeilToInt(curveLength / pieceLen));
 
             List<Vector3> allVerts = new List<Vector3>();
             List<Vector3> allNormals = new List<Vector3>();

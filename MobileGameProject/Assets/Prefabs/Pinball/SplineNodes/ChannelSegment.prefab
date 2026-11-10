@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.SplineNodePrefab
   sockets:
   - id: end
-    localPosition: {x: 0, y: 0, z: 0.25}
+    localPosition: {x: 0, y: 0, z: -0.25}
     localRotation: {x: 0, y: 0, z: 0, w: 1}
   - id: start
-    localPosition: {x: 0, y: 0, z: -0.25}
+    localPosition: {x: 0, y: 0, z: 0.25}
     localRotation: {x: 0, y: 0, z: 0, w: 1}

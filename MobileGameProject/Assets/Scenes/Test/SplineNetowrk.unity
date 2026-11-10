@@ -500,14 +500,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: 0.898309, y: 0, z: -0.5298605}
+  - position: {x: 3.33, y: 0, z: 2.0441313}
     rotation: {x: 0, y: 0.90054655, z: 0, w: -0.43475962}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
-  - position: {x: -1.5, y: 0, z: -1.5}
-    rotation: {x: 0, y: 0.5, z: 0, w: 0.8660254}
+  - position: {x: -1.0202403, y: 0, z: 0.20753098}
+    rotation: {x: 0, y: -0.9914448, z: 0, w: 0.1305262}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
-  - position: {x: -1.5, y: 3, z: -3.5}
-    rotation: {x: 0.25881904, y: 0, z: 0, w: 0.9659258}
+  - position: {x: -1.4797597, y: 3, z: -3.499999}
+    rotation: {x: 0, y: 0.9967859, z: 0, w: -0.08011191}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
   - position: {x: -2.5, y: 5, z: -6.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -515,35 +515,53 @@ MonoBehaviour:
   - position: {x: -2.5, y: 5, z: -11.5}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
+  - position: {x: 2.0647047, y: 0, z: -0.7585192}
+    rotation: {x: 0, y: 0.7933533, z: 0, w: 0.6087614}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
+  - position: {x: 6.992278, y: 0, z: -1.6240344}
+    rotation: {x: 0, y: -0.66180265, z: 0, w: 0.7496782}
+    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
   segments:
   - startNodeIndex: 0
     startSocket: End
     endNodeIndex: 1
-    endSocket: End
-    startHandleOffset: {x: -1.0940267, y: 0, z: -0.8904462}
-    endHandleOffset: {x: 0.69993556, y: 0, z: 0.29562712}
-    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
+    endSocket: end
+    startHandleOffset: {x: -1.0940263, y: 0, z: -0.8904457}
+    endHandleOffset: {x: 0.51763815, y: 0, z: 1.9318523}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
+    isDirty: 0
   - startNodeIndex: 1
-    startSocket: Start
+    startSocket: start
     endNodeIndex: 2
-    endSocket: End
-    startHandleOffset: {x: -1.3660252, y: -0.00999999, z: -1.0439744}
-    endHandleOffset: {x: 0.16660981, y: -0.833049, z: 0.833049}
-    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
+    endSocket: end
+    startHandleOffset: {x: -0.5176382, y: 0, z: -1.9318519}
+    endHandleOffset: {x: 0.41660976, y: -2.2905807, z: 0.85756826}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
+    isDirty: 0
   - startNodeIndex: 2
-    startSocket: Start
+    startSocket: start
     endNodeIndex: 3
-    endSocket: End
-    startHandleOffset: {x: -0.17289916, y: 0.8644958, z: -0.8644958}
-    endHandleOffset: {x: 0.14864607, y: -0.29729214, z: 1.1891686}
-    prefab: {fileID: 2816364392059319327, guid: f7979b181b75753499c19d3d218e0e8b, type: 3}
+    endSocket: end
+    startHandleOffset: {x: -0.17289913, y: 0, z: -2.3644958}
+    endHandleOffset: {x: 0.14864612, y: 0, z: 2.189169}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
+    isDirty: 0
   - startNodeIndex: 3
-    startSocket: Start
+    startSocket: start
     endNodeIndex: 4
     endSocket: End
     startHandleOffset: {x: -0.19863667, y: 0.39727333, z: -1.5890933}
     endHandleOffset: {x: 0, y: 0, z: 1.75}
     prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
+    isDirty: 0
+  - startNodeIndex: 5
+    startSocket: End
+    endNodeIndex: 6
+    endSocket: End
+    startHandleOffset: {x: 1.32, y: 0, z: -0.165}
+    endHandleOffset: {x: -1.32, y: 0, z: 0.165}
+    prefab: {fileID: 8602418886876872034, guid: 43bf9c025882d6e49a799a538d46d1fd, type: 3}
+    isDirty: 0
 --- !u!4 &780207634
 Transform:
   m_ObjectHideFlags: 0
@@ -800,6 +818,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: -0, y: -0, z: 0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 2
@@ -807,6 +826,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.99, y: 0, z: 0}
     endHandleOffset: {x: -0.99, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 3
@@ -814,6 +834,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: -0, y: -0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 0
@@ -821,6 +842,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.99, y: 0, z: 0}
     endHandleOffset: {x: 0.99, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 4
@@ -828,6 +850,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 0
     startSocket: 
     endNodeIndex: 4
@@ -835,6 +858,7 @@ MonoBehaviour:
     startHandleOffset: {x: 1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 4
@@ -842,6 +866,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 4
@@ -849,6 +874,7 @@ MonoBehaviour:
     startHandleOffset: {x: 1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 4
     startSocket: 
     endNodeIndex: 5
@@ -856,6 +882,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: -0.0825, z: -0.495}
     endHandleOffset: {x: -0.82500005, y: 0.0825, z: 0.495}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 5
     startSocket: 
     endNodeIndex: 6
@@ -863,6 +890,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 6
     startSocket: 
     endNodeIndex: 4
@@ -870,6 +898,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: 0.0825, z: 0.495}
     endHandleOffset: {x: -0.82500005, y: -0.0825, z: -0.495}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 5
     startSocket: 
     endNodeIndex: 7
@@ -877,6 +906,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: -0, y: -0, z: 1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 7
     startSocket: 
     endNodeIndex: 8
@@ -884,6 +914,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 8
     startSocket: 
     endNodeIndex: 6
@@ -891,6 +922,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 1.6500001}
     endHandleOffset: {x: -0, y: -0, z: -1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 8
     startSocket: 
     endNodeIndex: 9
@@ -898,6 +930,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: -0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 6
     startSocket: 
     endNodeIndex: 9
@@ -905,6 +938,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: 0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 5
     startSocket: 
     endNodeIndex: 9
@@ -912,6 +946,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: 0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 7
     startSocket: 
     endNodeIndex: 9
@@ -919,6 +954,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: -0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 4
     startSocket: 
     endNodeIndex: 11
@@ -926,6 +962,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -1.75, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -1}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 11
     startSocket: 
     endNodeIndex: 10
@@ -933,6 +970,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 12
@@ -940,6 +978,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 0
     startSocket: 
     endNodeIndex: 13
@@ -947,6 +986,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 12
     startSocket: 
     endNodeIndex: 10
@@ -954,6 +994,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.495, y: 0, z: 0}
     endHandleOffset: {x: 0.495, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 13
     startSocket: 
     endNodeIndex: 10
@@ -961,6 +1002,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.495, y: 0, z: 0}
     endHandleOffset: {x: -0.495, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 14
     startSocket: 
     endNodeIndex: 15
@@ -968,6 +1010,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: 0, y: 0, z: 0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 15
     startSocket: 
     endNodeIndex: 16
@@ -975,6 +1018,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.33, y: 0, z: 0}
     endHandleOffset: {x: 0.33, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 16
     startSocket: 
     endNodeIndex: 17
@@ -982,6 +1026,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 14
     startSocket: 
     endNodeIndex: 0
@@ -989,6 +1034,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0.99, z: -0.00000015735627}
     endHandleOffset: {x: 0, y: -0.99, z: 0.00000015735627}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 15
     startSocket: 
     endNodeIndex: 1
@@ -996,6 +1042,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0.99, z: 0}
     endHandleOffset: {x: 0, y: -0.99, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 14
     startSocket: 
     endNodeIndex: 13
@@ -1003,6 +1050,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 18
@@ -1010,6 +1058,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 18
     startSocket: 
     endNodeIndex: 12
@@ -1017,6 +1066,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 19
@@ -1024,6 +1074,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 19
     startSocket: 
     endNodeIndex: 18
@@ -1031,6 +1082,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 6
@@ -1038,6 +1090,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.33, y: 0.66, z: 0}
     endHandleOffset: {x: 0.33, y: -0.66, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 5
@@ -1045,6 +1098,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.33, y: 0.66, z: 0}
     endHandleOffset: {x: -0.33, y: -0.66, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 6
     startSocket: 
     endNodeIndex: 16
@@ -1052,6 +1106,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -1.6500001, z: 0}
     endHandleOffset: {x: 0, y: 1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 19
     startSocket: 
     endNodeIndex: 20
@@ -1059,6 +1114,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.33, y: 0, z: 0}
     endHandleOffset: {x: -0.33, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 20
     startSocket: 
     endNodeIndex: 5
@@ -1066,6 +1122,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 20
     startSocket: 
     endNodeIndex: 21
@@ -1073,6 +1130,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 21
     startSocket: 
     endNodeIndex: 7
@@ -1080,6 +1138,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 17
     startSocket: 
     endNodeIndex: 21
@@ -1087,6 +1146,7 @@ MonoBehaviour:
     startHandleOffset: {x: 1.6500001, y: 0, z: 0}
     endHandleOffset: {x: -1.6500001, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 17
     startSocket: 
     endNodeIndex: 8
@@ -1094,6 +1154,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
 --- !u!4 &1368272003
 Transform:
   m_ObjectHideFlags: 0
@@ -1360,6 +1421,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: -0, y: -0, z: 0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 2
@@ -1367,6 +1429,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.99, y: 0, z: 0}
     endHandleOffset: {x: -0.99, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 3
@@ -1374,6 +1437,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: -0, y: -0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 0
@@ -1381,6 +1445,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.99, y: 0, z: 0}
     endHandleOffset: {x: 0.99, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 4
@@ -1388,6 +1453,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 0
     startSocket: 
     endNodeIndex: 4
@@ -1395,6 +1461,7 @@ MonoBehaviour:
     startHandleOffset: {x: 1, y: 0, z: -1}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 4
@@ -1402,6 +1469,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 4
@@ -1409,6 +1477,7 @@ MonoBehaviour:
     startHandleOffset: {x: 1.5, y: 0, z: 1.5}
     endHandleOffset: {x: 0, y: -1.75, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 4
     startSocket: 
     endNodeIndex: 5
@@ -1416,6 +1485,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: -0.0825, z: -0.495}
     endHandleOffset: {x: -0.82500005, y: 0.0825, z: 0.495}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 5
     startSocket: 
     endNodeIndex: 6
@@ -1423,6 +1493,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 6
     startSocket: 
     endNodeIndex: 4
@@ -1430,6 +1501,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: 0.0825, z: 0.495}
     endHandleOffset: {x: -0.82500005, y: -0.0825, z: -0.495}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 5
     startSocket: 
     endNodeIndex: 7
@@ -1437,6 +1509,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: -0, y: -0, z: 1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 7
     startSocket: 
     endNodeIndex: 8
@@ -1444,6 +1517,7 @@ MonoBehaviour:
     startHandleOffset: {x: -1.6500001, y: 0, z: 0}
     endHandleOffset: {x: 1.6500001, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 8
     startSocket: 
     endNodeIndex: 6
@@ -1451,6 +1525,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 1.6500001}
     endHandleOffset: {x: -0, y: -0, z: -1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 8
     startSocket: 
     endNodeIndex: 9
@@ -1458,6 +1533,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: -0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 6
     startSocket: 
     endNodeIndex: 9
@@ -1465,6 +1541,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: -0.82500005, y: -1.32, z: 0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 5
     startSocket: 
     endNodeIndex: 9
@@ -1472,6 +1549,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.82500005, y: 1.32, z: -0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: 0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 7
     startSocket: 
     endNodeIndex: 9
@@ -1479,6 +1557,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.82500005, y: 1.32, z: 0.82500005}
     endHandleOffset: {x: 0.82500005, y: -1.32, z: -0.82500005}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 4
     startSocket: 
     endNodeIndex: 11
@@ -1486,6 +1565,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -1.75, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -1}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 11
     startSocket: 
     endNodeIndex: 10
@@ -1493,6 +1573,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 12
@@ -1500,6 +1581,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 0
     startSocket: 
     endNodeIndex: 13
@@ -1507,6 +1589,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -2, z: 0}
     endHandleOffset: {x: 0, y: 0, z: -2}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 12
     startSocket: 
     endNodeIndex: 10
@@ -1514,6 +1597,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.495, y: 0, z: 0}
     endHandleOffset: {x: 0.495, y: -0, z: -0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 13
     startSocket: 
     endNodeIndex: 10
@@ -1521,6 +1605,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.495, y: 0, z: 0}
     endHandleOffset: {x: -0.495, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 14
     startSocket: 
     endNodeIndex: 15
@@ -1528,6 +1613,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -0.99}
     endHandleOffset: {x: 0, y: 0, z: 0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 15
     startSocket: 
     endNodeIndex: 16
@@ -1535,6 +1621,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.33, y: 0, z: 0}
     endHandleOffset: {x: 0.33, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 16
     startSocket: 
     endNodeIndex: 17
@@ -1542,6 +1629,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 14
     startSocket: 
     endNodeIndex: 0
@@ -1549,6 +1637,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0.99, z: -0.00000015735627}
     endHandleOffset: {x: 0, y: -0.99, z: 0.00000015735627}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 15
     startSocket: 
     endNodeIndex: 1
@@ -1556,6 +1645,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0.99, z: 0}
     endHandleOffset: {x: 0, y: -0.99, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 14
     startSocket: 
     endNodeIndex: 13
@@ -1563,6 +1653,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 18
@@ -1570,6 +1661,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 18
     startSocket: 
     endNodeIndex: 12
@@ -1577,6 +1669,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 19
@@ -1584,6 +1677,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -0.99, z: 0}
     endHandleOffset: {x: 0, y: 0.99, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 19
     startSocket: 
     endNodeIndex: 18
@@ -1591,6 +1685,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: 0.99}
     endHandleOffset: {x: 0, y: 0, z: -0.99}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 6
@@ -1598,6 +1693,7 @@ MonoBehaviour:
     startHandleOffset: {x: -0.33, y: 0.66, z: 0}
     endHandleOffset: {x: 0.33, y: -0.66, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 5
@@ -1605,6 +1701,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.33, y: 0.66, z: 0}
     endHandleOffset: {x: -0.33, y: -0.66, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 6
     startSocket: 
     endNodeIndex: 16
@@ -1612,6 +1709,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: -1.6500001, z: 0}
     endHandleOffset: {x: 0, y: 1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 19
     startSocket: 
     endNodeIndex: 20
@@ -1619,6 +1717,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0.33, y: 0, z: 0}
     endHandleOffset: {x: -0.33, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 20
     startSocket: 
     endNodeIndex: 5
@@ -1626,6 +1725,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 20
     startSocket: 
     endNodeIndex: 21
@@ -1633,6 +1733,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 0, z: -1.6500001}
     endHandleOffset: {x: 0, y: 0, z: 1.6500001}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 21
     startSocket: 
     endNodeIndex: 7
@@ -1640,6 +1741,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 17
     startSocket: 
     endNodeIndex: 21
@@ -1647,6 +1749,7 @@ MonoBehaviour:
     startHandleOffset: {x: 1.6500001, y: 0, z: 0}
     endHandleOffset: {x: -1.6500001, y: 0, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
   - startNodeIndex: 17
     startSocket: 
     endNodeIndex: 8
@@ -1654,6 +1757,7 @@ MonoBehaviour:
     startHandleOffset: {x: 0, y: 1.6500001, z: 0}
     endHandleOffset: {x: 0, y: -1.6500001, z: 0}
     prefab: {fileID: 0}
+    isDirty: 1
 --- !u!4 &2073245534
 Transform:
   m_ObjectHideFlags: 0
