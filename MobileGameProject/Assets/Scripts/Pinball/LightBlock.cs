@@ -6,7 +6,7 @@ namespace MobileGameProject.Pinball
 {
     public class LightBlock : Block
     {
-        [SerializeField] private AnimationCurve _lightIntensityCurve; 
+        [SerializeField] private AnimationCurve _lightIntensityCurve;
         [SerializeField, Min(0.001f)] private float _lightIntensitySpeed = 1f;
         [SerializeField, Min(0.001f)] private float _lightIntensity = 1f;
         [SerializeField] private Light _light;
@@ -19,8 +19,8 @@ namespace MobileGameProject.Pinball
         protected override void OnValidate()
         {
             base.OnValidate();
-            
-            if(_light != null)
+
+            if (_light != null)
                 _light.color = _color;
         }
 
@@ -28,10 +28,14 @@ namespace MobileGameProject.Pinball
         {
             base.TriggerCoroutines();
 
-            if(_blinkLightCoroutine == null)
+            if (_blinkLightCoroutine == null)
                 _blinkLightCoroutine = StartCoroutine(BlinkLight());
             else if (_current > 1)
-                _current =  1 - (_current - 1);
+            {
+                var oldCurrent = _current;
+                _current = 1 - (_current - 1);
+                Debug.Log($"Current was: {oldCurrent}\nNow is: {_current}");
+            }
         }
 
         private IEnumerator BlinkLight()
@@ -39,10 +43,19 @@ namespace MobileGameProject.Pinball
             _light.enabled = true;
             while (_current != 2)
             {
-                _current += Time.deltaTime / _lightIntensitySpeed / 2;
+                if (_ballContacts > 0)
+                {
+                    _current += Time.deltaTime / _lightIntensitySpeed * 2;
+                    if (_current > 1)
+                        _current = 1;
+                }
+                else
+                    _current += Time.deltaTime / _lightIntensitySpeed * 2;
 
                 if (_current > 2)
                     _current = 2;
+
+                Debug.Log($"Current is: {_current}");
 
                 float currentPosition = _current > 1 ? 1 - (_current - 1) : _current;
                 float intensity = _lightIntensity * _lightIntensityCurve.Evaluate(currentPosition);
@@ -52,9 +65,8 @@ namespace MobileGameProject.Pinball
                 yield return null;
             }
 
-            Debug.Log("Exit Blink Light");
-            
             _current = 0;
+            Debug.Log($"Current is: {_current}");
             _light.enabled = false;
             _blinkLightCoroutine = null;
         }

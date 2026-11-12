@@ -264,21 +264,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 10.476191
-      outSlope: 10.476191
+      inSlope: 3.083082
+      outSlope: 3.083082
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.0125
+      outWeight: 0.09261381
     - serializedVersion: 3
-      time: 0.08947668
-      value: 0.98610675
-      inSlope: 0.009131853
-      outSlope: 0.009131853
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
@@ -291,6 +291,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _lightIntensitySpeed: 0.2
-  _lightIntensity: 1
+  _lightIntensitySpeed: 0.825
+  _lightIntensity: 3
   _light: {fileID: 5241216579180891741}

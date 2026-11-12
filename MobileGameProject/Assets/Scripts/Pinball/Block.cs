@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace MobileGameProject.Pinball
 {
@@ -14,6 +13,8 @@ namespace MobileGameProject.Pinball
         private Coroutine _moveDownCoroutine;
         private MaterialPropertyBlock _propertyBlock;
         private static readonly int ColorId = Shader.PropertyToID("_BaseColor");
+
+        protected int _ballContacts = 0;
 
         protected virtual void OnValidate()
         {
@@ -60,7 +61,17 @@ namespace MobileGameProject.Pinball
         {
             Ball ball = collision.gameObject.GetComponent<Ball>();
             if (ball != null)
+            {
                 TriggerCoroutines();
+                _ballContacts++;
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            Ball ball = collision.gameObject.GetComponent<Ball>();
+            if (ball != null)
+                _ballContacts--;
         }
     }
 }
