@@ -115,13 +115,15 @@ namespace MobileGameProjectEditor.SplineNetwork
             string socketId = hs.isStart ? segment.startSocket : segment.endSocket;
 
             Vector3 stored = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
-
-            Quaternion socketInSpline = Quaternion.identity;
+            Quaternion handleSpace;
             var node = _spline.nodes[nodeIndex];
-            if (_spline.TryGetSocket(nodeIndex, socketId, out var socket))
-                socketInSpline = node.rotation * socket.localRotation;
+            
+            if (_spline.TryGetSocket(nodeIndex, socketId, out NodeSocket socket))
+                handleSpace = node.rotation * socket.localRotation;
+            else
+                handleSpace = node.rotation;
 
-            Vector3 socketLocal = Quaternion.Inverse(socketInSpline) * stored;
+            Vector3 socketLocal = Quaternion.Inverse(handleSpace) * stored;
 
             void SetZeroWhenLessThan(ref float value, float epsilon = 0.0001f)
             {
@@ -142,11 +144,11 @@ namespace MobileGameProjectEditor.SplineNetwork
                 newSocketLocal.y = 0;
             }
 
-            if (!EditorGUI.EndChangeCheck() &&  socketLocal == newSocketLocal) return;
+            if (!EditorGUI.EndChangeCheck() && socketLocal == newSocketLocal) return;
 
             Undo.RecordObject(_spline, "Edit Handle Offset");
 
-            Vector3 newStored = socketInSpline * newSocketLocal;
+            Vector3 newStored = handleSpace * newSocketLocal;
 
             if (hs.isStart)
                 segment.startHandleOffset = newStored;
