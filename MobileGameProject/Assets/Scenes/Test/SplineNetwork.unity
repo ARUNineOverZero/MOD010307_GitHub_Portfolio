@@ -500,63 +500,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.SplineNetwork.Spline
   nodes:
-  - position: {x: -2.5, y: 22.009737, z: -11.5}
+  - position: {x: -3.0532703, y: 0.76, z: -53.750008}
+    rotation: {x: 0, y: 0.9833502, z: 0, w: -0.18172066}
+    prefab: {fileID: 0}
+  - position: {x: -4.0532703, y: 1.76, z: -53.750008}
+    rotation: {x: 0, y: -0.9238795, z: 0, w: -0.38268358}
+    prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
+  - position: {x: -4.0532703, y: 2.76, z: -52.750008}
+    rotation: {x: 0, y: 0.92387956, z: 0, w: -0.3826834}
+    prefab: {fileID: 0}
+  - position: {x: -3.0532703, y: 3.76, z: -52.750008}
+    rotation: {x: 0, y: 0.3826835, z: 0, w: -0.9238795}
+    prefab: {fileID: 0}
+  - position: {x: -3.0532703, y: 4.76, z: -53.750008}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-    prefab: {fileID: 0}
-  - position: {x: 4, y: 8, z: -13}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-    prefab: {fileID: 2816364392059319327, guid: ccbcec21faf745f47bfc97785b531b93, type: 3}
-  - position: {x: 3.735973, y: 6, z: -4.7759433}
-    rotation: {x: 0, y: 0.0816196, z: 0, w: -0.9966636}
-    prefab: {fileID: 0}
-  - position: {x: -4.229763, y: 4, z: -4.6950297}
-    rotation: {x: -0.05714203, y: 0.909957, z: -0.13390653, w: -0.38830668}
-    prefab: {fileID: 0}
-  - position: {x: -4.519562, y: 3.1585739, z: -13.014445}
-    rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-    prefab: {fileID: 0}
-  - position: {x: 9.5, y: 1.1585736, z: -13.5}
-    rotation: {x: 0.12523024, y: 0.7485626, z: -0.14782932, w: 0.6341277}
     prefab: {fileID: 0}
   segments:
   - startNodeIndex: 0
     startSocket: 
     endNodeIndex: 1
     endSocket: 
-    startHandleOffset: {x: 2.145, y: -0.66, z: -0.495}
-    endHandleOffset: {x: -1.4324232, y: 0.918813, z: -1.5445377}
+    startHandleOffset: {x: -1.6439945, y: 0, z: -4.2961946}
+    endHandleOffset: {x: 0.5444724, y: 0, z: -0.54447216}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 2
     endSocket: 
-    startHandleOffset: {x: 1.7417053, y: -1.1171987, z: 1.8780268}
-    endHandleOffset: {x: 1.8610317, y: 0.9045372, z: -1.8780385}
+    startHandleOffset: {x: -1.7394832, y: 0, z: 1.7394825}
+    endHandleOffset: {x: 0, y: 0, z: -1}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 3
     endSocket: 
-    startHandleOffset: {x: -1.8050995, y: -0.8773519, z: 1.8215952}
-    endHandleOffset: {x: 1.8147662, y: 0.87929666, z: 1.811022}
+    startHandleOffset: {x: 0, y: 0, z: 1}
+    endHandleOffset: {x: 0, y: 0, z: 1}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 4
     endSocket: 
-    startHandleOffset: {x: -1.891652, y: -0.9165496, z: -1.8877492}
-    endHandleOffset: {x: -2.3097684, y: 0.672923, z: 1.4812667}
-    prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
-    isDirty: 0
-  - startNodeIndex: 4
-    startSocket: 
-    endNodeIndex: 5
-    endSocket: 
-    startHandleOffset: {x: 3.8228812, y: -1.1137501, z: -2.451634}
-    endHandleOffset: {x: -4.626456, y: 0.6600001, z: 0.16023305}
+    startHandleOffset: {x: 0, y: 0, z: -1}
+    endHandleOffset: {x: 0, y: 0, z: 1}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
 --- !u!4 &753446105
@@ -567,13 +556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753446103}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.25881943, z: -0, w: 0.96592575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.94673, y: -0.76, z: 3.750008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &780207632
 GameObject:
   m_ObjectHideFlags: 0
