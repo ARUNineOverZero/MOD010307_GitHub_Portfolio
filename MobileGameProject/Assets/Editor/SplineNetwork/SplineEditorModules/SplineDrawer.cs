@@ -121,24 +121,9 @@ namespace MobileGameProjectEditor.SplineNetwork
 
             Vector3[] points = new Vector3[SplineEditorSettings.segmentLevelOfDetail + 1];
             for (int i = 0; i <= SplineEditorSettings.segmentLevelOfDetail; i++)
-                points[i] = EvaluateCubicBezier(p0, p1, p2, p3, i / (float)SplineEditorSettings.segmentLevelOfDetail);
+                points[i] = SplineMath.EvaluateCubicBezier(p0, p1, p2, p3, i / (float)SplineEditorSettings.segmentLevelOfDetail);
 
             DrawWithOcclusion(() => Handles.DrawPolyLine(points), color, occluded);
-        }
-
-
-        private static Vector3 EvaluateCubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
-        {
-            float u = 1f - t;
-            float tt = t * t;
-            float uu = u * u;
-            float uuu = uu * u;
-            float ttt = tt * t;
-
-            return uuu * p0
-                   + 3f * uu * t * p1
-                   + 3f * u * tt * p2
-                   + ttt * p3;
         }
     }
 }

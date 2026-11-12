@@ -3,7 +3,7 @@ using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.ShortcutManagement;
-using Unity.Mathematics;
+using System;
 
 namespace MobileGameProjectEditor.SplineNetwork
 {
@@ -13,7 +13,6 @@ namespace MobileGameProjectEditor.SplineNetwork
         #region Fields
 
         private Spline _spline;
-        private int _hoverNodeIndex = -1;
         private bool _isEditing;
         private SplineDrawer _drawer;
         private SplineSelector _selector;
@@ -22,10 +21,6 @@ namespace MobileGameProjectEditor.SplineNetwork
         private SplineSelectionInfo _selectionInfo;
         private SplineMeshDrawer _meshDrawer;
         private bool _createHeld;
-
-        private Vector3 _lastPosition;
-        private Quaternion _lastRotation;
-        private Vector3 _lastLocalScale;
 
         #endregion Fields
 
@@ -57,9 +52,7 @@ namespace MobileGameProjectEditor.SplineNetwork
         private void OnSceneGUI()
         {
             if (_spline == null) return;
-
             
-
             Event e = Event.current;
 
             _selector.UpdateHoverSelection();
@@ -69,9 +62,20 @@ namespace MobileGameProjectEditor.SplineNetwork
             if (_isEditing)
                 EditSceneGUI(e);
             else
+            {
                 Tools.hidden = false;
+                KeepSplineSelected(e);
+            }
 
             _drawer.RequestRepaint(e);
+        }
+
+        private void KeepSplineSelected(Event e)
+        {
+            if(e.type != EventType.MouseDown || e.button != 0) return;
+
+            if(_selector.HoverNodeIndex != -1)
+                e.Use();
         }
 
         public override void OnInspectorGUI()

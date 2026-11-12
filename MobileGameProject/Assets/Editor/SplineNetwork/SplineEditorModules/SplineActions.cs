@@ -296,12 +296,12 @@ namespace MobileGameProjectEditor.SplineNetwork
             AssetDatabase.SaveAssets();
 
             GameObject go = new GameObject();
-            var mf = go.AddComponent<MeshFilter>();
-            mf.sharedMesh = mesh;
-            var mc = go.AddComponent<MeshCollider>();
-            mc.sharedMesh = mesh;
-            var mr = go.AddComponent<MeshRenderer>();
-            mr.sharedMaterial = _meshDrawer.GetFirstMaterial();
+            var meshFilter = go.AddComponent<MeshFilter>();
+            meshFilter.sharedMesh = mesh;
+            var meshCollider = go.AddComponent<MeshCollider>();
+            meshCollider.sharedMesh = mesh;
+            var meshRenderer = go.AddComponent<MeshRenderer>();
+            meshRenderer.sharedMaterial = _meshDrawer.GetFirstMaterial();
         }
     }
 }
