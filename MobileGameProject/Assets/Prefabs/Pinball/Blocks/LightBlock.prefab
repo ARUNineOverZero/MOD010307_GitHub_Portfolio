@@ -88,7 +88,7 @@ Light:
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 1500
-  m_UseColorTemperature: 1
+  m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -155,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4985285268875827745}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4.997883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -258,6 +258,39 @@ MonoBehaviour:
   _moveSpeed: 0.1
   _renderer: {fileID: 1067081055346884405}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _lightIntensitySpeed: 0.05
+  _lightIntensityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 10.476191
+      outSlope: 10.476191
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0125
+    - serializedVersion: 3
+      time: 0.08947668
+      value: 0.98610675
+      inSlope: 0.009131853
+      outSlope: 0.009131853
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1508675
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _lightIntensitySpeed: 0.2
   _lightIntensity: 1
   _light: {fileID: 5241216579180891741}
