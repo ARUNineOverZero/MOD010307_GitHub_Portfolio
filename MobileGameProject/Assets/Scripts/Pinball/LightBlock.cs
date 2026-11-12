@@ -8,6 +8,8 @@ namespace MobileGameProject.Pinball
         [SerializeField, Min(0.001f)] private float _lightIntensitySpeed = 1f;
         [SerializeField, Min(0.001f)] private float _lightIntensity = 1f;
         [SerializeField] private Light _light;
+        private MaterialPropertyBlock _propertyBlock;
+        private static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
         private float _current = 0;
 
         private Coroutine _blinkLightCoroutine;
@@ -35,6 +37,8 @@ namespace MobileGameProject.Pinball
                 float currentPosition = _current > 1 ? 1 - (_current - 1) : _current;
 
                 _light.intensity = _lightIntensity * currentPosition;
+
+                ApplyColor(ref _propertyBlock, EmissionColorId, _light.color);
 
                 yield return null;
             }
