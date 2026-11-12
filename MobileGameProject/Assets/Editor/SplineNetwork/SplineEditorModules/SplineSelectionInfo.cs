@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using MobileGamePrefabUtility;
 using MobileGameProject.SplineNetwork;
 using UnityEditor;
 using UnityEngine;
@@ -71,7 +73,7 @@ namespace MobileGameProjectEditor.SplineNetwork
                 SplineNode node = _spline.nodes[_selector.SelectedNodeIndices.First()];
 
                 EditorGUI.BeginChangeCheck();
-                SplineNodePrefab prefab = (SplineNodePrefab)EditorGUILayout.ObjectField("Node Prefab", node.prefab, typeof(SplineNodePrefab), false);
+                SplineNodePrefab prefab = EditorComponentUtility.DrawComponentsPopup<SplineNodePrefab>("Node Prefab", node.prefab);
 
                 if (EditorGUI.EndChangeCheck())
                 {
@@ -91,8 +93,27 @@ namespace MobileGameProjectEditor.SplineNetwork
 
                 if (segment == null) return;
 
+                Predicate<SplineNodePrefab> hasStartAndEndSocket = x =>
+                {
+                    bool hasStart = false,
+                     hasEnd = false;
+
+                    foreach(var socket in x.sockets)
+                    {
+                        if(socket.id == "start")
+                            hasStart = true;
+                        else if(socket.id == "end")
+                            hasEnd = true;
+
+                        if(hasStart && hasEnd)
+                            return true;
+                    }
+
+                    return false;
+                };
+
                 EditorGUI.BeginChangeCheck();
-                SplineNodePrefab prefab = (SplineNodePrefab)EditorGUILayout.ObjectField("Segment Prefab", segment.prefab, typeof(SplineNodePrefab), false);
+                SplineNodePrefab prefab = EditorComponentUtility.DrawComponentsPopup("Segment Prefab", segment.prefab, hasStartAndEndSocket);
 
                 if (EditorGUI.EndChangeCheck())
                 {
@@ -117,7 +138,7 @@ namespace MobileGameProjectEditor.SplineNetwork
             Vector3 stored = hs.isStart ? segment.startHandleOffset : segment.endHandleOffset;
             Quaternion handleSpace;
             var node = _spline.nodes[nodeIndex];
-            
+
             if (_spline.TryGetSocket(nodeIndex, socketId, out NodeSocket socket))
                 handleSpace = node.rotation * socket.localRotation;
             else
