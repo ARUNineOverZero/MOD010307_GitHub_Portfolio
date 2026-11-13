@@ -69,11 +69,26 @@ Player movement, navigation or aiming using input, vectors, delta time and game 
 
 ### Primary student-authored scripts
 
-_Add links to the scripts presented as evidence for this microgame._
+### ./MobileGameProject/Assets/Scripts
+- [GameManager](./MobileGameProject/Assets/Scripts/GameManager.cs)
+- [PlayArea](./MobileGameProject/Assets/Scripts/PlayArea.cs)
+
+### ./MobileGameProject/Assets/Scripts/Input
+- [APlayerInputHandler](./MobileGameProject/Assets/Scripts/Input/APlayerInputHandler.cs)
+- [IVector2Value](./MobileGameProject/Assets/Scripts/Input/IVector2Value.cs)
+
+### ./MobileGameProject/Assets/Scripts/Input/Virtual
+- [AnalogueStick](./MobileGameProject/Assets/Scripts/Input/Virtual/AnalogueStick.cs)
+
+### ./MobileGameProject/Assets/Scripts/KitchenWaiter
+- [IPickUp](./MobileGameProject/Assets/Scripts/KitchenWaiter/IPickUp.cs)
+- [KitchenWaiterGame](./MobileGameProject/Assets/Scripts/KitchenWaiter/KitchenWaiterGame.cs)
+- [PlayerInputHandler](./MobileGameProject/Assets/Scripts/KitchenWaiter/PlayerInputHandler.cs)
+- [Table](./MobileGameProject/Assets/Scripts/KitchenWaiter/Table.cs)
+- [Tray](./MobileGameProject/Assets/Scripts/KitchenWaiter/Tray.cs)
+- [Waiter](./MobileGameProject/Assets/Scripts/KitchenWaiter/Waiter.cs)
 
 ### Key pull requests
-
-_Add links to pull requests showing the development and refinement of this microgame._
 
 ---
 
