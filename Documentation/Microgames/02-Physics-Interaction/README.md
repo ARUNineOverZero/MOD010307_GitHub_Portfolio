@@ -1,17 +1,16 @@
-# Microgame: Drink Runner
+# Microgame: Pinball Breakout
 
 ## Concept
-Your phone acts as a tray on the screen you can see drinks on the tray, the character will make its way to the table avoiding obsticle. You must tilt the phone to conteract the movement force and avoid spilling the liquid from the drinks or loosing the glass entierly.
+You are playing a pinball machine where there are breakout blocks at the top of the machine, you must destroy all blocks to win the game.
 
 ## Player Action
-Tilts the phone to prevent the drinks spilling on the floor while the character makes its way to the table 
+The player will press on the left or right side of the screen to activate either the left or the right flipper to launch the ball into the blocks to deactivate them.
 
 ## Success / Failure
 **Success condition:**  
- - Arrive at the table with all drinks on the tray
+ - Destroy all the blocks
 **Failure condition:**  
- - Loose any 1 drink
- - Lose more than 50% of any drink
+ - Loose all balls 3 times
 
 ## Main Programming Focus
 This microgame primarily demonstrates:

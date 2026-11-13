@@ -8,10 +8,10 @@ Hold a finger or thumb on the screen and drag to navigate the waiter from the ki
 
 ## Success / Failure
 **Success condition:**  
- - Place the plate on the right table 
+ - Grab the tray
+ - Take the tray to the correct table  
 **Failure condition:**
  - An incorrect table accepts the food from the waiter
- - Walks into another waiter and drops the food
  - Time runs out
 
 ## Main Programming Focus
