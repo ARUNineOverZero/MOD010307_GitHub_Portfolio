@@ -9,10 +9,10 @@ namespace MobileGameProject.Pinball
         public float bounceThreshold = 150f;
         public int solverIterations = 12;
         public int solverVelocityIterations = 8;
-        public float fixedTimestep = 0.01f;
+        public float fixedTimestep = .01f;
 
         [SerializeField] private Vector3 originalGravity = new Vector3(0f, -9.81f, 0f);
-        [SerializeField] private float originalContactOffset = 0.01f;
+        [SerializeField] private float originalDefaultContactOffset = .01f;
         [SerializeField] private float originalBounceThreshold = 2f;
         [SerializeField] private int originalSolverIterations = 6;
         [SerializeField] private int originalSolverVelocityIterations = 1;
@@ -32,7 +32,7 @@ namespace MobileGameProject.Pinball
         private void SetOriginalSettingValues()
         {
             originalGravity = Physics.gravity;
-            originalContactOffset = Physics.defaultContactOffset;
+            originalDefaultContactOffset = Physics.defaultContactOffset;
             originalBounceThreshold = Physics.bounceThreshold;
             originalSolverIterations = Physics.defaultSolverIterations;
             originalSolverVelocityIterations = Physics.defaultSolverVelocityIterations;
@@ -40,16 +40,16 @@ namespace MobileGameProject.Pinball
         }
 
         [ContextMenu("Physics Settings/Set Project Settings To Original Values")]
-        private void 
-
-        private void OnDestroy()
+        private void SetProjectSettingsPhysicsToOriginalValues()
         {
             Physics.gravity = originalGravity;
-            Physics.defaultContactOffset = originalContactOffset;
+            Physics.defaultContactOffset = originalDefaultContactOffset;
             Physics.bounceThreshold = originalBounceThreshold;
             Physics.defaultSolverIterations = originalSolverIterations;
             Physics.defaultSolverVelocityIterations = originalSolverVelocityIterations;
             Time.fixedDeltaTime = originalFixedTimestep;
         }
+
+        private void OnDestroy() => SetProjectSettingsPhysicsToOriginalValues();
     }
 }
