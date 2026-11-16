@@ -9,7 +9,7 @@ namespace MobileGameProject.Pinball
             var ball = other.gameObject.GetComponent<Ball>();
             if(ball == null) return;
 
-            ball.ResetPosition();
+            ball.RespawnBall();
         }
     }
 }

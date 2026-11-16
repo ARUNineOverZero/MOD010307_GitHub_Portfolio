@@ -7,7 +7,9 @@ namespace MobileGameProject.Pinball
     public class Ball : MonoBehaviour
     {
         [Header("Self Reference")]
-        [SerializeField] private Rigidbody _rb;
+        [SerializeField] private Rigidbody _rigidbody;
+
+        public Rigidbody Rigidbody => _rigidbody;
         private Vector3 startPosition ;
 
         public void Awake()
@@ -15,11 +17,12 @@ namespace MobileGameProject.Pinball
             startPosition = transform.position;
         }
 
-        public void ResetPosition()
+        [ContextMenu("RespawnBall")]
+        public void RespawnBall()
         {
-            _rb.linearVelocity = Vector3.zero;
-            _rb.angularVelocity = Vector3.zero;
-            _rb.MovePosition(startPosition);
+            _rigidbody.linearVelocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.MovePosition(startPosition);
         }
     }
 }
