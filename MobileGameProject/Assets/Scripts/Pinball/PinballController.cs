@@ -14,11 +14,14 @@ namespace MobileGameProject.Pinball
 
         public void OnLeftPressed()
         {
+            Debug.Log(nameof(OnLeftPressed));
             _leftFlipper.OnPress();
         }
 
         public void OnRightPressed()
         {
+            Debug.Log(nameof(OnRightPressed));
+
             _rightFlipper.OnPress();
         }
 

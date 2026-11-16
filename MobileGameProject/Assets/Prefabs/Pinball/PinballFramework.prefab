@@ -968,7 +968,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5546
+  m_VersionIndex: 5615
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballGame
   _mainCamera: {fileID: 5994468919102454566}
-  _pinballController: {fileID: 7649688137406759286}
+  _pinballController: {fileID: 4935891581157330831}
 --- !u!1 &1758898758030905949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,10 +1133,8 @@ GameObject:
   - component: {fileID: 4789321388753437449}
   - component: {fileID: 4975005888832355257}
   - component: {fileID: 4461529288903969279}
-  - component: {fileID: 1706113560528174465}
-  - component: {fileID: 1732507553862383679}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: BallReturns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,7 +1152,9 @@ Transform:
   m_LocalPosition: {x: 0, y: -12.250002, z: 0.00000011920929}
   m_LocalScale: {x: 14, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1246317026016711004}
+  - {fileID: 9122833944510839466}
   m_Father: {fileID: 69983576870696206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4975005888832355257
@@ -1214,39 +1214,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1706113560528174465
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758898758030905949}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1732507553862383679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758898758030905949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89fb0ec35203d414eb0c4976e7ce3275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.BallReturn
 --- !u!1 &2124891703276208795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,14 +1294,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 69983576870696206}
-  - component: {fileID: 7649688137406759286}
   m_Layer: 0
   m_Name: Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &69983576870696206
 Transform:
   m_ObjectHideFlags: 0
@@ -1355,23 +1321,6 @@ Transform:
   - {fileID: 4789321388753437449}
   m_Father: {fileID: 4436224413697914316}
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
---- !u!114 &7649688137406759286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3543371523409860400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2111d2964484574db65f105d57e1f31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballController
-  _camera: {fileID: 5994468919102454566}
-  _inputHandler: {fileID: 7801341231859573955}
-  _leftFlipper: {fileID: 5954760870285390938}
-  _rightFlipper: {fileID: 1837603369492898717}
-  _ball: {fileID: 6689566624327876002}
 --- !u!1 &3637683742469118427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1358,131 @@ Transform:
   - {fileID: 7127258681303590838}
   m_Father: {fileID: 6563898740214752189}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: -90}
+--- !u!1 &3784408028284193976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9122833944510839466}
+  - component: {fileID: 3224263740990704169}
+  - component: {fileID: 3987817889645317012}
+  - component: {fileID: 6787717681139316137}
+  - component: {fileID: 2898009781050650483}
+  m_Layer: 0
+  m_Name: ReturnBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9122833944510839466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784408028284193976}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4789321388753437449}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3224263740990704169
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784408028284193976}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3987817889645317012
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784408028284193976}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6787717681139316137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784408028284193976}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2898009781050650483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784408028284193976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fb0ec35203d414eb0c4976e7ce3275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.BallReturn
 --- !u!1 &3903842798795970779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1516,131 @@ Transform:
   - {fileID: 407144551395665628}
   m_Father: {fileID: 69983576870696206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6983297465356328676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246317026016711004}
+  - component: {fileID: 8123089652619458509}
+  - component: {fileID: 646714602614915699}
+  - component: {fileID: 567497041829453411}
+  - component: {fileID: 4707832639625522836}
+  m_Layer: 0
+  m_Name: Return
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1246317026016711004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983297465356328676}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4789321388753437449}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8123089652619458509
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983297465356328676}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &646714602614915699
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983297465356328676}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &567497041829453411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983297465356328676}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4707832639625522836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983297465356328676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fb0ec35203d414eb0c4976e7ce3275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.BallReturn
 --- !u!1 &7392385230385246651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,7 +1889,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6817
+  m_VersionIndex: 6886
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1798,6 +1997,62 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &7769257613476138316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5619183011545165270}
+  - component: {fileID: 517781977782599347}
+  m_Layer: 0
+  m_Name: PhysicsSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5619183011545165270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769257613476138316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 639716607490481412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517781977782599347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769257613476138316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b19eebbf6e14b04d8d9873e22a9263b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PhysicsSettings
+  gravity: {x: 0, y: -981, z: 0}
+  defaultContactOffset: 1
+  bounceThreshold: 150
+  solverIterations: 12
+  solverVelocityIterations: 8
+  fixedTimestep: 0.01
+  originalGravity: {x: 0, y: 0, z: 0}
+  originalDefaultContactOffset: 0.01
+  originalBounceThreshold: 0
+  originalSolverIterations: 0
+  originalSolverVelocityIterations: 0
+  originalFixedTimestep: 0
 --- !u!1 &8628870665604840716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,7 +2905,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 8623
+  m_VersionIndex: 8692
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3006,7 +3261,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6817
+  m_VersionIndex: 6886
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3380,6 +3635,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1106
+      objectReference: {fileID: 0}
     - target: {fileID: 7650715197438248736, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_Name
       value: LeftFlipper
@@ -3402,17 +3661,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
   m_PrefabInstance: {fileID: 2742203003969140164}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5954760870285390938 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8407600844846350750, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
-  m_PrefabInstance: {fileID: 2742203003969140164}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b298424e8feb2ee45974c401c8ebd0b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Flipper
 --- !u!1001 &2822462870336439245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3616,6 +3864,111 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6865507387794925639, guid: 849b0565b0aab0c49b7c2b0011782a6e, type: 3}
   m_PrefabInstance: {fileID: 3102788116834357291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3573845842706078507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4436224413697914316}
+    m_Modifications:
+    - target: {fileID: 1040779273732796411, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381354464169445904, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1127
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260805395356210644, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_VersionIndex
+      value: 4748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981128883469515268, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_Name
+      value: Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669455266469938422, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1127
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362303908623356098, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362303908623356098, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495784400099333284, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 5994468919102454566}
+    - target: {fileID: 8495784400099333284, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+      propertyPath: _inputHandler
+      value: 
+      objectReference: {fileID: 7801341231859573955}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+--- !u!114 &4935891581157330831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8495784400099333284, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+  m_PrefabInstance: {fileID: 3573845842706078507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2111d2964484574db65f105d57e1f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballController
+--- !u!4 &7189138469219916793 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5934665151003377874, guid: 665c18d096638684fad9b57d7b2471c2, type: 3}
+  m_PrefabInstance: {fileID: 3573845842706078507}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3973286660664818345
 PrefabInstance:
@@ -4099,6 +4452,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1106
+      objectReference: {fileID: 0}
     - target: {fileID: 7650715197438248736, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_Name
       value: Right Flipper
@@ -4116,17 +4473,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
---- !u!114 &1837603369492898717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8407600844846350750, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
-  m_PrefabInstance: {fileID: 7867145244636619267}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b298424e8feb2ee45974c401c8ebd0b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Flipper
 --- !u!4 &6621198613728071225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3949252141128494138, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
@@ -4192,6 +4538,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3304114446862675529, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 4986303871778269161}
     - target: {fileID: 5100827512181849038, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -4201,17 +4551,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
---- !u!114 &6689566624327876002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3304114446862675529, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
+--- !u!54 &4986303871778269161 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3764559589792347138, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
   m_PrefabInstance: {fileID: 8146044102901978091}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91ab308632ff3ea4d818f6f739dffaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.Ball
 --- !u!4 &8105109664098436183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 105744123328141244, guid: f4365eb095a001440bb4ec9c83e3ba2e, type: 3}
@@ -4381,11 +4725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.5
+      value: 73.95
       objectReference: {fileID: 0}
     - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11
+      value: -54.02
       objectReference: {fileID: 0}
     - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4405,9 +4749,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8658617937365484705}
+    - targetCorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5619183011545165270}
     - targetCorrespondingSourceObject: {fileID: 5024799456151852095, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 69983576870696206}
+    - targetCorrespondingSourceObject: {fileID: 5024799456151852095, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7189138469219916793}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7215387416699725057, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: -1
@@ -4438,7 +4788,7 @@ MonoBehaviour:
   OnLeftPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7649688137406759286}
+      - m_Target: {fileID: 4935891581157330831}
         m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
         m_MethodName: OnLeftPressed
         m_Mode: 1
@@ -4453,7 +4803,7 @@ MonoBehaviour:
   OnLeftRelease:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7649688137406759286}
+      - m_Target: {fileID: 4935891581157330831}
         m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
         m_MethodName: OnLeftReleased
         m_Mode: 1
@@ -4468,7 +4818,7 @@ MonoBehaviour:
   OnRightPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7649688137406759286}
+      - m_Target: {fileID: 4935891581157330831}
         m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
         m_MethodName: OnRightPressed
         m_Mode: 1
@@ -4483,7 +4833,7 @@ MonoBehaviour:
   OnRightRelease:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7649688137406759286}
+      - m_Target: {fileID: 4935891581157330831}
         m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
         m_MethodName: OnRightReleased
         m_Mode: 1
