@@ -9,12 +9,18 @@ namespace MobileGameProject.Pinball
         [SerializeField, Min(0f)] private float _moveSpeed = 1f;
         [SerializeField] protected Renderer _renderer;
         [SerializeField] protected Color _color = Color.white;
+        [SerializeField] protected float _startY;
         private float _current = 0f;
         private Coroutine _moveDownCoroutine;
         private MaterialPropertyBlock _propertyBlock;
         private static readonly int ColorId = Shader.PropertyToID("_BaseColor");
 
         protected int _ballContacts = 0;
+
+        protected virtual void Awake()
+        {
+            _startY = transform.localPosition.y;
+        }
 
         protected virtual void OnValidate()
         {
@@ -50,7 +56,7 @@ namespace MobileGameProject.Pinball
                     _current = 1;
 
                 var localPosition = transform.localPosition;
-                localPosition.y = _current * -_moveDown;
+                localPosition.y = _startY + _current * -_moveDown;
                 transform.localPosition = localPosition;
 
                 yield return null;
