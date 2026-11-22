@@ -848,7 +848,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4571
+  m_VersionIndex: 4586
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1820,6 +1820,86 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 373539836347415185}
     m_Modifications:
+    - target: {fileID: 2038023629697852986, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038023629697852986, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038023629697852986, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038023629697852986, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumValue
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038023629697852986, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_AsymptoteValue
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689498229516722037, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689498229516722037, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689498229516722037, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689498229516722037, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumValue
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689498229516722037, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_AsymptoteValue
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891466820530387142, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891466820530387142, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891466820530387142, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891466820530387142, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumValue
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891466820530387142, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_AsymptoteValue
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976395230077009797, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976395230077009797, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976395230077009797, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976395230077009797, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumValue
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976395230077009797, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: m_ForwardFriction.m_AsymptoteValue
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5115982841772633850, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.345987
