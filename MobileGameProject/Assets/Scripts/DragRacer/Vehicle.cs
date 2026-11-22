@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MobileGameProject.DragRacer
 {
@@ -9,6 +10,14 @@ namespace MobileGameProject.DragRacer
         [Header("References")]
         [SerializeField] private Rigidbody _rigidbody;
         public Rigidbody Rigidbody => _rigidbody;
+        [SerializeField] private VehicleWheel _wheelFrontLeft;
+        public VehicleWheel WheelFrontLeft => _wheelFrontLeft;
+        [SerializeField] private VehicleWheel _wheelFrontRight;
+        public VehicleWheel WheelFrontRight => _wheelFrontRight;
+        [SerializeField] private VehicleWheel _wheelRearLeft;
+        public VehicleWheel WheelRearLeft => _wheelRearLeft;
+        [SerializeField] private VehicleWheel _wheelRearRight;
+        public VehicleWheel WheelRearRight => _wheelRearRight;
         [SerializeField] private Pedal _accelerator;
         public Pedal Accelerator => _accelerator;
         [SerializeField] private Pedal _brake;
@@ -29,6 +38,15 @@ namespace MobileGameProject.DragRacer
         {
             if (_rigidbody == null) 
                 _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        [ContextMenu("Update Wheel Visuals")]
+        private void UpdateWheels()
+        {
+            _wheelFrontLeft.UpdateVisual();
+            _wheelFrontRight.UpdateVisual();
+            _wheelRearLeft.UpdateVisual();
+            _wheelRearRight.UpdateVisual();
         }
     }
 }

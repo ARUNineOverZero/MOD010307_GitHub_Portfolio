@@ -136,6 +136,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.29065555
       objectReference: {fileID: 0}
+    - target: {fileID: 1484705177863257621, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_Name
+      value: Wheel_FL
+      objectReference: {fileID: 0}
     - target: {fileID: 3485518674154197593, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -205,7 +209,8 @@ PrefabInstance:
       value: DragRacerFramework
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1267869712748679429, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}

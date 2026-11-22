@@ -19,7 +19,5 @@ namespace MobileGameProject.DragRacer
             _visualMesh.position = pos;
             _visualMesh.rotation = rot;
         }
-        
-        [ContextMenu("")]
     }
 }
