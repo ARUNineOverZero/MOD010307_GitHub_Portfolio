@@ -3,8 +3,6 @@ using MobileGameProject.Framework;
 using MobileGameProject.MGPInputSystem.Virtual;
 using TMPro;
 
-//https://kenney.nl/assets/food-kit
-
 namespace MobileGameProject.KitchenWaiter
 {
     public class KitchenWaiterGame : AMicrogameBehaviour
@@ -166,4 +164,8 @@ namespace MobileGameProject.KitchenWaiter
             table.TableExited();
         }
     }
+}
+
+namespace MobileGameProject.DragRacer
+{
 }
