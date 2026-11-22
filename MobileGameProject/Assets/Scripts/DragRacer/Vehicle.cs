@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using DragRacer.UI;
 using MobileGameProject.MGPInputSystem.DragRacer;
 using UnityEngine;
 
@@ -75,8 +76,8 @@ namespace MobileGameProject.DragRacer
         [Header("Speed")]
         [SerializeField] private float _velocitySpeed;
         [SerializeField] private float _velocityMPH;
-        [SerializeField] private float _wheelSpeed;
-        [SerializeField] private float _wheelMPH;
+        [SerializeField] private float _outputShaftRPM;
+        [SerializeField] private float _speedoMPH;
 
         [Header("States")]
         private IdleState _idleState;
@@ -89,6 +90,10 @@ namespace MobileGameProject.DragRacer
         public ShiftingState ShiftingState => _shiftingState;
 
         private VehicleState _currentState;
+        
+        [Header("Gauges")]
+        [SerializeField] private Gauge rpmGauge;
+        [SerializeField] private Gauge speedGauge;
 
         private void Awake()
         {
@@ -119,6 +124,16 @@ namespace MobileGameProject.DragRacer
             _clutch.UpdateKeyboarValue(_inputHandler.Clutch);
 #endif
             UpdateSpeed();
+            UpdateGauges();
+        }
+
+        private void UpdateGauges()
+        {
+            if (rpmGauge != null)
+                rpmGauge.SetValue(EngineRPM);
+
+            if (speedGauge != null)
+                speedGauge.SetValue(_speedoMPH);
         }
 
         private void FixedUpdate()
@@ -189,12 +204,32 @@ namespace MobileGameProject.DragRacer
             _velocitySpeed = _rigidbody.linearVelocity.magnitude;
             _velocityMPH = _velocitySpeed * 2.23694f;
 
-            var wheel = _drivenWheels?.FirstOrDefault();
-            if (wheel == null) return;
+            float avgWheelRPM = 0f;
+            int count = 0;
 
-            float circumference = 2f * Mathf.PI * wheel.radius;
-            _wheelSpeed = Mathf.Abs((wheel.rpm * circumference) / 60f);
-            _wheelMPH = _wheelSpeed * 2.23694f;
+            foreach (var wheel in _drivenWheels)
+            {
+                if (wheel == null) continue;
+                avgWheelRPM += Mathf.Abs(wheel.rpm);
+                count++;
+            }
+
+            if (count > 0)
+                avgWheelRPM /= count;
+
+            _outputShaftRPM = avgWheelRPM * _finalDrive;
+
+            if (_drivenWheels.Length > 0 && _drivenWheels[0] != null)
+            {
+                float wheelRadius = _drivenWheels[0].radius;
+                float circumference = 2f * Mathf.PI * wheelRadius;
+
+                float wheelRPM = _outputShaftRPM / _finalDrive;
+                float speedMS = (wheelRPM * circumference) / 60f;
+                _speedoMPH = speedMS * 2.23694f;
+            }
+            else
+                _speedoMPH = 0f;
         }
 
         private void UpdateWheels()
