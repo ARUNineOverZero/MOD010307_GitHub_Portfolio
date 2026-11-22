@@ -1,4 +1,5 @@
 ﻿using System;
+using MobileGameProject.MGPInputSystem.DragRacer;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,8 +8,9 @@ namespace MobileGameProject.DragRacer
     [RequireComponent(typeof(Rigidbody))]
     public class Vehicle : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private Rigidbody _rigidbody;
+        [Header("Self References")] [SerializeField]
+        private Rigidbody _rigidbody;
+
         public Rigidbody Rigidbody => _rigidbody;
         [SerializeField] private VehicleWheel _wheelFrontLeft;
         public VehicleWheel WheelFrontLeft => _wheelFrontLeft;
@@ -26,7 +28,10 @@ namespace MobileGameProject.DragRacer
         public Pedal Clutch => _clutch;
         [SerializeField] private GearSelector _gearSelector;
         public GearSelector GearSelector => _gearSelector;
-        
+
+        [Header("Scene Reference")] [SerializeField]
+        private PlayerInputHandler _inputHandler;
+
         [Header("Meters")] [SerializeField] private float _currentRPM;
         public float CurrentRPM => _currentRPM;
         [SerializeField] private int _currentGear;
@@ -34,15 +39,27 @@ namespace MobileGameProject.DragRacer
 
         private VehicleState _state;
 
+        public void Update()
+        {
+#if UNITY_EDITOR
+            _accelerator.UpdateKeyboarValue(_inputHandler.Accelerator);
+            _brake.UpdateKeyboarValue(_inputHandler.Brake);
+            _clutch.UpdateKeyboarValue(_inputHandler.Clutch);
+#endif
+        }
+
         private void Awake()
         {
-            if (_rigidbody == null) 
+            if (_rigidbody == null)
                 _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate()
+        private void FixedUpdate() => UpdateWheels();
+
+        public void TryShiftGear(int gear)
         {
-            UpdateWheels();
+            if (_clutch.Value > .9f)
+                _gearSelector.RequestGear(gear);
         }
 
         [ContextMenu("Update Wheel Visuals")]
