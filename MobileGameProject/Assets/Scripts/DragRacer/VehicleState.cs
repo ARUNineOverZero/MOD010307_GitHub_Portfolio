@@ -6,32 +6,45 @@ namespace MobileGameProject.DragRacer
     {
         protected Vehicle _vehicle;
 
-        public virtual void Enter() { }
+        public virtual void Enter()
+        {
+        }
 
         public abstract void Update(float deltaTime);
 
-        public virtual void Exit() { }
+        public virtual void Exit()
+        {
+        }
 
         public VehicleState(Vehicle vehicle) => _vehicle = vehicle;
     }
 
     public class IdleState : VehicleState
     {
-        public IdleState(Vehicle vehicle) : base(vehicle) { }
+        public IdleState(Vehicle vehicle) : base(vehicle)
+        {
+        }
 
         public override void Enter() => _vehicle.ApplyMotorTorque(0f, 0f);
 
-        public override void Update(float deltaTime) => _vehicle.UpdateEngineRPM(_vehicle.AcceleratorValue, 0f);
+        public override void Update(float deltaTime)
+        {
+            _vehicle.UpdateEngineRPM(_vehicle.AcceleratorValue, 0f);
+
+            if (_vehicle.RequestedGear != Gear.Neutral && _vehicle.ClutchValue < 0.4f)
+                _vehicle.ChangeState(_vehicle.InGearState);
+        }
     }
-    
+
     public class InGearState : VehicleState
     {
-        public InGearState(Vehicle vehicle) : base(vehicle) { }
+        public InGearState(Vehicle vehicle) : base(vehicle)
+        {
+        }
 
         public override void Update(float deltaTime)
         {
             float clutchFactor = 1f - Mathf.Clamp01(_vehicle.ClutchValue);
-
             _vehicle.UpdateEngineRPM(_vehicle.AcceleratorValue, clutchFactor);
 
             float engineTorque = _vehicle.EngineRPM < _vehicle.MaxRPM
@@ -39,13 +52,13 @@ namespace MobileGameProject.DragRacer
                 : 0f;
 
             float wheelTorque = 0f;
-            var gear = _vehicle.RequestedGear;
+            Gear gear = _vehicle.RequestedGear;
 
             if (gear == Gear.Reverse)
                 wheelTorque = -engineTorque * _vehicle.ReverseRatio * _vehicle.FinalDrive * clutchFactor;
             else if (gear != Gear.Neutral)
             {
-                int index = Mathf.Clamp((int)gear - 1, 0, _vehicle.GearRatios.Length - 1);
+                int index = Mathf.Clamp((int) gear - 1, 0, _vehicle.GearRatios.Length - 1);
                 float ratio = _vehicle.GearRatios[index];
                 wheelTorque = engineTorque * ratio * _vehicle.FinalDrive * clutchFactor;
             }
@@ -57,19 +70,18 @@ namespace MobileGameProject.DragRacer
 
             _vehicle.ApplyMotorTorque(wheelTorque, brakeTorque);
 
-            if (_vehicle.GearSelector.RequestedGear != gear && _vehicle.ClutchValue > 0.75f)
-                _vehicle.ChangeState(_vehicle.ShiftingState);
-
             if (gear == Gear.Neutral && _vehicle.ClutchValue > 0.8f)
                 _vehicle.ChangeState(_vehicle.IdleState);
         }
     }
-    
+
     public class ShiftingState : VehicleState
     {
         private Gear _targetGear;
 
-        public ShiftingState(Vehicle vehicle) : base(vehicle) { }
+        public ShiftingState(Vehicle vehicle) : base(vehicle)
+        {
+        }
 
         public void SetTargetGear(Gear gear) => _targetGear = gear;
 
