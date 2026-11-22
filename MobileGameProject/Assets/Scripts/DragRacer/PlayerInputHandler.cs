@@ -17,6 +17,10 @@ namespace MobileGameProject.MGPInputSystem.DragRacer
         private float _clutch;
         public float Clutch => _clutch;
 
+        public UnityEvent<float> OnUpdateAccelerator;
+        public UnityEvent<float> OnUpdateBreak;
+        public UnityEvent<float> OnUpdateClutch;
+
         private Gear _gear = MobileGameProject.DragRacer.Gear.Neutral;
         public Gear Gear => _gear;
 
@@ -73,17 +77,42 @@ namespace MobileGameProject.MGPInputSystem.DragRacer
         
         #region Events
         
-        private void OnAcceleratorPerformed(InputAction.CallbackContext obj) => _accelerator = 1f;
+        private void OnAcceleratorPerformed(InputAction.CallbackContext obj)
+        {
+            _accelerator = 1f;
+            OnUpdateAccelerator?.Invoke(_accelerator);
+        }
 
-        private void OnAcceleratorCanceled(InputAction.CallbackContext obj) => _accelerator = 0f;
+        private void OnAcceleratorCanceled(InputAction.CallbackContext obj)
+        {
+            _accelerator = 0f;
+            OnUpdateAccelerator?.Invoke(_accelerator);
+        }
 
-        private void OnBreakPerformed(InputAction.CallbackContext obj) => _brake = 1f;
+        private void OnBreakPerformed(InputAction.CallbackContext obj)
+        {
+            _brake = 1f;
+            OnUpdateBreak?.Invoke(_brake);
+        }
 
-        private void OnBreakCanceled(InputAction.CallbackContext obj) => _brake = 0f;
+        private void OnBreakCanceled(InputAction.CallbackContext obj)
+        {
+            _brake = 0f;
+            
+            OnUpdateBreak?.Invoke(_brake);
+        }
 
-        private void OnClutchOnPerformed(InputAction.CallbackContext obj) => _clutch = 1f;
+        private void OnClutchOnPerformed(InputAction.CallbackContext obj)
+        {
+            _clutch = 1f;
+            OnUpdateClutch?.Invoke(_clutch);
+        }
 
-        private void OnClutchCanceled(InputAction.CallbackContext obj) => _clutch = 0f;
+        private void OnClutchCanceled(InputAction.CallbackContext obj)
+        {
+            _clutch = 0f;
+            OnUpdateClutch?.Invoke(_clutch);
+        }
 
         private void OnGearUpOnPerformed(InputAction.CallbackContext obj)
         {

@@ -26,3 +26,9 @@ namespace MobileGameProject.DragRacer
         Fifth = 5
     }
 }
+
+1 3 5
+| | |
+-----
+| | |
+2 4 R

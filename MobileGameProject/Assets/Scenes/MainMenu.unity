@@ -576,10 +576,10 @@ RectTransform:
   - {fileID: 87358222}
   m_Father: {fileID: 1757497613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 260, y: -400.5}
-  m_SizeDelta: {x: -520, y: -801}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470329409
 MonoBehaviour:
@@ -709,10 +709,10 @@ RectTransform:
   - {fileID: 1001020089}
   m_Father: {fileID: 1757497613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 260, y: 400.5}
-  m_SizeDelta: {x: -520, y: -801}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499114179
 MonoBehaviour:
@@ -767,7 +767,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Analogue
+          m_StringArgument: GameTwo
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &499114180
@@ -977,10 +977,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 414920269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.1388889, y: 0.9609375}
+  m_AnchorMax: {x: 0.8611111, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 780, y: 75}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1363198932
 MonoBehaviour:
@@ -1251,10 +1251,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 414920269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 800, y: 50}
+  m_AnchorMin: {x: 0.12962963, y: 0.9348958}
+  m_AnchorMax: {x: 0.8703704, y: 0.9609375}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1429820055
 MonoBehaviour:
@@ -1529,10 +1529,10 @@ RectTransform:
   - {fileID: 470329408}
   m_Father: {fileID: 414920269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -139}
-  m_SizeDelta: {x: -40, y: -318}
+  m_AnchorMin: {x: 0.018518519, y: 0.010416667}
+  m_AnchorMax: {x: 0.9814815, y: 0.84479165}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757497614
 MonoBehaviour:
@@ -1744,9 +1744,9 @@ RectTransform:
   m_Father: {fileID: 1757497613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -260, y: -400.5}
-  m_SizeDelta: {x: -520, y: -801}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962164577
 MonoBehaviour:
@@ -1956,10 +1956,10 @@ RectTransform:
   - {fileID: 245104342}
   m_Father: {fileID: 414920269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 750}
-  m_SizeDelta: {x: 500, y: 130}
+  m_AnchorMin: {x: 0.2685185, y: 0.8567708}
+  m_AnchorMax: {x: 0.7314815, y: 0.9244792}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2053102804
 MonoBehaviour:
@@ -2101,10 +2101,10 @@ RectTransform:
   - {fileID: 1675074548}
   m_Father: {fileID: 1757497613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -260, y: 400.5}
-  m_SizeDelta: {x: -520, y: -801}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070038443
 MonoBehaviour:
@@ -2229,6 +2229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093b651e9855fab479dabae15b378e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.GameManager
+  _camera: {fileID: 0}
 --- !u!4 &2119260648
 Transform:
   m_ObjectHideFlags: 0

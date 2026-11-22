@@ -118,11 +118,6 @@ namespace MobileGameProject.DragRacer
 
         private void Update()
         {
-#if UNITY_EDITOR
-            _accelerator.UpdateKeyboarValue(_inputHandler.Accelerator);
-            _brake.UpdateKeyboarValue(_inputHandler.Brake);
-            _clutch.UpdateKeyboarValue(_inputHandler.Clutch);
-#endif
             UpdateSpeed();
             UpdateGauges();
         }
@@ -244,5 +239,9 @@ namespace MobileGameProject.DragRacer
             if (ClutchValue > 0.9f)
                 _gearSelector.RequestGear(gear);
         }
+
+        public void UpdateAccelerator(float value) => _accelerator.SetValue(value);
+        public void UpdateBreke(float value) => _brake.SetValue(value);
+        public void UpdateClutch(float value) => _clutch.SetValue(value);
     }
 }
