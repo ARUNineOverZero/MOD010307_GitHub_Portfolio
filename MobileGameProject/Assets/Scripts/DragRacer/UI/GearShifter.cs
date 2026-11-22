@@ -27,10 +27,13 @@ namespace DragRacer.UI
 
         private Vector2[] _gearPositions;
         private bool _isDragging;
+        
+        private float _currentRail;
 
         private void Awake()
         {
             BuildGatePositions();
+            _currentRail = 0f;
             SnapToGear(_currentGear, true);
         }
 
@@ -103,31 +106,30 @@ namespace DragRacer.UI
 
         private Vector2 ConstrainToGate(Vector2 point)
         {
-            float[] rails = { -_horizontalSpacing, 0f, _horizontalSpacing };
-
-            float closestRail = rails[0];
-            float minDist = Mathf.Abs(point.x - rails[0]);
-
-            for (int i = 1; i < rails.Length; i++)
-            {
-                float d = Mathf.Abs(point.x - rails[i]);
-                if (d < minDist)
-                {
-                    minDist = d;
-                    closestRail = rails[i];
-                }
-            }
-
             bool inCenterBand = Mathf.Abs(point.y) <= _centerThreshold;
 
             if (inCenterBand)
             {
                 point.y = 0f;
                 point.x = Mathf.Clamp(point.x, -_horizontalSpacing, _horizontalSpacing);
+
+                float[] rails = { -_horizontalSpacing, 0f, _horizontalSpacing };
+                float closest = rails[0];
+                float minDist = Mathf.Abs(point.x - rails[0]);
+                for (int i = 1; i < rails.Length; i++)
+                {
+                    float d = Mathf.Abs(point.x - rails[i]);
+                    if (d < minDist)
+                    {
+                        minDist = d;
+                        closest = rails[i];
+                    }
+                }
+                _currentRail = closest;
             }
             else
             {
-                point.x = closestRail;
+                point.x = _currentRail;
                 point.y = Mathf.Clamp(point.y, -_verticalSpacing, _verticalSpacing);
             }
 
@@ -138,9 +140,11 @@ namespace DragRacer.UI
         {
             if (position.magnitude <= _centerThreshold)
                 return Gear.Neutral;
+            
+            const float gearLockDistance = 35f;
 
-            Gear best = Gear.Neutral;
-            float bestDist = float.MaxValue;
+            Gear best = _currentGear; 
+            float bestDist = gearLockDistance;
 
             foreach (Gear gear in System.Enum.GetValues(typeof(Gear)))
             {
