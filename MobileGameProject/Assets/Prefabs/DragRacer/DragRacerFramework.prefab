@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1791205709106879307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4427526818874837028}
+  - component: {fileID: 5598614644958277989}
+  m_Layer: 0
+  m_Name: Clutch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4427526818874837028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791205709106879307}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3164660149353576632}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5598614644958277989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791205709106879307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f2954ded374345bc823029805e4a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.Pedal
 --- !u!1 &2035062101770987885
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +330,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1018805006872435113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4263585213958131645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5598183870624061430}
+  - component: {fileID: 3975029611560107375}
+  m_Layer: 0
+  m_Name: Accelerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5598183870624061430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263585213958131645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3164660149353576632}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3975029611560107375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263585213958131645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f2954ded374345bc823029805e4a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.Pedal
 --- !u!1 &4673441580085925204
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +486,97 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4979926421846471107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5443346293113859870}
+  - component: {fileID: 2973334201278462193}
+  m_Layer: 0
+  m_Name: Break
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5443346293113859870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979926421846471107}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3164660149353576632}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2973334201278462193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979926421846471107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f2954ded374345bc823029805e4a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.Pedal
+--- !u!1 &5805821864353522163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3164660149353576632}
+  - component: {fileID: 5719433686187694767}
+  m_Layer: 0
+  m_Name: TempVechicleControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3164660149353576632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805821864353522163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5598183870624061430}
+  - {fileID: 5443346293113859870}
+  - {fileID: 4427526818874837028}
+  m_Father: {fileID: 3485518674154197593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5719433686187694767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805821864353522163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42d6ca246564614be7be1c5f63f724a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.GearSelector
 --- !u!1 &6269486994648961517
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +804,10 @@ PrefabInstance:
     - target: {fileID: 6980083285114373482, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: _game
       value: 
+      objectReference: {fileID: 1678764853207136826}
+    - target: {fileID: 6980083285114373482, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: _durationSeconds
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -676,6 +859,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4722878021617947338}
+    - targetCorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3164660149353576632}
     - targetCorrespondingSourceObject: {fileID: 6964669725210212913, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2141251641449447246}
@@ -695,6 +881,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7215387416699725057, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 15893516835623979}
+    - targetCorrespondingSourceObject: {fileID: 3522421678915970571, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1678764853207136826}
   m_SourcePrefab: {fileID: 100100000, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
 --- !u!4 &373539836347415185 stripped
 Transform:
@@ -726,13 +915,13 @@ MonoBehaviour:
   OnTryGearChange:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3876209359230090653}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1620344988383520399}
+        m_TargetAssemblyTypeName: MobileGameProject.DragRacer.Vehicle, Assembly-CSharp
+        m_MethodName: TryShiftGear
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -756,6 +945,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
   m_PrefabInstance: {fileID: 4653547703650758318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8103839546360973477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3522421678915970571, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 4653547703650758318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1678764853207136826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103839546360973477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb35fba05384fdd938763fdca607665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.DragRacerGame
+  _mainCamera: {fileID: 0}
+  _vehicle: {fileID: 0}
 --- !u!1001 &5250100439086315347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,6 +1012,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6818596787825381852, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: _brake
+      value: 
+      objectReference: {fileID: 2973334201278462193}
+    - target: {fileID: 6818596787825381852, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: _clutch
+      value: 
+      objectReference: {fileID: 5598614644958277989}
+    - target: {fileID: 6818596787825381852, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: _accelerator
+      value: 
+      objectReference: {fileID: 3975029611560107375}
+    - target: {fileID: 6818596787825381852, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: _gearSelector
+      value: 
+      objectReference: {fileID: 5719433686187694767}
+    - target: {fileID: 6818596787825381852, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+      propertyPath: _inputHandler
+      value: 
+      objectReference: {fileID: 6023251688387509927}
     - target: {fileID: 9013696717524601550, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
       propertyPath: m_Name
       value: DragRacer
@@ -821,8 +1049,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5115982841772633850, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
   m_PrefabInstance: {fileID: 5250100439086315347}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3876209359230090653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9013696717524601550, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
+--- !u!114 &1620344988383520399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6818596787825381852, guid: a2fe2076cbf0c914eaa0c33e5a9dbdb8, type: 3}
   m_PrefabInstance: {fileID: 5250100439086315347}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cfb39288704846a68f67125b4e1a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.Vehicle

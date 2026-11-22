@@ -49,6 +49,7 @@ namespace MobileGameProject.DragRacer
             _accelerator.UpdateKeyboarValue(_inputHandler.Accelerator);
             _brake.UpdateKeyboarValue(_inputHandler.Brake);
             _clutch.UpdateKeyboarValue(_inputHandler.Clutch);
+            Debug.Log($"_accelerator: {_accelerator.Value}\n_brake: {_brake.Value}\n_clutch: {_clutch.Value}\n_gearSelector.RequestedGear: {_gearSelector.RequestedGear}");
 #endif
         }
 
@@ -61,6 +62,7 @@ namespace MobileGameProject.DragRacer
         private void FixedUpdate()
         {
             UpdateWheels();
+            ApplyDriveForce();
         }
         
         private void ApplyDriveForce()

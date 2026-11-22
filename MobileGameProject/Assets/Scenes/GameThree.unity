@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &660998017 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1620344988383520399, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-  m_PrefabInstance: {fileID: 2063344168129466813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24cfb39288704846a68f67125b4e1a35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.Vehicle
 --- !u!1001 &2063344168129466813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,34 +166,6 @@ PrefabInstance:
     - target: {fileID: 3485518674154197593, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 660998017}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TryShiftGear
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MobileGameProject.DragRacer.Vehicle, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023251688387509927, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: OnTryGearChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6328974987856663339, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_Name
