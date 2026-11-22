@@ -13,8 +13,6 @@ namespace MobileGameProject.DragRacer
         }
     }
     
-    
-
     public enum Gear
     {
         Reverse = -1,
@@ -26,9 +24,3 @@ namespace MobileGameProject.DragRacer
         Fifth = 5
     }
 }
-
-1 3 5
-| | |
------
-| | |
-2 4 R

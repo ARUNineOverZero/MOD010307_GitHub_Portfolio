@@ -19,6 +19,9 @@ namespace DragRacer.UI
         [Header("Gears")]
         [SerializeField] private Gear _currentGear = Gear.Neutral;
 
+        [Header("Haptics")]
+        [SerializeField] private bool _enableHaptics = true;
+
         public Gear CurrentGear => _currentGear;
         public UnityEvent<Gear> OnGearChanged;
 
@@ -35,18 +38,17 @@ namespace DragRacer.UI
         {
             _gearPositions = new Vector2[6];
 
-            _gearPositions[0]   = new Vector2(-_horizontalSpacing,  _verticalSpacing);
-            _gearPositions[1]  = new Vector2(-_horizontalSpacing, -_verticalSpacing);
-            _gearPositions[2]   = new Vector2(0f,                   _verticalSpacing);
-            _gearPositions[3]  = new Vector2(0f,                  -_verticalSpacing);
-            _gearPositions[4]   = new Vector2( _horizontalSpacing,  _verticalSpacing);
+            _gearPositions[0] = new Vector2(-_horizontalSpacing,  _verticalSpacing);
+            _gearPositions[1] = new Vector2(-_horizontalSpacing, -_verticalSpacing);
+            _gearPositions[2] = new Vector2(0f,                   _verticalSpacing);
+            _gearPositions[3] = new Vector2(0f,                  -_verticalSpacing);
+            _gearPositions[4] = new Vector2( _horizontalSpacing,  _verticalSpacing);
             _gearPositions[5] = new Vector2( _horizontalSpacing, -_verticalSpacing);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             _isDragging = true;
-            Debug.Log("Pointer Down");
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -60,9 +62,15 @@ namespace DragRacer.UI
             _stick.anchoredPosition = constrained;
 
             Gear nearest = GetNearestGear(constrained);
+
             if (nearest != _currentGear)
             {
+                Gear previous = _currentGear;
                 _currentGear = nearest;
+
+                if (_enableHaptics && _currentGear != Gear.Neutral && _currentGear != previous)
+                    TriggerHaptic();
+
                 OnGearChanged?.Invoke(_currentGear);
             }
         }
@@ -80,6 +88,17 @@ namespace DragRacer.UI
             }
 
             SnapToGear(_currentGear);
+            OnGearChanged?.Invoke(_currentGear);
+        }
+
+        private void TriggerHaptic()
+        {
+#if UNITY_IOS || UNITY_ANDROID
+            Handheld.Vibrate();
+#endif
+#if UNITY_EDITOR
+            Debug.Log("!!!HAPTIC!!!");
+#endif
         }
 
         private Vector2 ConstrainToGate(Vector2 point)
@@ -127,7 +146,10 @@ namespace DragRacer.UI
             {
                 if (gear == Gear.Neutral) continue;
 
-                Vector2 gearPos = _gearPositions[GearToIndex(gear)];
+                int index = GearToIndex(gear);
+                if (index < 0) continue;
+
+                Vector2 gearPos = _gearPositions[index];
                 float dist = Vector2.Distance(position, gearPos);
 
                 if (dist < bestDist)
@@ -155,7 +177,7 @@ namespace DragRacer.UI
             SnapToGear(gear);
             OnGearChanged?.Invoke(_currentGear);
         }
-        
+
         private int GearToIndex(Gear gear)
         {
             return gear switch
