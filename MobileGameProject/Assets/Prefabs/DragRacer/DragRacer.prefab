@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.VehicleWheel
   _wheelCollider: {fileID: 4976395230077009797}
   _visualMesh: {fileID: 2231648819119321249}
+  positionOffset: {x: -0.1, y: 0, z: 0}
 --- !u!1 &1089767904836365634
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 1089767904836365634}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14999998, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -294,7 +295,7 @@ Transform:
   m_GameObject: {fileID: 1739969396946102397}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14999998, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 2048479194242771647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14999998, z: 0}
+  m_LocalPosition: {x: -0.00000023841858, y: -0.15000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -524,7 +525,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4168498177308601923}
   serializedVersion: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.1, y: 0, z: 0}
   m_Radius: 0.44
   m_SuspensionSpring:
     spring: 35000
@@ -569,6 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.VehicleWheel
   _wheelCollider: {fileID: 4891466820530387142}
   _visualMesh: {fileID: 4467882167862958626}
+  positionOffset: {x: -0.1, y: 0, z: 0}
 --- !u!1 &6649179979007674694
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.VehicleWheel
   _wheelCollider: {fileID: 4689498229516722037}
   _visualMesh: {fileID: 229374390410111214}
+  positionOffset: {x: 0.1, y: 0, z: 0}
 --- !u!1 &7393274858070380412
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +686,7 @@ Transform:
   m_GameObject: {fileID: 7393274858070380412}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14999998, z: 0}
+  m_LocalPosition: {x: -0.00000011920929, y: -0.15000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -833,6 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.DragRacer.VehicleWheel
   _wheelCollider: {fileID: 2038023629697852986}
   _visualMesh: {fileID: 2556345208532493420}
+  positionOffset: {x: 0.1, y: 0, z: 0}
 --- !u!1 &8966985753370645521
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9013696717524601550}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.345987, y: 0.021169527, z: -1.2489221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

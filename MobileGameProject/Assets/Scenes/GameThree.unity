@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0.704
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 1904095682}
+  m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!108 &1904095682 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 3888369310201324289, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-  m_PrefabInstance: {fileID: 2063344168129466813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2063344168129466813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,11 +129,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1018805006872435113, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.29065555
+      value: 0.53
       objectReference: {fileID: 0}
-    - target: {fileID: 1484705177863257621, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_Name
-      value: Wheel_FL
+    - target: {fileID: 1018805006872435113, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.03
       objectReference: {fileID: 0}
     - target: {fileID: 3485518674154197593, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,37 +175,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4722878021617947338, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.70708454
-      objectReference: {fileID: 0}
-    - target: {fileID: 4722878021617947338, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.70708454
-      objectReference: {fileID: 0}
-    - target: {fileID: 4722878021617947338, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.005615242
-      objectReference: {fileID: 0}
-    - target: {fileID: 4722878021617947338, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.005615242
-      objectReference: {fileID: 0}
-    - target: {fileID: 4722878021617947338, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4722878021617947338, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.91
-      objectReference: {fileID: 0}
     - target: {fileID: 6328974987856663339, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_Name
       value: DragRacerFramework
       objectReference: {fileID: 0}
+    - target: {fileID: 8858661317549183558, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858661317549183558, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858661317549183558, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858661317549183558, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858661317549183558, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1267869712748679429, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}

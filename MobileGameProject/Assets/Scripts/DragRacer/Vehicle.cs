@@ -40,6 +40,11 @@ namespace MobileGameProject.DragRacer
                 _rigidbody = GetComponent<Rigidbody>();
         }
 
+        private void FixedUpdate()
+        {
+            UpdateWheels();
+        }
+
         [ContextMenu("Update Wheel Visuals")]
         private void UpdateWheels()
         {
