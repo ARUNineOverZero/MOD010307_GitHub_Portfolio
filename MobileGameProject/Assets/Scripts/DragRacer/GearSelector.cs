@@ -4,17 +4,25 @@ namespace MobileGameProject.DragRacer
 {
     public class GearSelector : MonoBehaviour
     {
-        public const int Reverse = -1;
-        public const int Neutral = -1;
-        public const int MaxGear = 5;
-
-        private int _RequestedGear;
-        public int RequestedGear => _RequestedGear;
+        private Gear _requestedGear = Gear.Neutral;
+        public Gear RequestedGear => _requestedGear;
         
-        
-        public void RequestGear(int gear)
+        public void RequestGear(Gear gear)
         {
-            throw new System.NotImplementedException();
+            _requestedGear = gear;
         }
+    }
+    
+    
+
+    public enum Gear
+    {
+        Reverse = -1,
+        Neutral = 0,
+        First = 1,
+        Second = 2,
+        Third = 3,
+        Fourth = 4,
+        Fifth = 5
     }
 }
