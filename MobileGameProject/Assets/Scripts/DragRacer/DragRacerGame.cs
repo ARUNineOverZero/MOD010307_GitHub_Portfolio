@@ -1,4 +1,5 @@
-﻿using MobileGameProject.Framework;
+﻿using System;
+using MobileGameProject.Framework;
 using MobileGameProject.KitchenWaiter;
 using MobileGameProject.MGPInputSystem.Virtual;
 using TMPro;
@@ -8,16 +9,10 @@ namespace MobileGameProject.DragRacer
 {
     public class DragRacerGame : AMicrogameBehaviour
     {
-        //[Header("Scene UI Objects")]
-        
-
         [Header("Scene Game Objects")] [SerializeField]
         private Vehicle _vehicle;
 
         public Vehicle Vehicle => _vehicle;
-        
-
-        //[Header("Prefabs")]
 
         public override void Begin(MicrogameSession session)
         {
@@ -27,7 +22,7 @@ namespace MobileGameProject.DragRacer
             //SetTrayPositionAndNumber(trayPosition, _tables.Length);
         }
 
-        public void EndGame()
+        public override void EndGame()
         {
             if (true)
                 Win();

@@ -206,7 +206,6 @@ namespace MobileGameProject.DragRacer
 
             float avgWheelRPM = 0f;
             int count = 0;
-
             foreach (var wheel in _drivenWheels)
             {
                 if (wheel == null) continue;

@@ -36,5 +36,9 @@ namespace MobileGameProject.Framework
             if(_isRunning) 
                 _session.Finish(false);
         }
+
+        public virtual void EndGame()
+        {
+        }
     }
 }
