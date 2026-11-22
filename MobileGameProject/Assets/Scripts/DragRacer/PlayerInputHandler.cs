@@ -1,4 +1,5 @@
-﻿using Unity.Mathematics;
+﻿using MobileGameProject.DragRacer;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -16,10 +17,10 @@ namespace MobileGameProject.MGPInputSystem.DragRacer
         private float _clutch;
         public float Clutch => _clutch;
 
-        private int _gear;
-        public int Gear => _gear;
+        private Gear _gear = MobileGameProject.DragRacer.Gear.Neutral;
+        public Gear Gear => _gear;
 
-        public UnityEvent<int> OnTryGearChange;
+        public UnityEvent<Gear> OnTryGearChange;
         
         public void Awake() => SetInputSystem(GameManager.Instance.InputSystem);
 
@@ -86,13 +87,13 @@ namespace MobileGameProject.MGPInputSystem.DragRacer
 
         private void OnGearUpOnPerformed(InputAction.CallbackContext obj)
         {
-            _gear = Mathf.Clamp(_gear + 1, -1, 5);
+            _gear = (Gear)Mathf.Clamp((int)_gear + 1, -1, 5);
             OnTryGearChange?.Invoke(_gear);
         }
 
         private void OnGearDownPerformed(InputAction.CallbackContext obj)
         {
-            _gear = Mathf.Clamp(_gear - 1, -1, 5);
+            _gear = (Gear)Mathf.Clamp((int)_gear - 1, -1, 5);
             OnTryGearChange?.Invoke(_gear);
         }
         

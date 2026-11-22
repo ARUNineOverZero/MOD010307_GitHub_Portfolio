@@ -38,6 +38,10 @@ namespace MobileGameProject.DragRacer
         public int CurrentGear => _currentGear;
 
         private VehicleState _state;
+        
+        [Header("Drive (test)")]
+        [SerializeField] private float maxDriveForce = 4000f;
+        [SerializeField] private float reverseForceMultiplier = 0.6f;
 
         public void Update()
         {
@@ -54,9 +58,42 @@ namespace MobileGameProject.DragRacer
                 _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate() => UpdateWheels();
+        private void FixedUpdate()
+        {
+            UpdateWheels();
+        }
+        
+        private void ApplyDriveForce()
+        {
+            if (_clutch.Value > 0.3f)
+                return;
 
-        public void TryShiftGear(int gear)
+            float throttle = _accelerator.Value;
+            if (throttle <= 0.01f)
+                return;
+
+            Vector3 force = Vector3.zero;
+
+            switch (_gearSelector.RequestedGear)
+            {
+                case Gear.First:
+                    force = transform.forward * throttle * maxDriveForce;
+                    break;
+
+                case Gear.Reverse:
+                    force = -transform.forward * throttle * maxDriveForce * reverseForceMultiplier;
+                    break;
+
+                case Gear.Neutral:
+                default:
+                    break;
+            }
+
+            if (force != Vector3.zero)
+                _rigidbody.AddForce(force, ForceMode.Force);
+        }
+
+        public void TryShiftGear(Gear gear)
         {
             if (_clutch.Value > .9f)
                 _gearSelector.RequestGear(gear);
