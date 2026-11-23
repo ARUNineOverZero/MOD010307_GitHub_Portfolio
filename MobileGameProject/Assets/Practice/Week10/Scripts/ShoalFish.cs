@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class ShoalFish : MonoBehaviour
     [SerializeField] private float lifetime = 4f;
     [SerializeField] private float bubblesPerSecond = 0.5f;
 
+    public static readonly List<ShoalFish> All = new List<ShoalFish>();
+
     public ShoalSpawner Spawner { get; set; }
 
     private static readonly ProfilerMarker AvoidMarker = new ProfilerMarker("ShoalFish.AvoidNeighbours");
@@ -17,6 +20,16 @@ public class ShoalFish : MonoBehaviour
 
     private Vector2 velocity;
     private float age;
+
+    private void OnEnable()
+    {
+        All.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        All.Remove(this);
+    }
 
     private void Start()
     {
@@ -31,7 +44,7 @@ public class ShoalFish : MonoBehaviour
         AvoidNeighbours();
         AvoidMarker.End();
 
-        SwimMarker.Begin();
+        SwimMarker.Begin(); 
         Swim();
         SwimMarker.End();
 
@@ -44,8 +57,7 @@ public class ShoalFish : MonoBehaviour
     // Steer away from every fish that is too close.
     private void AvoidNeighbours()
     {
-        ShoalFish[] everyFish = FindObjectsByType<ShoalFish>(FindObjectsSortMode.None);
-        foreach (ShoalFish other in everyFish)
+        foreach (ShoalFish other in All)
         {
             if (other == this) continue;
 

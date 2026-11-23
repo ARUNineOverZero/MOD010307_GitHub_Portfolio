@@ -12,7 +12,7 @@ public class ShoalSpawner : MonoBehaviour
 
     private void Update()
     {
-        int alive = FindObjectsByType<ShoalFish>(FindObjectsSortMode.None).Length;
+        int alive = ShoalFish.All.Count;
         for (int i = 0; i < spawnPerFrame && alive < fishCount; i++, alive++)
             SpawnFish();
     }
