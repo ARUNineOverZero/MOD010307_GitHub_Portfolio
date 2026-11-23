@@ -101,8 +101,8 @@ namespace MobileGameProject.DragRacer
 
             _drivenWheels = new[]
             {
-                _wheelFrontLeft.WheelCollider,
-                _wheelFrontRight.WheelCollider
+                _wheelRearLeft.WheelCollider,
+                _wheelRearRight.WheelCollider
             };
 
             _idleState = new IdleState(this);
