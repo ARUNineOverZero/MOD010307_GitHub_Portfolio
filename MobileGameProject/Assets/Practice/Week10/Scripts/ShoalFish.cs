@@ -1,3 +1,4 @@
+using Unity.Profiling;
 using UnityEngine;
 
 // One fish: swims around the reef, keeps its distance from the others,
@@ -11,6 +12,9 @@ public class ShoalFish : MonoBehaviour
 
     public ShoalSpawner Spawner { get; set; }
 
+    private static readonly ProfilerMarker AvoidMarker = new ProfilerMarker("ShoalFish.AvoidNeighbours");
+    private static readonly ProfilerMarker SwimMarker = new ProfilerMarker("ShoalFish.Swim");
+
     private Vector2 velocity;
     private float age;
 
@@ -23,8 +27,13 @@ public class ShoalFish : MonoBehaviour
 
     private void Update()
     {
+        AvoidMarker.Begin();
         AvoidNeighbours();
+        AvoidMarker.End();
+
+        SwimMarker.Begin();
         Swim();
+        SwimMarker.End();
 
         if (Random.value < bubblesPerSecond * Time.deltaTime) Spawner.SpawnBubble(transform.position);
 
@@ -39,6 +48,7 @@ public class ShoalFish : MonoBehaviour
         foreach (ShoalFish other in everyFish)
         {
             if (other == this) continue;
+
             float distance = Vector2.Distance(transform.position, other.transform.position);
             if (distance < personalSpace)
                 velocity += (Vector2)(transform.position - other.transform.position) * (4f * Time.deltaTime);
