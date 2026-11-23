@@ -171,6 +171,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5791649837832593685, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: m_text
+      value: Drive to the end using the clutch, brake, accelerator and gears before
+        the time runs out
+      objectReference: {fileID: 0}
     - target: {fileID: 6328974987856663339, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_Name
       value: DragRacerFramework

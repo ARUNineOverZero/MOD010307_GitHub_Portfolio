@@ -16,16 +16,13 @@ EditorBuildSettings:
     guid: 96d66bd2cd296154fbc4815a8389b160
   - enabled: 1
     path: Assets/Scenes/GameOne.unity
-    guid: 92915192d5e24c44ebfecdbb9ffef92b
+    guid: f2259b164fc7d73498145577c94531d9
   - enabled: 1
     path: Assets/Scenes/GameThree.unity
     guid: 908c45c56511f1e408b999dbce782b3f
   - enabled: 1
     path: Assets/Scenes/GameFour.unity
     guid: 95b85381f6797c1409a1b9bfd4478ce9
-  - enabled: 1
-    path: Assets/Scenes/Test/Analogue.unity
-    guid: 00261b445e0951044bf2980f9b0efa94
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

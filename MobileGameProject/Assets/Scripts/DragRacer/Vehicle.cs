@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using DragRacer.UI;
+﻿using DragRacer.UI;
 using MobileGameProject.MGPInputSystem.DragRacer;
 using UnityEngine;
 
@@ -236,7 +235,7 @@ namespace MobileGameProject.DragRacer
 
         public void TryShiftGear(Gear gear)
         {
-            if (ClutchValue > 0.9f)
+            if (ClutchValue > 0.75f)
                 _gearSelector.RequestGear(gear);
         }
 
