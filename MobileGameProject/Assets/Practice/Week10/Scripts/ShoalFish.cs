@@ -2,16 +2,14 @@ using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
 
-// One fish: swims around the reef, keeps its distance from the others,
-// blows the odd bubble and swims off (is removed) after a few seconds.
 public class ShoalFish : MonoBehaviour
 {
     [SerializeField] private float speed = 1.5f;
     [SerializeField] private float personalSpace = 0.4f;
     [SerializeField] private float lifetime = 4f;
     [SerializeField] private float bubblesPerSecond = 0.5f;
-    [SerializeField] private float checkEvery = 0.25f;
-
+    [SerializeField] private float checkEvery = 0.25f;   
+    
     public static readonly List<ShoalFish> All = new List<ShoalFish>();
 
     public ShoalSpawner Spawner { get; set; }
@@ -20,7 +18,6 @@ public class ShoalFish : MonoBehaviour
     private static readonly ProfilerMarker SwimMarker = new ProfilerMarker("ShoalFish.Swim");
 
     private SpriteRenderer spriteRenderer;
-
     private Vector2 velocity;
     private float age;
     private float nextCheck;
@@ -33,6 +30,9 @@ public class ShoalFish : MonoBehaviour
     private void OnEnable()
     {
         All.Add(this);
+        // A pooled fish is reused, so reset what a new fish would start with.
+        age = 0f;
+        velocity = Random.insideUnitCircle.normalized * speed;
     }
 
     private void OnDisable()
@@ -43,7 +43,6 @@ public class ShoalFish : MonoBehaviour
     private void Start()
     {
         velocity = Random.insideUnitCircle.normalized * speed;
-        // Fish at different depths, so they swim in front of and behind each other.
         spriteRenderer.sortingOrder = Random.Range(0, 100);
         nextCheck = Time.time + Random.value * checkEvery;
     }
@@ -64,11 +63,10 @@ public class ShoalFish : MonoBehaviour
 
         if (Random.value < bubblesPerSecond * Time.deltaTime) Spawner.SpawnBubble(transform.position);
 
-        age += Time.deltaTime;
-        if (age > lifetime) Destroy(gameObject);
+        age += Time.deltaTime;        
+        if (age > lifetime) Spawner.ReleaseFish(this);
     }
 
-    // Steer away from every fish that is too close.
     private void AvoidNeighbours()
     {
         Vector2 here = transform.position;
@@ -76,7 +74,6 @@ public class ShoalFish : MonoBehaviour
         foreach (ShoalFish other in All)
         {
             if (other == this) continue;
-
             Vector2 away = here - (Vector2)other.transform.position;
             if (away.sqrMagnitude < spaceSquared)
                 velocity += away * (4f * checkEvery);
@@ -84,7 +81,6 @@ public class ShoalFish : MonoBehaviour
         velocity = velocity.normalized * speed;
     }
 
-    // Move, and turn back at the edges of the reef.
     private void Swim()
     {
         Vector3 position = transform.position + (Vector3)(velocity * Time.deltaTime);

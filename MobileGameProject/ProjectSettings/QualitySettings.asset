@@ -114,6 +114,8 @@ QualitySettings:
     excludedTargetPlatforms:
     - Android
     - Standalone
+    - iPhone
+    - WebGL
   - serializedVersion: 5
     name: Medium
     pixelLightCount: 1
@@ -169,6 +171,8 @@ QualitySettings:
     excludedTargetPlatforms:
     - Standalone
     - Android
+    - iPhone
+    - WebGL
   - serializedVersion: 5
     name: High
     pixelLightCount: 2
@@ -224,6 +228,8 @@ QualitySettings:
     excludedTargetPlatforms:
     - Android
     - Standalone
+    - iPhone
+    - WebGL
   - serializedVersion: 5
     name: Very High
     pixelLightCount: 3
@@ -240,7 +246,7 @@ QualitySettings:
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
     anisotropicTextures: 2
-    antiAliasing: 2
+    antiAliasing: 0
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
@@ -279,6 +285,8 @@ QualitySettings:
     excludedTargetPlatforms:
     - Standalone
     - Android
+    - iPhone
+    - WebGL
   - serializedVersion: 5
     name: Ultra
     pixelLightCount: 4
@@ -334,6 +342,8 @@ QualitySettings:
     excludedTargetPlatforms:
     - Android
     - Standalone
+    - iPhone
+    - WebGL
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 2
