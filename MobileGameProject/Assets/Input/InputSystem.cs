@@ -205,6 +205,114 @@ namespace MobileGameProject.MGPInputSystem
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DragRacer"",
+            ""id"": ""9228a21b-a551-4645-8182-e927adbe36fe"",
+            ""actions"": [
+                {
+                    ""name"": ""Accelerator"",
+                    ""type"": ""Button"",
+                    ""id"": ""4207ed20-2528-40de-b593-4948cfdcb940"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Break"",
+                    ""type"": ""Button"",
+                    ""id"": ""87913d79-ea4e-422f-9ff2-f6a0edf2de7f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Clutch"",
+                    ""type"": ""Button"",
+                    ""id"": ""bae7c9b5-a7da-4d77-a9d1-472f44c784f3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GearUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""47a0eacd-a149-4d0d-912d-12ea501912ce"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GearDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""37835d3a-9048-44bf-8243-8edfccb40441"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7ceeda65-363b-4755-9d65-c7a6d35f00b0"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerator"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b2b31ff-c881-4713-a833-33ac6e77a63a"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2343d6e-acf5-4038-93bc-130030ef5850"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clutch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6a5bace-3e4e-414f-ada6-fcf15b436226"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GearUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""004acec6-a932-4162-8a4a-fe283eaa8839"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GearDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -218,12 +326,20 @@ namespace MobileGameProject.MGPInputSystem
             m_Pinball_Position = m_Pinball.FindAction("Position", throwIfNotFound: true);
             m_Pinball_Contact = m_Pinball.FindAction("Contact", throwIfNotFound: true);
             m_Pinball_Tilt = m_Pinball.FindAction("Tilt", throwIfNotFound: true);
+            // DragRacer
+            m_DragRacer = asset.FindActionMap("DragRacer", throwIfNotFound: true);
+            m_DragRacer_Accelerator = m_DragRacer.FindAction("Accelerator", throwIfNotFound: true);
+            m_DragRacer_Break = m_DragRacer.FindAction("Break", throwIfNotFound: true);
+            m_DragRacer_Clutch = m_DragRacer.FindAction("Clutch", throwIfNotFound: true);
+            m_DragRacer_GearUp = m_DragRacer.FindAction("GearUp", throwIfNotFound: true);
+            m_DragRacer_GearDown = m_DragRacer.FindAction("GearDown", throwIfNotFound: true);
         }
 
         ~@InputSystem()
         {
             UnityEngine.Debug.Assert(!m_KitchenWaiter.enabled, "This will cause a leak and performance issues, InputSystem.KitchenWaiter.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_Pinball.enabled, "This will cause a leak and performance issues, InputSystem.Pinball.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_DragRacer.enabled, "This will cause a leak and performance issues, InputSystem.DragRacer.Disable() has not been called.");
         }
 
         /// <summary>
@@ -520,6 +636,146 @@ namespace MobileGameProject.MGPInputSystem
         /// Provides a new <see cref="PinballActions" /> instance referencing this action map.
         /// </summary>
         public PinballActions @Pinball => new PinballActions(this);
+
+        // DragRacer
+        private readonly InputActionMap m_DragRacer;
+        private List<IDragRacerActions> m_DragRacerActionsCallbackInterfaces = new List<IDragRacerActions>();
+        private readonly InputAction m_DragRacer_Accelerator;
+        private readonly InputAction m_DragRacer_Break;
+        private readonly InputAction m_DragRacer_Clutch;
+        private readonly InputAction m_DragRacer_GearUp;
+        private readonly InputAction m_DragRacer_GearDown;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "DragRacer".
+        /// </summary>
+        public struct DragRacerActions
+        {
+            private @InputSystem m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public DragRacerActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "DragRacer/Accelerator".
+            /// </summary>
+            public InputAction @Accelerator => m_Wrapper.m_DragRacer_Accelerator;
+            /// <summary>
+            /// Provides access to the underlying input action "DragRacer/Break".
+            /// </summary>
+            public InputAction @Break => m_Wrapper.m_DragRacer_Break;
+            /// <summary>
+            /// Provides access to the underlying input action "DragRacer/Clutch".
+            /// </summary>
+            public InputAction @Clutch => m_Wrapper.m_DragRacer_Clutch;
+            /// <summary>
+            /// Provides access to the underlying input action "DragRacer/GearUp".
+            /// </summary>
+            public InputAction @GearUp => m_Wrapper.m_DragRacer_GearUp;
+            /// <summary>
+            /// Provides access to the underlying input action "DragRacer/GearDown".
+            /// </summary>
+            public InputAction @GearDown => m_Wrapper.m_DragRacer_GearDown;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_DragRacer; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="DragRacerActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(DragRacerActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="DragRacerActions" />
+            public void AddCallbacks(IDragRacerActions instance)
+            {
+                if (instance == null || m_Wrapper.m_DragRacerActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_DragRacerActionsCallbackInterfaces.Add(instance);
+                @Accelerator.started += instance.OnAccelerator;
+                @Accelerator.performed += instance.OnAccelerator;
+                @Accelerator.canceled += instance.OnAccelerator;
+                @Break.started += instance.OnBreak;
+                @Break.performed += instance.OnBreak;
+                @Break.canceled += instance.OnBreak;
+                @Clutch.started += instance.OnClutch;
+                @Clutch.performed += instance.OnClutch;
+                @Clutch.canceled += instance.OnClutch;
+                @GearUp.started += instance.OnGearUp;
+                @GearUp.performed += instance.OnGearUp;
+                @GearUp.canceled += instance.OnGearUp;
+                @GearDown.started += instance.OnGearDown;
+                @GearDown.performed += instance.OnGearDown;
+                @GearDown.canceled += instance.OnGearDown;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="DragRacerActions" />
+            private void UnregisterCallbacks(IDragRacerActions instance)
+            {
+                @Accelerator.started -= instance.OnAccelerator;
+                @Accelerator.performed -= instance.OnAccelerator;
+                @Accelerator.canceled -= instance.OnAccelerator;
+                @Break.started -= instance.OnBreak;
+                @Break.performed -= instance.OnBreak;
+                @Break.canceled -= instance.OnBreak;
+                @Clutch.started -= instance.OnClutch;
+                @Clutch.performed -= instance.OnClutch;
+                @Clutch.canceled -= instance.OnClutch;
+                @GearUp.started -= instance.OnGearUp;
+                @GearUp.performed -= instance.OnGearUp;
+                @GearUp.canceled -= instance.OnGearUp;
+                @GearDown.started -= instance.OnGearDown;
+                @GearDown.performed -= instance.OnGearDown;
+                @GearDown.canceled -= instance.OnGearDown;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DragRacerActions.UnregisterCallbacks(IDragRacerActions)" />.
+            /// </summary>
+            /// <seealso cref="DragRacerActions.UnregisterCallbacks(IDragRacerActions)" />
+            public void RemoveCallbacks(IDragRacerActions instance)
+            {
+                if (m_Wrapper.m_DragRacerActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="DragRacerActions.AddCallbacks(IDragRacerActions)" />
+            /// <seealso cref="DragRacerActions.RemoveCallbacks(IDragRacerActions)" />
+            /// <seealso cref="DragRacerActions.UnregisterCallbacks(IDragRacerActions)" />
+            public void SetCallbacks(IDragRacerActions instance)
+            {
+                foreach (var item in m_Wrapper.m_DragRacerActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_DragRacerActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="DragRacerActions" /> instance referencing this action map.
+        /// </summary>
+        public DragRacerActions @DragRacer => new DragRacerActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "KitchenWaiter" which allows adding and removing callbacks.
         /// </summary>
@@ -570,6 +826,49 @@ namespace MobileGameProject.MGPInputSystem
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnTilt(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DragRacer" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="DragRacerActions.AddCallbacks(IDragRacerActions)" />
+        /// <seealso cref="DragRacerActions.RemoveCallbacks(IDragRacerActions)" />
+        public interface IDragRacerActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "Accelerator" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAccelerator(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Break" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnBreak(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Clutch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnClutch(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "GearUp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnGearUp(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "GearDown" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnGearDown(InputAction.CallbackContext context);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace MobileGameProject.Framework
         protected MicrogameSession Session => _session;
 
         [SerializeField] protected Camera _mainCamera;
+
+        [SerializeField] protected Orientation _orientation = Orientation.Verticle;
         
         public virtual void Begin(MicrogameSession session)
         {
@@ -36,5 +38,41 @@ namespace MobileGameProject.Framework
             if(_isRunning) 
                 _session.Finish(false);
         }
+
+        public virtual void EndGame()
+        {
+        }
+
+        public virtual void Awake()
+        {
+            if (_orientation == Orientation.Horizontal)
+                SetHorizontal();
+            else
+                SetVertical();
+        }
+        
+        private void SetHorizontal()
+        {
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+            Screen.autorotateToPortrait = false;
+            Screen.autorotateToPortraitUpsideDown = false;
+            Screen.autorotateToLandscapeLeft = true;
+            Screen.autorotateToLandscapeRight = true;
+        }
+        
+        private void SetVertical()
+        {
+            Screen.orientation = ScreenOrientation.Portrait;
+            Screen.autorotateToPortrait = true;
+            Screen.autorotateToPortraitUpsideDown = false;
+            Screen.autorotateToLandscapeLeft = false;
+            Screen.autorotateToLandscapeRight = false;
+        }
+    }
+
+    public enum Orientation
+    {
+        Horizontal,
+        Verticle
     }
 }

@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4802
+  m_VersionIndex: 4808
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1508
+  m_VersionIndex: 1514
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2053,7 +2053,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1181
+      value: 1187
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7650715197438248736, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_Name
@@ -2138,7 +2150,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1181
+      value: 1187
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643602174358038478, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7650715197438248736, guid: 62bf92407e0b58f4cbdb0d217d76d44c, type: 3}
       propertyPath: m_Name
