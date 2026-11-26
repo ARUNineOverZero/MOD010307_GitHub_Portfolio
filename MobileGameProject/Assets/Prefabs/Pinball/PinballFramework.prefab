@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballGame
   _mainCamera: {fileID: 4243081235495326178}
+  _orientation: 1
   _pinballController: {fileID: 5503268232148967020}
 --- !u!20 &4243081235495326178 stripped
 Camera:
