@@ -259,6 +259,7 @@ MonoBehaviour:
   _moveSpeed: 0.1
   _renderer: {fileID: 1067081055346884405}
   _color: {r: 1, g: 1, b: 1, a: 1}
+  _startY: 0
   _lightIntensityCurve:
     serializedVersion: 2
     m_Curve:
