@@ -127,73 +127,28 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 762035819460514459, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 492050497883991513, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_text
+      value: Kitchen Waiter
       objectReference: {fileID: 0}
-    - target: {fileID: 1171431068839338884, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 492050497883991513, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+      propertyPath: m_fontSize
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 1793240872702083577, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_Name
       value: FrameworkTemplate
       objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.85019493
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.7951196
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4926804184344028854, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797463655750234759, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+    - target: {fileID: 2258490329171506119, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_text
-      value: Grab the Tray
+      value: 'Collect your tray and take it to the correct table
+
+        Press and
+        drag to move!'
       objectReference: {fileID: 0}
-    - target: {fileID: 7797463655750234759, guid: 209bece55edf3f24584f2267b271a549, type: 3}
+    - target: {fileID: 2258490329171506119, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_fontSize
-      value: 94.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797463655750234759, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_fontSizeMax
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797463655750234759, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797463655750234759, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797463655750234759, guid: 209bece55edf3f24584f2267b271a549, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      value: 67.35
       objectReference: {fileID: 0}
     - target: {fileID: 9180828559745892491, guid: 209bece55edf3f24584f2267b271a549, type: 3}
       propertyPath: m_LocalPosition.x
