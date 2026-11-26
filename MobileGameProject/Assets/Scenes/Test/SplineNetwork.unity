@@ -505,9 +505,9 @@ MonoBehaviour:
     prefab: {fileID: 0}
   - position: {x: -4.0532703, y: 1.76, z: -53.750008}
     rotation: {x: 0, y: -0.9238795, z: 0, w: -0.38268358}
-    prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
+    prefab: {fileID: 0}
   - position: {x: -4.0532703, y: 2.76, z: -52.750008}
-    rotation: {x: 0, y: 0.92387956, z: 0, w: -0.3826834}
+    rotation: {x: 0, y: 0.86602545, z: 0, w: -0.49999997}
     prefab: {fileID: 0}
   - position: {x: -3.0532703, y: 3.76, z: -52.750008}
     rotation: {x: 0, y: 0.3826835, z: 0, w: -0.9238795}
@@ -520,32 +520,32 @@ MonoBehaviour:
     startSocket: 
     endNodeIndex: 1
     endSocket: 
-    startHandleOffset: {x: -1.6439945, y: 0, z: -4.2961946}
-    endHandleOffset: {x: 0.5444724, y: 0, z: -0.54447216}
+    startHandleOffset: {x: -0.17869505, y: 0, z: -0.46697766}
+    endHandleOffset: {x: 0.3535535, y: 0, z: -0.35355335}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
   - startNodeIndex: 1
     startSocket: 
     endNodeIndex: 2
     endSocket: 
-    startHandleOffset: {x: -1.7394832, y: 0, z: 1.7394825}
-    endHandleOffset: {x: 0, y: 0, z: -1}
+    startHandleOffset: {x: -0.3535535, y: 0, z: 0.35355335}
+    endHandleOffset: {x: -0.4330127, y: 0, z: -0.25000006}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
   - startNodeIndex: 2
     startSocket: 
     endNodeIndex: 3
     endSocket: 
-    startHandleOffset: {x: 0, y: 0, z: 1}
-    endHandleOffset: {x: 0, y: 0, z: 1}
+    startHandleOffset: {x: 0.4330127, y: 0, z: 0.25000006}
+    endHandleOffset: {x: -0.3535534, y: 0, z: 0.35355335}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
   - startNodeIndex: 3
     startSocket: 
     endNodeIndex: 4
     endSocket: 
-    startHandleOffset: {x: 0, y: 0, z: -1}
-    endHandleOffset: {x: 0, y: 0, z: 1}
+    startHandleOffset: {x: 0.3535534, y: 0, z: -0.35355335}
+    endHandleOffset: {x: 0, y: 0, z: 0.5}
     prefab: {fileID: 3602999123370841188, guid: 501cd04fda555d642a9a4961636314dd, type: 3}
     isDirty: 0
 --- !u!4 &753446105

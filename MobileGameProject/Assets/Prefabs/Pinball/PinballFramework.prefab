@@ -1,0 +1,412 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6749435206894126696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4240381288415058410}
+  - component: {fileID: 3705389181840567319}
+  m_Layer: 0
+  m_Name: PhysicsSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4240381288415058410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749435206894126696}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -28.19137, y: -10.72579, z: 499.68173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7003775280561584064}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3705389181840567319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749435206894126696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b19eebbf6e14b04d8d9873e22a9263b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PhysicsSettings
+  gravity: {x: 0, y: -981, z: 0}
+  defaultContactOffset: 1
+  bounceThreshold: 150
+  solverIterations: 12
+  solverVelocityIterations: 8
+  fixedTimestep: 0.01
+  originalGravity: {x: 0, y: 0, z: 0}
+  originalDefaultContactOffset: 0.01
+  originalBounceThreshold: 0
+  originalSolverIterations: 0
+  originalSolverVelocityIterations: 0
+  originalFixedTimestep: 0
+--- !u!1001 &1295309075760499511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 77129409087903854, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_fontSize
+      value: 196.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 682140878084772261, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_text
+      value: Pinball
+      objectReference: {fileID: 0}
+    - target: {fileID: 682140878084772261, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221788507329384379, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_text
+      value: Use the left side of the screen for the left flipper and the right side
+        for the right flipper. You can loose all balls 3 times.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221788507329384379, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_fontSize
+      value: 52.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675815987619265925, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_Name
+      value: PinballFramework
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106269173208603349, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980083285114373482, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: _game
+      value: 
+      objectReference: {fileID: 1947770587617781596}
+    - target: {fileID: 6980083285114373482, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: _durationSeconds
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.19137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.72579
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -499.68173
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 73.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -54.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8660254
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517964457973454611, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 60
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4240381288415058410}
+    - targetCorrespondingSourceObject: {fileID: 5024799456151852095, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1421559205428522922}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7215387416699725057, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8320150075499886098}
+    - targetCorrespondingSourceObject: {fileID: 3522421678915970571, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1947770587617781596}
+  m_SourcePrefab: {fileID: 100100000, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+--- !u!1 &2385776849300008252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3522421678915970571, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 1295309075760499511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1947770587617781596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2385776849300008252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4df87e90dc8384196a2a341fc73c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballGame
+  _mainCamera: {fileID: 4243081235495326178}
+  _pinballController: {fileID: 5503268232148967020}
+--- !u!20 &4243081235495326178 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3106269173208603349, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 1295309075760499511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6071539244638838536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5024799456151852095, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 1295309075760499511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7003775280561584064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8127788136328838391, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 1295309075760499511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8492636736378023478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7215387416699725057, guid: a7ee8af954f99834d992017acd0e5b12, type: 3}
+  m_PrefabInstance: {fileID: 1295309075760499511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8320150075499886098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492636736378023478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a80b76cf676d4641a96d5cf1944d4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.MGPInputSystem.Pinball.PlayerInputHandler
+  OnLeftPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5503268232148967020}
+        m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+        m_MethodName: OnLeftPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnLeftRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5503268232148967020}
+        m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+        m_MethodName: OnLeftReleased
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRightPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5503268232148967020}
+        m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+        m_MethodName: OnRightPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRightRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5503268232148967020}
+        m_TargetAssemblyTypeName: MobileGameProject.Pinball.PinballController, Assembly-CSharp
+        m_MethodName: OnRightReleased
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &6218863486222618007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6071539244638838536}
+    m_Modifications:
+    - target: {fileID: 11926148689244830, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1397
+      objectReference: {fileID: 0}
+    - target: {fileID: 227441917041980202, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 5018
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878667524654765051, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 4243081235495326178}
+    - target: {fileID: 1878667524654765051, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: _inputHandler
+      value: 
+      objectReference: {fileID: 8320150075499886098}
+    - target: {fileID: 2949720570656174965, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282462362685620467, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1397
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371864558120258647, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1397
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686085771090193355, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_Name
+      value: Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.008726465
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277526457149534647, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175254323515782995, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1724
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949298370683280976, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1397
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+--- !u!4 &1421559205428522922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5041696170568753725, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+  m_PrefabInstance: {fileID: 6218863486222618007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5503268232148967020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1878667524654765051, guid: cf2e9163c8a04d74c87ea2769733a911, type: 3}
+  m_PrefabInstance: {fileID: 6218863486222618007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2111d2964484574db65f105d57e1f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Pinball.PinballController

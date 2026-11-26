@@ -139,28 +139,68 @@ namespace MobileGameProject.MGPInputSystem
             ]
         },
         {
-            ""name"": ""DrinkRunner"",
-            ""id"": ""7960ebec-1e13-43a7-a84c-cdb9d401be5b"",
+            ""name"": ""Pinball"",
+            ""id"": ""8589c580-66d0-4634-8ca9-a42a383f29d1"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""c96cb6f1-00ab-4adc-ad21-bf214375421a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Contact"",
                     ""type"": ""Button"",
-                    ""id"": ""f9f291f3-fc5d-415f-b875-d87607b50e81"",
+                    ""id"": ""0d9ae8f8-0616-4c20-a5b6-1a0a62582801"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tilt"",
+                    ""type"": ""Value"",
+                    ""id"": ""0b05a40e-1f7b-41f8-9740-e5753a98c7d4"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""05d7dc6b-4d52-450a-93e1-fee813880cef"",
-                    ""path"": """",
+                    ""id"": ""d715dd83-30b2-4ce8-bcd7-27a71824eaea"",
+                    ""path"": ""<Pointer>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28942f7a-1d99-44fb-b8a8-820ec0f8d2dc"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Contact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87517277-8e5b-4edd-99e2-5284d87676a9"",
+                    ""path"": ""<Accelerometer>/acceleration"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tilt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -173,15 +213,17 @@ namespace MobileGameProject.MGPInputSystem
             m_KitchenWaiter = asset.FindActionMap("KitchenWaiter", throwIfNotFound: true);
             m_KitchenWaiter_Position = m_KitchenWaiter.FindAction("Position", throwIfNotFound: true);
             m_KitchenWaiter_Contact = m_KitchenWaiter.FindAction("Contact", throwIfNotFound: true);
-            // DrinkRunner
-            m_DrinkRunner = asset.FindActionMap("DrinkRunner", throwIfNotFound: true);
-            m_DrinkRunner_Newaction = m_DrinkRunner.FindAction("New action", throwIfNotFound: true);
+            // Pinball
+            m_Pinball = asset.FindActionMap("Pinball", throwIfNotFound: true);
+            m_Pinball_Position = m_Pinball.FindAction("Position", throwIfNotFound: true);
+            m_Pinball_Contact = m_Pinball.FindAction("Contact", throwIfNotFound: true);
+            m_Pinball_Tilt = m_Pinball.FindAction("Tilt", throwIfNotFound: true);
         }
 
         ~@InputSystem()
         {
             UnityEngine.Debug.Assert(!m_KitchenWaiter.enabled, "This will cause a leak and performance issues, InputSystem.KitchenWaiter.Disable() has not been called.");
-            UnityEngine.Debug.Assert(!m_DrinkRunner.enabled, "This will cause a leak and performance issues, InputSystem.DrinkRunner.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_Pinball.enabled, "This will cause a leak and performance issues, InputSystem.Pinball.Disable() has not been called.");
         }
 
         /// <summary>
@@ -361,29 +403,39 @@ namespace MobileGameProject.MGPInputSystem
         /// </summary>
         public KitchenWaiterActions @KitchenWaiter => new KitchenWaiterActions(this);
 
-        // DrinkRunner
-        private readonly InputActionMap m_DrinkRunner;
-        private List<IDrinkRunnerActions> m_DrinkRunnerActionsCallbackInterfaces = new List<IDrinkRunnerActions>();
-        private readonly InputAction m_DrinkRunner_Newaction;
+        // Pinball
+        private readonly InputActionMap m_Pinball;
+        private List<IPinballActions> m_PinballActionsCallbackInterfaces = new List<IPinballActions>();
+        private readonly InputAction m_Pinball_Position;
+        private readonly InputAction m_Pinball_Contact;
+        private readonly InputAction m_Pinball_Tilt;
         /// <summary>
-        /// Provides access to input actions defined in input action map "DrinkRunner".
+        /// Provides access to input actions defined in input action map "Pinball".
         /// </summary>
-        public struct DrinkRunnerActions
+        public struct PinballActions
         {
             private @InputSystem m_Wrapper;
 
             /// <summary>
             /// Construct a new instance of the input action map wrapper class.
             /// </summary>
-            public DrinkRunnerActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+            public PinballActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
             /// <summary>
-            /// Provides access to the underlying input action "DrinkRunner/Newaction".
+            /// Provides access to the underlying input action "Pinball/Position".
             /// </summary>
-            public InputAction @Newaction => m_Wrapper.m_DrinkRunner_Newaction;
+            public InputAction @Position => m_Wrapper.m_Pinball_Position;
+            /// <summary>
+            /// Provides access to the underlying input action "Pinball/Contact".
+            /// </summary>
+            public InputAction @Contact => m_Wrapper.m_Pinball_Contact;
+            /// <summary>
+            /// Provides access to the underlying input action "Pinball/Tilt".
+            /// </summary>
+            public InputAction @Tilt => m_Wrapper.m_Pinball_Tilt;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
-            public InputActionMap Get() { return m_Wrapper.m_DrinkRunner; }
+            public InputActionMap Get() { return m_Wrapper.m_Pinball; }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
             public void Enable() { Get().Enable(); }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -391,9 +443,9 @@ namespace MobileGameProject.MGPInputSystem
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
             public bool enabled => Get().enabled;
             /// <summary>
-            /// Implicitly converts an <see ref="DrinkRunnerActions" /> to an <see ref="InputActionMap" /> instance.
+            /// Implicitly converts an <see ref="PinballActions" /> to an <see ref="InputActionMap" /> instance.
             /// </summary>
-            public static implicit operator InputActionMap(DrinkRunnerActions set) { return set.Get(); }
+            public static implicit operator InputActionMap(PinballActions set) { return set.Get(); }
             /// <summary>
             /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
             /// </summary>
@@ -401,14 +453,20 @@ namespace MobileGameProject.MGPInputSystem
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
             /// </remarks>
-            /// <seealso cref="DrinkRunnerActions" />
-            public void AddCallbacks(IDrinkRunnerActions instance)
+            /// <seealso cref="PinballActions" />
+            public void AddCallbacks(IPinballActions instance)
             {
-                if (instance == null || m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Add(instance);
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                if (instance == null || m_Wrapper.m_PinballActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PinballActionsCallbackInterfaces.Add(instance);
+                @Position.started += instance.OnPosition;
+                @Position.performed += instance.OnPosition;
+                @Position.canceled += instance.OnPosition;
+                @Contact.started += instance.OnContact;
+                @Contact.performed += instance.OnContact;
+                @Contact.canceled += instance.OnContact;
+                @Tilt.started += instance.OnTilt;
+                @Tilt.performed += instance.OnTilt;
+                @Tilt.canceled += instance.OnTilt;
             }
 
             /// <summary>
@@ -417,21 +475,27 @@ namespace MobileGameProject.MGPInputSystem
             /// <remarks>
             /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
             /// </remarks>
-            /// <seealso cref="DrinkRunnerActions" />
-            private void UnregisterCallbacks(IDrinkRunnerActions instance)
+            /// <seealso cref="PinballActions" />
+            private void UnregisterCallbacks(IPinballActions instance)
             {
-                @Newaction.started -= instance.OnNewaction;
-                @Newaction.performed -= instance.OnNewaction;
-                @Newaction.canceled -= instance.OnNewaction;
+                @Position.started -= instance.OnPosition;
+                @Position.performed -= instance.OnPosition;
+                @Position.canceled -= instance.OnPosition;
+                @Contact.started -= instance.OnContact;
+                @Contact.performed -= instance.OnContact;
+                @Contact.canceled -= instance.OnContact;
+                @Tilt.started -= instance.OnTilt;
+                @Tilt.performed -= instance.OnTilt;
+                @Tilt.canceled -= instance.OnTilt;
             }
 
             /// <summary>
-            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DrinkRunnerActions.UnregisterCallbacks(IDrinkRunnerActions)" />.
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PinballActions.UnregisterCallbacks(IPinballActions)" />.
             /// </summary>
-            /// <seealso cref="DrinkRunnerActions.UnregisterCallbacks(IDrinkRunnerActions)" />
-            public void RemoveCallbacks(IDrinkRunnerActions instance)
+            /// <seealso cref="PinballActions.UnregisterCallbacks(IPinballActions)" />
+            public void RemoveCallbacks(IPinballActions instance)
             {
-                if (m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Remove(instance))
+                if (m_Wrapper.m_PinballActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
@@ -441,21 +505,21 @@ namespace MobileGameProject.MGPInputSystem
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
             /// </remarks>
-            /// <seealso cref="DrinkRunnerActions.AddCallbacks(IDrinkRunnerActions)" />
-            /// <seealso cref="DrinkRunnerActions.RemoveCallbacks(IDrinkRunnerActions)" />
-            /// <seealso cref="DrinkRunnerActions.UnregisterCallbacks(IDrinkRunnerActions)" />
-            public void SetCallbacks(IDrinkRunnerActions instance)
+            /// <seealso cref="PinballActions.AddCallbacks(IPinballActions)" />
+            /// <seealso cref="PinballActions.RemoveCallbacks(IPinballActions)" />
+            /// <seealso cref="PinballActions.UnregisterCallbacks(IPinballActions)" />
+            public void SetCallbacks(IPinballActions instance)
             {
-                foreach (var item in m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces)
+                foreach (var item in m_Wrapper.m_PinballActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
-                m_Wrapper.m_DrinkRunnerActionsCallbackInterfaces.Clear();
+                m_Wrapper.m_PinballActionsCallbackInterfaces.Clear();
                 AddCallbacks(instance);
             }
         }
         /// <summary>
-        /// Provides a new <see cref="DrinkRunnerActions" /> instance referencing this action map.
+        /// Provides a new <see cref="PinballActions" /> instance referencing this action map.
         /// </summary>
-        public DrinkRunnerActions @DrinkRunner => new DrinkRunnerActions(this);
+        public PinballActions @Pinball => new PinballActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "KitchenWaiter" which allows adding and removing callbacks.
         /// </summary>
@@ -479,19 +543,33 @@ namespace MobileGameProject.MGPInputSystem
             void OnContact(InputAction.CallbackContext context);
         }
         /// <summary>
-        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DrinkRunner" which allows adding and removing callbacks.
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Pinball" which allows adding and removing callbacks.
         /// </summary>
-        /// <seealso cref="DrinkRunnerActions.AddCallbacks(IDrinkRunnerActions)" />
-        /// <seealso cref="DrinkRunnerActions.RemoveCallbacks(IDrinkRunnerActions)" />
-        public interface IDrinkRunnerActions
+        /// <seealso cref="PinballActions.AddCallbacks(IPinballActions)" />
+        /// <seealso cref="PinballActions.RemoveCallbacks(IPinballActions)" />
+        public interface IPinballActions
         {
             /// <summary>
-            /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Position" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnNewaction(InputAction.CallbackContext context);
+            void OnPosition(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Contact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnContact(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Tilt" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnTilt(InputAction.CallbackContext context);
         }
     }
 }
