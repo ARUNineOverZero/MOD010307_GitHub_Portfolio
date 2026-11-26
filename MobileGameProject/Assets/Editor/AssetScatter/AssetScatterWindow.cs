@@ -37,6 +37,8 @@ public class AssetScatterWindow : EditorWindow
 
     private Vector2 _scroll;
 
+    private bool _assetsFoldout = true;
+
     [MenuItem("Tools/Asset Scatter")]
     public static void Open() => GetWindow<AssetScatterWindow>("Asset Scatter");
 
@@ -76,28 +78,34 @@ public class AssetScatterWindow : EditorWindow
         EditorGUILayout.BeginHorizontal();
         randomSeed = EditorGUILayout.IntField("Random Seed (0 = random)", randomSeed);
         if (GUILayout.Button("Randomize Seed", GUILayout.Width(120)))
-        {
             randomSeed = Random.Range(1, 999999);
-        }
+
         EditorGUILayout.EndHorizontal();
         startPoint = EditorGUILayout.Vector3Field("Start Point", startPoint);
 
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Assets", EditorStyles.boldLabel);
 
-        for (int i = 0; i < assets.Count; i++)
-        {
-            var a = assets[i];
-            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-            a.prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", a.prefab, typeof(GameObject), false);
-            a.radius = EditorGUILayout.FloatField("Radius", a.radius);
-            a.weight = EditorGUILayout.Slider("Weight", a.weight, 0f, 1f);
-            if (GUILayout.Button("Remove")) assets.RemoveAt(i--);
-            EditorGUILayout.EndVertical();
-        }
+        EditorGUILayout.Space(10);
+        _assetsFoldout = EditorGUILayout.Foldout(_assetsFoldout, "Assets", true, EditorStyles.foldoutHeader);
 
-        if (GUILayout.Button("+ Add Asset"))
-            assets.Add(new ScatterAsset());
+        if (_assetsFoldout)
+        {
+
+            for (int i = 0; i < assets.Count; i++)
+            {
+                var a = assets[i];
+                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                a.prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", a.prefab, typeof(GameObject), false);
+                a.radius = EditorGUILayout.FloatField("Radius", a.radius);
+                a.weight = EditorGUILayout.Slider("Weight", a.weight, 0f, 1f);
+                if (GUILayout.Button("Remove")) assets.RemoveAt(i--);
+                EditorGUILayout.EndVertical();
+            }
+
+            if (GUILayout.Button("+ Add Asset"))
+                assets.Add(new ScatterAsset());
+        }
 
         EditorGUILayout.Space(15);
         if (GUILayout.Button("Scatter Assets", GUILayout.Height(32)))
