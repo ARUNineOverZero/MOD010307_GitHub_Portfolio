@@ -567,8 +567,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678643627}
-        m_TargetAssemblyTypeName: MobileGameProject.Framework.MicrogameSession, Assembly-CSharp
+      - m_Target: {fileID: 1678643629}
+        m_TargetAssemblyTypeName: MobileGameProject.Framework.CountDownMicrogameSession,
+          Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -752,6 +753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d419d8e07390d6d44b8479195194be0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Framework.TargetTapGame
+  _mainCamera: {fileID: 0}
+  _orientation: 1
   _playArea: {fileID: 632799384}
   _target: {fileID: 1421238890}
   _targetImage: {fileID: 1421238892}
@@ -2017,7 +2020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1678643628}
-  - component: {fileID: 1678643627}
+  - component: {fileID: 1678643629}
   m_Layer: 0
   m_Name: MicrogameSession
   m_TagString: Untagged
@@ -2025,25 +2028,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1678643627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678643626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef49231e95425264cbaf06c62f540ea1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Framework.MicrogameSession
-  _game: {fileID: 499917427}
-  _readyPanel: {fileID: 1997035105}
-  _playArea: {fileID: 632799383}
-  _resultPanel: {fileID: 214356211}
-  _timerText: {fileID: 237817551}
-  _resultText: {fileID: 694963131}
-  _durationSeconds: 10
 --- !u!4 &1678643628
 Transform:
   m_ObjectHideFlags: 0
@@ -2059,6 +2043,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1678643629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678643626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5954e735ec677b04d8a6b042017a336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileGameProject.Framework.CountDownMicrogameSession
+  _game: {fileID: 499917427}
+  _readyPanel: {fileID: 1997035105}
+  _playArea: {fileID: 632799383}
+  _uiPlayArea: {fileID: 0}
+  _resultPanel: {fileID: 214356211}
+  _resultText: {fileID: 694963131}
+  _timerText: {fileID: 237817551}
+  _durationSeconds: 10
 --- !u!1 &1814073354
 GameObject:
   m_ObjectHideFlags: 0

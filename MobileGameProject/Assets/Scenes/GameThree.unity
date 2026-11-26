@@ -2599,6 +2599,10 @@ PrefabInstance:
       propertyPath: _orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2326817564053892036, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
+      propertyPath: _durationSeconds
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3167256894339337465, guid: 9a34982a6b9ad904fb8de30bd3900351, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 1
